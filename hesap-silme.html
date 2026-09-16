@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>FİT KAL — Hesap ve Veri Silme</title>
+<meta name="description" content="FİT KAL uygulamasında hesabınızı ve verilerinizi nasıl silebileceğinize dair talimatlar.">
+<style>
+  :root { color-scheme: light dark; --bg:#ffffff; --fg:#12211b; --muted:#5c6b64; --line:#e3eae6; --accent:#20734A; --card:#f7faf8; }
+  @media (prefers-color-scheme: dark) {
+    :root { --bg:#0d1512; --fg:#e8f0ec; --muted:#9db0a7; --line:#1e2c26; --accent:#4ade80; --card:#121d18; }
+  }
+  * { box-sizing: border-box; }
+  body { margin:0; background:var(--bg); color:var(--fg);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    line-height:1.65; }
+  .wrap { max-width:760px; margin:0 auto; padding:32px 20px 72px; }
+  header { text-align:center; padding-bottom:20px; border-bottom:1px solid var(--line); margin-bottom:28px; }
+  h1 { font-size:1.6rem; margin:0 0 8px; letter-spacing:-.01em; }
+  .meta { color:var(--muted); font-size:.85rem; }
+  h2 { font-size:1.2rem; margin:36px 0 4px; padding-top:20px; border-top:1px solid var(--line); }
+  p { margin:0 0 12px; font-size:.94rem; }
+  ol, ul { margin:0 0 14px; padding-left:22px; font-size:.94rem; }
+  li { margin-bottom:6px; }
+  a { color:var(--accent); }
+  .card { background:var(--card); border:1px solid var(--line); border-radius:14px; padding:16px 18px; margin:12px 0; }
+  table { width:100%; border-collapse:collapse; font-size:.88rem; margin:12px 0; }
+  th, td { text-align:left; padding:8px 10px; border-bottom:1px solid var(--line); }
+  th { color:var(--muted); font-weight:600; }
+  footer { margin-top:56px; padding-top:20px; border-top:1px solid var(--line); color:var(--muted); font-size:.83rem; text-align:center; }
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+  <h1>FİT KAL</h1>
+  <p class="meta">Hesap ve Veri Silme Talimatları</p>
+  <p class="meta">Son güncelleme: 2 Eylül 2026</p>
+</header>
+
+<p>Bu sayfa, FİT KAL uygulamasını geliştiren ekip tarafından, kullanıcıların hesaplarını ve verilerini nasıl
+silebileceklerini açıklamak amacıyla hazırlanmıştır. Uygulamayı yüklemeden de bu sayfayı görüntüleyebilirsiniz.</p>
+
+<h2>1. Uygulama İçinden Hesap Silme (Önerilen Yöntem)</h2>
+<div class="card">
+  <ol>
+    <li>FİT KAL uygulamasını açın ve giriş yapın.</li>
+    <li>Alt menüden <strong>Profil</strong> sekmesine gidin.</li>
+    <li>Sayfayı en aşağı kaydırıp <strong>"Hesabımı ve Verilerimi Sil"</strong> seçeneğine dokunun.</li>
+    <li>Açılan onay penceresinde silme işlemini onaylayın.</li>
+  </ol>
+  <p>Onayladığınız anda hesabınız ve aşağıdaki tabloda belirtilen verileriniz <strong>kalıcı olarak silinir — bu işlem geri alınamaz.</strong></p>
+</div>
+
+<h2>2. Uygulamaya Erişiminiz Yoksa</h2>
+<p>Uygulamayı silme, hesabınıza artık erişememe veya başka bir nedenle uygulama içinden işlem yapamıyorsanız,
+hesabınızda kayıtlı e-posta adresinizden <a href="mailto:fitkaldestek@gmail.com">fitkaldestek@gmail.com</a> adresine
+yazarak silme talebinde bulunabilirsiniz. Kimliğinizi doğrulayabilmemiz için lütfen talebinizi hesabınızda kayıtlı
+e-posta adresinden gönderin. Talebiniz en geç <strong>30 gün içinde</strong> sonuçlandırılır.</p>
+
+<h2>3. Silinen Veriler ve Saklama Süresi</h2>
+<p>Hesap silme talebiyle birlikte aşağıdaki veriler kalıcı olarak silinir:</p>
+<table>
+  <tr><th>Veri türü</th><th>Durum</th></tr>
+  <tr><td>Profil bilgileri (ad, doğum tarihi, cinsiyet, boy/kilo vb.)</td><td>Anında silinir</td></tr>
+  <tr><td>Beslenme kayıtları, diyet planları, hedefler</td><td>Anında silinir</td></tr>
+  <tr><td>Su, kilo, adım, antrenman ve oruç kayıtları</td><td>Anında silinir</td></tr>
+  <tr><td>İlerleme fotoğrafları ve profil fotoğrafı</td><td>Anında silinir</td></tr>
+  <tr><td>Yapay zekâ kullanım/öneri geçmişi</td><td>Anında silinir</td></tr>
+  <tr><td>Rozet, seviye ve seri (streak) verileri</td><td>Anında silinir</td></tr>
+  <tr><td>Giriş bilgileri (e-posta, şifre karması)</td><td>Anında silinir</td></tr>
+</table>
+<p>Yalnızca <strong>yasal saklama yükümlülüğümüzün bulunduğu</strong> sınırlı kayıtlar (ör. mevzuatın öngördüğü faturalandırma/işlem
+kayıtları — bu uygulamada bu tür bir yükümlülük şu an için mevcut değildir), ilgili mevzuatta öngörülen süre kadar ayrıca
+saklanabilir. Bunun dışında kalan hiçbir veri saklanmaz.</p>
+
+<h2>4. Daha Fazla Bilgi</h2>
+<p>Kişisel verilerinizin işlenmesi hakkında detaylı bilgi için
+<a href="./gizlilik-politikasi.html">Gizlilik Politikası ve KVKK Aydınlatma Metni</a>
+sayfamızı inceleyebilirsiniz.</p>
+
+<footer>FİT KAL · İletişim: <a href="mailto:fitkaldestek@gmail.com">fitkaldestek@gmail.com</a></footer>
+</div>
+</body>
+</html>

@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FİT KAL — Her Gün Daha İyi | Kişisel Sağlık ve Beslenme Asistanı</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #20734A;
+      --primary-dark: #154D31;
+      --bg: #F8FAF9;
+      --card: #FFFFFF;
+      --ink: #0E1E17;
+      --ink-secondary: #52665D;
+      --line: #E2E8F0;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      background-color: var(--bg);
+      color: var(--ink);
+      line-height: 1.6;
+    }
+    header {
+      padding: 24px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 800;
+      font-size: 22px;
+      color: var(--primary);
+    }
+    .logo-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, #20734A, #154D31);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 20px;
+    }
+    .nav-links {
+      display: flex;
+      gap: 20px;
+      align-items: center;
+    }
+    .nav-links a {
+      text-decoration: none;
+      font-weight: 600;
+      color: var(--ink);
+      font-size: 14px;
+      transition: color 0.2s ease;
+    }
+    .nav-links a:hover {
+      color: var(--primary);
+    }
+    .nav-cta {
+      background: var(--primary);
+      color: white !important;
+      padding: 8px 18px;
+      border-radius: 99px;
+    }
+    .nav-cta:hover {
+      background: var(--primary-dark);
+    }
+    .hero {
+      text-align: center;
+      padding: 80px 20px 60px;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    .hero h1 {
+      font-size: 48px;
+      font-weight: 800;
+      line-height: 1.2;
+      margin-bottom: 20px;
+      color: var(--ink);
+    }
+    .hero h1 span {
+      color: var(--primary);
+    }
+    .hero p {
+      font-size: 18px;
+      color: var(--ink-secondary);
+      margin-bottom: 36px;
+    }
+    .badge-wrap {
+      display: inline-flex;
+      gap: 16px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    .btn-store {
+      background: var(--primary);
+      color: white;
+      padding: 16px 32px;
+      border-radius: 99px;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 16px;
+      box-shadow: 0 10px 25px rgba(32, 115, 74, 0.25);
+      transition: all 0.2s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .btn-store:hover {
+      background: var(--primary-dark);
+      transform: translateY(-2px);
+    }
+    .btn-secondary {
+      background: #EAF3EE;
+      color: var(--primary);
+      box-shadow: none;
+    }
+    .btn-secondary:hover {
+      background: #d8eae0;
+      color: var(--primary-dark);
+    }
+    .features {
+      max-width: 1100px;
+      margin: 40px auto 80px;
+      padding: 0 20px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 24px;
+    }
+    .card {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      padding: 32px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+    }
+    .card-icon {
+      font-size: 32px;
+      margin-bottom: 16px;
+    }
+    .card h3 {
+      font-size: 20px;
+      font-weight: 800;
+      margin-bottom: 12px;
+      color: var(--ink);
+    }
+    .card p {
+      color: var(--ink-secondary);
+      font-size: 14px;
+    }
+    footer {
+      border-top: 1px solid var(--line);
+      padding: 40px 20px;
+      text-align: center;
+      font-size: 14px;
+      color: var(--ink-secondary);
+      background: var(--card);
+    }
+    .footer-links {
+      margin: 16px 0;
+      display: flex;
+      justify-content: center;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+    .footer-links a {
+      color: var(--primary);
+      text-decoration: none;
+      font-weight: 600;
+    }
+    .footer-links a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo">
+      <div class="logo-icon">🌱</div>
+      FİT KAL
+    </div>
+    <div class="nav-links">
+      <a href="./destek.html">Destek</a>
+      <a href="./gizlilik-politikasi.html">Gizlilik</a>
+      <a href="https://apps.apple.com/app/id6807896776" target="_blank" class="nav-cta">İndir</a>
+    </div>
+  </header>
+
+  <section class="hero">
+    <h1>Sağlıklı Yaşam ve Beslenme <span>Artık Çok Kolay.</span></h1>
+    <p>FitKal ile öğünlerinin fotoğrafını çek, yapay zeka kalori ve makrolarını saniyeler içinde hesaplasın. Antrenmanlarını, suyunu ve hedeflerini zahmetsizce yönet.</p>
+    <div class="badge-wrap">
+      <a href="https://apps.apple.com/app/id6807896776" target="_blank" class="btn-store">🍏 App Store'dan İndir</a>
+      <a href="#" class="btn-store btn-secondary" onclick="alert('Google Play Store sürümü inceleme aşamasındadır, çok yakında yayında!')">🤖 Google Play (Çok Yakında)</a>
+    </div>
+  </section>
+
+  <section class="features">
+    <div class="card">
+      <div class="card-icon">📸</div>
+      <h3>Yapay Zeka ile Yemek Analizi</h3>
+      <p>Yediğin tabağın fotoğrafını çek, gelişmiş AI saniyeler içinde yemekleri tanıyıp porsiyon, kalori ve besin değerlerini çıkarsın.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon">🥗</div>
+      <h3>400+ Türk Mutfağı Kütüphanesi</h3>
+      <p>Geleneksel Türk yemeklerinden dünya mutfağına binlerce lezzet ve hazır diyet listeleri parmaklarının ucunda.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon">🏋️</div>
+      <h3>Kişisel Antrenman Planı</h3>
+      <p>Hedefine uygun egzersiz hareketleri, set ve tekrar takibiyle gelişimini haftalık grafiklerle takip et.</p>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-links">
+      <a href="./destek.html">Destek & SSS</a>
+      <a href="./gizlilik-politikasi.html">Gizlilik Politikası & KVKK</a>
+      <a href="./hesap-silme.html">Hesap ve Veri Silme</a>
+    </div>
+    <p>© 2026 FİT KAL — Tüm Hakları Saklıdır.</p>
+    <p style="margin-top:8px;">
+      İletişim: <a href="mailto:fitkaldestek@gmail.com" style="color:var(--primary); text-decoration:none;">fitkaldestek@gmail.com</a>
+    </p>
+  </footer>
+</body>
+</html>
