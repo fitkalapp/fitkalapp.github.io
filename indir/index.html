@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FİT KAL İndir — App Store & Google Play</title>
+  <meta name="description" content="FİT KAL Akıllı Sağlık & Fitness Asistanını iPhone (App Store) veya Android (Google Play) cihazına ücretsiz indir.">
+  <meta name="theme-color" content="#0B2E1E">
+  <link rel="icon" type="image/png" href="https://fitkalapp.github.io/assets/favicon.png">
+  <link rel="apple-touch-icon" href="https://fitkalapp.github.io/assets/apple-touch-icon.png">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="FİT KAL — Hemen Ücretsiz İndir">
+  <meta property="og:description" content="AI Fotoğrafla Kalori Analizi, Kişisel Diyet Listesi, Aralıklı Oruç ve 87 Egzersiz tek uygulamada.">
+  <meta property="og:image" content="https://fitkalapp.github.io/assets/og-image.png">
+  <meta property="og:url" content="https://fitkalapp.github.io/indir">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --green-950: #04120B;
+      --green-900: #0B2E1E;
+      --green-800: #0F3D27;
+      --green-600: #17914A;
+      --green-500: #22A85A;
+      --lime: #8CCB2E;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      min-height: 100vh;
+      background:
+        radial-gradient(600px 400px at 50% 0%, rgba(34,168,90,0.35), transparent 70%),
+        radial-gradient(500px 400px at 50% 100%, rgba(140,203,46,0.15), transparent 70%),
+        linear-gradient(180deg, var(--green-950) 0%, var(--green-900) 100%);
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px 16px;
+      -webkit-font-smoothing: antialiased;
+    }
+    .card {
+      width: 100%;
+      max-width: 440px;
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-radius: 28px;
+      padding: 32px 24px 26px;
+      text-align: center;
+      box-shadow: 0 30px 70px rgba(0, 0, 0, 0.45);
+    }
+    .logo-wrap {
+      width: 84px;
+      height: 84px;
+      border-radius: 24px;
+      background: #fff;
+      margin: 0 auto 16px;
+      display: grid;
+      place-items: center;
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3);
+    }
+    .logo-wrap img {
+      width: 66px;
+      height: 66px;
+      object-fit: contain;
+    }
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      padding: 6px 14px;
+      border-radius: 99px;
+      background: rgba(140, 203, 46, 0.14);
+      border: 1px solid rgba(140, 203, 46, 0.38);
+      color: #D4F3A3;
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+    .badge i {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--lime);
+      box-shadow: 0 0 0 4px rgba(140, 203, 46, 0.25);
+    }
+    h1 {
+      font-size: 28px;
+      font-weight: 900;
+      letter-spacing: -0.02em;
+      line-height: 1.15;
+    }
+    h1 span {
+      background: linear-gradient(90deg, #6FDB8F, var(--lime));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+    .sub {
+      font-size: 14.5px;
+      color: rgba(255, 255, 255, 0.78);
+      margin: 8px 0 20px;
+      line-height: 1.45;
+    }
+    .status-box {
+      display: none;
+      background: rgba(34, 168, 90, 0.2);
+      border: 1px solid rgba(111, 219, 143, 0.45);
+      color: #E2FBE8;
+      border-radius: 14px;
+      padding: 11px 14px;
+      font-size: 13px;
+      font-weight: 700;
+      margin-bottom: 18px;
+      animation: pulse 1.5s infinite ease-in-out;
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.7; }
+    }
+    .btn-list {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .store-btn {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      text-decoration: none;
+      padding: 15px 20px;
+      border-radius: 18px;
+      font-weight: 800;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .store-btn:active {
+      transform: scale(0.98);
+    }
+    .store-btn.primary {
+      background: linear-gradient(135deg, #22A85A 0%, #136B3E 100%);
+      color: #fff;
+      border: 1.5px solid rgba(140, 203, 46, 0.55);
+      box-shadow: 0 12px 28px rgba(19, 107, 62, 0.45);
+    }
+    .store-btn.secondary {
+      background: #fff;
+      color: #0E1E17;
+      border: 1.5px solid #E3EBE6;
+      box-shadow: 0 10px 24px rgba(0, 0, 0, 0.22);
+    }
+    .btn-left {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      text-align: left;
+    }
+    .btn-left svg {
+      width: 30px;
+      height: 30px;
+      flex-shrink: 0;
+    }
+    .btn-left small {
+      display: block;
+      font-size: 11px;
+      font-weight: 600;
+      opacity: 0.82;
+    }
+    .btn-left b {
+      display: block;
+      font-size: 17px;
+      font-weight: 800;
+      letter-spacing: -0.01em;
+    }
+    .arrow {
+      font-size: 20px;
+      font-weight: 900;
+      opacity: 0.85;
+    }
+    .pills {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+      margin-top: 20px;
+    }
+    .pill {
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 12px;
+      padding: 9px 10px;
+      font-size: 12px;
+      font-weight: 700;
+      color: rgba(255, 255, 255, 0.88);
+    }
+    .web-link {
+      display: inline-block;
+      margin-top: 20px;
+      color: rgba(255, 255, 255, 0.72);
+      font-size: 13px;
+      font-weight: 700;
+      text-decoration: none;
+      border-bottom: 1px dashed rgba(255, 255, 255, 0.35);
+      padding-bottom: 2px;
+    }
+    .web-link:hover {
+      color: #fff;
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <div class="logo-wrap">
+      <img src="https://fitkalapp.github.io/assets/apple-touch-icon.png" alt="Fit Kal Logo">
+    </div>
+    <div class="badge"><i></i> AKILLI SAĞLIK & FİTNESS ASİSTANI</div>
+    <h1>FİT <span>KAL</span></h1>
+    <p class="sub">Yemeğinin fotoğrafını çek, yapay zeka kalori ve makrolarını saniyede hesaplasın. Ücretsiz indir ve hedefine başla!</p>
+
+    <div id="statusBox" class="status-box"></div>
+
+    <div class="btn-list">
+      <a id="iosBtn" class="store-btn primary" href="https://apps.apple.com/app/id6807896776">
+        <div class="btn-left">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M16.365 1.43c0 1.14-.465 2.205-1.215 3.015-.78.84-2.055 1.485-3.165 1.395-.135-1.11.42-2.28 1.17-3.045.795-.825 2.13-1.44 3.21-1.365zm4.17 16.095c-.585 1.335-.87 1.92-1.62 3.105-1.05 1.65-2.535 3.705-4.38 3.72-1.635.015-2.055-1.065-4.275-1.05-2.22.015-2.685 1.065-4.32 1.05-1.845-.015-3.255-1.875-4.305-3.525-2.955-4.65-3.27-10.11-1.44-12.99 1.305-2.04 3.36-3.24 5.295-3.24 1.965 0 3.21 1.08 4.83 1.08 1.575 0 2.535-1.08 4.815-1.08 1.725 0 3.555.945 4.86 2.565-4.26 2.34-3.57 8.43.54 10.365z"/></svg>
+          <div>
+            <small>iPhone & iPad İçin</small>
+            <b>App Store'dan İndir</b>
+          </div>
+        </div>
+        <span class="arrow">➔</span>
+      </a>
+
+      <a id="androidBtn" class="store-btn secondary" href="https://play.google.com/store/apps/details?id=com.fitkal.app">
+        <div class="btn-left">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M3.61 1.814L13.793 12 3.61 22.186a1.1 1.1 0 0 1-.61-.986V2.8c0-.43.245-.81.61-.986zm10.89 10.893l2.302 2.302-10.937 6.333 8.635-8.635zm3.199-3.198l2.807 1.626a1 1 0 0 1 0 1.73l-2.808 1.626L15.206 12l2.492-2.491zM5.864 2.658L16.8 8.99l-2.302 2.302-8.634-8.634z"/></svg>
+          <div>
+            <small>Android Telefonlar İçin</small>
+            <b>Google Play'den İndir</b>
+          </div>
+        </div>
+        <span class="arrow">➔</span>
+      </a>
+    </div>
+
+    <div class="pills">
+      <div class="pill">📸 AI Yemek Analizi</div>
+      <div class="pill">🥗 70+ Fit Tarif</div>
+      <div class="pill">⏳ Aralıklı Oruç</div>
+      <div class="pill">💪 87 Egzersiz</div>
+    </div>
+
+    <a class="web-link" href="https://fitkalapp.github.io/">🌐 Resmi Web Sitesini İncele</a>
+  </div>
+
+  <script>
+    (function() {
+      var ua = navigator.userAgent || navigator.vendor || window.opera;
+      var iosUrl = "https://apps.apple.com/app/id6807896776";
+      var androidUrl = "https://play.google.com/store/apps/details?id=com.fitkal.app";
+      var statusBox = document.getElementById("statusBox");
+      var iosBtn = document.getElementById("iosBtn");
+      var androidBtn = document.getElementById("androidBtn");
+
+      var isIOS = /iPad|iPhone|iPod/.test(ua) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+      var isAndroid = /android/i.test(ua);
+
+      if (isIOS) {
+        statusBox.style.display = "block";
+        statusBox.innerHTML = "🍎 iPhone / iOS algılandı — App Store açılıyor...";
+        setTimeout(function() {
+          window.location.replace(iosUrl);
+        }, 300);
+      } else if (isAndroid) {
+        iosBtn.className = "store-btn secondary";
+        androidBtn.className = "store-btn primary";
+        statusBox.style.display = "block";
+        statusBox.innerHTML = "🤖 Android algılandı — Google Play açılıyor...";
+        setTimeout(function() {
+          window.location.replace(androidUrl);
+        }, 300);
+      }
+    })();
+  </script>
+</body>
+</html>
