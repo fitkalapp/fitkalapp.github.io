@@ -1,0 +1,1388 @@
+<title>FİT KAL Yeni Postlar</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap">
+<style>/* Layout: one column of post cards on phones, a 3-up grid (like the Instagram profile) on wider screens */
+:root {
+  --bg: #F4F8F5; --surface: #FFFFFF; --fg: #0E1E17; --muted: #52665D; --line: #DCE7E0;
+  --accent: #17914A; --accent-ink: #FFFFFF; --chip: #E7F4EC; --warm: #FFF4DC;
+  --font-display: 'Plus Jakarta Sans', 'Segoe UI', system-ui, sans-serif;
+}
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
+  --bg: #07170F; --surface: #0E2419; --fg: #EAF4EE; --muted: #9FB8AB; --line: #1C3A2A;
+  --accent: #5FD38A; --accent-ink: #06190F; --chip: #12321F; --warm: #2A2410; color-scheme: dark; } }
+:root[data-theme="dark"] {
+  --bg: #07170F; --surface: #0E2419; --fg: #EAF4EE; --muted: #9FB8AB; --line: #1C3A2A;
+  --accent: #5FD38A; --accent-ink: #06190F; --chip: #12321F; --warm: #2A2410; color-scheme: dark; }
+body { background: var(--bg); color: var(--fg); font-family: var(--font-display); margin: 0; }
+.wrap { max-width: 1120px; margin: 0 auto; padding-inline: 16px; padding-block: 24px 48px; }
+header h1 { font-size: clamp(26px, 5vw, 38px); font-weight: 800; letter-spacing: -.02em; margin: 0 0 8px; text-wrap: balance; }
+header p { color: var(--muted); font-size: 15px; line-height: 1.5; margin: 0; max-width: 62ch; }
+.how { margin: 16px 0 20px; background: var(--chip); border-radius: 14px; padding: 12px 14px; font-size: 14px; line-height: 1.5; }
+.how b { color: var(--accent); }
+.tonight { background: var(--warm); border-radius: 18px; padding: 16px; margin: 0 0 28px; }
+.tonight h2 { margin: 0 0 6px; font-size: 22px; }
+.tonight > p { color: var(--muted); font-size: 14px; line-height: 1.5; margin: 0 0 12px; }
+.sgrid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
+@media (max-width: 520px) { .sgrid { grid-template-columns: minmax(0, 1fr); } }
+.how2 { font-size: 14px; line-height: 1.5; margin: 0; }
+.how2 b { color: var(--accent); }
+.grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; }
+@media (max-width: 860px) { .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 520px) { .grid { grid-template-columns: minmax(0, 1fr); } }
+.card { background: var(--surface); border: 1px solid var(--line); border-radius: 16px; padding: 10px; display: flex; flex-direction: column; gap: 10px; min-width: 0; }
+.card.posted { opacity: .55; }
+.shot { all: unset; cursor: zoom-in; display: block; border-radius: 10px; overflow: hidden; }
+.shot:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+.shot img { display: block; width: 100%; height: auto; max-width: 100%; }
+.meta { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+.no { font-weight: 800; font-variant-numeric: tabular-nums; font-size: 15px; background: var(--fg); color: var(--bg); border-radius: 8px; padding: 2px 8px; }
+.ser { font-weight: 700; font-size: 14px; color: var(--muted); text-transform: uppercase; letter-spacing: .06em; }
+.done { margin-left: auto; font-weight: 800; font-size: 13px; color: var(--accent); }
+.new { margin-left: auto; font-weight: 800; font-size: 12px; letter-spacing: .08em; background: var(--accent); color: var(--accent-ink); border-radius: 99px; padding: 3px 9px; }
+details summary { cursor: pointer; font-size: 14px; font-weight: 700; color: var(--accent); }
+pre { white-space: pre-wrap; word-break: break-word; font-family: var(--font-display); font-size: 14px; line-height: 1.5; margin: 8px 0 0; color: var(--fg); }
+.copy { font: 700 15px var(--font-display); background: var(--accent); color: var(--accent-ink); border: 0; border-radius: 10px; padding: 11px; cursor: pointer; }
+.copy:focus-visible { outline: 3px solid var(--fg); outline-offset: 2px; }
+.lb { position: fixed; inset: 0; background: rgba(0,0,0,.92); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 12px; padding: 16px; z-index: 10; }
+.lb img { max-width: 100%; max-height: 82vh; border-radius: 8px; }
+.lb p { color: #fff; font-size: 14px; margin: 0; text-align: center; }
+.lb button { font: 700 15px var(--font-display); background: #fff; color: #0E1E17; border: 0; border-radius: 10px; padding: 10px 18px; cursor: pointer; }
+@media (prefers-reduced-motion: no-preference) { .card { transition: transform .2s; } .card:hover { transform: translateY(-2px); } }
+.plan { margin: 0 0 32px; display: grid; gap: 18px; }
+.ph2 { font-size: 22px; margin: 8px 0 4px; text-wrap: balance; }
+.pp { color: var(--muted); font-size: 14px; line-height: 1.5; margin: 0 0 4px; max-width: 70ch; }
+.day { background: var(--warm); border-radius: 18px; padding: 14px; }
+.day h2 { margin: 0 0 10px; font-size: 18px; }
+.dgrid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; align-items: start; }
+@media (max-width: 520px) { .dgrid { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; } .how2 { font-size: 12px; } }
+.dcard { display: flex; flex-direction: column; gap: 6px; min-width: 0; }
+.when { font-size: 12px; font-weight: 800; letter-spacing: .06em; text-transform: uppercase; color: var(--accent); }
+.jump { font-size: 13px; font-weight: 700; color: var(--accent); }
+
+.reel video { width: 100%; height: auto; border-radius: 10px; background: #000; display: block; aspect-ratio: 9 / 16; max-width: 100%; }
+.boost .how2 b { color: var(--accent); }
+
+.today { background: var(--chip); border: 2px solid var(--accent); border-radius: 20px; padding: 14px; margin: 0 0 28px; display: grid; gap: 8px; }
+.th { margin: 0; font-size: 24px; color: var(--accent); }
+.today .day { background: var(--surface); }
+.tnav { display: flex; justify-content: space-between; font-weight: 700; font-size: 15px; }
+.tnav a { color: var(--accent); }
+.lb[hidden] { display: none; }
+</style>
+<div class="wrap">
+  <header>
+    <h1>FİT KAL · 63 post</h1>
+    <p>4:5 akış postları, sırayla günde bir. Paylaşılanlar soluk ve "Paylaşıldı ✓" işaretli · 61 post sırada bekliyor.</p>
+  </header>
+  <div class="how"><b>Telefona kaydetmek için:</b> görsele dokun, büyük hâline <b>uzun bas</b> → "Fotoğraflara ekle". Açıklama için "Açıklamayı kopyala".</div>
+  <section class="today" id="today" hidden><h2 class="th">Bugün paylaşılacaklar</h2>
+  <p class="pp">Sırayla: 09:00 sabah hikâyesi · 12:30 post · (Salı/Cuma 19:00 Reels) · 20:30 akşam hikâyesi. Görsele dokun → büyüt → uzun bas → Fotoğraflara ekle.</p>
+  <div id="todaySlot"></div><nav class="tnav"><a href="#" id="prevDay">← Dün</a><a href="#" id="nextDay">Yarın →</a></nav></section>
+  <section class="plan"><h2 class="ph2">Paylaşım takvimi · her gün 1 post + 2 hikâye</h2>
+  <p class="pp">Sabah 09:00 etkileşim hikâyesi · Öğlen 12:30 post · Akşam 20:30 uygulama hikâyesi (bağlantı çıkartmalı). Salı ve Cuma 19:00 Reels; pazartesileri 5 günlük Reels reklamı. Buzlu boş alanlar çıkartma yeri.</p>
+  <section class="day" id="g0"><h2>8 Ekim Perşembe · BUGÜN (akşam)</h2><div class="dgrid"><article class="dcard"><div class="when">Post</div><p class="how2">Bugünkü post ve sabah hikâyesi atıldı ✓</p></article><article class="dcard"></article><article class="dcard"><div class="when">Akşam · Hikâye</div>
+  <button class="shot" type="button" data-full="s/G00_2aksam_app_bugun_ne_yedin.jpg" aria-label="Hikâye büyük göster"><img src="s/G00_2aksam_app_bugun_ne_yedin.jpg" alt="Hikâye: Uygulamada + bağlantı" loading="lazy" width="1080" height="1920"></button>
+  <div class="ser">Uygulamada + bağlantı</div><p class="how2">Çıkartmalar → <b>BAĞLANTI</b>: fitkalapp.github.io/indir · yazı "Ücretsiz indir" → buzlu yuvarlak alana koy.</p></article></div></section><section class="day" id="g1"><h2>9 Ekim Cuma · 1. gün</h2><div class="dgrid"><article class="dcard"><div class="when">Öğlen · Post 41</div>
+  <button class="shot" type="button" data-full="p/41_tahmin.jpg" aria-label="Post 41 büyük göster"><img src="p/41_tahmin.jpg" alt="Post 41" loading="lazy" width="1080" height="1350"></button>
+  <details open><summary>Post açıklaması</summary><pre id="dc1">Hangisi daha hafif? 🤔
+
+A: 1 bardak ayran (200 ml)
+B: 1 bardak kola (200 ml)
+
+Tahminini yorumlara yaz 👇
+.
+.
+.
+Cevap: Ayran ≈ 75 kcal · Kola ≈ 85 kcal (yaklaşık)
+Kalorileri yakın ama fark içerikte: ayranda protein ve kalsiyum var, kolada sadece şeker.
+
+Kalorini tahmin etmek yerine FİT KAL&#x27;da ölç 📱
+
+(Değerler yaklaşıktır, genel bilgilendirme amaçlıdır.)
+
+#fitkal #kaloritakibi #diyet #sağlıklıyaşam #fityaşam #kilovermek #sağlıklıbeslenme #hangisi #kalori
+</pre></details>
+  <button class="copy" type="button" data-target="dc1">Post açıklamasını kopyala</button></article><article class="dcard"><div class="when">Sabah · Hikâye</div>
+  <button class="shot" type="button" data-full="s/G01_1sabah_test_ayran_kola.jpg" aria-label="Hikâye büyük göster"><img src="s/G01_1sabah_test_ayran_kola.jpg" alt="Hikâye: Test çıkartması" loading="lazy" width="1080" height="1920"></button>
+  <div class="ser">Test çıkartması</div><p class="how2">Çıkartmalar → <b>TEST</b> → soru: "Hangisi daha hafif?" · A: Ayran ✅ · B: Kola → alttaki buzlu alana koy.</p></article><article class="dcard"><div class="when">Akşam · Hikâye</div>
+  <button class="shot" type="button" data-full="s/G01_2aksam_kaydirici_su.jpg" aria-label="Hikâye büyük göster"><img src="s/G01_2aksam_kaydirici_su.jpg" alt="Hikâye: Emoji kaydırıcı" loading="lazy" width="1080" height="1920"></button>
+  <div class="ser">Emoji kaydırıcı</div><p class="how2">Çıkartmalar → <b>EMOJİ KAYDIRICI</b> → 💧 seç, soru: "Bugün kaç bardak?" → buzlu alana koy.</p></article><article class="dcard reel"><div class="when">19:00 · Reels</div>
+  <video src="r/02_FitKal_TabaginKalorisi_10sn.mp4" controls playsinline preload="metadata" width="1080" height="1920"></video>
+  <a class="jump" href="r/02_FitKal_TabaginKalorisi_10sn.mp4" target="_blank" rel="noopener">Videoyu ayrı aç (kaydetmek için) ↗</a>
+  <details><summary>Reels açıklaması</summary><pre id="r1">Tabağının fotoğrafını çek, kalorisi saniyeler içinde gelsin 📸
+
+Tahmin yok, uğraş yok. FİT KAL ücretsiz — link profilde 👆
+
+#fitkal #kaloritakibi #diyet #sağlıklıyaşam #reels #kilovermek #fityaşam</pre></details>
+  <button class="copy" type="button" data-target="r1">Açıklamayı kopyala</button></article></div></section><section class="day" id="g2"><h2>10 Ekim Cumartesi · 2. gün</h2><div class="dgrid"><article class="dcard"><div class="when">Öğlen · Post 42</div>
+  <button class="shot" type="button" data-full="p/42_soz.jpg" aria-label="Post 42 büyük göster"><img src="p/42_soz.jpg" alt="Post 42" loading="lazy" width="1080" height="1350"></button>
+  <details open><summary>Post açıklaması</summary><pre id="dc2">Yorgunsan kısa yap. Ama yap. 💚
+
+Bugün küçük bir adım at, FİT KAL&#x27;da kaydet.
+
+#fitkal #kaloritakibi #diyet #sağlıklıyaşam #fityaşam #kilovermek #sağlıklıbeslenme #motivasyon #disiplin
+</pre></details>
+  <button class="copy" type="button" data-target="dc2">Post açıklamasını kopyala</button></article><article class="dcard"><div class="when">Sabah · Hikâye</div>
+  <button class="shot" type="button" data-full="s/G02_1sabah_anket_antrenman.jpg" aria-label="Hikâye büyük göster"><img src="s/G02_1sabah_anket_antrenman.jpg" alt="Hikâye: Anket" loading="lazy" width="1080" height="1920"></button>
+  <div class="ser">Anket</div><p class="how2">Çıkartmalar → <b>ANKET</b> → "Bugün antrenman var mı?" · Seçenekler: "Var" / "Dinlenme günü" → buzlu alana koy.</p></article><article class="dcard"><div class="when">Akşam · Hikâye</div>
+  <button class="shot" type="button" data-full="s/G02_2aksam_app_antrenman.jpg" aria-label="Hikâye büyük göster"><img src="s/G02_2aksam_app_antrenman.jpg" alt="Hikâye: Uygulamada + bağlantı" loading="lazy" width="1080" height="1920"></button>
+  <div class="ser">Uygulamada + bağlantı</div><p class="how2">Çıkartmalar → <b>BAĞLANTI</b>: fitkalapp.github.io/indir · yazı "Ücretsiz indir" → buzlu yuvarlak alana koy.</p></article></div></section><section class="day" id="g3"><h2>11 Ekim Pazar · 3. gün</h2><div class="dgrid"><article class="dcard"><div class="when">Öğlen · Post 43</div>
+  <button class="shot" type="button" data-full="p/43_uygulamada.jpg" aria-label="Post 43 büyük göster"><img src="p/43_uygulamada.jpg" alt="Post 43" loading="lazy" width="1080" height="1350"></button>
+  <details open><summary>Post açıklaması</summary><pre id="dc3">Alışveriş listen diyetinden hazır. 📱
+
+Planındaki malzemeler reyonlara göre ayrılır; aldıklarını işaretle.
+
+FİT KAL ücretsiz — link profilde 👆
+
+#fitkal #kaloritakibi #diyet #sağlıklıyaşam #fityaşam #kilovermek #sağlıklıbeslenme #diyetlistesi #kaloriuygulaması
+</pre></details>
+  <button class="copy" type="button" data-target="dc3">Post açıklamasını kopyala</button></article><article class="dcard"><div class="when">Sabah · Hikâye</div>
+  <button class="shot" type="button" data-full="s/G03_1sabah_soru_market.jpg" aria-label="Hikâye büyük göster"><img src="s/G03_1sabah_soru_market.jpg" alt="Hikâye: Soru kutusu" loading="lazy" width="1080" height="1920"></button>
+  <div class="ser">Soru kutusu</div><p class="how2">Çıkartmalar → <b>SORULAR</b> → "Markette seni en çok ne zorluyor?" → buzlu alana koy. Gelen cevaplar yeni post fikri olur.</p></article><article class="dcard"><div class="when">Akşam · Hikâye</div>
+  <button class="shot" type="button" data-full="s/G03_2aksam_app_alisveris.jpg" aria-label="Hikâye büyük göster"><img src="s/G03_2aksam_app_alisveris.jpg" alt="Hikâye: Uygulamada + bağlantı" loading="lazy" width="1080" height="1920"></button>
+  <div class="ser">Uygulamada + bağlantı</div><p class="how2">Çıkartmalar → <b>BAĞLANTI</b>: fitkalapp.github.io/indir · yazı "Ücretsiz indir" → buzlu yuvarlak alana koy.</p></article></div></section><section class="day" id="g4"><h2>12 Ekim Pazartesi · 4. gün</h2><div class="dgrid"><article class="dcard"><div class="when">Öğlen · Post 44</div>
+  <button class="shot" type="button" data-full="p/44_mit.jpg" aria-label="Post 44 büyük göster"><img src="p/44_mit.jpg" alt="Post 44" loading="lazy" width="1080" height="1350"></button>
+  <details open><summary>Post açıklaması</summary><pre id="dc4">“Light ürünleri istediğin kadar yiyebilirsin.” 🤔
+
+MİT! Light, normaline göre daha az kalori demek; kalorisiz değil. Porsiyonu yine etiketten kontrol et.
+
+Sen de duymuş muydun? Yorumlara yaz 👇
+
+(Genel bilgilendirme amaçlıdır.)
+
+#fitkal #kaloritakibi #diyet #sağlıklıyaşam #fityaşam #kilovermek #sağlıklıbeslenme #mitmigerçekmi
+</pre></details>
+  <button class="copy" type="button" data-target="dc4">Post açıklamasını kopyala</button></article><article class="dcard"><div class="when">Sabah · Hikâye</div>
+  <button class="shot" type="button" data-full="s/G04_1sabah_test_light.jpg" aria-label="Hikâye büyük göster"><img src="s/G04_1sabah_test_light.jpg" alt="Hikâye: Test çıkartması" loading="lazy" width="1080" height="1920"></button>
+  <div class="ser">Test çıkartması</div><p class="how2">Çıkartmalar → <b>TEST</b> → "Light ürün kalorisiz mi?" · A: Evet · B: Hayır ✅ → buzlu alana koy.</p></article><article class="dcard"><div class="when">Akşam · Hikâye</div>
+  <button class="shot" type="button" data-full="s/G04_2aksam_app_fotograf.jpg" aria-label="Hikâye büyük göster"><img src="s/G04_2aksam_app_fotograf.jpg" alt="Hikâye: Uygulamada + bağlantı" loading="lazy" width="1080" height="1920"></button>
+  <div class="ser">Uygulamada + bağlantı</div><p class="how2">Çıkartmalar → <b>BAĞLANTI</b>: fitkalapp.github.io/indir · yazı "Ücretsiz indir" → buzlu yuvarlak alana koy.</p></article><article class="dcard boost"><div class="when">Reklam</div><p class="how2"><b>Bugün reklam başlat (12–16 Ekim, 5 gün):</b> geçen haftanın en çok izlenen / kaydedilen Reels'ini seç → Instagram'da Reels → <b>Öne çıkar</b>. Hedef: Türkiye, 18–45, ilgi: diyet, fitness, sağlıklı beslenme.</p></article></div></section><section class="day" id="g5"><h2>13 Ekim Salı · 5. gün</h2><div class="dgrid"><article class="dcard"><div class="when">Öğlen · Post 45</div>
+  <button class="shot" type="button" data-full="p/45_sec.jpg" aria-label="Post 45 büyük göster"><img src="p/45_sec.jpg" alt="Post 45" loading="lazy" width="1080" height="1350"></button>
+  <details open><summary>Post açıklaması</summary><pre id="dc5">Bu akşam yemek? 🤷
+
+A: Ev Yemeği̇  ·  B: Dişarida
+
+Yorumlara A ya da B yaz, bakalım hangisi kazanacak 👇
+
+#fitkal #kaloritakibi #diyet #sağlıklıyaşam #fityaşam #kilovermek #sağlıklıbeslenme #senseç
+</pre></details>
+  <button class="copy" type="button" data-target="dc5">Post açıklamasını kopyala</button></article><article class="dcard"><div class="when">Sabah · Hikâye</div>
+  <button class="shot" type="button" data-full="s/G05_1sabah_kaydirici_enerji.jpg" aria-label="Hikâye büyük göster"><img src="s/G05_1sabah_kaydirici_enerji.jpg" alt="Hikâye: Emoji kaydırıcı" loading="lazy" width="1080" height="1920"></button>
+  <div class="ser">Emoji kaydırıcı</div><p class="how2">Çıkartmalar → <b>EMOJİ KAYDIRICI</b> → ⚡ seç, soru: "Bugün enerjin?" → buzlu alana koy.</p></article><article class="dcard"><div class="when">Akşam · Hikâye</div>
+  <button class="shot" type="button" data-full="s/G05_2aksam_app_ozet.jpg" aria-label="Hikâye büyük göster"><img src="s/G05_2aksam_app_ozet.jpg" alt="Hikâye: Uygulamada + bağlantı" loading="lazy" width="1080" height="1920"></button>
+  <div class="ser">Uygulamada + bağlantı</div><p class="how2">Çıkartmalar → <b>BAĞLANTI</b>: fitkalapp.github.io/indir · yazı "Ücretsiz indir" → buzlu yuvarlak alana koy.</p></article><article class="dcard reel"><div class="when">19:00 · Reels</div>
+  <video src="r/04_FitKal_Kebap_Quiz_10sn.mp4" controls playsinline preload="metadata" width="1080" height="1920"></video>
+  <a class="jump" href="r/04_FitKal_Kebap_Quiz_10sn.mp4" target="_blank" rel="noopener">Videoyu ayrı aç (kaydetmek için) ↗</a>
+  <details><summary>Reels açıklaması</summary><pre id="r5">Adana dürüm tabağı kaç kalori? 🤔
+
+Tahminini yorumlara yaz, cevap videoda 👀
+Türk mutfağını FİT KAL tanır — link profilde 👆
+
+#fitkal #kaloritakibi #diyet #sağlıklıyaşam #reels #kilovermek #fityaşam</pre></details>
+  <button class="copy" type="button" data-target="r5">Açıklamayı kopyala</button></article></div></section><section class="day" id="g6"><h2>14 Ekim Çarşamba · 6. gün</h2><div class="dgrid"><article class="dcard"><div class="when">Öğlen · Post 46</div>
+  <button class="shot" type="button" data-full="p/46_uygulamada.jpg" aria-label="Post 46 büyük göster"><img src="p/46_uygulamada.jpg" alt="Post 46" loading="lazy" width="1080" height="1350"></button>
+  <details open><summary>Post açıklaması</summary><pre id="dc6">Diyet listen hedefine göre hazır. 📱
+
+Kalori ve makro hedefine göre her öğün senin için planlanır.
+
+FİT KAL ücretsiz — link profilde 👆
+
+#fitkal #kaloritakibi #diyet #sağlıklıyaşam #fityaşam #kilovermek #sağlıklıbeslenme #diyetlistesi #kaloriuygulaması
+</pre></details>
+  <button class="copy" type="button" data-target="dc6">Post açıklamasını kopyala</button></article><article class="dcard"><div class="when">Sabah · Hikâye</div>
+  <button class="shot" type="button" data-full="s/G06_1sabah_anket_ogun.jpg" aria-label="Hikâye büyük göster"><img src="s/G06_1sabah_anket_ogun.jpg" alt="Hikâye: Anket (4 seçenek)" loading="lazy" width="1080" height="1920"></button>
+  <div class="ser">Anket (4 seçenek)</div><p class="how2">Çıkartmalar → <b>ANKET</b> → "En zor öğün hangisi?" · 4 seçenek: Kahvaltı / Öğle / Akşam / Ara öğün → buzlu alana koy.</p></article><article class="dcard"><div class="when">Akşam · Hikâye</div>
+  <button class="shot" type="button" data-full="s/G06_2aksam_app_ilerleme.jpg" aria-label="Hikâye büyük göster"><img src="s/G06_2aksam_app_ilerleme.jpg" alt="Hikâye: Uygulamada + bağlantı" loading="lazy" width="1080" height="1920"></button>
+  <div class="ser">Uygulamada + bağlantı</div><p class="how2">Çıkartmalar → <b>BAĞLANTI</b>: fitkalapp.github.io/indir · yazı "Ücretsiz indir" → buzlu yuvarlak alana koy.</p></article></div></section><section class="day" id="g7"><h2>15 Ekim Perşembe · 7. gün</h2><div class="dgrid"><article class="dcard"><div class="when">Öğlen · Post 47</div>
+  <button class="shot" type="button" data-full="p/47_tahmin.jpg" aria-label="Post 47 büyük göster"><img src="p/47_tahmin.jpg" alt="Post 47" loading="lazy" width="1080" height="1350"></button>
+  <details open><summary>Post açıklaması</summary><pre id="dc7">Hangisi daha hafif? 🤔
+
+A: 1 simit (orta boy)
+B: 2 dilim tam buğday ekmeği (≈ 60 g)
+
+Tahminini yorumlara yaz 👇
+.
+.
+.
+Cevap: Simit ≈ 300 kcal · 2 dilim ekmek ≈ 150 kcal (yaklaşık)
+Simidin yaklaşık yarısı kadar kaloriyle aynı doyuruculuğa yakın; lif de cabası.
+
+Kalorini tahmin etmek yerine FİT KAL&#x27;da ölç 📱
+
+(Değerler yaklaşıktır, genel bilgilendirme amaçlıdır.)
+
+#fitkal #kaloritakibi #diyet #sağlıklıyaşam #fityaşam #kilovermek #sağlıklıbeslenme #hangisi #kalori
+</pre></details>
+  <button class="copy" type="button" data-target="dc7">Post açıklamasını kopyala</button></article><article class="dcard"><div class="when">Sabah · Hikâye</div>
+  <button class="shot" type="button" data-full="s/G07_1sabah_test_simit.jpg" aria-label="Hikâye büyük göster"><img src="s/G07_1sabah_test_simit.jpg" alt="Hikâye: Test çıkartması" loading="lazy" width="1080" height="1920"></button>
+  <div class="ser">Test çıkartması</div><p class="how2">Çıkartmalar → <b>TEST</b> → soru başlıktaki gibi · A: Simit · B: 2 dilim ekmek ✅ → buzlu alana koy.</p></article><article class="dcard"><div class="when">Akşam · Hikâye</div>
+  <button class="shot" type="button" data-full="s/G07_2aksam_app_diyet.jpg" aria-label="Hikâye büyük göster"><img src="s/G07_2aksam_app_diyet.jpg" alt="Hikâye: Uygulamada + bağlantı" loading="lazy" width="1080" height="1920"></button>
+  <div class="ser">Uygulamada + bağlantı</div><p class="how2">Çıkartmalar → <b>BAĞLANTI</b>: fitkalapp.github.io/indir · yazı "Ücretsiz indir" → buzlu yuvarlak alana koy.</p></article></div></section><section class="day" id="g8"><h2>16 Ekim Cuma · 8. gün</h2><div class="dgrid"><article class="dcard"><div class="when">Öğlen · Post 48</div>
+  <button class="shot" type="button" data-full="p/48_soz.jpg" aria-label="Post 48 büyük göster"><img src="p/48_soz.jpg" alt="Post 48" loading="lazy" width="1080" height="1350"></button>
+  <details open><summary>Post açıklaması</summary><pre id="dc8">Vazgeçme, yavaşla. 💚
+
+Bugün küçük bir adım at, FİT KAL&#x27;da kaydet.
+
+#fitkal #kaloritakibi #diyet #sağlıklıyaşam #fityaşam #kilovermek #sağlıklıbeslenme #motivasyon #disiplin
+</pre></details>
+  <button class="copy" type="button" data-target="dc8">Post açıklamasını kopyala</button></article><article class="dcard"><div class="when">Sabah · Hikâye</div>
+  <button class="shot" type="button" data-full="s/G08_1sabah_kaydirici_puan.jpg" aria-label="Hikâye büyük göster"><img src="s/G08_1sabah_kaydirici_puan.jpg" alt="Hikâye: Emoji kaydırıcı" loading="lazy" width="1080" height="1920"></button>
+  <div class="ser">Emoji kaydırıcı</div><p class="how2">Çıkartmalar → <b>EMOJİ KAYDIRICI</b> → ⭐ seç, soru başlıktaki gibi → buzlu alana koy.</p></article><article class="dcard"><div class="when">Akşam · Hikâye</div>
+  <button class="shot" type="button" data-full="s/G08_2aksam_app_oruc.jpg" aria-label="Hikâye büyük göster"><img src="s/G08_2aksam_app_oruc.jpg" alt="Hikâye: Uygulamada + bağlantı" loading="lazy" width="1080" height="1920"></button>
+  <div class="ser">Uygulamada + bağlantı</div><p class="how2">Çıkartmalar → <b>BAĞLANTI</b>: fitkalapp.github.io/indir · yazı "Ücretsiz indir" → buzlu yuvarlak alana koy.</p></article><article class="dcard reel"><div class="when">19:00 · Reels</div>
+  <video src="r/08_FitKal_POV_Gece23_10sn.mp4" controls playsinline preload="metadata" width="1080" height="1920"></video>
+  <a class="jump" href="r/08_FitKal_POV_Gece23_10sn.mp4" target="_blank" rel="noopener">Videoyu ayrı aç (kaydetmek için) ↗</a>
+  <details><summary>Reels açıklaması</summary><pre id="r8">POV: saat 23:00, gün bitmeden kaydını tamamlıyorsun 🌙
+
+Bir dakikanı alır. FİT KAL ücretsiz — link profilde 👆
+
+#fitkal #kaloritakibi #diyet #sağlıklıyaşam #reels #kilovermek #fityaşam</pre></details>
+  <button class="copy" type="button" data-target="r8">Açıklamayı kopyala</button></article></div></section><section class="day" id="g9"><h2>17 Ekim Cumartesi · 9. gün</h2><div class="dgrid"><article class="dcard"><div class="when">Öğlen · Post 49</div>
+  <button class="shot" type="button" data-full="p/49_uygulamada.jpg" aria-label="Post 49 büyük göster"><img src="p/49_uygulamada.jpg" alt="Post 49" loading="lazy" width="1080" height="1350"></button>
+  <details open><summary>Post açıklaması</summary><pre id="dc9">Antrenman planın otomatik hazırlansın. 📱
+
+Hedefine, ekipmanına ve seviyene göre haftalık plan.
+
+FİT KAL ücretsiz — link profilde 👆
+
+#fitkal #kaloritakibi #diyet #sağlıklıyaşam #fityaşam #kilovermek #sağlıklıbeslenme #diyetlistesi #kaloriuygulaması
+</pre></details>
+  <button class="copy" type="button" data-target="dc9">Post açıklamasını kopyala</button></article><article class="dcard"><div class="when">Sabah · Hikâye</div>
+  <button class="shot" type="button" data-full="s/G09_1sabah_anket_evde_salon.jpg" aria-label="Hikâye büyük göster"><img src="s/G09_1sabah_anket_evde_salon.jpg" alt="Hikâye: Anket" loading="lazy" width="1080" height="1920"></button>
+  <div class="ser">Anket</div><p class="how2">Çıkartmalar → <b>ANKET</b> → soru başlıktaki gibi · "Evde" / "Salonda" → buzlu alana koy.</p></article><article class="dcard"><div class="when">Akşam · Hikâye</div>
+  <button class="shot" type="button" data-full="s/G09_2aksam_app_tarif.jpg" aria-label="Hikâye büyük göster"><img src="s/G09_2aksam_app_tarif.jpg" alt="Hikâye: Uygulamada + bağlantı" loading="lazy" width="1080" height="1920"></button>
+  <div class="ser">Uygulamada + bağlantı</div><p class="how2">Çıkartmalar → <b>BAĞLANTI</b>: fitkalapp.github.io/indir · yazı "Ücretsiz indir" → buzlu yuvarlak alana koy.</p></article></div></section><section class="day" id="g10"><h2>18 Ekim Pazar · 10. gün</h2><div class="dgrid"><article class="dcard"><div class="when">Öğlen · Post 50</div>
+  <button class="shot" type="button" data-full="p/50_mit.jpg" aria-label="Post 50 büyük göster"><img src="p/50_mit.jpg" alt="Post 50" loading="lazy" width="1080" height="1350"></button>
+  <details open><summary>Post açıklaması</summary><pre id="dc10">“Meyve akşam yenmez.” 🤔
+
+MİT! Meyvenin saati yok. Günün toplamı ve porsiyon önemli; akşam da dengeli bir ara öğün olabilir.
+
+Sen de duymuş muydun? Yorumlara yaz 👇
+
+(Genel bilgilendirme amaçlıdır.)
+
+#fitkal #kaloritakibi #diyet #sağlıklıyaşam #fityaşam #kilovermek #sağlıklıbeslenme #mitmigerçekmi
+</pre></details>
+  <button class="copy" type="button" data-target="dc10">Post açıklamasını kopyala</button></article><article class="dcard"><div class="when">Sabah · Hikâye</div>
+  <button class="shot" type="button" data-full="s/G10_1sabah_test_meyve.jpg" aria-label="Hikâye büyük göster"><img src="s/G10_1sabah_test_meyve.jpg" alt="Hikâye: Test çıkartması" loading="lazy" width="1080" height="1920"></button>
+  <div class="ser">Test çıkartması</div><p class="how2">Çıkartmalar → <b>TEST</b> → soru başlıktaki gibi · A: Evet ✅ · B: Hayır → buzlu alana koy.</p></article><article class="dcard"><div class="when">Akşam · Hikâye</div>
+  <button class="shot" type="button" data-full="s/G10_2aksam_app_su.jpg" aria-label="Hikâye büyük göster"><img src="s/G10_2aksam_app_su.jpg" alt="Hikâye: Uygulamada + bağlantı" loading="lazy" width="1080" height="1920"></button>
+  <div class="ser">Uygulamada + bağlantı</div><p class="how2">Çıkartmalar → <b>BAĞLANTI</b>: fitkalapp.github.io/indir · yazı "Ücretsiz indir" → buzlu yuvarlak alana koy.</p></article></div></section><section class="day" id="g11"><h2>19 Ekim Pazartesi · 11. gün</h2><div class="dgrid"><article class="dcard"><div class="when">Öğlen · Post 51</div>
+  <button class="shot" type="button" data-full="p/51_sec.jpg" aria-label="Post 51 büyük göster"><img src="p/51_sec.jpg" alt="Post 51" loading="lazy" width="1080" height="1350"></button>
+  <details open><summary>Post açıklaması</summary><pre id="dc11">Ara öğünde? 🤷
+
+A: Yoğurt  ·  B: Kuruyemi̇ş
+
+Yorumlara A ya da B yaz, bakalım hangisi kazanacak 👇
+
+#fitkal #kaloritakibi #diyet #sağlıklıyaşam #fityaşam #kilovermek #sağlıklıbeslenme #senseç
+</pre></details>
+  <button class="copy" type="button" data-target="dc11">Post açıklamasını kopyala</button></article><article class="dcard"><div class="when">Sabah · Hikâye</div>
+  <button class="shot" type="button" data-full="s/G11_1sabah_soru_araogun.jpg" aria-label="Hikâye büyük göster"><img src="s/G11_1sabah_soru_araogun.jpg" alt="Hikâye: Soru kutusu" loading="lazy" width="1080" height="1920"></button>
+  <div class="ser">Soru kutusu</div><p class="how2">Çıkartmalar → <b>SORULAR</b> → soru başlıktaki gibi → buzlu alana koy. Gelen cevaplar yeni içerik fikri olur.</p></article><article class="dcard"><div class="when">Akşam · Hikâye</div>
+  <button class="shot" type="button" data-full="s/G11_2aksam_app_isaretle.jpg" aria-label="Hikâye büyük göster"><img src="s/G11_2aksam_app_isaretle.jpg" alt="Hikâye: Uygulamada + bağlantı" loading="lazy" width="1080" height="1920"></button>
+  <div class="ser">Uygulamada + bağlantı</div><p class="how2">Çıkartmalar → <b>BAĞLANTI</b>: fitkalapp.github.io/indir · yazı "Ücretsiz indir" → buzlu yuvarlak alana koy.</p></article><article class="dcard boost"><div class="when">Reklam</div><p class="how2"><b>Bugün reklam başlat (19–23 Ekim, 5 gün):</b> geçen haftanın en çok izlenen / kaydedilen Reels'ini seç → Instagram'da Reels → <b>Öne çıkar</b>. Hedef: Türkiye, 18–45, ilgi: diyet, fitness, sağlıklı beslenme.</p></article></div></section><section class="day" id="g12"><h2>20 Ekim Salı · 12. gün</h2><div class="dgrid"><article class="dcard"><div class="when">Öğlen · Post 52</div>
+  <button class="shot" type="button" data-full="p/52_uygulamada.jpg" aria-label="Post 52 büyük göster"><img src="p/52_uygulamada.jpg" alt="Post 52" loading="lazy" width="1080" height="1350"></button>
+  <details open><summary>Post açıklaması</summary><pre id="dc12">Fit tarifler, makrolarıyla. 📱
+
+Her tarifte kalori, protein, karbonhidrat ve yağ hazır.
+
+FİT KAL ücretsiz — link profilde 👆
+
+#fitkal #kaloritakibi #diyet #sağlıklıyaşam #fityaşam #kilovermek #sağlıklıbeslenme #diyetlistesi #kaloriuygulaması
+</pre></details>
+  <button class="copy" type="button" data-target="dc12">Post açıklamasını kopyala</button></article><article class="dcard"><div class="when">Sabah · Hikâye</div>
+  <button class="shot" type="button" data-full="s/G12_1sabah_anket_evyemegi.jpg" aria-label="Hikâye büyük göster"><img src="s/G12_1sabah_anket_evyemegi.jpg" alt="Hikâye: Anket" loading="lazy" width="1080" height="1920"></button>
+  <div class="ser">Anket</div><p class="how2">Çıkartmalar → <b>ANKET</b> → soru başlıktaki gibi · "Hemen her gün" / "Ara sıra" → buzlu alana koy.</p></article><article class="dcard"><div class="when">Akşam · Hikâye</div>
+  <button class="shot" type="button" data-full="s/G12_2aksam_app_barkod.jpg" aria-label="Hikâye büyük göster"><img src="s/G12_2aksam_app_barkod.jpg" alt="Hikâye: Uygulamada + bağlantı" loading="lazy" width="1080" height="1920"></button>
+  <div class="ser">Uygulamada + bağlantı</div><p class="how2">Çıkartmalar → <b>BAĞLANTI</b>: fitkalapp.github.io/indir · yazı "Ücretsiz indir" → buzlu yuvarlak alana koy.</p></article><article class="dcard reel"><div class="when">19:00 · Reels</div>
+  <video src="r/05_FitKal_Oruc_Quiz_10sn.mp4" controls playsinline preload="metadata" width="1080" height="1920"></video>
+  <a class="jump" href="r/05_FitKal_Oruc_Quiz_10sn.mp4" target="_blank" rel="noopener">Videoyu ayrı aç (kaydetmek için) ↗</a>
+  <details><summary>Reels açıklaması</summary><pre id="r12">Aralıklı oruç yapıyor musun? ⏳
+
+Pencereni başlat, gerisini FİT KAL takip etsin. Link profilde 👆
+
+(Genel bilgilendirme amaçlıdır.)
+
+#fitkal #kaloritakibi #diyet #sağlıklıyaşam #reels #kilovermek #fityaşam</pre></details>
+  <button class="copy" type="button" data-target="r12">Açıklamayı kopyala</button></article></div></section><section class="day" id="g13"><h2>21 Ekim Çarşamba · 13. gün</h2><div class="dgrid"><article class="dcard"><div class="when">Öğlen · Post 53</div>
+  <button class="shot" type="button" data-full="p/53_tahmin.jpg" aria-label="Post 53 büyük göster"><img src="p/53_tahmin.jpg" alt="Post 53" loading="lazy" width="1080" height="1350"></button>
+  <details open><summary>Post açıklaması</summary><pre id="dc13">Hangisi daha hafif? 🤔
+
+A: 1 lahmacun (orta boy)
+B: 1 kıymalı pide (tam porsiyon)
+
+Tahminini yorumlara yaz 👇
+.
+.
+.
+Cevap: Lahmacun ≈ 250 kcal · Kıymalı pide ≈ 550 kcal (yaklaşık)
+Pide hem daha büyük hem daha yağlı hamur. Lahmacunu bol yeşillikle dürüm yapmak dengeli bir seçenek.
+
+Türk mutfağını tahminle değil, FİT KAL&#x27;la ölç 📱
+
+(Değerler yaklaşıktır, genel bilgilendirme amaçlıdır.)
+
+#fitkal #kaloritakibi #diyet #sağlıklıyaşam #türkmutfağı #kilovermek #sağlıklıbeslenme #hangisi #kalori
+</pre></details>
+  <button class="copy" type="button" data-target="dc13">Post açıklamasını kopyala</button></article><article class="dcard"><div class="when">Sabah · Hikâye</div>
+  <button class="shot" type="button" data-full="s/G13_1sabah_test_lahmacun.jpg" aria-label="Hikâye büyük göster"><img src="s/G13_1sabah_test_lahmacun.jpg" alt="Hikâye: Test çıkartması" loading="lazy" width="1080" height="1920"></button>
+  <div class="ser">Test çıkartması</div><p class="how2">Çıkartmalar → <b>TEST</b> → soru başlıktaki gibi · A: Lahmacun ✅ · B: Pide → buzlu alana koy.</p></article><article class="dcard"><div class="when">Akşam · Hikâye</div>
+  <button class="shot" type="button" data-full="s/G13_2aksam_app_foto.jpg" aria-label="Hikâye büyük göster"><img src="s/G13_2aksam_app_foto.jpg" alt="Hikâye: Uygulamada + bağlantı" loading="lazy" width="1080" height="1920"></button>
+  <div class="ser">Uygulamada + bağlantı</div><p class="how2">Çıkartmalar → <b>BAĞLANTI</b>: fitkalapp.github.io/indir · yazı "Ücretsiz indir" → buzlu yuvarlak alana koy.</p></article></div></section><section class="day" id="g14"><h2>22 Ekim Perşembe · 14. gün</h2><div class="dgrid"><article class="dcard"><div class="when">Öğlen · Post 54</div>
+  <button class="shot" type="button" data-full="p/54_soz.jpg" aria-label="Post 54 büyük göster"><img src="p/54_soz.jpg" alt="Post 54" loading="lazy" width="1080" height="1350"></button>
+  <details open><summary>Post açıklaması</summary><pre id="dc14">Porsiyon küçük, keyif büyük. 💚
+
+Sevdiğin yemeği bırakma; ölçüsünü bul. FİT KAL&#x27;da kaydet.
+
+#fitkal #kaloritakibi #diyet #sağlıklıyaşam #türkmutfağı #kilovermek #sağlıklıbeslenme #motivasyon #porsiyonkontrolü
+</pre></details>
+  <button class="copy" type="button" data-target="dc14">Post açıklamasını kopyala</button></article><article class="dcard"><div class="when">Sabah · Hikâye</div>
+  <button class="shot" type="button" data-full="s/G14_1sabah_kaydirici_aclik.jpg" aria-label="Hikâye büyük göster"><img src="s/G14_1sabah_kaydirici_aclik.jpg" alt="Hikâye: Emoji kaydırıcı" loading="lazy" width="1080" height="1920"></button>
+  <div class="ser">Emoji kaydırıcı</div><p class="how2">Çıkartmalar → <b>EMOJİ KAYDIRICI</b> → 😋 seç, soru başlıktaki gibi → buzlu alana koy.</p></article><article class="dcard"><div class="when">Akşam · Hikâye</div>
+  <button class="shot" type="button" data-full="s/G14_2aksam_app_porsiyon.jpg" aria-label="Hikâye büyük göster"><img src="s/G14_2aksam_app_porsiyon.jpg" alt="Hikâye: Uygulamada + bağlantı" loading="lazy" width="1080" height="1920"></button>
+  <div class="ser">Uygulamada + bağlantı</div><p class="how2">Çıkartmalar → <b>BAĞLANTI</b>: fitkalapp.github.io/indir · yazı "Ücretsiz indir" → buzlu yuvarlak alana koy.</p></article></div></section><section class="day" id="g15"><h2>23 Ekim Cuma · 15. gün</h2><div class="dgrid"><article class="dcard"><div class="when">Öğlen · Post 55</div>
+  <button class="shot" type="button" data-full="p/55_uygulamada.jpg" aria-label="Post 55 büyük göster"><img src="p/55_uygulamada.jpg" alt="Post 55" loading="lazy" width="1080" height="1350"></button>
+  <details open><summary>Post açıklaması</summary><pre id="dc15">Türk mutfağından fit tarifler. 📱
+
+Her tarifte kalori ve makrolar hazır; malzemeye göre ara.
+
+FİT KAL ücretsiz — link profilde 👆
+
+#fitkal #kaloritakibi #diyet #sağlıklıyaşam #türkmutfağı #kilovermek #sağlıklıbeslenme #fittarifler #kaloriuygulaması
+</pre></details>
+  <button class="copy" type="button" data-target="dc15">Post açıklamasını kopyala</button></article><article class="dcard"><div class="when">Sabah · Hikâye</div>
+  <button class="shot" type="button" data-full="s/G15_1sabah_anket_tarif.jpg" aria-label="Hikâye büyük göster"><img src="s/G15_1sabah_anket_tarif.jpg" alt="Hikâye: Anket" loading="lazy" width="1080" height="1920"></button>
+  <div class="ser">Anket</div><p class="how2">Çıkartmalar → <b>ANKET</b> → soru başlıktaki gibi · "Tarifle pişiririm" / "Hazır alırım" → buzlu alana koy.</p></article><article class="dcard"><div class="when">Akşam · Hikâye</div>
+  <button class="shot" type="button" data-full="s/G15_2aksam_app_antrenman2.jpg" aria-label="Hikâye büyük göster"><img src="s/G15_2aksam_app_antrenman2.jpg" alt="Hikâye: Uygulamada + bağlantı" loading="lazy" width="1080" height="1920"></button>
+  <div class="ser">Uygulamada + bağlantı</div><p class="how2">Çıkartmalar → <b>BAĞLANTI</b>: fitkalapp.github.io/indir · yazı "Ücretsiz indir" → buzlu yuvarlak alana koy.</p></article><article class="dcard reel"><div class="when">19:00 · Reels</div>
+  <video src="r/10_FitKal_KankaChat_10sn.mp4" controls playsinline preload="metadata" width="1080" height="1920"></video>
+  <a class="jump" href="r/10_FitKal_KankaChat_10sn.mp4" target="_blank" rel="noopener">Videoyu ayrı aç (kaydetmek için) ↗</a>
+  <details><summary>Reels açıklaması</summary><pre id="r15">Diyete başladığını kankana söyledin mi? 😄
+
+Bir dahakine FİT KAL&#x27;ı da söyle — link profilde 👆
+
+#fitkal #kaloritakibi #diyet #sağlıklıyaşam #reels #kilovermek #fityaşam</pre></details>
+  <button class="copy" type="button" data-target="r15">Açıklamayı kopyala</button></article></div></section><section class="day" id="g16"><h2>24 Ekim Cumartesi · 16. gün</h2><div class="dgrid"><article class="dcard"><div class="when">Öğlen · Post 56</div>
+  <button class="shot" type="button" data-full="p/56_mit.jpg" aria-label="Post 56 büyük göster"><img src="p/56_mit.jpg" alt="Post 56" loading="lazy" width="1080" height="1350"></button>
+  <details open><summary>Post açıklaması</summary><pre id="dc16">“Zeytinyağlı yemek kilo aldırmaz.” 🤔
+
+MİT! Zeytinyağı faydalı bir yağ ama kalorisi yüksek: 1 yemek kaşığı yaklaşık 120 kcal. Ölçerek kullan.
+
+Sen de duymuş muydun? Yorumlara yaz 👇
+
+(Genel bilgilendirme amaçlıdır.)
+
+#fitkal #kaloritakibi #diyet #sağlıklıyaşam #türkmutfağı #kilovermek #sağlıklıbeslenme #mitmigerçekmi
+</pre></details>
+  <button class="copy" type="button" data-target="dc16">Post açıklamasını kopyala</button></article><article class="dcard"><div class="when">Sabah · Hikâye</div>
+  <button class="shot" type="button" data-full="s/G16_1sabah_test_zeytinyagi.jpg" aria-label="Hikâye büyük göster"><img src="s/G16_1sabah_test_zeytinyagi.jpg" alt="Hikâye: Test çıkartması" loading="lazy" width="1080" height="1920"></button>
+  <div class="ser">Test çıkartması</div><p class="how2">Çıkartmalar → <b>TEST</b> → soru başlıktaki gibi · A: ≈ 40 kcal · B: ≈ 120 kcal ✅ → buzlu alana koy.</p></article><article class="dcard"><div class="when">Akşam · Hikâye</div>
+  <button class="shot" type="button" data-full="s/G16_2aksam_app_gizli.jpg" aria-label="Hikâye büyük göster"><img src="s/G16_2aksam_app_gizli.jpg" alt="Hikâye: Uygulamada + bağlantı" loading="lazy" width="1080" height="1920"></button>
+  <div class="ser">Uygulamada + bağlantı</div><p class="how2">Çıkartmalar → <b>BAĞLANTI</b>: fitkalapp.github.io/indir · yazı "Ücretsiz indir" → buzlu yuvarlak alana koy.</p></article></div></section><section class="day" id="g17"><h2>25 Ekim Pazar · 17. gün</h2><div class="dgrid"><article class="dcard"><div class="when">Öğlen · Post 57</div>
+  <button class="shot" type="button" data-full="p/57_sec.jpg" aria-label="Post 57 büyük göster"><img src="p/57_sec.jpg" alt="Post 57" loading="lazy" width="1080" height="1350"></button>
+  <details open><summary>Post açıklaması</summary><pre id="dc17">Akşam sofrasında? 🤷
+
+A: Kuru fasulye  ·  B: Karnıyarık
+
+Yorumlara A ya da B yaz, bakalım hangisi kazanacak 👇
+
+#fitkal #kaloritakibi #diyet #sağlıklıyaşam #türkmutfağı #kilovermek #sağlıklıbeslenme #senseç
+</pre></details>
+  <button class="copy" type="button" data-target="dc17">Post açıklamasını kopyala</button></article><article class="dcard"><div class="when">Sabah · Hikâye</div>
+  <button class="shot" type="button" data-full="s/G17_1sabah_soru_anne.jpg" aria-label="Hikâye büyük göster"><img src="s/G17_1sabah_soru_anne.jpg" alt="Hikâye: Soru kutusu" loading="lazy" width="1080" height="1920"></button>
+  <div class="ser">Soru kutusu</div><p class="how2">Çıkartmalar → <b>SORULAR</b> → soru başlıktaki gibi → buzlu alana koy. Gelen cevaplar yeni içerik fikri olur.</p></article><article class="dcard"><div class="when">Akşam · Hikâye</div>
+  <button class="shot" type="button" data-full="s/G17_2aksam_app_oruc2.jpg" aria-label="Hikâye büyük göster"><img src="s/G17_2aksam_app_oruc2.jpg" alt="Hikâye: Uygulamada + bağlantı" loading="lazy" width="1080" height="1920"></button>
+  <div class="ser">Uygulamada + bağlantı</div><p class="how2">Çıkartmalar → <b>BAĞLANTI</b>: fitkalapp.github.io/indir · yazı "Ücretsiz indir" → buzlu yuvarlak alana koy.</p></article></div></section><section class="day" id="g18"><h2>26 Ekim Pazartesi · 18. gün</h2><div class="dgrid"><article class="dcard"><div class="when">Öğlen · Post 58</div>
+  <button class="shot" type="button" data-full="p/58_tahmin.jpg" aria-label="Post 58 büyük göster"><img src="p/58_tahmin.jpg" alt="Post 58" loading="lazy" width="1080" height="1350"></button>
+  <details open><summary>Post açıklaması</summary><pre id="dc18">Hangisi daha hafif? 🤔
+
+A: 1 kase mercimek çorbası (≈ 250 ml)
+B: 1 porsiyon pirinç pilavı (≈ 150 g)
+
+Tahminini yorumlara yaz 👇
+.
+.
+.
+Cevap: Mercimek çorbası ≈ 150 kcal · Pilav ≈ 230 kcal (yaklaşık)
+Çorba daha hafif; üstelik lif ve bitkisel protein açısından zengin. Pilavda porsiyon belirleyici.
+
+Türk mutfağını tahminle değil, FİT KAL&#x27;la ölç 📱
+
+(Değerler yaklaşıktır, genel bilgilendirme amaçlıdır.)
+
+#fitkal #kaloritakibi #diyet #sağlıklıyaşam #türkmutfağı #kilovermek #sağlıklıbeslenme #hangisi #kalori
+</pre></details>
+  <button class="copy" type="button" data-target="dc18">Post açıklamasını kopyala</button></article><article class="dcard"><div class="when">Sabah · Hikâye</div>
+  <button class="shot" type="button" data-full="s/G18_1sabah_test_corba_pilav.jpg" aria-label="Hikâye büyük göster"><img src="s/G18_1sabah_test_corba_pilav.jpg" alt="Hikâye: Test çıkartması" loading="lazy" width="1080" height="1920"></button>
+  <div class="ser">Test çıkartması</div><p class="how2">Çıkartmalar → <b>TEST</b> → soru başlıktaki gibi · A: Mercimek çorbası ✅ · B: Pilav → buzlu alana koy.</p></article><article class="dcard"><div class="when">Akşam · Hikâye</div>
+  <button class="shot" type="button" data-full="s/G18_2aksam_app_hafta.jpg" aria-label="Hikâye büyük göster"><img src="s/G18_2aksam_app_hafta.jpg" alt="Hikâye: Uygulamada + bağlantı" loading="lazy" width="1080" height="1920"></button>
+  <div class="ser">Uygulamada + bağlantı</div><p class="how2">Çıkartmalar → <b>BAĞLANTI</b>: fitkalapp.github.io/indir · yazı "Ücretsiz indir" → buzlu yuvarlak alana koy.</p></article><article class="dcard boost"><div class="when">Reklam</div><p class="how2"><b>Bugün reklam başlat (26–30 Ekim, 5 gün):</b> geçen haftanın en çok izlenen / kaydedilen Reels'ini seç → Instagram'da Reels → <b>Öne çıkar</b>. Hedef: Türkiye, 18–45, ilgi: diyet, fitness, sağlıklı beslenme.</p></article></div></section><section class="day" id="g19"><h2>27 Ekim Salı · 19. gün</h2><div class="dgrid"><article class="dcard"><div class="when">Öğlen · Post 59</div>
+  <button class="shot" type="button" data-full="p/59_mit.jpg" aria-label="Post 59 büyük göster"><img src="p/59_mit.jpg" alt="Post 59" loading="lazy" width="1080" height="1350"></button>
+  <details open><summary>Post açıklaması</summary><pre id="dc19">“Kilo vermek için ekmeği tamamen kesmek şart.” 🤔
+
+MİT! Sonucu günün toplam dengesi belirler. Tam buğday ekmek, doğru porsiyonla dengeli tabakta yer alabilir.
+
+Sen de duymuş muydun? Yorumlara yaz 👇
+
+(Genel bilgilendirme amaçlıdır.)
+
+#fitkal #kaloritakibi #diyet #sağlıklıyaşam #türkmutfağı #kilovermek #sağlıklıbeslenme #mitmigerçekmi
+</pre></details>
+  <button class="copy" type="button" data-target="dc19">Post açıklamasını kopyala</button></article><article class="dcard"><div class="when">Sabah · Hikâye</div>
+  <button class="shot" type="button" data-full="s/G19_1sabah_anket_ekmek.jpg" aria-label="Hikâye büyük göster"><img src="s/G19_1sabah_anket_ekmek.jpg" alt="Hikâye: Anket" loading="lazy" width="1080" height="1920"></button>
+  <div class="ser">Anket</div><p class="how2">Çıkartmalar → <b>ANKET</b> → soru başlıktaki gibi · "Bıraktım" / "Azalttım" → buzlu alana koy.</p></article><article class="dcard"><div class="when">Akşam · Hikâye</div>
+  <button class="shot" type="button" data-full="s/G19_2aksam_app_denge.jpg" aria-label="Hikâye büyük göster"><img src="s/G19_2aksam_app_denge.jpg" alt="Hikâye: Uygulamada + bağlantı" loading="lazy" width="1080" height="1920"></button>
+  <div class="ser">Uygulamada + bağlantı</div><p class="how2">Çıkartmalar → <b>BAĞLANTI</b>: fitkalapp.github.io/indir · yazı "Ücretsiz indir" → buzlu yuvarlak alana koy.</p></article><article class="dcard reel"><div class="when">19:00 · Reels</div>
+  <video src="r/06_FitKal_Egzersiz_Quiz_10sn.mp4" controls playsinline preload="metadata" width="1080" height="1920"></video>
+  <a class="jump" href="r/06_FitKal_Egzersiz_Quiz_10sn.mp4" target="_blank" rel="noopener">Videoyu ayrı aç (kaydetmek için) ↗</a>
+  <details><summary>Reels açıklaması</summary><pre id="r19">Bu hareket kaç kalori yaktırır? 💪
+
+Tahminini yaz, cevap videoda. Antrenman planın FİT KAL&#x27;da hazır — link profilde 👆
+
+#fitkal #kaloritakibi #diyet #sağlıklıyaşam #reels #kilovermek #fityaşam</pre></details>
+  <button class="copy" type="button" data-target="r19">Açıklamayı kopyala</button></article></div></section><section class="day" id="g20"><h2>28 Ekim Çarşamba · 20. gün</h2><div class="dgrid"><article class="dcard"><div class="when">Öğlen · Post 60</div>
+  <button class="shot" type="button" data-full="p/60_soz.jpg" aria-label="Post 60 büyük göster"><img src="p/60_soz.jpg" alt="Post 60" loading="lazy" width="1080" height="1350"></button>
+  <details open><summary>Post açıklaması</summary><pre id="dc20">Yavaş ye, tadını çıkar. 💚
+
+Sevdiğin yemeği bırakma; ölçüsünü bul. FİT KAL&#x27;da kaydet.
+
+#fitkal #kaloritakibi #diyet #sağlıklıyaşam #türkmutfağı #kilovermek #sağlıklıbeslenme #motivasyon #porsiyonkontrolü
+</pre></details>
+  <button class="copy" type="button" data-target="dc20">Post açıklamasını kopyala</button></article><article class="dcard"><div class="when">Sabah · Hikâye</div>
+  <button class="shot" type="button" data-full="s/G20_1sabah_kaydirici_uyku.jpg" aria-label="Hikâye büyük göster"><img src="s/G20_1sabah_kaydirici_uyku.jpg" alt="Hikâye: Emoji kaydırıcı" loading="lazy" width="1080" height="1920"></button>
+  <div class="ser">Emoji kaydırıcı</div><p class="how2">Çıkartmalar → <b>EMOJİ KAYDIRICI</b> → 😴 seç, soru başlıktaki gibi → buzlu alana koy.</p></article><article class="dcard"><div class="when">Akşam · Hikâye</div>
+  <button class="shot" type="button" data-full="s/G20_2aksam_app_ozet2.jpg" aria-label="Hikâye büyük göster"><img src="s/G20_2aksam_app_ozet2.jpg" alt="Hikâye: Uygulamada + bağlantı" loading="lazy" width="1080" height="1920"></button>
+  <div class="ser">Uygulamada + bağlantı</div><p class="how2">Çıkartmalar → <b>BAĞLANTI</b>: fitkalapp.github.io/indir · yazı "Ücretsiz indir" → buzlu yuvarlak alana koy.</p></article></div></section><section class="day" id="g21"><h2>29 Ekim Perşembe · 21. gün</h2><div class="dgrid"><article class="dcard"><div class="when">Öğlen · Post 61</div>
+  <button class="shot" type="button" data-full="p/61_uygulamada.jpg" aria-label="Post 61 büyük göster"><img src="p/61_uygulamada.jpg" alt="Post 61" loading="lazy" width="1080" height="1350"></button>
+  <details open><summary>Post açıklaması</summary><pre id="dc21">Tabağını çek, kalorisini gör. 📱
+
+Yapay zekâ tabaktakileri tanır; barkod ve elle ekleme de var.
+
+FİT KAL ücretsiz — link profilde 👆
+
+#fitkal #kaloritakibi #diyet #sağlıklıyaşam #türkmutfağı #kilovermek #sağlıklıbeslenme #fittarifler #kaloriuygulaması
+</pre></details>
+  <button class="copy" type="button" data-target="dc21">Post açıklamasını kopyala</button></article><article class="dcard"><div class="when">Sabah · Hikâye</div>
+  <button class="shot" type="button" data-full="s/G21_1sabah_test_fotokalori.jpg" aria-label="Hikâye büyük göster"><img src="s/G21_1sabah_test_fotokalori.jpg" alt="Hikâye: Test çıkartması" loading="lazy" width="1080" height="1920"></button>
+  <div class="ser">Test çıkartması</div><p class="how2">Çıkartmalar → <b>TEST</b> → soru başlıktaki gibi · A: Evet ✅ · B: Hayır → buzlu alana koy.</p></article><article class="dcard"><div class="when">Akşam · Hikâye</div>
+  <button class="shot" type="button" data-full="s/G21_2aksam_app_haftasonu.jpg" aria-label="Hikâye büyük göster"><img src="s/G21_2aksam_app_haftasonu.jpg" alt="Hikâye: Uygulamada + bağlantı" loading="lazy" width="1080" height="1920"></button>
+  <div class="ser">Uygulamada + bağlantı</div><p class="how2">Çıkartmalar → <b>BAĞLANTI</b>: fitkalapp.github.io/indir · yazı "Ücretsiz indir" → buzlu yuvarlak alana koy.</p></article></div></section><section class="day" id="g22"><h2>30 Ekim Cuma · 22. gün</h2><div class="dgrid"><article class="dcard"><div class="when">Öğlen · Post 62</div>
+  <button class="shot" type="button" data-full="p/62_tahmin.jpg" aria-label="Post 62 büyük göster"><img src="p/62_tahmin.jpg" alt="Post 62" loading="lazy" width="1080" height="1350"></button>
+  <details open><summary>Post açıklaması</summary><pre id="dc22">Hangisi daha hafif? 🤔
+
+A: 1 porsiyon menemen (2 yumurta)
+B: 1 porsiyon sucuklu yumurta (2 yumurta)
+
+Tahminini yorumlara yaz 👇
+.
+.
+.
+Cevap: Menemen ≈ 250 kcal · Sucuklu yumurta ≈ 400 kcal (yaklaşık)
+Sucuk yağ ve tuz açısından yüksek; menemen sebzeyle daha hafif bir kahvaltı.
+
+Türk mutfağını tahminle değil, FİT KAL&#x27;la ölç 📱
+
+(Değerler yaklaşıktır, genel bilgilendirme amaçlıdır.)
+
+#fitkal #kaloritakibi #diyet #sağlıklıyaşam #türkmutfağı #kilovermek #sağlıklıbeslenme #hangisi #kalori
+</pre></details>
+  <button class="copy" type="button" data-target="dc22">Post açıklamasını kopyala</button></article><article class="dcard"><div class="when">Sabah · Hikâye</div>
+  <button class="shot" type="button" data-full="s/G22_1sabah_test_menemen.jpg" aria-label="Hikâye büyük göster"><img src="s/G22_1sabah_test_menemen.jpg" alt="Hikâye: Test çıkartması" loading="lazy" width="1080" height="1920"></button>
+  <div class="ser">Test çıkartması</div><p class="how2">Çıkartmalar → <b>TEST</b> → soru başlıktaki gibi · A: Menemen ✅ · B: Sucuklu yumurta → buzlu alana koy.</p></article><article class="dcard"><div class="when">Akşam · Hikâye</div>
+  <button class="shot" type="button" data-full="s/G22_2aksam_app_kahvalti.jpg" aria-label="Hikâye büyük göster"><img src="s/G22_2aksam_app_kahvalti.jpg" alt="Hikâye: Uygulamada + bağlantı" loading="lazy" width="1080" height="1920"></button>
+  <div class="ser">Uygulamada + bağlantı</div><p class="how2">Çıkartmalar → <b>BAĞLANTI</b>: fitkalapp.github.io/indir · yazı "Ücretsiz indir" → buzlu yuvarlak alana koy.</p></article><article class="dcard reel"><div class="when">19:00 · Reels</div>
+  <video src="r/16_FitKal_HedefYolculugu_10sn.mp4" controls playsinline preload="metadata" width="1080" height="1920"></video>
+  <a class="jump" href="r/16_FitKal_HedefYolculugu_10sn.mp4" target="_blank" rel="noopener">Videoyu ayrı aç (kaydetmek için) ↗</a>
+  <details><summary>Reels açıklaması</summary><pre id="r22">Hedefe giden yol, gün gün 💚
+
+Ay bitiyor; yeni aya hedefinle gir. FİT KAL ücretsiz — link profilde 👆
+
+#fitkal #kaloritakibi #diyet #sağlıklıyaşam #reels #kilovermek #fityaşam</pre></details>
+  <button class="copy" type="button" data-target="r22">Açıklamayı kopyala</button></article></div></section><section class="day" id="g23"><h2>31 Ekim Cumartesi · 23. gün</h2><div class="dgrid"><article class="dcard"><div class="when">Öğlen · Post 63</div>
+  <button class="shot" type="button" data-full="p/63_sec.jpg" aria-label="Post 63 büyük göster"><img src="p/63_sec.jpg" alt="Post 63" loading="lazy" width="1080" height="1350"></button>
+  <details open><summary>Post açıklaması</summary><pre id="dc23">Çorbada tercihin? 🤷
+
+A: Mercimek  ·  B: Yayla
+
+Yorumlara A ya da B yaz, bakalım hangisi kazanacak 👇
+
+#fitkal #kaloritakibi #diyet #sağlıklıyaşam #türkmutfağı #kilovermek #sağlıklıbeslenme #senseç
+</pre></details>
+  <button class="copy" type="button" data-target="dc23">Post açıklamasını kopyala</button></article><article class="dcard"><div class="when">Sabah · Hikâye</div>
+  <button class="shot" type="button" data-full="s/G23_1sabah_soru_basari.jpg" aria-label="Hikâye büyük göster"><img src="s/G23_1sabah_soru_basari.jpg" alt="Hikâye: Soru kutusu" loading="lazy" width="1080" height="1920"></button>
+  <div class="ser">Soru kutusu</div><p class="how2">Çıkartmalar → <b>SORULAR</b> → soru başlıktaki gibi → buzlu alana koy. Gelen cevaplar yeni içerik fikri olur.</p></article><article class="dcard"><div class="when">Akşam · Hikâye</div>
+  <button class="shot" type="button" data-full="s/G23_2aksam_app_yeniay.jpg" aria-label="Hikâye büyük göster"><img src="s/G23_2aksam_app_yeniay.jpg" alt="Hikâye: Uygulamada + bağlantı" loading="lazy" width="1080" height="1920"></button>
+  <div class="ser">Uygulamada + bağlantı</div><p class="how2">Çıkartmalar → <b>BAĞLANTI</b>: fitkalapp.github.io/indir · yazı "Ücretsiz indir" → buzlu yuvarlak alana koy.</p></article></div></section></section>
+  <h2 class="ph2">Tüm postlar</h2>
+  <main class="grid"><article class="card" id="p01">
+  <button class="shot" type="button" data-full="p/01_mit.jpg" aria-label="Post 01 büyük göster"><img src="p/01_mit.jpg" alt="Post 01: Mit mi, gerçek mi?" loading="lazy" width="1080" height="1350"></button>
+  <div class="meta"><span class="no">01</span><span class="ser">Mit mi, gerçek mi?</span></div>
+  <details><summary>Açıklama ve hashtag</summary><pre id="c01">“Gece yemek kilo aldırır.” 🤔
+
+MİT! Kilo değişimini belirleyen şey, günün toplam enerji dengesidir. Saatten çok; ne kadar ve ne yediğin önemli.
+
+Sen de duymuş muydun? Yorumlara yaz 👇
+
+(Genel bilgilendirme amaçlıdır.)
+
+#fitkal #kaloritakibi #diyet #sağlıklıyaşam #fityaşam #kilovermek #sağlıklıbeslenme #mitmigerçekmi
+</pre></details>
+  <button class="copy" type="button" data-target="c01">Açıklamayı kopyala</button>
+</article><article class="card" id="p02">
+  <button class="shot" type="button" data-full="p/02_soz.jpg" aria-label="Post 02 büyük göster"><img src="p/02_soz.jpg" alt="Post 02: Günün sözü" loading="lazy" width="1080" height="1350"></button>
+  <div class="meta"><span class="no">02</span><span class="ser">Günün sözü</span></div>
+  <details><summary>Açıklama ve hashtag</summary><pre id="c02">Mükemmel gün yok. Kaydedilmiş gün var. 💚
+
+Bugün küçük bir adım at, FİT KAL&#x27;da kaydet.
+
+#fitkal #kaloritakibi #diyet #sağlıklıyaşam #fityaşam #kilovermek #sağlıklıbeslenme #motivasyon #disiplin
+</pre></details>
+  <button class="copy" type="button" data-target="c02">Açıklamayı kopyala</button>
+</article><article class="card" id="p03">
+  <button class="shot" type="button" data-full="p/03_rehber.jpg" aria-label="Post 03 büyük göster"><img src="p/03_rehber.jpg" alt="Post 03: Mini rehber" loading="lazy" width="1080" height="1350"></button>
+  <div class="meta"><span class="no">03</span><span class="ser">Mini rehber</span></div>
+  <details><summary>Açıklama ve hashtag</summary><pre id="c03">Tabağını 4’e böl 📌
+
+1. Yarısı: sebze ve salata
+2. Çeyreği: protein (et, tavuk, balık, yumurta, baklagil)
+3. Çeyreği: tam tahıl ya da karbonhidrat
+4. Yanında: su
+
+Kaydet, sonra lazım olur 🔖
+
+#fitkal #kaloritakibi #diyet #sağlıklıyaşam #fityaşam #kilovermek #sağlıklıbeslenme #beslenmerehberi
+</pre></details>
+  <button class="copy" type="button" data-target="c03">Açıklamayı kopyala</button>
+</article><article class="card posted" id="p04">
+  <button class="shot" type="button" data-full="p/04_uygulamada.jpg" aria-label="Post 04 büyük göster"><img src="p/04_uygulamada.jpg" alt="Post 04: Uygulamada" loading="lazy" width="1080" height="1350"></button>
+  <div class="meta"><span class="no">04</span><span class="ser">Uygulamada</span><span class="done">Paylaşıldı ✓</span></div>
+  <details><summary>Açıklama ve hashtag</summary><pre id="c04">Fotoğraf çek, yapay zeka bulsun. 📱
+
+Tabaktaki her yiyecek ayrı ayrı: Adana Kebap 180 g · 450 kcal
+
+FİT KAL ücretsiz — link profilde 👆
+
+#fitkal #kaloritakibi #diyet #sağlıklıyaşam #fityaşam #kilovermek #sağlıklıbeslenme #yapayzeka #kaloriuygulaması
+</pre></details>
+  <button class="copy" type="button" data-target="c04">Açıklamayı kopyala</button>
+</article><article class="card" id="p05">
+  <button class="shot" type="button" data-full="p/05_sec.jpg" aria-label="Post 05 büyük göster"><img src="p/05_sec.jpg" alt="Post 05: Sen seç" loading="lazy" width="1080" height="1350"></button>
+  <div class="meta"><span class="no">05</span><span class="ser">Sen seç</span></div>
+  <details><summary>Açıklama ve hashtag</summary><pre id="c05">Spor saati? 🤷
+
+A: Sabah  ·  B: Akşam
+
+Yorumlara A ya da B yaz, bakalım hangisi kazanacak 👇
+
+#fitkal #kaloritakibi #diyet #sağlıklıyaşam #fityaşam #kilovermek #sağlıklıbeslenme #senseç
+</pre></details>
+  <button class="copy" type="button" data-target="c05">Açıklamayı kopyala</button>
+</article><article class="card" id="p06">
+  <button class="shot" type="button" data-full="p/06_mit.jpg" aria-label="Post 06 büyük göster"><img src="p/06_mit.jpg" alt="Post 06: Mit mi, gerçek mi?" loading="lazy" width="1080" height="1350"></button>
+  <div class="meta"><span class="no">06</span><span class="ser">Mit mi, gerçek mi?</span></div>
+  <details><summary>Açıklama ve hashtag</summary><pre id="c06">“Karbonhidrat kesmeden kilo verilmez.” 🤔
+
+MİT! Karbonhidrat düşman değil. Doğru porsiyon ve dengeli bir tabakla kilo yönetimi mümkün.
+
+Sen de duymuş muydun? Yorumlara yaz 👇
+
+(Genel bilgilendirme amaçlıdır.)
+
+#fitkal #kaloritakibi #diyet #sağlıklıyaşam #fityaşam #kilovermek #sağlıklıbeslenme #mitmigerçekmi
+</pre></details>
+  <button class="copy" type="button" data-target="c06">Açıklamayı kopyala</button>
+</article><article class="card" id="p07">
+  <button class="shot" type="button" data-full="p/07_soz.jpg" aria-label="Post 07 büyük göster"><img src="p/07_soz.jpg" alt="Post 07: Günün sözü" loading="lazy" width="1080" height="1350"></button>
+  <div class="meta"><span class="no">07</span><span class="ser">Günün sözü</span></div>
+  <details><summary>Açıklama ve hashtag</summary><pre id="c07">Küçük adım, büyük seri. 💚
+
+Bugün küçük bir adım at, FİT KAL&#x27;da kaydet.
+
+#fitkal #kaloritakibi #diyet #sağlıklıyaşam #fityaşam #kilovermek #sağlıklıbeslenme #motivasyon #disiplin
+</pre></details>
+  <button class="copy" type="button" data-target="c07">Açıklamayı kopyala</button>
+</article><article class="card" id="p08">
+  <button class="shot" type="button" data-full="p/08_rehber.jpg" aria-label="Post 08 büyük göster"><img src="p/08_rehber.jpg" alt="Post 08: Mini rehber" loading="lazy" width="1080" height="1350"></button>
+  <div class="meta"><span class="no">08</span><span class="ser">Mini rehber</span></div>
+  <details><summary>Açıklama ve hashtag</summary><pre id="c08">Su içmeyi unutanlar için 📌
+
+1. Masana bir şişe koy
+2. Her öğünden önce bir bardak
+3. Telefonuna hatırlatıcı kur
+4. İçtiğini uygulamada işaretle
+
+Kaydet, sonra lazım olur 🔖
+
+#fitkal #kaloritakibi #diyet #sağlıklıyaşam #fityaşam #kilovermek #sağlıklıbeslenme #beslenmerehberi
+</pre></details>
+  <button class="copy" type="button" data-target="c08">Açıklamayı kopyala</button>
+</article><article class="card posted" id="p09">
+  <button class="shot" type="button" data-full="p/09_uygulamada.jpg" aria-label="Post 09 büyük göster"><img src="p/09_uygulamada.jpg" alt="Post 09: Uygulamada" loading="lazy" width="1080" height="1350"></button>
+  <div class="meta"><span class="no">09</span><span class="ser">Uygulamada</span><span class="done">Paylaşıldı ✓</span></div>
+  <details><summary>Açıklama ve hashtag</summary><pre id="c09">Kalori yetmez, makronu da gör. 📱
+
+Protein, karbonhidrat ve yağ hedefin tek kartta.
+
+FİT KAL ücretsiz — link profilde 👆
+
+#fitkal #kaloritakibi #diyet #sağlıklıyaşam #fityaşam #kilovermek #sağlıklıbeslenme #yapayzeka #kaloriuygulaması
+</pre></details>
+  <button class="copy" type="button" data-target="c09">Açıklamayı kopyala</button>
+</article><article class="card" id="p10">
+  <button class="shot" type="button" data-full="p/10_sec.jpg" aria-label="Post 10 büyük göster"><img src="p/10_sec.jpg" alt="Post 10: Sen seç" loading="lazy" width="1080" height="1350"></button>
+  <div class="meta"><span class="no">10</span><span class="ser">Sen seç</span></div>
+  <details><summary>Açıklama ve hashtag</summary><pre id="c10">Tatlı krizinde? 🤷
+
+A: Meyve  ·  B: Bi̇tter Çi̇kolata
+
+Yorumlara A ya da B yaz, bakalım hangisi kazanacak 👇
+
+#fitkal #kaloritakibi #diyet #sağlıklıyaşam #fityaşam #kilovermek #sağlıklıbeslenme #senseç
+</pre></details>
+  <button class="copy" type="button" data-target="c10">Açıklamayı kopyala</button>
+</article><article class="card" id="p11">
+  <button class="shot" type="button" data-full="p/11_mit.jpg" aria-label="Post 11 büyük göster"><img src="p/11_mit.jpg" alt="Post 11: Mit mi, gerçek mi?" loading="lazy" width="1080" height="1350"></button>
+  <div class="meta"><span class="no">11</span><span class="ser">Mit mi, gerçek mi?</span></div>
+  <details><summary>Açıklama ve hashtag</summary><pre id="c11">“Çok terlemek, çok yağ yakmak demek.” 🤔
+
+MİT! Ter vücut ısını düzenler. Terle kaybettiğin, büyük ölçüde sudur — içince geri gelir.
+
+Sen de duymuş muydun? Yorumlara yaz 👇
+
+(Genel bilgilendirme amaçlıdır.)
+
+#fitkal #kaloritakibi #diyet #sağlıklıyaşam #fityaşam #kilovermek #sağlıklıbeslenme #mitmigerçekmi
+</pre></details>
+  <button class="copy" type="button" data-target="c11">Açıklamayı kopyala</button>
+</article><article class="card" id="p12">
+  <button class="shot" type="button" data-full="p/12_soz.jpg" aria-label="Post 12 büyük göster"><img src="p/12_soz.jpg" alt="Post 12: Günün sözü" loading="lazy" width="1080" height="1350"></button>
+  <div class="meta"><span class="no">12</span><span class="ser">Günün sözü</span></div>
+  <details><summary>Açıklama ve hashtag</summary><pre id="c12">Bugün ölçtüğün, yarın değiştirdiğindir. 💚
+
+Bugün küçük bir adım at, FİT KAL&#x27;da kaydet.
+
+#fitkal #kaloritakibi #diyet #sağlıklıyaşam #fityaşam #kilovermek #sağlıklıbeslenme #motivasyon #disiplin
+</pre></details>
+  <button class="copy" type="button" data-target="c12">Açıklamayı kopyala</button>
+</article><article class="card" id="p13">
+  <button class="shot" type="button" data-full="p/13_rehber.jpg" aria-label="Post 13 büyük göster"><img src="p/13_rehber.jpg" alt="Post 13: Mini rehber" loading="lazy" width="1080" height="1350"></button>
+  <div class="meta"><span class="no">13</span><span class="ser">Mini rehber</span></div>
+  <details><summary>Açıklama ve hashtag</summary><pre id="c13">Markette 4 altın kural 📌
+
+1. Listeyle git, listeden şaşma
+2. Aç karnına alışverişe çıkma
+3. Etiketteki porsiyona bak
+4. Sepetin yarısı taze ürün olsun
+
+Kaydet, sonra lazım olur 🔖
+
+#fitkal #kaloritakibi #diyet #sağlıklıyaşam #fityaşam #kilovermek #sağlıklıbeslenme #beslenmerehberi
+</pre></details>
+  <button class="copy" type="button" data-target="c13">Açıklamayı kopyala</button>
+</article><article class="card" id="p14">
+  <button class="shot" type="button" data-full="p/14_uygulamada.jpg" aria-label="Post 14 büyük göster"><img src="p/14_uygulamada.jpg" alt="Post 14: Uygulamada" loading="lazy" width="1080" height="1350"></button>
+  <div class="meta"><span class="no">14</span><span class="ser">Uygulamada</span></div>
+  <details><summary>Açıklama ve hashtag</summary><pre id="c14">Su takibi üç dokunuşta. 📱
+
+Küçük, bardak, şişe. Hedefe ne kadar kaldığını anında gör.
+
+FİT KAL ücretsiz — link profilde 👆
+
+#fitkal #kaloritakibi #diyet #sağlıklıyaşam #fityaşam #kilovermek #sağlıklıbeslenme #yapayzeka #kaloriuygulaması
+</pre></details>
+  <button class="copy" type="button" data-target="c14">Açıklamayı kopyala</button>
+</article><article class="card" id="p15">
+  <button class="shot" type="button" data-full="p/15_sec.jpg" aria-label="Post 15 büyük göster"><img src="p/15_sec.jpg" alt="Post 15: Sen seç" loading="lazy" width="1080" height="1350"></button>
+  <div class="meta"><span class="no">15</span><span class="ser">Sen seç</span></div>
+  <details><summary>Açıklama ve hashtag</summary><pre id="c15">Kahvaltıda? 🤷
+
+A: Yumurta  ·  B: Yulaf
+
+Yorumlara A ya da B yaz, bakalım hangisi kazanacak 👇
+
+#fitkal #kaloritakibi #diyet #sağlıklıyaşam #fityaşam #kilovermek #sağlıklıbeslenme #senseç
+</pre></details>
+  <button class="copy" type="button" data-target="c15">Açıklamayı kopyala</button>
+</article><article class="card" id="p16">
+  <button class="shot" type="button" data-full="p/16_mit.jpg" aria-label="Post 16 büyük göster"><img src="p/16_mit.jpg" alt="Post 16: Mit mi, gerçek mi?" loading="lazy" width="1080" height="1350"></button>
+  <div class="meta"><span class="no">16</span><span class="ser">Mit mi, gerçek mi?</span></div>
+  <details><summary>Açıklama ve hashtag</summary><pre id="c16">“Protein sadece sporcular içindir.” 🤔
+
+MİT! Protein herkes için önemli: tok tutar, kas kütlesinin korunmasına yardımcı olur.
+
+Sen de duymuş muydun? Yorumlara yaz 👇
+
+(Genel bilgilendirme amaçlıdır.)
+
+#fitkal #kaloritakibi #diyet #sağlıklıyaşam #fityaşam #kilovermek #sağlıklıbeslenme #mitmigerçekmi
+</pre></details>
+  <button class="copy" type="button" data-target="c16">Açıklamayı kopyala</button>
+</article><article class="card" id="p17">
+  <button class="shot" type="button" data-full="p/17_soz.jpg" aria-label="Post 17 büyük göster"><img src="p/17_soz.jpg" alt="Post 17: Günün sözü" loading="lazy" width="1080" height="1350"></button>
+  <div class="meta"><span class="no">17</span><span class="ser">Günün sözü</span></div>
+  <details><summary>Açıklama ve hashtag</summary><pre id="c17">Diyet değil, düzen. 💚
+
+Bugün küçük bir adım at, FİT KAL&#x27;da kaydet.
+
+#fitkal #kaloritakibi #diyet #sağlıklıyaşam #fityaşam #kilovermek #sağlıklıbeslenme #motivasyon #disiplin
+</pre></details>
+  <button class="copy" type="button" data-target="c17">Açıklamayı kopyala</button>
+</article><article class="card" id="p18">
+  <button class="shot" type="button" data-full="p/18_rehber.jpg" aria-label="Post 18 büyük göster"><img src="p/18_rehber.jpg" alt="Post 18: Mini rehber" loading="lazy" width="1080" height="1350"></button>
+  <div class="meta"><span class="no">18</span><span class="ser">Mini rehber</span></div>
+  <details><summary>Açıklama ve hashtag</summary><pre id="c18">Yürüyüşü alışkanlığa çevir 📌
+
+1. Her gün aynı saatte çık
+2. İlk hafta sadece 10 dakika
+3. Telefonu değil, manzarayı izle
+4. Seriyi bozma, kısa da olsa yürü
+
+Kaydet, sonra lazım olur 🔖
+
+#fitkal #kaloritakibi #diyet #sağlıklıyaşam #fityaşam #kilovermek #sağlıklıbeslenme #beslenmerehberi
+</pre></details>
+  <button class="copy" type="button" data-target="c18">Açıklamayı kopyala</button>
+</article><article class="card" id="p19">
+  <button class="shot" type="button" data-full="p/19_uygulamada.jpg" aria-label="Post 19 büyük göster"><img src="p/19_uygulamada.jpg" alt="Post 19: Uygulamada" loading="lazy" width="1080" height="1350"></button>
+  <div class="meta"><span class="no">19</span><span class="ser">Uygulamada</span></div>
+  <details><summary>Açıklama ve hashtag</summary><pre id="c19">Orucun hangi evrede? 📱
+
+Sindirimden yağ yakımına, evreleri canlı takip et.
+
+FİT KAL ücretsiz — link profilde 👆
+
+#fitkal #kaloritakibi #diyet #sağlıklıyaşam #fityaşam #kilovermek #sağlıklıbeslenme #yapayzeka #kaloriuygulaması
+</pre></details>
+  <button class="copy" type="button" data-target="c19">Açıklamayı kopyala</button>
+</article><article class="card" id="p20">
+  <button class="shot" type="button" data-full="p/20_sec.jpg" aria-label="Post 20 büyük göster"><img src="p/20_sec.jpg" alt="Post 20: Sen seç" loading="lazy" width="1080" height="1350"></button>
+  <div class="meta"><span class="no">20</span><span class="ser">Sen seç</span></div>
+  <details><summary>Açıklama ve hashtag</summary><pre id="c20">Ne zaman başlıyorsun? 🤷
+
+A: Bugün  ·  B: Pazartesi̇
+
+Yorumlara A ya da B yaz, bakalım hangisi kazanacak 👇
+
+#fitkal #kaloritakibi #diyet #sağlıklıyaşam #fityaşam #kilovermek #sağlıklıbeslenme #senseç
+</pre></details>
+  <button class="copy" type="button" data-target="c20">Açıklamayı kopyala</button>
+</article><article class="card" id="p21">
+  <button class="shot" type="button" data-full="p/21_mit.jpg" aria-label="Post 21 büyük göster"><img src="p/21_mit.jpg" alt="Post 21: Mit mi, gerçek mi?" loading="lazy" width="1080" height="1350"></button>
+  <div class="meta"><span class="no">21</span><span class="ser">Mit mi, gerçek mi?</span></div>
+  <details><summary>Açıklama ve hashtag</summary><pre id="c21">“Detoks çayı yağ eritir.” 🤔
+
+MİT! Hiçbir tek içecek yağ eritmez. Kalıcı sonuç, sürdürülebilir alışkanlıklardan gelir.
+
+Sen de duymuş muydun? Yorumlara yaz 👇
+
+(Genel bilgilendirme amaçlıdır.)
+
+#fitkal #kaloritakibi #diyet #sağlıklıyaşam #fityaşam #kilovermek #sağlıklıbeslenme #mitmigerçekmi
+</pre></details>
+  <button class="copy" type="button" data-target="c21">Açıklamayı kopyala</button>
+</article><article class="card" id="p22">
+  <button class="shot" type="button" data-full="p/22_soz.jpg" aria-label="Post 22 büyük göster"><img src="p/22_soz.jpg" alt="Post 22: Günün sözü" loading="lazy" width="1080" height="1350"></button>
+  <div class="meta"><span class="no">22</span><span class="ser">Günün sözü</span></div>
+  <details><summary>Açıklama ve hashtag</summary><pre id="c22">Pazartesiyi bekleme. Bir sonraki öğün yeter. 💚
+
+Bugün küçük bir adım at, FİT KAL&#x27;da kaydet.
+
+#fitkal #kaloritakibi #diyet #sağlıklıyaşam #fityaşam #kilovermek #sağlıklıbeslenme #motivasyon #disiplin
+</pre></details>
+  <button class="copy" type="button" data-target="c22">Açıklamayı kopyala</button>
+</article><article class="card" id="p23">
+  <button class="shot" type="button" data-full="p/23_rehber.jpg" aria-label="Post 23 büyük göster"><img src="p/23_rehber.jpg" alt="Post 23: Mini rehber" loading="lazy" width="1080" height="1350"></button>
+  <div class="meta"><span class="no">23</span><span class="ser">Mini rehber</span></div>
+  <details><summary>Açıklama ve hashtag</summary><pre id="c23">Akşam atıştırmasına alternatif 📌
+
+1. Bir kase yoğurt
+2. Bir porsiyon meyve
+3. Bir avuç çiğ kuruyemiş
+4. Bir bardak ılık süt ya da bitki çayı
+
+Kaydet, sonra lazım olur 🔖
+
+#fitkal #kaloritakibi #diyet #sağlıklıyaşam #fityaşam #kilovermek #sağlıklıbeslenme #beslenmerehberi
+</pre></details>
+  <button class="copy" type="button" data-target="c23">Açıklamayı kopyala</button>
+</article><article class="card" id="p24">
+  <button class="shot" type="button" data-full="p/24_uygulamada.jpg" aria-label="Post 24 büyük göster"><img src="p/24_uygulamada.jpg" alt="Post 24: Uygulamada" loading="lazy" width="1080" height="1350"></button>
+  <div class="meta"><span class="no">24</span><span class="ser">Uygulamada</span></div>
+  <details><summary>Açıklama ve hashtag</summary><pre id="c24">Her hedef bir rozet. 📱
+
+İlk Egzersiz, Düzenli Sporcu ve daha fazlası.
+
+FİT KAL ücretsiz — link profilde 👆
+
+#fitkal #kaloritakibi #diyet #sağlıklıyaşam #fityaşam #kilovermek #sağlıklıbeslenme #yapayzeka #kaloriuygulaması
+</pre></details>
+  <button class="copy" type="button" data-target="c24">Açıklamayı kopyala</button>
+</article><article class="card" id="p25">
+  <button class="shot" type="button" data-full="p/25_sec.jpg" aria-label="Post 25 büyük göster"><img src="p/25_sec.jpg" alt="Post 25: Sen seç" loading="lazy" width="1080" height="1350"></button>
+  <div class="meta"><span class="no">25</span><span class="ser">Sen seç</span></div>
+  <details><summary>Açıklama ve hashtag</summary><pre id="c25">Su mu, çay mı? 🤷
+
+A: Su  ·  B: Çay
+
+Yorumlara A ya da B yaz, bakalım hangisi kazanacak 👇
+
+#fitkal #kaloritakibi #diyet #sağlıklıyaşam #fityaşam #kilovermek #sağlıklıbeslenme #senseç
+</pre></details>
+  <button class="copy" type="button" data-target="c25">Açıklamayı kopyala</button>
+</article><article class="card" id="p26">
+  <button class="shot" type="button" data-full="p/26_mit.jpg" aria-label="Post 26 büyük göster"><img src="p/26_mit.jpg" alt="Post 26: Mit mi, gerçek mi?" loading="lazy" width="1080" height="1350"></button>
+  <div class="meta"><span class="no">26</span><span class="ser">Mit mi, gerçek mi?</span></div>
+  <details><summary>Açıklama ve hashtag</summary><pre id="c26">“Kahvaltıyı atlamak her zaman kötüdür.” 🤔
+
+KİŞİYE GÖRE! Aralıklı oruç yapanlar için bilinçli bir tercih olabilir. Önemli olan günün toplam dengesi.
+
+Sen de duymuş muydun? Yorumlara yaz 👇
+
+(Genel bilgilendirme amaçlıdır.)
+
+#fitkal #kaloritakibi #diyet #sağlıklıyaşam #fityaşam #kilovermek #sağlıklıbeslenme #mitmigerçekmi
+</pre></details>
+  <button class="copy" type="button" data-target="c26">Açıklamayı kopyala</button>
+</article><article class="card" id="p27">
+  <button class="shot" type="button" data-full="p/27_soz.jpg" aria-label="Post 27 büyük göster"><img src="p/27_soz.jpg" alt="Post 27: Günün sözü" loading="lazy" width="1080" height="1350"></button>
+  <div class="meta"><span class="no">27</span><span class="ser">Günün sözü</span></div>
+  <details><summary>Açıklama ve hashtag</summary><pre id="c27">Hedefe değil, bugüne odaklan. 💚
+
+Bugün küçük bir adım at, FİT KAL&#x27;da kaydet.
+
+#fitkal #kaloritakibi #diyet #sağlıklıyaşam #fityaşam #kilovermek #sağlıklıbeslenme #motivasyon #disiplin
+</pre></details>
+  <button class="copy" type="button" data-target="c27">Açıklamayı kopyala</button>
+</article><article class="card" id="p28">
+  <button class="shot" type="button" data-full="p/28_rehber.jpg" aria-label="Post 28 büyük göster"><img src="p/28_rehber.jpg" alt="Post 28: Mini rehber" loading="lazy" width="1080" height="1350"></button>
+  <div class="meta"><span class="no">28</span><span class="ser">Mini rehber</span></div>
+  <details><summary>Açıklama ve hashtag</summary><pre id="c28">Dışarıda yerken 4 akıllı seçim 📌
+
+1. Kızartma yerine ızgara
+2. Sosu ayrı iste
+3. Garnitürü sebze yap
+4. Gazlı içecek yerine su ya da ayran
+
+Kaydet, sonra lazım olur 🔖
+
+#fitkal #kaloritakibi #diyet #sağlıklıyaşam #fityaşam #kilovermek #sağlıklıbeslenme #beslenmerehberi
+</pre></details>
+  <button class="copy" type="button" data-target="c28">Açıklamayı kopyala</button>
+</article><article class="card" id="p29">
+  <button class="shot" type="button" data-full="p/29_uygulamada.jpg" aria-label="Post 29 büyük göster"><img src="p/29_uygulamada.jpg" alt="Post 29: Uygulamada" loading="lazy" width="1080" height="1350"></button>
+  <div class="meta"><span class="no">29</span><span class="ser">Uygulamada</span></div>
+  <details><summary>Açıklama ve hashtag</summary><pre id="c29">Hedefine ne kadar kaldı? 📱
+
+Mevcut kilo, hedef ve kilo trendi tek ekranda.
+
+FİT KAL ücretsiz — link profilde 👆
+
+#fitkal #kaloritakibi #diyet #sağlıklıyaşam #fityaşam #kilovermek #sağlıklıbeslenme #yapayzeka #kaloriuygulaması
+</pre></details>
+  <button class="copy" type="button" data-target="c29">Açıklamayı kopyala</button>
+</article><article class="card" id="p30">
+  <button class="shot" type="button" data-full="p/30_sec.jpg" aria-label="Post 30 büyük göster"><img src="p/30_sec.jpg" alt="Post 30: Sen seç" loading="lazy" width="1080" height="1350"></button>
+  <div class="meta"><span class="no">30</span><span class="ser">Sen seç</span></div>
+  <details><summary>Açıklama ve hashtag</summary><pre id="c30">Yürüyüş mü, ağırlık mı? 🤷
+
+A: Yürüyüş  ·  B: Ağirlik
+
+Yorumlara A ya da B yaz, bakalım hangisi kazanacak 👇
+
+#fitkal #kaloritakibi #diyet #sağlıklıyaşam #fityaşam #kilovermek #sağlıklıbeslenme #senseç
+</pre></details>
+  <button class="copy" type="button" data-target="c30">Açıklamayı kopyala</button>
+</article><article class="card" id="p31">
+  <button class="shot" type="button" data-full="p/31_bilgi.jpg" aria-label="Post 31 büyük göster"><img src="p/31_bilgi.jpg" alt="Post 31: Bunu biliyor muydun?" loading="lazy" width="1080" height="1350"></button>
+  <div class="meta"><span class="no">31</span><span class="ser">Bunu biliyor muydun?</span></div>
+  <details><summary>Açıklama ve hashtag</summary><pre id="c31">Protein sindirilirken daha çok enerji harcatır. 💡
+
+Vücut proteini sindirmek için karbonhidrat ve yağa göre daha fazla enerji kullanır. Buna besinlerin termik etkisi denir.
+
+Bunu biliyor muydun? Kaydet, sonra hatırla 🔖
+
+(Genel bilgilendirme amaçlıdır.)
+
+#fitkal #kaloritakibi #diyet #sağlıklıyaşam #fityaşam #kilovermek #sağlıklıbeslenme #bunubiliyormuydun
+</pre></details>
+  <button class="copy" type="button" data-target="c31">Açıklamayı kopyala</button>
+</article><article class="card" id="p32">
+  <button class="shot" type="button" data-full="p/32_degistir.jpg" aria-label="Post 32 büyük göster"><img src="p/32_degistir.jpg" alt="Post 32: Bunun yerine" loading="lazy" width="1080" height="1350"></button>
+  <div class="meta"><span class="no">32</span><span class="ser">Bunun yerine</span></div>
+  <details><summary>Açıklama ve hashtag</summary><pre id="c32">Bunun yerine: Şekerli gazlı içecek ❌
+Bunu dene: Maden suyu + limon dilimi ✅
+
+Ferahlık aynı, şeker yok.
+
+Sen hangisini değiştirdin? Yorumlara yaz 👇
+
+#fitkal #kaloritakibi #diyet #sağlıklıyaşam #fityaşam #kilovermek #sağlıklıbeslenme #küçükdeğişim
+</pre></details>
+  <button class="copy" type="button" data-target="c32">Açıklamayı kopyala</button>
+</article><article class="card" id="p33">
+  <button class="shot" type="button" data-full="p/33_challenge.jpg" aria-label="Post 33 büyük göster"><img src="p/33_challenge.jpg" alt="Post 33: 7 günlük challenge" loading="lazy" width="1080" height="1350"></button>
+  <div class="meta"><span class="no">33</span><span class="ser">7 günlük challenge</span></div>
+  <details><summary>Açıklama ve hashtag</summary><pre id="c33">7 Günlük Su Challenge 🏁
+
+Her gün su hedefini tamamla, kutuyu işaretle.
+Kaydet, ekran görüntüsü al, her gün işaretle. Hikayende bizi etiketle!
+
+#fitkal #kaloritakibi #diyet #sağlıklıyaşam #fityaşam #kilovermek #sağlıklıbeslenme #challenge #7günchallenge
+</pre></details>
+  <button class="copy" type="button" data-target="c33">Açıklamayı kopyala</button>
+</article><article class="card" id="p34">
+  <button class="shot" type="button" data-full="p/34_bilgi.jpg" aria-label="Post 34 büyük göster"><img src="p/34_bilgi.jpg" alt="Post 34: Bunu biliyor muydun?" loading="lazy" width="1080" height="1350"></button>
+  <div class="meta"><span class="no">34</span><span class="ser">Bunu biliyor muydun?</span></div>
+  <details><summary>Açıklama ve hashtag</summary><pre id="c34">Lifli besinler seni daha uzun tok tutar. 💡
+
+Sebze, baklagil ve tam tahıllardaki lif sindirimi yavaşlatır; bir sonraki öğüne kadar acıkmayı geciktirir.
+
+Bunu biliyor muydun? Kaydet, sonra hatırla 🔖
+
+(Genel bilgilendirme amaçlıdır.)
+
+#fitkal #kaloritakibi #diyet #sağlıklıyaşam #fityaşam #kilovermek #sağlıklıbeslenme #bunubiliyormuydun
+</pre></details>
+  <button class="copy" type="button" data-target="c34">Açıklamayı kopyala</button>
+</article><article class="card" id="p35">
+  <button class="shot" type="button" data-full="p/35_degistir.jpg" aria-label="Post 35 büyük göster"><img src="p/35_degistir.jpg" alt="Post 35: Bunun yerine" loading="lazy" width="1080" height="1350"></button>
+  <div class="meta"><span class="no">35</span><span class="ser">Bunun yerine</span></div>
+  <details><summary>Açıklama ve hashtag</summary><pre id="c35">Bunun yerine: Asansör ❌
+Bunu dene: Merdiven ✅
+
+Günde birkaç kat, fark etmeden hareket.
+
+Sen hangisini değiştirdin? Yorumlara yaz 👇
+
+#fitkal #kaloritakibi #diyet #sağlıklıyaşam #fityaşam #kilovermek #sağlıklıbeslenme #küçükdeğişim
+</pre></details>
+  <button class="copy" type="button" data-target="c35">Açıklamayı kopyala</button>
+</article><article class="card" id="p36">
+  <button class="shot" type="button" data-full="p/36_sss.jpg" aria-label="Post 36 büyük göster"><img src="p/36_sss.jpg" alt="Post 36: Sık sorulan" loading="lazy" width="1080" height="1350"></button>
+  <div class="meta"><span class="no">36</span><span class="ser">Sık sorulan</span></div>
+  <details><summary>Açıklama ve hashtag</summary><pre id="c36">FİT KAL ücretli mi?
+
+Hayır. FİT KAL tamamen ücretsiz. 💚
+✓ iPhone · App Store
+✓ Android · Google Play
+✓ Türkçe ve Türk mutfağına uygun
+
+Link profilde 👆
+
+#fitkal #kaloritakibi #diyet #sağlıklıyaşam #fityaşam #kilovermek #sağlıklıbeslenme
+</pre></details>
+  <button class="copy" type="button" data-target="c36">Açıklamayı kopyala</button>
+</article><article class="card" id="p37">
+  <button class="shot" type="button" data-full="p/37_bilgi.jpg" aria-label="Post 37 büyük göster"><img src="p/37_bilgi.jpg" alt="Post 37: Bunu biliyor muydun?" loading="lazy" width="1080" height="1350"></button>
+  <div class="meta"><span class="no">37</span><span class="ser">Bunu biliyor muydun?</span></div>
+  <details><summary>Açıklama ve hashtag</summary><pre id="c37">Yavaş yemek tokluğu fark etmeni kolaylaştırır. 💡
+
+Tokluk sinyallerinin beyne ulaşması zaman alır. Yavaş yiyince, doyduğunu daha erken hissedersin.
+
+Bunu biliyor muydun? Kaydet, sonra hatırla 🔖
+
+(Genel bilgilendirme amaçlıdır.)
+
+#fitkal #kaloritakibi #diyet #sağlıklıyaşam #fityaşam #kilovermek #sağlıklıbeslenme #bunubiliyormuydun
+</pre></details>
+  <button class="copy" type="button" data-target="c37">Açıklamayı kopyala</button>
+</article><article class="card" id="p38">
+  <button class="shot" type="button" data-full="p/38_challenge.jpg" aria-label="Post 38 büyük göster"><img src="p/38_challenge.jpg" alt="Post 38: 7 günlük challenge" loading="lazy" width="1080" height="1350"></button>
+  <div class="meta"><span class="no">38</span><span class="ser">7 günlük challenge</span></div>
+  <details><summary>Açıklama ve hashtag</summary><pre id="c38">7 Günlük Yürüyüş Challenge 🏁
+
+Her gün 5 dakika daha fazla yürü.
+Kaydet, ekran görüntüsü al, her gün işaretle. Hikayende bizi etiketle!
+
+#fitkal #kaloritakibi #diyet #sağlıklıyaşam #fityaşam #kilovermek #sağlıklıbeslenme #challenge #7günchallenge
+</pre></details>
+  <button class="copy" type="button" data-target="c38">Açıklamayı kopyala</button>
+</article><article class="card" id="p39">
+  <button class="shot" type="button" data-full="p/39_degistir.jpg" aria-label="Post 39 büyük göster"><img src="p/39_degistir.jpg" alt="Post 39: Bunun yerine" loading="lazy" width="1080" height="1350"></button>
+  <div class="meta"><span class="no">39</span><span class="ser">Bunun yerine</span></div>
+  <details><summary>Açıklama ve hashtag</summary><pre id="c39">Bunun yerine: Ekran karşısında yemek ❌
+Bunu dene: Masada, yavaş yemek ✅
+
+Ne kadar yediğini fark edersin.
+
+Sen hangisini değiştirdin? Yorumlara yaz 👇
+
+#fitkal #kaloritakibi #diyet #sağlıklıyaşam #fityaşam #kilovermek #sağlıklıbeslenme #küçükdeğişim
+</pre></details>
+  <button class="copy" type="button" data-target="c39">Açıklamayı kopyala</button>
+</article><article class="card" id="p40">
+  <button class="shot" type="button" data-full="p/40_bilgi.jpg" aria-label="Post 40 büyük göster"><img src="p/40_bilgi.jpg" alt="Post 40: Bunu biliyor muydun?" loading="lazy" width="1080" height="1350"></button>
+  <div class="meta"><span class="no">40</span><span class="ser">Bunu biliyor muydun?</span></div>
+  <details><summary>Açıklama ve hashtag</summary><pre id="c40">Küçük hareketler büyük fark yaratır. 💡
+
+Yürümek, merdiven çıkmak, ayakta durmak… Gün içindeki bu hareketler toplam enerji harcamanın önemli bir parçası.
+
+Bunu biliyor muydun? Kaydet, sonra hatırla 🔖
+
+(Genel bilgilendirme amaçlıdır.)
+
+#fitkal #kaloritakibi #diyet #sağlıklıyaşam #fityaşam #kilovermek #sağlıklıbeslenme #bunubiliyormuydun
+</pre></details>
+  <button class="copy" type="button" data-target="c40">Açıklamayı kopyala</button>
+</article><article class="card" id="p41">
+  <button class="shot" type="button" data-full="p/41_tahmin.jpg" aria-label="Post 41 büyük göster"><img src="p/41_tahmin.jpg" alt="Post 41: Hangisi daha hafif?" loading="lazy" width="1080" height="1350"></button>
+  <div class="meta"><span class="no">41</span><span class="ser">Hangisi daha hafif?</span><span class="new">YENİ</span></div>
+  <details><summary>Açıklama ve hashtag</summary><pre id="c41">Hangisi daha hafif? 🤔
+
+A: 1 bardak ayran (200 ml)
+B: 1 bardak kola (200 ml)
+
+Tahminini yorumlara yaz 👇
+.
+.
+.
+Cevap: Ayran ≈ 75 kcal · Kola ≈ 85 kcal (yaklaşık)
+Kalorileri yakın ama fark içerikte: ayranda protein ve kalsiyum var, kolada sadece şeker.
+
+Kalorini tahmin etmek yerine FİT KAL&#x27;da ölç 📱
+
+(Değerler yaklaşıktır, genel bilgilendirme amaçlıdır.)
+
+#fitkal #kaloritakibi #diyet #sağlıklıyaşam #fityaşam #kilovermek #sağlıklıbeslenme #hangisi #kalori
+</pre></details>
+  <button class="copy" type="button" data-target="c41">Açıklamayı kopyala</button>
+</article><article class="card" id="p42">
+  <button class="shot" type="button" data-full="p/42_soz.jpg" aria-label="Post 42 büyük göster"><img src="p/42_soz.jpg" alt="Post 42: Günün sözü" loading="lazy" width="1080" height="1350"></button>
+  <div class="meta"><span class="no">42</span><span class="ser">Günün sözü</span><span class="new">YENİ</span></div>
+  <details><summary>Açıklama ve hashtag</summary><pre id="c42">Yorgunsan kısa yap. Ama yap. 💚
+
+Bugün küçük bir adım at, FİT KAL&#x27;da kaydet.
+
+#fitkal #kaloritakibi #diyet #sağlıklıyaşam #fityaşam #kilovermek #sağlıklıbeslenme #motivasyon #disiplin
+</pre></details>
+  <button class="copy" type="button" data-target="c42">Açıklamayı kopyala</button>
+</article><article class="card" id="p43">
+  <button class="shot" type="button" data-full="p/43_uygulamada.jpg" aria-label="Post 43 büyük göster"><img src="p/43_uygulamada.jpg" alt="Post 43: Uygulamada" loading="lazy" width="1080" height="1350"></button>
+  <div class="meta"><span class="no">43</span><span class="ser">Uygulamada</span><span class="new">YENİ</span></div>
+  <details><summary>Açıklama ve hashtag</summary><pre id="c43">Alışveriş listen diyetinden hazır. 📱
+
+Planındaki malzemeler reyonlara göre ayrılır; aldıklarını işaretle.
+
+FİT KAL ücretsiz — link profilde 👆
+
+#fitkal #kaloritakibi #diyet #sağlıklıyaşam #fityaşam #kilovermek #sağlıklıbeslenme #diyetlistesi #kaloriuygulaması
+</pre></details>
+  <button class="copy" type="button" data-target="c43">Açıklamayı kopyala</button>
+</article><article class="card" id="p44">
+  <button class="shot" type="button" data-full="p/44_mit.jpg" aria-label="Post 44 büyük göster"><img src="p/44_mit.jpg" alt="Post 44: Mit mi, gerçek mi?" loading="lazy" width="1080" height="1350"></button>
+  <div class="meta"><span class="no">44</span><span class="ser">Mit mi, gerçek mi?</span><span class="new">YENİ</span></div>
+  <details><summary>Açıklama ve hashtag</summary><pre id="c44">“Light ürünleri istediğin kadar yiyebilirsin.” 🤔
+
+MİT! Light, normaline göre daha az kalori demek; kalorisiz değil. Porsiyonu yine etiketten kontrol et.
+
+Sen de duymuş muydun? Yorumlara yaz 👇
+
+(Genel bilgilendirme amaçlıdır.)
+
+#fitkal #kaloritakibi #diyet #sağlıklıyaşam #fityaşam #kilovermek #sağlıklıbeslenme #mitmigerçekmi
+</pre></details>
+  <button class="copy" type="button" data-target="c44">Açıklamayı kopyala</button>
+</article><article class="card" id="p45">
+  <button class="shot" type="button" data-full="p/45_sec.jpg" aria-label="Post 45 büyük göster"><img src="p/45_sec.jpg" alt="Post 45: Sen seç" loading="lazy" width="1080" height="1350"></button>
+  <div class="meta"><span class="no">45</span><span class="ser">Sen seç</span><span class="new">YENİ</span></div>
+  <details><summary>Açıklama ve hashtag</summary><pre id="c45">Bu akşam yemek? 🤷
+
+A: Ev Yemeği̇  ·  B: Dişarida
+
+Yorumlara A ya da B yaz, bakalım hangisi kazanacak 👇
+
+#fitkal #kaloritakibi #diyet #sağlıklıyaşam #fityaşam #kilovermek #sağlıklıbeslenme #senseç
+</pre></details>
+  <button class="copy" type="button" data-target="c45">Açıklamayı kopyala</button>
+</article><article class="card" id="p46">
+  <button class="shot" type="button" data-full="p/46_uygulamada.jpg" aria-label="Post 46 büyük göster"><img src="p/46_uygulamada.jpg" alt="Post 46: Uygulamada" loading="lazy" width="1080" height="1350"></button>
+  <div class="meta"><span class="no">46</span><span class="ser">Uygulamada</span><span class="new">YENİ</span></div>
+  <details><summary>Açıklama ve hashtag</summary><pre id="c46">Diyet listen hedefine göre hazır. 📱
+
+Kalori ve makro hedefine göre her öğün senin için planlanır.
+
+FİT KAL ücretsiz — link profilde 👆
+
+#fitkal #kaloritakibi #diyet #sağlıklıyaşam #fityaşam #kilovermek #sağlıklıbeslenme #diyetlistesi #kaloriuygulaması
+</pre></details>
+  <button class="copy" type="button" data-target="c46">Açıklamayı kopyala</button>
+</article><article class="card" id="p47">
+  <button class="shot" type="button" data-full="p/47_tahmin.jpg" aria-label="Post 47 büyük göster"><img src="p/47_tahmin.jpg" alt="Post 47: Hangisi daha hafif?" loading="lazy" width="1080" height="1350"></button>
+  <div class="meta"><span class="no">47</span><span class="ser">Hangisi daha hafif?</span><span class="new">YENİ</span></div>
+  <details><summary>Açıklama ve hashtag</summary><pre id="c47">Hangisi daha hafif? 🤔
+
+A: 1 simit (orta boy)
+B: 2 dilim tam buğday ekmeği (≈ 60 g)
+
+Tahminini yorumlara yaz 👇
+.
+.
+.
+Cevap: Simit ≈ 300 kcal · 2 dilim ekmek ≈ 150 kcal (yaklaşık)
+Simidin yaklaşık yarısı kadar kaloriyle aynı doyuruculuğa yakın; lif de cabası.
+
+Kalorini tahmin etmek yerine FİT KAL&#x27;da ölç 📱
+
+(Değerler yaklaşıktır, genel bilgilendirme amaçlıdır.)
+
+#fitkal #kaloritakibi #diyet #sağlıklıyaşam #fityaşam #kilovermek #sağlıklıbeslenme #hangisi #kalori
+</pre></details>
+  <button class="copy" type="button" data-target="c47">Açıklamayı kopyala</button>
+</article><article class="card" id="p48">
+  <button class="shot" type="button" data-full="p/48_soz.jpg" aria-label="Post 48 büyük göster"><img src="p/48_soz.jpg" alt="Post 48: Günün sözü" loading="lazy" width="1080" height="1350"></button>
+  <div class="meta"><span class="no">48</span><span class="ser">Günün sözü</span><span class="new">YENİ</span></div>
+  <details><summary>Açıklama ve hashtag</summary><pre id="c48">Vazgeçme, yavaşla. 💚
+
+Bugün küçük bir adım at, FİT KAL&#x27;da kaydet.
+
+#fitkal #kaloritakibi #diyet #sağlıklıyaşam #fityaşam #kilovermek #sağlıklıbeslenme #motivasyon #disiplin
+</pre></details>
+  <button class="copy" type="button" data-target="c48">Açıklamayı kopyala</button>
+</article><article class="card" id="p49">
+  <button class="shot" type="button" data-full="p/49_uygulamada.jpg" aria-label="Post 49 büyük göster"><img src="p/49_uygulamada.jpg" alt="Post 49: Uygulamada" loading="lazy" width="1080" height="1350"></button>
+  <div class="meta"><span class="no">49</span><span class="ser">Uygulamada</span><span class="new">YENİ</span></div>
+  <details><summary>Açıklama ve hashtag</summary><pre id="c49">Antrenman planın otomatik hazırlansın. 📱
+
+Hedefine, ekipmanına ve seviyene göre haftalık plan.
+
+FİT KAL ücretsiz — link profilde 👆
+
+#fitkal #kaloritakibi #diyet #sağlıklıyaşam #fityaşam #kilovermek #sağlıklıbeslenme #diyetlistesi #kaloriuygulaması
+</pre></details>
+  <button class="copy" type="button" data-target="c49">Açıklamayı kopyala</button>
+</article><article class="card" id="p50">
+  <button class="shot" type="button" data-full="p/50_mit.jpg" aria-label="Post 50 büyük göster"><img src="p/50_mit.jpg" alt="Post 50: Mit mi, gerçek mi?" loading="lazy" width="1080" height="1350"></button>
+  <div class="meta"><span class="no">50</span><span class="ser">Mit mi, gerçek mi?</span><span class="new">YENİ</span></div>
+  <details><summary>Açıklama ve hashtag</summary><pre id="c50">“Meyve akşam yenmez.” 🤔
+
+MİT! Meyvenin saati yok. Günün toplamı ve porsiyon önemli; akşam da dengeli bir ara öğün olabilir.
+
+Sen de duymuş muydun? Yorumlara yaz 👇
+
+(Genel bilgilendirme amaçlıdır.)
+
+#fitkal #kaloritakibi #diyet #sağlıklıyaşam #fityaşam #kilovermek #sağlıklıbeslenme #mitmigerçekmi
+</pre></details>
+  <button class="copy" type="button" data-target="c50">Açıklamayı kopyala</button>
+</article><article class="card" id="p51">
+  <button class="shot" type="button" data-full="p/51_sec.jpg" aria-label="Post 51 büyük göster"><img src="p/51_sec.jpg" alt="Post 51: Sen seç" loading="lazy" width="1080" height="1350"></button>
+  <div class="meta"><span class="no">51</span><span class="ser">Sen seç</span><span class="new">YENİ</span></div>
+  <details><summary>Açıklama ve hashtag</summary><pre id="c51">Ara öğünde? 🤷
+
+A: Yoğurt  ·  B: Kuruyemi̇ş
+
+Yorumlara A ya da B yaz, bakalım hangisi kazanacak 👇
+
+#fitkal #kaloritakibi #diyet #sağlıklıyaşam #fityaşam #kilovermek #sağlıklıbeslenme #senseç
+</pre></details>
+  <button class="copy" type="button" data-target="c51">Açıklamayı kopyala</button>
+</article><article class="card" id="p52">
+  <button class="shot" type="button" data-full="p/52_uygulamada.jpg" aria-label="Post 52 büyük göster"><img src="p/52_uygulamada.jpg" alt="Post 52: Uygulamada" loading="lazy" width="1080" height="1350"></button>
+  <div class="meta"><span class="no">52</span><span class="ser">Uygulamada</span><span class="new">YENİ</span></div>
+  <details><summary>Açıklama ve hashtag</summary><pre id="c52">Fit tarifler, makrolarıyla. 📱
+
+Her tarifte kalori, protein, karbonhidrat ve yağ hazır.
+
+FİT KAL ücretsiz — link profilde 👆
+
+#fitkal #kaloritakibi #diyet #sağlıklıyaşam #fityaşam #kilovermek #sağlıklıbeslenme #diyetlistesi #kaloriuygulaması
+</pre></details>
+  <button class="copy" type="button" data-target="c52">Açıklamayı kopyala</button>
+</article><article class="card" id="p53">
+  <button class="shot" type="button" data-full="p/53_tahmin.jpg" aria-label="Post 53 büyük göster"><img src="p/53_tahmin.jpg" alt="Post 53: Hangisi daha hafif?" loading="lazy" width="1080" height="1350"></button>
+  <div class="meta"><span class="no">53</span><span class="ser">Hangisi daha hafif?</span><span class="new">YENİ</span></div>
+  <details><summary>Açıklama ve hashtag</summary><pre id="c53">Hangisi daha hafif? 🤔
+
+A: 1 lahmacun (orta boy)
+B: 1 kıymalı pide (tam porsiyon)
+
+Tahminini yorumlara yaz 👇
+.
+.
+.
+Cevap: Lahmacun ≈ 250 kcal · Kıymalı pide ≈ 550 kcal (yaklaşık)
+Pide hem daha büyük hem daha yağlı hamur. Lahmacunu bol yeşillikle dürüm yapmak dengeli bir seçenek.
+
+Türk mutfağını tahminle değil, FİT KAL&#x27;la ölç 📱
+
+(Değerler yaklaşıktır, genel bilgilendirme amaçlıdır.)
+
+#fitkal #kaloritakibi #diyet #sağlıklıyaşam #türkmutfağı #kilovermek #sağlıklıbeslenme #hangisi #kalori
+</pre></details>
+  <button class="copy" type="button" data-target="c53">Açıklamayı kopyala</button>
+</article><article class="card" id="p54">
+  <button class="shot" type="button" data-full="p/54_soz.jpg" aria-label="Post 54 büyük göster"><img src="p/54_soz.jpg" alt="Post 54: Günün sözü" loading="lazy" width="1080" height="1350"></button>
+  <div class="meta"><span class="no">54</span><span class="ser">Günün sözü</span><span class="new">YENİ</span></div>
+  <details><summary>Açıklama ve hashtag</summary><pre id="c54">Porsiyon küçük, keyif büyük. 💚
+
+Sevdiğin yemeği bırakma; ölçüsünü bul. FİT KAL&#x27;da kaydet.
+
+#fitkal #kaloritakibi #diyet #sağlıklıyaşam #türkmutfağı #kilovermek #sağlıklıbeslenme #motivasyon #porsiyonkontrolü
+</pre></details>
+  <button class="copy" type="button" data-target="c54">Açıklamayı kopyala</button>
+</article><article class="card" id="p55">
+  <button class="shot" type="button" data-full="p/55_uygulamada.jpg" aria-label="Post 55 büyük göster"><img src="p/55_uygulamada.jpg" alt="Post 55: Uygulamada" loading="lazy" width="1080" height="1350"></button>
+  <div class="meta"><span class="no">55</span><span class="ser">Uygulamada</span><span class="new">YENİ</span></div>
+  <details><summary>Açıklama ve hashtag</summary><pre id="c55">Türk mutfağından fit tarifler. 📱
+
+Her tarifte kalori ve makrolar hazır; malzemeye göre ara.
+
+FİT KAL ücretsiz — link profilde 👆
+
+#fitkal #kaloritakibi #diyet #sağlıklıyaşam #türkmutfağı #kilovermek #sağlıklıbeslenme #fittarifler #kaloriuygulaması
+</pre></details>
+  <button class="copy" type="button" data-target="c55">Açıklamayı kopyala</button>
+</article><article class="card" id="p56">
+  <button class="shot" type="button" data-full="p/56_mit.jpg" aria-label="Post 56 büyük göster"><img src="p/56_mit.jpg" alt="Post 56: Mit mi, gerçek mi?" loading="lazy" width="1080" height="1350"></button>
+  <div class="meta"><span class="no">56</span><span class="ser">Mit mi, gerçek mi?</span><span class="new">YENİ</span></div>
+  <details><summary>Açıklama ve hashtag</summary><pre id="c56">“Zeytinyağlı yemek kilo aldırmaz.” 🤔
+
+MİT! Zeytinyağı faydalı bir yağ ama kalorisi yüksek: 1 yemek kaşığı yaklaşık 120 kcal. Ölçerek kullan.
+
+Sen de duymuş muydun? Yorumlara yaz 👇
+
+(Genel bilgilendirme amaçlıdır.)
+
+#fitkal #kaloritakibi #diyet #sağlıklıyaşam #türkmutfağı #kilovermek #sağlıklıbeslenme #mitmigerçekmi
+</pre></details>
+  <button class="copy" type="button" data-target="c56">Açıklamayı kopyala</button>
+</article><article class="card" id="p57">
+  <button class="shot" type="button" data-full="p/57_sec.jpg" aria-label="Post 57 büyük göster"><img src="p/57_sec.jpg" alt="Post 57: Sen seç" loading="lazy" width="1080" height="1350"></button>
+  <div class="meta"><span class="no">57</span><span class="ser">Sen seç</span><span class="new">YENİ</span></div>
+  <details><summary>Açıklama ve hashtag</summary><pre id="c57">Akşam sofrasında? 🤷
+
+A: Kuru fasulye  ·  B: Karnıyarık
+
+Yorumlara A ya da B yaz, bakalım hangisi kazanacak 👇
+
+#fitkal #kaloritakibi #diyet #sağlıklıyaşam #türkmutfağı #kilovermek #sağlıklıbeslenme #senseç
+</pre></details>
+  <button class="copy" type="button" data-target="c57">Açıklamayı kopyala</button>
+</article><article class="card" id="p58">
+  <button class="shot" type="button" data-full="p/58_tahmin.jpg" aria-label="Post 58 büyük göster"><img src="p/58_tahmin.jpg" alt="Post 58: Hangisi daha hafif?" loading="lazy" width="1080" height="1350"></button>
+  <div class="meta"><span class="no">58</span><span class="ser">Hangisi daha hafif?</span><span class="new">YENİ</span></div>
+  <details><summary>Açıklama ve hashtag</summary><pre id="c58">Hangisi daha hafif? 🤔
+
+A: 1 kase mercimek çorbası (≈ 250 ml)
+B: 1 porsiyon pirinç pilavı (≈ 150 g)
+
+Tahminini yorumlara yaz 👇
+.
+.
+.
+Cevap: Mercimek çorbası ≈ 150 kcal · Pilav ≈ 230 kcal (yaklaşık)
+Çorba daha hafif; üstelik lif ve bitkisel protein açısından zengin. Pilavda porsiyon belirleyici.
+
+Türk mutfağını tahminle değil, FİT KAL&#x27;la ölç 📱
+
+(Değerler yaklaşıktır, genel bilgilendirme amaçlıdır.)
+
+#fitkal #kaloritakibi #diyet #sağlıklıyaşam #türkmutfağı #kilovermek #sağlıklıbeslenme #hangisi #kalori
+</pre></details>
+  <button class="copy" type="button" data-target="c58">Açıklamayı kopyala</button>
+</article><article class="card" id="p59">
+  <button class="shot" type="button" data-full="p/59_mit.jpg" aria-label="Post 59 büyük göster"><img src="p/59_mit.jpg" alt="Post 59: Mit mi, gerçek mi?" loading="lazy" width="1080" height="1350"></button>
+  <div class="meta"><span class="no">59</span><span class="ser">Mit mi, gerçek mi?</span><span class="new">YENİ</span></div>
+  <details><summary>Açıklama ve hashtag</summary><pre id="c59">“Kilo vermek için ekmeği tamamen kesmek şart.” 🤔
+
+MİT! Sonucu günün toplam dengesi belirler. Tam buğday ekmek, doğru porsiyonla dengeli tabakta yer alabilir.
+
+Sen de duymuş muydun? Yorumlara yaz 👇
+
+(Genel bilgilendirme amaçlıdır.)
+
+#fitkal #kaloritakibi #diyet #sağlıklıyaşam #türkmutfağı #kilovermek #sağlıklıbeslenme #mitmigerçekmi
+</pre></details>
+  <button class="copy" type="button" data-target="c59">Açıklamayı kopyala</button>
+</article><article class="card" id="p60">
+  <button class="shot" type="button" data-full="p/60_soz.jpg" aria-label="Post 60 büyük göster"><img src="p/60_soz.jpg" alt="Post 60: Günün sözü" loading="lazy" width="1080" height="1350"></button>
+  <div class="meta"><span class="no">60</span><span class="ser">Günün sözü</span><span class="new">YENİ</span></div>
+  <details><summary>Açıklama ve hashtag</summary><pre id="c60">Yavaş ye, tadını çıkar. 💚
+
+Sevdiğin yemeği bırakma; ölçüsünü bul. FİT KAL&#x27;da kaydet.
+
+#fitkal #kaloritakibi #diyet #sağlıklıyaşam #türkmutfağı #kilovermek #sağlıklıbeslenme #motivasyon #porsiyonkontrolü
+</pre></details>
+  <button class="copy" type="button" data-target="c60">Açıklamayı kopyala</button>
+</article><article class="card" id="p61">
+  <button class="shot" type="button" data-full="p/61_uygulamada.jpg" aria-label="Post 61 büyük göster"><img src="p/61_uygulamada.jpg" alt="Post 61: Uygulamada" loading="lazy" width="1080" height="1350"></button>
+  <div class="meta"><span class="no">61</span><span class="ser">Uygulamada</span><span class="new">YENİ</span></div>
+  <details><summary>Açıklama ve hashtag</summary><pre id="c61">Tabağını çek, kalorisini gör. 📱
+
+Yapay zekâ tabaktakileri tanır; barkod ve elle ekleme de var.
+
+FİT KAL ücretsiz — link profilde 👆
+
+#fitkal #kaloritakibi #diyet #sağlıklıyaşam #türkmutfağı #kilovermek #sağlıklıbeslenme #fittarifler #kaloriuygulaması
+</pre></details>
+  <button class="copy" type="button" data-target="c61">Açıklamayı kopyala</button>
+</article><article class="card" id="p62">
+  <button class="shot" type="button" data-full="p/62_tahmin.jpg" aria-label="Post 62 büyük göster"><img src="p/62_tahmin.jpg" alt="Post 62: Hangisi daha hafif?" loading="lazy" width="1080" height="1350"></button>
+  <div class="meta"><span class="no">62</span><span class="ser">Hangisi daha hafif?</span><span class="new">YENİ</span></div>
+  <details><summary>Açıklama ve hashtag</summary><pre id="c62">Hangisi daha hafif? 🤔
+
+A: 1 porsiyon menemen (2 yumurta)
+B: 1 porsiyon sucuklu yumurta (2 yumurta)
+
+Tahminini yorumlara yaz 👇
+.
+.
+.
+Cevap: Menemen ≈ 250 kcal · Sucuklu yumurta ≈ 400 kcal (yaklaşık)
+Sucuk yağ ve tuz açısından yüksek; menemen sebzeyle daha hafif bir kahvaltı.
+
+Türk mutfağını tahminle değil, FİT KAL&#x27;la ölç 📱
+
+(Değerler yaklaşıktır, genel bilgilendirme amaçlıdır.)
+
+#fitkal #kaloritakibi #diyet #sağlıklıyaşam #türkmutfağı #kilovermek #sağlıklıbeslenme #hangisi #kalori
+</pre></details>
+  <button class="copy" type="button" data-target="c62">Açıklamayı kopyala</button>
+</article><article class="card" id="p63">
+  <button class="shot" type="button" data-full="p/63_sec.jpg" aria-label="Post 63 büyük göster"><img src="p/63_sec.jpg" alt="Post 63: Sen seç" loading="lazy" width="1080" height="1350"></button>
+  <div class="meta"><span class="no">63</span><span class="ser">Sen seç</span><span class="new">YENİ</span></div>
+  <details><summary>Açıklama ve hashtag</summary><pre id="c63">Çorbada tercihin? 🤷
+
+A: Mercimek  ·  B: Yayla
+
+Yorumlara A ya da B yaz, bakalım hangisi kazanacak 👇
+
+#fitkal #kaloritakibi #diyet #sağlıklıyaşam #türkmutfağı #kilovermek #sağlıklıbeslenme #senseç
+</pre></details>
+  <button class="copy" type="button" data-target="c63">Açıklamayı kopyala</button>
+</article></main>
+</div>
+<div class="lb" id="lb" hidden><img id="lbimg" alt="Büyük görsel"><p>Kaydetmek için görsele uzun bas.</p><button type="button" id="lbclose">Kapat</button></div>
+<script>
+(function () {
+  var D1 = new Date(2026, 9, 9), now = new Date();
+  var g = Math.round((new Date(now.getFullYear(), now.getMonth(), now.getDate()) - D1) / 864e5) + 1;
+  var shown = null, home = null;
+  function show(n) {
+    var sec = document.getElementById('g' + n), slot = document.getElementById('todaySlot');
+    if (!sec) return false;
+    if (shown) home.parentNode.insertBefore(shown, home.nextSibling);
+    home = sec.previousElementSibling; shown = sec; slot.appendChild(sec);
+    document.getElementById('today').hidden = false; return true;
+  }
+  if (!show(g)) { for (var k = g + 1; k < g + 40 && !show(k); k++); }
+  var cur = shown ? +shown.id.slice(1) : g;
+  document.getElementById('prevDay').addEventListener('click', function (e) { e.preventDefault(); if (show(cur - 1)) cur--; });
+  document.getElementById('nextDay').addEventListener('click', function (e) { e.preventDefault(); if (show(cur + 1)) cur++; });
+  var lb = document.getElementById('lb'), im = document.getElementById('lbimg');
+  document.querySelectorAll('.shot').forEach(function (b) {
+    b.addEventListener('click', function () { im.src = b.dataset.full; lb.hidden = false; });
+  });
+  document.getElementById('lbclose').addEventListener('click', function () { lb.hidden = true; });
+  lb.addEventListener('click', function (e) { if (e.target === lb) lb.hidden = true; });
+  document.querySelectorAll('.copy').forEach(function (b) {
+    b.addEventListener('click', function () {
+      var pre = document.getElementById(b.dataset.target), txt = pre.textContent, label = b.textContent;
+      function done(ok) { b.textContent = ok ? 'Kopyalandı' : 'Metni seçtim, kopyala'; setTimeout(function () { b.textContent = label; }, 1800); }
+      function fallback() { pre.parentElement.open = true; var r = document.createRange(); r.selectNodeContents(pre); var s = getSelection(); s.removeAllRanges(); s.addRange(r); done(false); }
+      try { navigator.clipboard.writeText(txt).then(function () { done(true); }, fallback); } catch (e) { fallback(); }
+    });
+  });
+})();
+</script>
