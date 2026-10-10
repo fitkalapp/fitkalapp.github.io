@@ -1,4 +1,4 @@
-<title>FİT KAL Yeni Postlar</title>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow,noarchive"><meta name="referrer" content="no-referrer"><title>FİT KAL Yeni Postlar</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap">
 <style>/* Layout: one column of post cards on phones, a 3-up grid (like the Instagram profile) on wider screens */
@@ -1384,5 +1384,25 @@ Yorumlara A ya da B yaz, bakalım hangisi kazanacak 👇
       try { navigator.clipboard.writeText(txt).then(function () { done(true); }, fallback); } catch (e) { fallback(); }
     });
   });
+})();
+</script>
+<style>.dl{display:block;margin:6px auto 14px;padding:10px 16px;border-radius:12px;background:#16a34a;color:#fff;font-weight:800;text-align:center;text-decoration:none;font-size:14px;max-width:320px}.dlnote{text-align:center;font-size:12px;opacity:.7;margin:4px 12px 12px}</style>
+<script>
+(function(){
+function add(){
+ document.querySelectorAll('button.shot[data-full]').forEach(function(b){
+  if(b.dataset.dl)return; b.dataset.dl=1;
+  var u=b.getAttribute('data-full'); var a=document.createElement('a');
+  a.className='dl'; a.href=u; a.setAttribute('download',u.split('/').pop()); a.textContent='⬇ İndir';
+  b.insertAdjacentElement('afterend',a);
+ });
+ document.querySelectorAll('a.jump[href$=".mp4"]').forEach(function(l){
+  if(l.dataset.dl)return; l.dataset.dl=1; l.removeAttribute('target');
+  l.setAttribute('download',l.getAttribute('href').split('/').pop()); l.textContent='⬇ Videoyu indir';
+  l.classList.add('dl');
+ });
+ if(!document.getElementById('dlnote')){var n=document.createElement('p');n.id='dlnote';n.className='dlnote';n.textContent='İndirme olmazsa görsele uzun bas → Fotoğraflara ekle.';document.body.insertBefore(n,document.body.firstChild);}
+}
+add(); new MutationObserver(add).observe(document.body,{childList:true,subtree:true});
 })();
 </script>
