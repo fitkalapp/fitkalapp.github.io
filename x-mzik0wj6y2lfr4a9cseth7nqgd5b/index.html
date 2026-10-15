@@ -53,8 +53,9 @@ pre { white-space: pre-wrap; word-break: break-word; font-family: var(--font-dis
 .pp { color: var(--muted); font-size: 14px; line-height: 1.5; margin: 0 0 4px; max-width: 70ch; }
 .day { background: var(--warm); border-radius: 18px; padding: 14px; }
 .day h2 { margin: 0 0 10px; font-size: 18px; }
-.dgrid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; align-items: start; }
-@media (max-width: 520px) { .dgrid { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; } .how2 { font-size: 12px; } }
+.dgrid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; align-items: start; }
+.dgrid > :empty { display: none; }
+@media (max-width: 860px) { .dgrid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; } .how2 { font-size: 13px; } }
 .dcard { display: flex; flex-direction: column; gap: 6px; min-width: 0; }
 .when { font-size: 12px; font-weight: 800; letter-spacing: .06em; text-transform: uppercase; color: var(--accent); }
 .jump { font-size: 13px; font-weight: 700; color: var(--accent); }
@@ -68,23 +69,32 @@ pre { white-space: pre-wrap; word-break: break-word; font-family: var(--font-dis
 .tnav { display: flex; justify-content: space-between; font-weight: 700; font-size: 15px; }
 .tnav a { color: var(--accent); }
 .lb[hidden] { display: none; }
+
+.ads{margin:28px 0}
+.agrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:12px;margin:12px 0}
+.agrid.vids{grid-template-columns:repeat(auto-fill,minmax(220px,1fr))}
+.acard{background:var(--card,#fff);border-radius:14px;padding:8px;text-align:center}
+.acard img,.acard video{width:100%;height:auto;border-radius:10px;display:block;background:#000}
+.acard .ser{font-size:12px;opacity:.7;margin-top:6px}
 </style>
 <div class="wrap">
   <header>
-    <h1>FİT KAL · 63 post</h1>
-    <p>4:5 akış postları, sırayla günde bir. Paylaşılanlar soluk ve "Paylaşıldı ✓" işaretli · 61 post sırada bekliyor.</p>
+    <h1>FİT KAL · Paylaşım paneli</h1>
+    <p>63 post · 47 hikâye · 29 Reels. Paylaşılanlar soluk ve "Paylaşıldı ✓" işaretli · 61 post sırada.</p>
   </header>
   <div class="how"><b>Telefona kaydetmek için:</b> görsele dokun, büyük hâline <b>uzun bas</b> → "Fotoğraflara ekle". Açıklama için "Açıklamayı kopyala".</div>
   <section class="today" id="today" hidden><h2 class="th">Bugün paylaşılacaklar</h2>
   <p class="pp">Sırayla: 09:00 sabah hikâyesi · 12:30 post · (Reels günlerinde 19:00) · 20:30 akşam hikâyesi. Görsele dokun → büyüt → uzun bas → Fotoğraflara ekle.</p>
   <div id="todaySlot"></div><nav class="tnav"><a href="#" id="prevDay">← Dün</a><a href="#" id="nextDay">Yarın →</a></nav></section>
   <section class="plan"><h2 class="ph2">Paylaşım takvimi · her gün 1 post + 2 hikâye</h2>
-  <p class="pp">Sabah 09:00 etkileşim hikâyesi · Öğlen 12:30 post · Akşam 20:30 uygulama hikâyesi (bağlantı çıkartmalı). Salı ve Cuma 19:00 Reels; pazartesileri 5 günlük Reels reklamı. Buzlu boş alanlar çıkartma yeri.</p>
-  <section class="day" id="g0"><h2>8 Ekim Perşembe · BUGÜN (akşam)</h2><div class="dgrid"><article class="dcard"><div class="when">Post</div><p class="how2">Bugünkü post ve sabah hikâyesi atıldı ✓</p></article><article class="dcard"></article><article class="dcard"><div class="when">Akşam · Hikâye</div>
+  <p class="pp">Sabah 09:00 etkileşim hikâyesi · Öğlen 12:30 post · Akşam 20:30 uygulama hikâyesi (bağlantı çıkartmalı). Salı, Perşembe, Cumartesi ve Pazar 19:00 Reels; pazartesileri 5 günlük Reels reklamı. Aynı gün birbirine benzeyen iki paylaşım yok. Buzlu boş alanlar çıkartma yeri.</p>
+  <section class="day" id="g0"><h2>8 Ekim Perşembe · BUGÜN (akşam)</h2><div class="dgrid"><article class="dcard"><div class="when">Post</div><p class="how2">Bugünkü post ve sabah hikâyesi atıldı ✓</p></article><article class="dcard"></article><article class="dcard"><div class="when">Akşam 20:30 · Hikâye</div>
   <button class="shot" type="button" data-full="s/G00_2aksam_app_bugun_ne_yedin.jpg" aria-label="Hikâye büyük göster"><img src="s/G00_2aksam_app_bugun_ne_yedin.jpg" alt="Hikâye: Uygulamada + bağlantı" loading="lazy" width="1080" height="1920"></button>
-  <div class="ser">Uygulamada + bağlantı</div><p class="how2">Çıkartmalar → <b>BAĞLANTI</b>: fitkalapp.github.io/indir · yazı "Ücretsiz indir" → buzlu yuvarlak alana koy.</p></article></div></section><section class="day" id="g1"><h2>9 Ekim Cuma · 1. gün</h2><div class="dgrid"><article class="dcard"><div class="when">Öğlen · Post 41</div>
+  <div class="ser">Uygulamada + bağlantı</div><p class="how2">Çıkartmalar → <b>BAĞLANTI</b>: fitkalapp.github.io/indir · yazı "Ücretsiz indir" → buzlu yuvarlak alana koy.</p></article></div></section><section class="day" id="g1"><h2>9 Ekim Cuma · 1. gün</h2><div class="dgrid"><article class="dcard"><div class="when">Sabah 09:00 · Hikâye</div>
+  <button class="shot" type="button" data-full="s/G01_1sabah_test_ayran_kola.jpg" aria-label="Hikâye büyük göster"><img src="s/G01_1sabah_test_ayran_kola.jpg" alt="Hikâye: Test çıkartması" loading="lazy" width="1080" height="1920"></button>
+  <div class="ser">Test çıkartması</div><p class="how2">Çıkartmalar → <b>TEST</b> → soru: "Hangisi daha hafif?" · A: Ayran ✅ · B: Kola → alttaki buzlu alana koy.</p></article><article class="dcard"><div class="when">Öğlen 12:30 · Post 41</div>
   <button class="shot" type="button" data-full="p/41_tahmin.jpg" aria-label="Post 41 büyük göster"><img src="p/41_tahmin.jpg" alt="Post 41" loading="lazy" width="1080" height="1350"></button>
-  <details open><summary>Post açıklaması</summary><pre id="dc1">Hangisi daha hafif? 🤔
+  <details><summary>Post açıklaması</summary><pre id="dc1">Hangisi daha hafif? 🤔
 
 A: 1 bardak ayran (200 ml)
 B: 1 bardak kola (200 ml)
@@ -102,11 +112,7 @@ Kalorini tahmin etmek yerine FİT KAL&#x27;da ölç 📱
 
 #fitkal #kaloritakibi #diyet #sağlıklıyaşam #fityaşam #kilovermek #sağlıklıbeslenme #hangisi #kalori
 </pre></details>
-  <button class="copy" type="button" data-target="dc1">Post açıklamasını kopyala</button></article><article class="dcard"><div class="when">Sabah · Hikâye</div>
-  <button class="shot" type="button" data-full="s/G01_1sabah_test_ayran_kola.jpg" aria-label="Hikâye büyük göster"><img src="s/G01_1sabah_test_ayran_kola.jpg" alt="Hikâye: Test çıkartması" loading="lazy" width="1080" height="1920"></button>
-  <div class="ser">Test çıkartması</div><p class="how2">Çıkartmalar → <b>TEST</b> → soru: "Hangisi daha hafif?" · A: Ayran ✅ · B: Kola → alttaki buzlu alana koy.</p></article><article class="dcard"><div class="when">Akşam · Hikâye</div>
-  <button class="shot" type="button" data-full="s/G01_2aksam_kaydirici_su.jpg" aria-label="Hikâye büyük göster"><img src="s/G01_2aksam_kaydirici_su.jpg" alt="Hikâye: Emoji kaydırıcı" loading="lazy" width="1080" height="1920"></button>
-  <div class="ser">Emoji kaydırıcı</div><p class="how2">Çıkartmalar → <b>EMOJİ KAYDIRICI</b> → 💧 seç, soru: "Bugün kaç bardak?" → buzlu alana koy.</p></article><article class="dcard reel"><div class="when">19:00 · Reels</div>
+  <button class="copy" type="button" data-target="dc1">Post açıklamasını kopyala</button></article><article class="dcard reel"><div class="when">19:00 · Reels</div>
   <video src="r/02_FitKal_TabaginKalorisi_10sn.mp4" controls playsinline preload="metadata" width="1080" height="1920"></video>
   <a class="jump" href="r/02_FitKal_TabaginKalorisi_10sn.mp4" target="_blank" rel="noopener">Videoyu ayrı aç (kaydetmek için) ↗</a>
   <details><summary>Reels açıklaması</summary><pre id="r1">Tabağının fotoğrafını çek, kalorisi saniyeler içinde gelsin 📸
@@ -114,21 +120,25 @@ Kalorini tahmin etmek yerine FİT KAL&#x27;da ölç 📱
 Tahmin yok, uğraş yok. FİT KAL ücretsiz — link profilde 👆
 
 #fitkal #kaloritakibi #diyet #sağlıklıyaşam #reels #kilovermek #fityaşam</pre></details>
-  <button class="copy" type="button" data-target="r1">Açıklamayı kopyala</button></article></div></section><section class="day" id="g2"><h2>10 Ekim Cumartesi · 2. gün</h2><div class="dgrid"><article class="dcard"><div class="when">Öğlen · Post 42</div>
+  <button class="copy" type="button" data-target="r1">Açıklamayı kopyala</button></article><article class="dcard"><div class="when">Akşam 20:30 · Hikâye</div>
+  <button class="shot" type="button" data-full="s/G01_2aksam_kaydirici_su.jpg" aria-label="Hikâye büyük göster"><img src="s/G01_2aksam_kaydirici_su.jpg" alt="Hikâye: Emoji kaydırıcı" loading="lazy" width="1080" height="1920"></button>
+  <div class="ser">Emoji kaydırıcı</div><p class="how2">Çıkartmalar → <b>EMOJİ KAYDIRICI</b> → 💧 seç, soru: "Bugün kaç bardak?" → buzlu alana koy.</p></article></div></section><section class="day" id="g2"><h2>10 Ekim Cumartesi · 2. gün</h2><div class="dgrid"><article class="dcard"><div class="when">Sabah 09:00 · Hikâye</div>
+  <button class="shot" type="button" data-full="s/G02_1sabah_anket_antrenman.jpg" aria-label="Hikâye büyük göster"><img src="s/G02_1sabah_anket_antrenman.jpg" alt="Hikâye: Anket" loading="lazy" width="1080" height="1920"></button>
+  <div class="ser">Anket</div><p class="how2">Çıkartmalar → <b>ANKET</b> → "Bugün antrenman var mı?" · Seçenekler: "Var" / "Dinlenme günü" → buzlu alana koy.</p></article><article class="dcard"><div class="when">Öğlen 12:30 · Post 42</div>
   <button class="shot" type="button" data-full="p/42_soz.jpg" aria-label="Post 42 büyük göster"><img src="p/42_soz.jpg" alt="Post 42" loading="lazy" width="1080" height="1350"></button>
-  <details open><summary>Post açıklaması</summary><pre id="dc2">Yorgunsan kısa yap. Ama yap. 💚
+  <details><summary>Post açıklaması</summary><pre id="dc2">Yorgunsan kısa yap. Ama yap. 💚
 
 Bugün küçük bir adım at, FİT KAL&#x27;da kaydet.
 
 #fitkal #kaloritakibi #diyet #sağlıklıyaşam #fityaşam #kilovermek #sağlıklıbeslenme #motivasyon #disiplin
 </pre></details>
-  <button class="copy" type="button" data-target="dc2">Post açıklamasını kopyala</button></article><article class="dcard"><div class="when">Sabah · Hikâye</div>
-  <button class="shot" type="button" data-full="s/G02_1sabah_anket_antrenman.jpg" aria-label="Hikâye büyük göster"><img src="s/G02_1sabah_anket_antrenman.jpg" alt="Hikâye: Anket" loading="lazy" width="1080" height="1920"></button>
-  <div class="ser">Anket</div><p class="how2">Çıkartmalar → <b>ANKET</b> → "Bugün antrenman var mı?" · Seçenekler: "Var" / "Dinlenme günü" → buzlu alana koy.</p></article><article class="dcard"><div class="when">Akşam · Hikâye</div>
+  <button class="copy" type="button" data-target="dc2">Post açıklamasını kopyala</button></article><article class="dcard"><div class="when">Akşam 20:30 · Hikâye</div>
   <button class="shot" type="button" data-full="s/G02_2aksam_app_antrenman.jpg" aria-label="Hikâye büyük göster"><img src="s/G02_2aksam_app_antrenman.jpg" alt="Hikâye: Uygulamada + bağlantı" loading="lazy" width="1080" height="1920"></button>
-  <div class="ser">Uygulamada + bağlantı</div><p class="how2">Çıkartmalar → <b>BAĞLANTI</b>: fitkalapp.github.io/indir · yazı "Ücretsiz indir" → buzlu yuvarlak alana koy.</p></article></div></section><section class="day" id="g3"><h2>11 Ekim Pazar · 3. gün</h2><div class="dgrid"><article class="dcard"><div class="when">Öğlen · Post 43</div>
+  <div class="ser">Uygulamada + bağlantı</div><p class="how2">Çıkartmalar → <b>BAĞLANTI</b>: fitkalapp.github.io/indir · yazı "Ücretsiz indir" → buzlu yuvarlak alana koy.</p></article></div></section><section class="day" id="g3"><h2>11 Ekim Pazar · 3. gün</h2><div class="dgrid"><article class="dcard"><div class="when">Sabah 09:00 · Hikâye</div>
+  <button class="shot" type="button" data-full="s/G03_1sabah_soru_market.jpg" aria-label="Hikâye büyük göster"><img src="s/G03_1sabah_soru_market.jpg" alt="Hikâye: Soru kutusu" loading="lazy" width="1080" height="1920"></button>
+  <div class="ser">Soru kutusu</div><p class="how2">Çıkartmalar → <b>SORULAR</b> → "Markette seni en çok ne zorluyor?" → buzlu alana koy. Gelen cevaplar yeni post fikri olur.</p></article><article class="dcard"><div class="when">Öğlen 12:30 · Post 43</div>
   <button class="shot" type="button" data-full="p/43_uygulamada.jpg" aria-label="Post 43 büyük göster"><img src="p/43_uygulamada.jpg" alt="Post 43" loading="lazy" width="1080" height="1350"></button>
-  <details open><summary>Post açıklaması</summary><pre id="dc3">Alışveriş listen diyetinden hazır. 📱
+  <details><summary>Post açıklaması</summary><pre id="dc3">Alışveriş listen diyetinden hazır. 📱
 
 Planındaki malzemeler reyonlara göre ayrılır; aldıklarını işaretle.
 
@@ -136,13 +146,13 @@ FİT KAL ücretsiz — link profilde 👆
 
 #fitkal #kaloritakibi #diyet #sağlıklıyaşam #fityaşam #kilovermek #sağlıklıbeslenme #diyetlistesi #kaloriuygulaması
 </pre></details>
-  <button class="copy" type="button" data-target="dc3">Post açıklamasını kopyala</button></article><article class="dcard"><div class="when">Sabah · Hikâye</div>
-  <button class="shot" type="button" data-full="s/G03_1sabah_soru_market.jpg" aria-label="Hikâye büyük göster"><img src="s/G03_1sabah_soru_market.jpg" alt="Hikâye: Soru kutusu" loading="lazy" width="1080" height="1920"></button>
-  <div class="ser">Soru kutusu</div><p class="how2">Çıkartmalar → <b>SORULAR</b> → "Markette seni en çok ne zorluyor?" → buzlu alana koy. Gelen cevaplar yeni post fikri olur.</p></article><article class="dcard"><div class="when">Akşam · Hikâye</div>
+  <button class="copy" type="button" data-target="dc3">Post açıklamasını kopyala</button></article><article class="dcard"><div class="when">Akşam 20:30 · Hikâye</div>
   <button class="shot" type="button" data-full="s/G03_2aksam_app_alisveris.jpg" aria-label="Hikâye büyük göster"><img src="s/G03_2aksam_app_alisveris.jpg" alt="Hikâye: Uygulamada + bağlantı" loading="lazy" width="1080" height="1920"></button>
-  <div class="ser">Uygulamada + bağlantı</div><p class="how2">Çıkartmalar → <b>BAĞLANTI</b>: fitkalapp.github.io/indir · yazı "Ücretsiz indir" → buzlu yuvarlak alana koy.</p></article></div></section><section class="day" id="g4"><h2>12 Ekim Pazartesi · 4. gün</h2><div class="dgrid"><article class="dcard"><div class="when">Öğlen · Post 44</div>
+  <div class="ser">Uygulamada + bağlantı</div><p class="how2">Çıkartmalar → <b>BAĞLANTI</b>: fitkalapp.github.io/indir · yazı "Ücretsiz indir" → buzlu yuvarlak alana koy.</p></article></div></section><section class="day" id="g4"><h2>12 Ekim Pazartesi · 4. gün</h2><div class="dgrid"><article class="dcard"><div class="when">Sabah 09:00 · Hikâye</div>
+  <button class="shot" type="button" data-full="s/G04_1sabah_test_light.jpg" aria-label="Hikâye büyük göster"><img src="s/G04_1sabah_test_light.jpg" alt="Hikâye: Test çıkartması" loading="lazy" width="1080" height="1920"></button>
+  <div class="ser">Test çıkartması</div><p class="how2">Çıkartmalar → <b>TEST</b> → "Light ürün kalorisiz mi?" · A: Evet · B: Hayır ✅ → buzlu alana koy.</p></article><article class="dcard"><div class="when">Öğlen 12:30 · Post 44</div>
   <button class="shot" type="button" data-full="p/44_mit.jpg" aria-label="Post 44 büyük göster"><img src="p/44_mit.jpg" alt="Post 44" loading="lazy" width="1080" height="1350"></button>
-  <details open><summary>Post açıklaması</summary><pre id="dc4">“Light ürünleri istediğin kadar yiyebilirsin.” 🤔
+  <details><summary>Post açıklaması</summary><pre id="dc4">“Light ürünleri istediğin kadar yiyebilirsin.” 🤔
 
 MİT! Light, normaline göre daha az kalori demek; kalorisiz değil. Porsiyonu yine etiketten kontrol et.
 
@@ -152,13 +162,13 @@ Sen de duymuş muydun? Yorumlara yaz 👇
 
 #fitkal #kaloritakibi #diyet #sağlıklıyaşam #fityaşam #kilovermek #sağlıklıbeslenme #mitmigerçekmi
 </pre></details>
-  <button class="copy" type="button" data-target="dc4">Post açıklamasını kopyala</button></article><article class="dcard"><div class="when">Sabah · Hikâye</div>
-  <button class="shot" type="button" data-full="s/G04_1sabah_test_light.jpg" aria-label="Hikâye büyük göster"><img src="s/G04_1sabah_test_light.jpg" alt="Hikâye: Test çıkartması" loading="lazy" width="1080" height="1920"></button>
-  <div class="ser">Test çıkartması</div><p class="how2">Çıkartmalar → <b>TEST</b> → "Light ürün kalorisiz mi?" · A: Evet · B: Hayır ✅ → buzlu alana koy.</p></article><article class="dcard"><div class="when">Akşam · Hikâye</div>
+  <button class="copy" type="button" data-target="dc4">Post açıklamasını kopyala</button></article><article class="dcard"><div class="when">Akşam 20:30 · Hikâye</div>
   <button class="shot" type="button" data-full="s/G04_2aksam_app_fotograf.jpg" aria-label="Hikâye büyük göster"><img src="s/G04_2aksam_app_fotograf.jpg" alt="Hikâye: Uygulamada + bağlantı" loading="lazy" width="1080" height="1920"></button>
-  <div class="ser">Uygulamada + bağlantı</div><p class="how2">Çıkartmalar → <b>BAĞLANTI</b>: fitkalapp.github.io/indir · yazı "Ücretsiz indir" → buzlu yuvarlak alana koy.</p></article><article class="dcard boost"><div class="when">Reklam</div><p class="how2"><b>Bugün reklam başlat (12–16 Ekim, 5 gün):</b> geçen haftanın en çok izlenen / kaydedilen Reels'ini seç → Instagram'da Reels → <b>Öne çıkar</b>. Hedef: Türkiye, 18–45, ilgi: diyet, fitness, sağlıklı beslenme.</p></article></div></section><section class="day" id="g5"><h2>13 Ekim Salı · 5. gün</h2><div class="dgrid"><article class="dcard"><div class="when">Öğlen · Post 45</div>
+  <div class="ser">Uygulamada + bağlantı</div><p class="how2">Çıkartmalar → <b>BAĞLANTI</b>: fitkalapp.github.io/indir · yazı "Ücretsiz indir" → buzlu yuvarlak alana koy.</p></article><article class="dcard boost"><div class="when">Reklam</div><p class="how2"><b>Bugün reklam başlat (12–16 Ekim, 5 gün):</b> geçen haftanın en çok izlenen / kaydedilen Reels'ini seç → Instagram'da Reels → <b>Öne çıkar</b>. Hedef: Türkiye, 18–45, ilgi: diyet, fitness, sağlıklı beslenme.</p></article></div></section><section class="day" id="g5"><h2>13 Ekim Salı · 5. gün</h2><div class="dgrid"><article class="dcard"><div class="when">Sabah 09:00 · Hikâye</div>
+  <button class="shot" type="button" data-full="s/G05_1sabah_kaydirici_enerji.jpg" aria-label="Hikâye büyük göster"><img src="s/G05_1sabah_kaydirici_enerji.jpg" alt="Hikâye: Emoji kaydırıcı" loading="lazy" width="1080" height="1920"></button>
+  <div class="ser">Emoji kaydırıcı</div><p class="how2">Çıkartmalar → <b>EMOJİ KAYDIRICI</b> → ⚡ seç, soru: "Bugün enerjin?" → buzlu alana koy.</p></article><article class="dcard"><div class="when">Öğlen 12:30 · Post 45</div>
   <button class="shot" type="button" data-full="p/45_sec.jpg" aria-label="Post 45 büyük göster"><img src="p/45_sec.jpg" alt="Post 45" loading="lazy" width="1080" height="1350"></button>
-  <details open><summary>Post açıklaması</summary><pre id="dc5">Bu akşam yemek? 🤷
+  <details><summary>Post açıklaması</summary><pre id="dc5">Bu akşam yemek? 🤷
 
 A: Ev Yemeği̇  ·  B: Dişarida
 
@@ -166,11 +176,7 @@ Yorumlara A ya da B yaz, bakalım hangisi kazanacak 👇
 
 #fitkal #kaloritakibi #diyet #sağlıklıyaşam #fityaşam #kilovermek #sağlıklıbeslenme #senseç
 </pre></details>
-  <button class="copy" type="button" data-target="dc5">Post açıklamasını kopyala</button></article><article class="dcard"><div class="when">Sabah · Hikâye</div>
-  <button class="shot" type="button" data-full="s/G05_1sabah_kaydirici_enerji.jpg" aria-label="Hikâye büyük göster"><img src="s/G05_1sabah_kaydirici_enerji.jpg" alt="Hikâye: Emoji kaydırıcı" loading="lazy" width="1080" height="1920"></button>
-  <div class="ser">Emoji kaydırıcı</div><p class="how2">Çıkartmalar → <b>EMOJİ KAYDIRICI</b> → ⚡ seç, soru: "Bugün enerjin?" → buzlu alana koy.</p></article><article class="dcard"><div class="when">Akşam · Hikâye</div>
-  <button class="shot" type="button" data-full="s/G05_2aksam_app_ozet.jpg" aria-label="Hikâye büyük göster"><img src="s/G05_2aksam_app_ozet.jpg" alt="Hikâye: Uygulamada + bağlantı" loading="lazy" width="1080" height="1920"></button>
-  <div class="ser">Uygulamada + bağlantı</div><p class="how2">Çıkartmalar → <b>BAĞLANTI</b>: fitkalapp.github.io/indir · yazı "Ücretsiz indir" → buzlu yuvarlak alana koy.</p></article><article class="dcard reel"><div class="when">19:00 · Reels</div>
+  <button class="copy" type="button" data-target="dc5">Post açıklamasını kopyala</button></article><article class="dcard reel"><div class="when">19:00 · Reels</div>
   <video src="r/21_FitKal_200Kalori_10sn.mp4" controls playsinline preload="metadata" width="1080" height="1920"></video>
   <a class="jump" href="r/21_FitKal_200Kalori_10sn.mp4" target="_blank" rel="noopener">Videoyu ayrı aç (kaydetmek için) ↗</a>
   <details><summary>Reels açıklaması</summary><pre id="r5">200 kalori neye benzer? 🤔
@@ -181,9 +187,13 @@ FİT KAL ücretsiz — link profilde 👆
 (Değerler yaklaşıktır.)
 
 #fitkal #kaloritakibi #diyet #sağlıklıyaşam #reels #kilovermek #fityaşam</pre></details>
-  <button class="copy" type="button" data-target="r5">Açıklamayı kopyala</button></article></div></section><section class="day" id="g6"><h2>14 Ekim Çarşamba · 6. gün</h2><div class="dgrid"><article class="dcard"><div class="when">Öğlen · Post 46</div>
+  <button class="copy" type="button" data-target="r5">Açıklamayı kopyala</button></article><article class="dcard"><div class="when">Akşam 20:30 · Hikâye</div>
+  <button class="shot" type="button" data-full="s/G05_2aksam_app_ozet.jpg" aria-label="Hikâye büyük göster"><img src="s/G05_2aksam_app_ozet.jpg" alt="Hikâye: Uygulamada + bağlantı" loading="lazy" width="1080" height="1920"></button>
+  <div class="ser">Uygulamada + bağlantı</div><p class="how2">Çıkartmalar → <b>BAĞLANTI</b>: fitkalapp.github.io/indir · yazı "Ücretsiz indir" → buzlu yuvarlak alana koy.</p></article></div></section><section class="day" id="g6"><h2>14 Ekim Çarşamba · 6. gün</h2><div class="dgrid"><article class="dcard"><div class="when">Sabah 09:00 · Hikâye</div>
+  <button class="shot" type="button" data-full="s/G06_1sabah_anket_ogun.jpg" aria-label="Hikâye büyük göster"><img src="s/G06_1sabah_anket_ogun.jpg" alt="Hikâye: Anket (4 seçenek)" loading="lazy" width="1080" height="1920"></button>
+  <div class="ser">Anket (4 seçenek)</div><p class="how2">Çıkartmalar → <b>ANKET</b> → "En zor öğün hangisi?" · 4 seçenek: Kahvaltı / Öğle / Akşam / Ara öğün → buzlu alana koy.</p></article><article class="dcard"><div class="when">Öğlen 12:30 · Post 46</div>
   <button class="shot" type="button" data-full="p/46_uygulamada.jpg" aria-label="Post 46 büyük göster"><img src="p/46_uygulamada.jpg" alt="Post 46" loading="lazy" width="1080" height="1350"></button>
-  <details open><summary>Post açıklaması</summary><pre id="dc6">Diyet listen hedefine göre hazır. 📱
+  <details><summary>Post açıklaması</summary><pre id="dc6">Diyet listen hedefine göre hazır. 📱
 
 Kalori ve makro hedefine göre her öğün senin için planlanır.
 
@@ -191,13 +201,13 @@ FİT KAL ücretsiz — link profilde 👆
 
 #fitkal #kaloritakibi #diyet #sağlıklıyaşam #fityaşam #kilovermek #sağlıklıbeslenme #diyetlistesi #kaloriuygulaması
 </pre></details>
-  <button class="copy" type="button" data-target="dc6">Post açıklamasını kopyala</button></article><article class="dcard"><div class="when">Sabah · Hikâye</div>
-  <button class="shot" type="button" data-full="s/G06_1sabah_anket_ogun.jpg" aria-label="Hikâye büyük göster"><img src="s/G06_1sabah_anket_ogun.jpg" alt="Hikâye: Anket (4 seçenek)" loading="lazy" width="1080" height="1920"></button>
-  <div class="ser">Anket (4 seçenek)</div><p class="how2">Çıkartmalar → <b>ANKET</b> → "En zor öğün hangisi?" · 4 seçenek: Kahvaltı / Öğle / Akşam / Ara öğün → buzlu alana koy.</p></article><article class="dcard"><div class="when">Akşam · Hikâye</div>
+  <button class="copy" type="button" data-target="dc6">Post açıklamasını kopyala</button></article><article class="dcard"><div class="when">Akşam 20:30 · Hikâye</div>
   <button class="shot" type="button" data-full="s/G06_2aksam_app_ilerleme.jpg" aria-label="Hikâye büyük göster"><img src="s/G06_2aksam_app_ilerleme.jpg" alt="Hikâye: Uygulamada + bağlantı" loading="lazy" width="1080" height="1920"></button>
-  <div class="ser">Uygulamada + bağlantı</div><p class="how2">Çıkartmalar → <b>BAĞLANTI</b>: fitkalapp.github.io/indir · yazı "Ücretsiz indir" → buzlu yuvarlak alana koy.</p></article></div></section><section class="day" id="g7"><h2>15 Ekim Perşembe · 7. gün</h2><div class="dgrid"><article class="dcard"><div class="when">Öğlen · Post 47</div>
+  <div class="ser">Uygulamada + bağlantı</div><p class="how2">Çıkartmalar → <b>BAĞLANTI</b>: fitkalapp.github.io/indir · yazı "Ücretsiz indir" → buzlu yuvarlak alana koy.</p></article></div></section><section class="day" id="g7"><h2>15 Ekim Perşembe · 7. gün</h2><div class="dgrid"><article class="dcard"><div class="when">Sabah 09:00 · Hikâye</div>
+  <button class="shot" type="button" data-full="s/G07_1sabah_anket_evde_salon.jpg" aria-label="Hikâye büyük göster"><img src="s/G07_1sabah_anket_evde_salon.jpg" alt="Hikâye: Anket" loading="lazy" width="1080" height="1920"></button>
+  <div class="ser">Anket</div><p class="how2">Çıkartmalar → <b>ANKET</b> → soru başlıktaki gibi · "Evde" / "Salonda" → buzlu alana koy.</p></article><article class="dcard"><div class="when">Öğlen 12:30 · Post 47</div>
   <button class="shot" type="button" data-full="p/47_tahmin.jpg" aria-label="Post 47 büyük göster"><img src="p/47_tahmin.jpg" alt="Post 47" loading="lazy" width="1080" height="1350"></button>
-  <details open><summary>Post açıklaması</summary><pre id="dc7">Hangisi daha hafif? 🤔
+  <details><summary>Post açıklaması</summary><pre id="dc7">Hangisi daha hafif? 🤔
 
 A: 1 simit (orta boy)
 B: 2 dilim tam buğday ekmeği (≈ 60 g)
@@ -215,34 +225,34 @@ Kalorini tahmin etmek yerine FİT KAL&#x27;da ölç 📱
 
 #fitkal #kaloritakibi #diyet #sağlıklıyaşam #fityaşam #kilovermek #sağlıklıbeslenme #hangisi #kalori
 </pre></details>
-  <button class="copy" type="button" data-target="dc7">Post açıklamasını kopyala</button></article><article class="dcard"><div class="when">Sabah · Hikâye</div>
-  <button class="shot" type="button" data-full="s/G07_1sabah_test_simit.jpg" aria-label="Hikâye büyük göster"><img src="s/G07_1sabah_test_simit.jpg" alt="Hikâye: Test çıkartması" loading="lazy" width="1080" height="1920"></button>
-  <div class="ser">Test çıkartması</div><p class="how2">Çıkartmalar → <b>TEST</b> → soru başlıktaki gibi · A: Simit · B: 2 dilim ekmek ✅ → buzlu alana koy.</p></article><article class="dcard"><div class="when">Akşam · Hikâye</div>
-  <button class="shot" type="button" data-full="s/G07_2aksam_app_diyet.jpg" aria-label="Hikâye büyük göster"><img src="s/G07_2aksam_app_diyet.jpg" alt="Hikâye: Uygulamada + bağlantı" loading="lazy" width="1080" height="1920"></button>
-  <div class="ser">Uygulamada + bağlantı</div><p class="how2">Çıkartmalar → <b>BAĞLANTI</b>: fitkalapp.github.io/indir · yazı "Ücretsiz indir" → buzlu yuvarlak alana koy.</p></article><article class="dcard reel"><div class="when">19:00 · Reels</div>
-  <video src="r/04_FitKal_Kebap_Quiz_10sn.mp4" controls playsinline preload="metadata" width="1080" height="1920"></video>
-  <a class="jump" href="r/04_FitKal_Kebap_Quiz_10sn.mp4" target="_blank" rel="noopener">Videoyu ayrı aç (kaydetmek için) ↗</a>
-  <details><summary>Reels açıklaması</summary><pre id="r7">Adana dürüm tabağı kaç kalori? 🤔
+  <button class="copy" type="button" data-target="dc7">Post açıklamasını kopyala</button></article><article class="dcard reel"><div class="when">19:00 · Reels</div>
+  <video src="r/FitKal_AI_01_KebapFoto_10sn.mp4" controls playsinline preload="metadata" width="1080" height="1920"></video>
+  <a class="jump" href="r/FitKal_AI_01_KebapFoto_10sn.mp4" target="_blank" rel="noopener">Videoyu ayrı aç (kaydetmek için) ↗</a>
+  <details><summary>Reels açıklaması</summary><pre id="r7">Bu tabak kaç kalori? 🤔
 
-Tahminini yorumlara yaz, cevap videoda 👀
-Türk mutfağını FİT KAL tanır — link profilde 👆
+Tahmin etme, ölç: fotoğrafını çek, FİT KAL her yiyeceği ayrı hesaplasın.
+FİT KAL ücretsiz — link profilde 👆
 
 #fitkal #kaloritakibi #diyet #sağlıklıyaşam #reels #kilovermek #fityaşam</pre></details>
-  <button class="copy" type="button" data-target="r7">Açıklamayı kopyala</button></article></div></section><section class="day" id="g8"><h2>16 Ekim Cuma · 8. gün</h2><div class="dgrid"><article class="dcard"><div class="when">Öğlen · Post 48</div>
+  <button class="copy" type="button" data-target="r7">Açıklamayı kopyala</button></article><article class="dcard"><div class="when">Akşam 20:30 · Hikâye</div>
+  <button class="shot" type="button" data-full="s/G07_2aksam_app_diyet.jpg" aria-label="Hikâye büyük göster"><img src="s/G07_2aksam_app_diyet.jpg" alt="Hikâye: Uygulamada + bağlantı" loading="lazy" width="1080" height="1920"></button>
+  <div class="ser">Uygulamada + bağlantı</div><p class="how2">Çıkartmalar → <b>BAĞLANTI</b>: fitkalapp.github.io/indir · yazı "Ücretsiz indir" → buzlu yuvarlak alana koy.</p></article></div></section><section class="day" id="g8"><h2>16 Ekim Cuma · 8. gün</h2><div class="dgrid"><article class="dcard"><div class="when">Sabah 09:00 · Hikâye</div>
+  <button class="shot" type="button" data-full="s/G08_1sabah_test_fotokalori.jpg" aria-label="Hikâye büyük göster"><img src="s/G08_1sabah_test_fotokalori.jpg" alt="Hikâye: Test çıkartması" loading="lazy" width="1080" height="1920"></button>
+  <div class="ser">Test çıkartması</div><p class="how2">Çıkartmalar → <b>TEST</b> → soru başlıktaki gibi · A: Evet ✅ · B: Hayır → buzlu alana koy.</p></article><article class="dcard"><div class="when">Öğlen 12:30 · Post 48</div>
   <button class="shot" type="button" data-full="p/48_soz.jpg" aria-label="Post 48 büyük göster"><img src="p/48_soz.jpg" alt="Post 48" loading="lazy" width="1080" height="1350"></button>
-  <details open><summary>Post açıklaması</summary><pre id="dc8">Vazgeçme, yavaşla. 💚
+  <details><summary>Post açıklaması</summary><pre id="dc8">Vazgeçme, yavaşla. 💚
 
 Bugün küçük bir adım at, FİT KAL&#x27;da kaydet.
 
 #fitkal #kaloritakibi #diyet #sağlıklıyaşam #fityaşam #kilovermek #sağlıklıbeslenme #motivasyon #disiplin
 </pre></details>
-  <button class="copy" type="button" data-target="dc8">Post açıklamasını kopyala</button></article><article class="dcard"><div class="when">Sabah · Hikâye</div>
-  <button class="shot" type="button" data-full="s/G08_1sabah_kaydirici_puan.jpg" aria-label="Hikâye büyük göster"><img src="s/G08_1sabah_kaydirici_puan.jpg" alt="Hikâye: Emoji kaydırıcı" loading="lazy" width="1080" height="1920"></button>
-  <div class="ser">Emoji kaydırıcı</div><p class="how2">Çıkartmalar → <b>EMOJİ KAYDIRICI</b> → ⭐ seç, soru başlıktaki gibi → buzlu alana koy.</p></article><article class="dcard"><div class="when">Akşam · Hikâye</div>
-  <button class="shot" type="button" data-full="s/G08_2aksam_app_oruc.jpg" aria-label="Hikâye büyük göster"><img src="s/G08_2aksam_app_oruc.jpg" alt="Hikâye: Uygulamada + bağlantı" loading="lazy" width="1080" height="1920"></button>
-  <div class="ser">Uygulamada + bağlantı</div><p class="how2">Çıkartmalar → <b>BAĞLANTI</b>: fitkalapp.github.io/indir · yazı "Ücretsiz indir" → buzlu yuvarlak alana koy.</p></article></div></section><section class="day" id="g9"><h2>17 Ekim Cumartesi · 9. gün</h2><div class="dgrid"><article class="dcard"><div class="when">Öğlen · Post 49</div>
+  <button class="copy" type="button" data-target="dc8">Post açıklamasını kopyala</button></article><article class="dcard"><div class="when">Akşam 20:30 · Hikâye</div>
+  <button class="shot" type="button" data-full="s/G08_2aksam_app_gizli.jpg" aria-label="Hikâye büyük göster"><img src="s/G08_2aksam_app_gizli.jpg" alt="Hikâye: Uygulamada + bağlantı" loading="lazy" width="1080" height="1920"></button>
+  <div class="ser">Uygulamada + bağlantı</div><p class="how2">Çıkartmalar → <b>BAĞLANTI</b>: fitkalapp.github.io/indir · yazı "Ücretsiz indir" → buzlu yuvarlak alana koy.</p></article></div></section><section class="day" id="g9"><h2>17 Ekim Cumartesi · 9. gün</h2><div class="dgrid"><article class="dcard"><div class="when">Sabah 09:00 · Hikâye</div>
+  <button class="shot" type="button" data-full="s/G09_1sabah_soru_anne.jpg" aria-label="Hikâye büyük göster"><img src="s/G09_1sabah_soru_anne.jpg" alt="Hikâye: Soru kutusu" loading="lazy" width="1080" height="1920"></button>
+  <div class="ser">Soru kutusu</div><p class="how2">Çıkartmalar → <b>SORULAR</b> → soru başlıktaki gibi → buzlu alana koy. Gelen cevaplar yeni içerik fikri olur.</p></article><article class="dcard"><div class="when">Öğlen 12:30 · Post 49</div>
   <button class="shot" type="button" data-full="p/49_uygulamada.jpg" aria-label="Post 49 büyük göster"><img src="p/49_uygulamada.jpg" alt="Post 49" loading="lazy" width="1080" height="1350"></button>
-  <details open><summary>Post açıklaması</summary><pre id="dc9">Antrenman planın otomatik hazırlansın. 📱
+  <details><summary>Post açıklaması</summary><pre id="dc9">Antrenman planın otomatik hazırlansın. 📱
 
 Hedefine, ekipmanına ve seviyene göre haftalık plan.
 
@@ -250,11 +260,7 @@ FİT KAL ücretsiz — link profilde 👆
 
 #fitkal #kaloritakibi #diyet #sağlıklıyaşam #fityaşam #kilovermek #sağlıklıbeslenme #diyetlistesi #kaloriuygulaması
 </pre></details>
-  <button class="copy" type="button" data-target="dc9">Post açıklamasını kopyala</button></article><article class="dcard"><div class="when">Sabah · Hikâye</div>
-  <button class="shot" type="button" data-full="s/G09_1sabah_anket_evde_salon.jpg" aria-label="Hikâye büyük göster"><img src="s/G09_1sabah_anket_evde_salon.jpg" alt="Hikâye: Anket" loading="lazy" width="1080" height="1920"></button>
-  <div class="ser">Anket</div><p class="how2">Çıkartmalar → <b>ANKET</b> → soru başlıktaki gibi · "Evde" / "Salonda" → buzlu alana koy.</p></article><article class="dcard"><div class="when">Akşam · Hikâye</div>
-  <button class="shot" type="button" data-full="s/G09_2aksam_app_tarif.jpg" aria-label="Hikâye büyük göster"><img src="s/G09_2aksam_app_tarif.jpg" alt="Hikâye: Uygulamada + bağlantı" loading="lazy" width="1080" height="1920"></button>
-  <div class="ser">Uygulamada + bağlantı</div><p class="how2">Çıkartmalar → <b>BAĞLANTI</b>: fitkalapp.github.io/indir · yazı "Ücretsiz indir" → buzlu yuvarlak alana koy.</p></article><article class="dcard reel"><div class="when">19:00 · Reels</div>
+  <button class="copy" type="button" data-target="dc9">Post açıklamasını kopyala</button></article><article class="dcard reel"><div class="when">19:00 · Reels</div>
   <video src="r/22_FitKal_ZeytinyagiMiMuzMu_10sn.mp4" controls playsinline preload="metadata" width="1080" height="1920"></video>
   <a class="jump" href="r/22_FitKal_ZeytinyagiMiMuzMu_10sn.mp4" target="_blank" rel="noopener">Videoyu ayrı aç (kaydetmek için) ↗</a>
   <details><summary>Reels açıklaması</summary><pre id="r9">Bir kaşık zeytinyağı mı, bir muz mu? 🫒🍌
@@ -263,9 +269,13 @@ Zeytinyağı ≈120 kcal, muz ≈105 kcal. Küçük kaşıklar bile sayılır! H
 FİT KAL ücretsiz — link profilde 👆
 
 #fitkal #kaloritakibi #diyet #sağlıklıyaşam #reels #kilovermek #fityaşam</pre></details>
-  <button class="copy" type="button" data-target="r9">Açıklamayı kopyala</button></article></div></section><section class="day" id="g10"><h2>18 Ekim Pazar · 10. gün</h2><div class="dgrid"><article class="dcard"><div class="when">Öğlen · Post 50</div>
+  <button class="copy" type="button" data-target="r9">Açıklamayı kopyala</button></article><article class="dcard"><div class="when">Akşam 20:30 · Hikâye</div>
+  <button class="shot" type="button" data-full="s/G09_2aksam_app_barkod.jpg" aria-label="Hikâye büyük göster"><img src="s/G09_2aksam_app_barkod.jpg" alt="Hikâye: Uygulamada + bağlantı" loading="lazy" width="1080" height="1920"></button>
+  <div class="ser">Uygulamada + bağlantı</div><p class="how2">Çıkartmalar → <b>BAĞLANTI</b>: fitkalapp.github.io/indir · yazı "Ücretsiz indir" → buzlu yuvarlak alana koy.</p></article></div></section><section class="day" id="g10"><h2>18 Ekim Pazar · 10. gün</h2><div class="dgrid"><article class="dcard"><div class="when">Sabah 09:00 · Hikâye</div>
+  <button class="shot" type="button" data-full="s/G10_1sabah_kaydirici_uyku.jpg" aria-label="Hikâye büyük göster"><img src="s/G10_1sabah_kaydirici_uyku.jpg" alt="Hikâye: Emoji kaydırıcı" loading="lazy" width="1080" height="1920"></button>
+  <div class="ser">Emoji kaydırıcı</div><p class="how2">Çıkartmalar → <b>EMOJİ KAYDIRICI</b> → 😴 seç, soru başlıktaki gibi → buzlu alana koy.</p></article><article class="dcard"><div class="when">Öğlen 12:30 · Post 50</div>
   <button class="shot" type="button" data-full="p/50_mit.jpg" aria-label="Post 50 büyük göster"><img src="p/50_mit.jpg" alt="Post 50" loading="lazy" width="1080" height="1350"></button>
-  <details open><summary>Post açıklaması</summary><pre id="dc10">“Meyve akşam yenmez.” 🤔
+  <details><summary>Post açıklaması</summary><pre id="dc10">“Meyve akşam yenmez.” 🤔
 
 MİT! Meyvenin saati yok. Günün toplamı ve porsiyon önemli; akşam da dengeli bir ara öğün olabilir.
 
@@ -275,22 +285,22 @@ Sen de duymuş muydun? Yorumlara yaz 👇
 
 #fitkal #kaloritakibi #diyet #sağlıklıyaşam #fityaşam #kilovermek #sağlıklıbeslenme #mitmigerçekmi
 </pre></details>
-  <button class="copy" type="button" data-target="dc10">Post açıklamasını kopyala</button></article><article class="dcard"><div class="when">Sabah · Hikâye</div>
-  <button class="shot" type="button" data-full="s/G10_1sabah_test_meyve.jpg" aria-label="Hikâye büyük göster"><img src="s/G10_1sabah_test_meyve.jpg" alt="Hikâye: Test çıkartması" loading="lazy" width="1080" height="1920"></button>
-  <div class="ser">Test çıkartması</div><p class="how2">Çıkartmalar → <b>TEST</b> → soru başlıktaki gibi · A: Evet ✅ · B: Hayır → buzlu alana koy.</p></article><article class="dcard"><div class="when">Akşam · Hikâye</div>
-  <button class="shot" type="button" data-full="s/G10_2aksam_app_su.jpg" aria-label="Hikâye büyük göster"><img src="s/G10_2aksam_app_su.jpg" alt="Hikâye: Uygulamada + bağlantı" loading="lazy" width="1080" height="1920"></button>
-  <div class="ser">Uygulamada + bağlantı</div><p class="how2">Çıkartmalar → <b>BAĞLANTI</b>: fitkalapp.github.io/indir · yazı "Ücretsiz indir" → buzlu yuvarlak alana koy.</p></article><article class="dcard reel"><div class="when">19:00 · Reels</div>
-  <video src="r/23_FitKal_SuVakti_10sn.mp4" controls playsinline preload="metadata" width="1080" height="1920"></video>
-  <a class="jump" href="r/23_FitKal_SuVakti_10sn.mp4" target="_blank" rel="noopener">Videoyu ayrı aç (kaydetmek için) ↗</a>
-  <details><summary>Reels açıklaması</summary><pre id="r10">Su içmeyi mi unutuyorsun? 💧
+  <button class="copy" type="button" data-target="dc10">Post açıklamasını kopyala</button></article><article class="dcard reel"><div class="when">19:00 · Reels</div>
+  <video src="r/04_FitKal_Kebap_Quiz_10sn.mp4" controls playsinline preload="metadata" width="1080" height="1920"></video>
+  <a class="jump" href="r/04_FitKal_Kebap_Quiz_10sn.mp4" target="_blank" rel="noopener">Videoyu ayrı aç (kaydetmek için) ↗</a>
+  <details><summary>Reels açıklaması</summary><pre id="r10">Adana dürüm tabağı kaç kalori? 🤔
 
-FİT KAL hatırlatsın, her yudumu kaydet, hedefine ne kadar kaldığını gör.
-FİT KAL ücretsiz — link profilde 👆
+Tahminini yorumlara yaz, cevap videoda 👀
+Türk mutfağını FİT KAL tanır — link profilde 👆
 
 #fitkal #kaloritakibi #diyet #sağlıklıyaşam #reels #kilovermek #fityaşam</pre></details>
-  <button class="copy" type="button" data-target="r10">Açıklamayı kopyala</button></article></div></section><section class="day" id="g11"><h2>19 Ekim Pazartesi · 11. gün</h2><div class="dgrid"><article class="dcard"><div class="when">Öğlen · Post 51</div>
+  <button class="copy" type="button" data-target="r10">Açıklamayı kopyala</button></article><article class="dcard"><div class="when">Akşam 20:30 · Hikâye</div>
+  <button class="shot" type="button" data-full="s/G10_2aksam_app_oruc.jpg" aria-label="Hikâye büyük göster"><img src="s/G10_2aksam_app_oruc.jpg" alt="Hikâye: Uygulamada + bağlantı" loading="lazy" width="1080" height="1920"></button>
+  <div class="ser">Uygulamada + bağlantı</div><p class="how2">Çıkartmalar → <b>BAĞLANTI</b>: fitkalapp.github.io/indir · yazı "Ücretsiz indir" → buzlu yuvarlak alana koy.</p></article></div></section><section class="day" id="g11"><h2>19 Ekim Pazartesi · 11. gün</h2><div class="dgrid"><article class="dcard"><div class="when">Sabah 09:00 · Hikâye</div>
+  <button class="shot" type="button" data-full="s/G11_1sabah_test_lahmacun.jpg" aria-label="Hikâye büyük göster"><img src="s/G11_1sabah_test_lahmacun.jpg" alt="Hikâye: Test çıkartması" loading="lazy" width="1080" height="1920"></button>
+  <div class="ser">Test çıkartması</div><p class="how2">Çıkartmalar → <b>TEST</b> → soru başlıktaki gibi · A: Lahmacun ✅ · B: Pide → buzlu alana koy.</p></article><article class="dcard"><div class="when">Öğlen 12:30 · Post 51</div>
   <button class="shot" type="button" data-full="p/51_sec.jpg" aria-label="Post 51 büyük göster"><img src="p/51_sec.jpg" alt="Post 51" loading="lazy" width="1080" height="1350"></button>
-  <details open><summary>Post açıklaması</summary><pre id="dc11">Ara öğünde? 🤷
+  <details><summary>Post açıklaması</summary><pre id="dc11">Ara öğünde? 🤷
 
 A: Yoğurt  ·  B: Kuruyemi̇ş
 
@@ -298,13 +308,13 @@ Yorumlara A ya da B yaz, bakalım hangisi kazanacak 👇
 
 #fitkal #kaloritakibi #diyet #sağlıklıyaşam #fityaşam #kilovermek #sağlıklıbeslenme #senseç
 </pre></details>
-  <button class="copy" type="button" data-target="dc11">Post açıklamasını kopyala</button></article><article class="dcard"><div class="when">Sabah · Hikâye</div>
-  <button class="shot" type="button" data-full="s/G11_1sabah_soru_araogun.jpg" aria-label="Hikâye büyük göster"><img src="s/G11_1sabah_soru_araogun.jpg" alt="Hikâye: Soru kutusu" loading="lazy" width="1080" height="1920"></button>
-  <div class="ser">Soru kutusu</div><p class="how2">Çıkartmalar → <b>SORULAR</b> → soru başlıktaki gibi → buzlu alana koy. Gelen cevaplar yeni içerik fikri olur.</p></article><article class="dcard"><div class="when">Akşam · Hikâye</div>
-  <button class="shot" type="button" data-full="s/G11_2aksam_app_isaretle.jpg" aria-label="Hikâye büyük göster"><img src="s/G11_2aksam_app_isaretle.jpg" alt="Hikâye: Uygulamada + bağlantı" loading="lazy" width="1080" height="1920"></button>
-  <div class="ser">Uygulamada + bağlantı</div><p class="how2">Çıkartmalar → <b>BAĞLANTI</b>: fitkalapp.github.io/indir · yazı "Ücretsiz indir" → buzlu yuvarlak alana koy.</p></article><article class="dcard boost"><div class="when">Reklam</div><p class="how2"><b>Bugün reklam başlat (19–23 Ekim, 5 gün):</b> geçen haftanın en çok izlenen / kaydedilen Reels'ini seç → Instagram'da Reels → <b>Öne çıkar</b>. Hedef: Türkiye, 18–45, ilgi: diyet, fitness, sağlıklı beslenme.</p></article></div></section><section class="day" id="g12"><h2>20 Ekim Salı · 12. gün</h2><div class="dgrid"><article class="dcard"><div class="when">Öğlen · Post 52</div>
+  <button class="copy" type="button" data-target="dc11">Post açıklamasını kopyala</button></article><article class="dcard"><div class="when">Akşam 20:30 · Hikâye</div>
+  <button class="shot" type="button" data-full="s/G11_2aksam_app_tarif.jpg" aria-label="Hikâye büyük göster"><img src="s/G11_2aksam_app_tarif.jpg" alt="Hikâye: Uygulamada + bağlantı" loading="lazy" width="1080" height="1920"></button>
+  <div class="ser">Uygulamada + bağlantı</div><p class="how2">Çıkartmalar → <b>BAĞLANTI</b>: fitkalapp.github.io/indir · yazı "Ücretsiz indir" → buzlu yuvarlak alana koy.</p></article><article class="dcard boost"><div class="when">Reklam</div><p class="how2"><b>Bugün reklam başlat (19–23 Ekim, 5 gün):</b> geçen haftanın en çok izlenen / kaydedilen Reels'ini seç → Instagram'da Reels → <b>Öne çıkar</b>. Hedef: Türkiye, 18–45, ilgi: diyet, fitness, sağlıklı beslenme.</p></article></div></section><section class="day" id="g12"><h2>20 Ekim Salı · 12. gün</h2><div class="dgrid"><article class="dcard"><div class="when">Sabah 09:00 · Hikâye</div>
+  <button class="shot" type="button" data-full="s/G12_1sabah_test_simit.jpg" aria-label="Hikâye büyük göster"><img src="s/G12_1sabah_test_simit.jpg" alt="Hikâye: Test çıkartması" loading="lazy" width="1080" height="1920"></button>
+  <div class="ser">Test çıkartması</div><p class="how2">Çıkartmalar → <b>TEST</b> → soru başlıktaki gibi · A: Simit · B: 2 dilim ekmek ✅ → buzlu alana koy.</p></article><article class="dcard"><div class="when">Öğlen 12:30 · Post 52</div>
   <button class="shot" type="button" data-full="p/52_uygulamada.jpg" aria-label="Post 52 büyük göster"><img src="p/52_uygulamada.jpg" alt="Post 52" loading="lazy" width="1080" height="1350"></button>
-  <details open><summary>Post açıklaması</summary><pre id="dc12">Fit tarifler, makrolarıyla. 📱
+  <details><summary>Post açıklaması</summary><pre id="dc12">Fit tarifler, makrolarıyla. 📱
 
 Her tarifte kalori, protein, karbonhidrat ve yağ hazır.
 
@@ -312,22 +322,22 @@ FİT KAL ücretsiz — link profilde 👆
 
 #fitkal #kaloritakibi #diyet #sağlıklıyaşam #fityaşam #kilovermek #sağlıklıbeslenme #diyetlistesi #kaloriuygulaması
 </pre></details>
-  <button class="copy" type="button" data-target="dc12">Post açıklamasını kopyala</button></article><article class="dcard"><div class="when">Sabah · Hikâye</div>
-  <button class="shot" type="button" data-full="s/G12_1sabah_anket_evyemegi.jpg" aria-label="Hikâye büyük göster"><img src="s/G12_1sabah_anket_evyemegi.jpg" alt="Hikâye: Anket" loading="lazy" width="1080" height="1920"></button>
-  <div class="ser">Anket</div><p class="how2">Çıkartmalar → <b>ANKET</b> → soru başlıktaki gibi · "Hemen her gün" / "Ara sıra" → buzlu alana koy.</p></article><article class="dcard"><div class="when">Akşam · Hikâye</div>
-  <button class="shot" type="button" data-full="s/G12_2aksam_app_barkod.jpg" aria-label="Hikâye büyük göster"><img src="s/G12_2aksam_app_barkod.jpg" alt="Hikâye: Uygulamada + bağlantı" loading="lazy" width="1080" height="1920"></button>
-  <div class="ser">Uygulamada + bağlantı</div><p class="how2">Çıkartmalar → <b>BAĞLANTI</b>: fitkalapp.github.io/indir · yazı "Ücretsiz indir" → buzlu yuvarlak alana koy.</p></article><article class="dcard reel"><div class="when">19:00 · Reels</div>
-  <video src="r/17_FitKal_AkilliAlisveris_10sn.mp4" controls playsinline preload="metadata" width="1080" height="1920"></video>
-  <a class="jump" href="r/17_FitKal_AkilliAlisveris_10sn.mp4" target="_blank" rel="noopener">Videoyu ayrı aç (kaydetmek için) ↗</a>
-  <details><summary>Reels açıklaması</summary><pre id="r12">Markette ne alacağını düşünmekten yoruldun mu? 🛒
+  <button class="copy" type="button" data-target="dc12">Post açıklamasını kopyala</button></article><article class="dcard reel"><div class="when">19:00 · Reels</div>
+  <video src="r/23_FitKal_SuVakti_10sn.mp4" controls playsinline preload="metadata" width="1080" height="1920"></video>
+  <a class="jump" href="r/23_FitKal_SuVakti_10sn.mp4" target="_blank" rel="noopener">Videoyu ayrı aç (kaydetmek için) ↗</a>
+  <details><summary>Reels açıklaması</summary><pre id="r12">Su içmeyi mi unutuyorsun? 💧
 
-Diyet planından alışveriş listen otomatik oluşur, reyonlara göre ayrılır. İşaretle, bitir.
+FİT KAL hatırlatsın, her yudumu kaydet, hedefine ne kadar kaldığını gör.
 FİT KAL ücretsiz — link profilde 👆
 
 #fitkal #kaloritakibi #diyet #sağlıklıyaşam #reels #kilovermek #fityaşam</pre></details>
-  <button class="copy" type="button" data-target="r12">Açıklamayı kopyala</button></article></div></section><section class="day" id="g13"><h2>21 Ekim Çarşamba · 13. gün</h2><div class="dgrid"><article class="dcard"><div class="when">Öğlen · Post 53</div>
+  <button class="copy" type="button" data-target="r12">Açıklamayı kopyala</button></article><article class="dcard"><div class="when">Akşam 20:30 · Hikâye</div>
+  <button class="shot" type="button" data-full="s/G12_2aksam_app_su.jpg" aria-label="Hikâye büyük göster"><img src="s/G12_2aksam_app_su.jpg" alt="Hikâye: Uygulamada + bağlantı" loading="lazy" width="1080" height="1920"></button>
+  <div class="ser">Uygulamada + bağlantı</div><p class="how2">Çıkartmalar → <b>BAĞLANTI</b>: fitkalapp.github.io/indir · yazı "Ücretsiz indir" → buzlu yuvarlak alana koy.</p></article></div></section><section class="day" id="g13"><h2>21 Ekim Çarşamba · 13. gün</h2><div class="dgrid"><article class="dcard"><div class="when">Sabah 09:00 · Hikâye</div>
+  <button class="shot" type="button" data-full="s/G13_1sabah_anket_evyemegi.jpg" aria-label="Hikâye büyük göster"><img src="s/G13_1sabah_anket_evyemegi.jpg" alt="Hikâye: Anket" loading="lazy" width="1080" height="1920"></button>
+  <div class="ser">Anket</div><p class="how2">Çıkartmalar → <b>ANKET</b> → soru başlıktaki gibi · "Hemen her gün" / "Ara sıra" → buzlu alana koy.</p></article><article class="dcard"><div class="when">Öğlen 12:30 · Post 53</div>
   <button class="shot" type="button" data-full="p/53_tahmin.jpg" aria-label="Post 53 büyük göster"><img src="p/53_tahmin.jpg" alt="Post 53" loading="lazy" width="1080" height="1350"></button>
-  <details open><summary>Post açıklaması</summary><pre id="dc13">Hangisi daha hafif? 🤔
+  <details><summary>Post açıklaması</summary><pre id="dc13">Hangisi daha hafif? 🤔
 
 A: 1 lahmacun (orta boy)
 B: 1 kıymalı pide (tam porsiyon)
@@ -345,33 +355,34 @@ Türk mutfağını tahminle değil, FİT KAL&#x27;la ölç 📱
 
 #fitkal #kaloritakibi #diyet #sağlıklıyaşam #türkmutfağı #kilovermek #sağlıklıbeslenme #hangisi #kalori
 </pre></details>
-  <button class="copy" type="button" data-target="dc13">Post açıklamasını kopyala</button></article><article class="dcard"><div class="when">Sabah · Hikâye</div>
-  <button class="shot" type="button" data-full="s/G13_1sabah_test_lahmacun.jpg" aria-label="Hikâye büyük göster"><img src="s/G13_1sabah_test_lahmacun.jpg" alt="Hikâye: Test çıkartması" loading="lazy" width="1080" height="1920"></button>
-  <div class="ser">Test çıkartması</div><p class="how2">Çıkartmalar → <b>TEST</b> → soru başlıktaki gibi · A: Lahmacun ✅ · B: Pide → buzlu alana koy.</p></article><article class="dcard"><div class="when">Akşam · Hikâye</div>
-  <button class="shot" type="button" data-full="s/G13_2aksam_app_foto.jpg" aria-label="Hikâye büyük göster"><img src="s/G13_2aksam_app_foto.jpg" alt="Hikâye: Uygulamada + bağlantı" loading="lazy" width="1080" height="1920"></button>
-  <div class="ser">Uygulamada + bağlantı</div><p class="how2">Çıkartmalar → <b>BAĞLANTI</b>: fitkalapp.github.io/indir · yazı "Ücretsiz indir" → buzlu yuvarlak alana koy.</p></article></div></section><section class="day" id="g14"><h2>22 Ekim Perşembe · 14. gün</h2><div class="dgrid"><article class="dcard"><div class="when">Öğlen · Post 54</div>
+  <button class="copy" type="button" data-target="dc13">Post açıklamasını kopyala</button></article><article class="dcard"><div class="when">Akşam 20:30 · Hikâye</div>
+  <button class="shot" type="button" data-full="s/G13_2aksam_app_isaretle.jpg" aria-label="Hikâye büyük göster"><img src="s/G13_2aksam_app_isaretle.jpg" alt="Hikâye: Uygulamada + bağlantı" loading="lazy" width="1080" height="1920"></button>
+  <div class="ser">Uygulamada + bağlantı</div><p class="how2">Çıkartmalar → <b>BAĞLANTI</b>: fitkalapp.github.io/indir · yazı "Ücretsiz indir" → buzlu yuvarlak alana koy.</p></article></div></section><section class="day" id="g14"><h2>22 Ekim Perşembe · 14. gün</h2><div class="dgrid"><article class="dcard"><div class="when">Sabah 09:00 · Hikâye</div>
+  <button class="shot" type="button" data-full="s/G14_1sabah_test_menemen.jpg" aria-label="Hikâye büyük göster"><img src="s/G14_1sabah_test_menemen.jpg" alt="Hikâye: Test çıkartması" loading="lazy" width="1080" height="1920"></button>
+  <div class="ser">Test çıkartması</div><p class="how2">Çıkartmalar → <b>TEST</b> → soru başlıktaki gibi · A: Menemen ✅ · B: Sucuklu yumurta → buzlu alana koy.</p></article><article class="dcard"><div class="when">Öğlen 12:30 · Post 54</div>
   <button class="shot" type="button" data-full="p/54_soz.jpg" aria-label="Post 54 büyük göster"><img src="p/54_soz.jpg" alt="Post 54" loading="lazy" width="1080" height="1350"></button>
-  <details open><summary>Post açıklaması</summary><pre id="dc14">Porsiyon küçük, keyif büyük. 💚
+  <details><summary>Post açıklaması</summary><pre id="dc14">Porsiyon küçük, keyif büyük. 💚
 
 Sevdiğin yemeği bırakma; ölçüsünü bul. FİT KAL&#x27;da kaydet.
 
 #fitkal #kaloritakibi #diyet #sağlıklıyaşam #türkmutfağı #kilovermek #sağlıklıbeslenme #motivasyon #porsiyonkontrolü
 </pre></details>
-  <button class="copy" type="button" data-target="dc14">Post açıklamasını kopyala</button></article><article class="dcard"><div class="when">Sabah · Hikâye</div>
-  <button class="shot" type="button" data-full="s/G14_1sabah_kaydirici_aclik.jpg" aria-label="Hikâye büyük göster"><img src="s/G14_1sabah_kaydirici_aclik.jpg" alt="Hikâye: Emoji kaydırıcı" loading="lazy" width="1080" height="1920"></button>
-  <div class="ser">Emoji kaydırıcı</div><p class="how2">Çıkartmalar → <b>EMOJİ KAYDIRICI</b> → 😋 seç, soru başlıktaki gibi → buzlu alana koy.</p></article><article class="dcard"><div class="when">Akşam · Hikâye</div>
-  <button class="shot" type="button" data-full="s/G14_2aksam_app_porsiyon.jpg" aria-label="Hikâye büyük göster"><img src="s/G14_2aksam_app_porsiyon.jpg" alt="Hikâye: Uygulamada + bağlantı" loading="lazy" width="1080" height="1920"></button>
-  <div class="ser">Uygulamada + bağlantı</div><p class="how2">Çıkartmalar → <b>BAĞLANTI</b>: fitkalapp.github.io/indir · yazı "Ücretsiz indir" → buzlu yuvarlak alana koy.</p></article><article class="dcard reel"><div class="when">19:00 · Reels</div>
-  <video src="r/08_FitKal_POV_Gece23_10sn.mp4" controls playsinline preload="metadata" width="1080" height="1920"></video>
-  <a class="jump" href="r/08_FitKal_POV_Gece23_10sn.mp4" target="_blank" rel="noopener">Videoyu ayrı aç (kaydetmek için) ↗</a>
-  <details><summary>Reels açıklaması</summary><pre id="r14">POV: saat 23:00, gün bitmeden kaydını tamamlıyorsun 🌙
+  <button class="copy" type="button" data-target="dc14">Post açıklamasını kopyala</button></article><article class="dcard reel"><div class="when">19:00 · Reels</div>
+  <video src="r/FitKal_AI_05_SabahKosusu_10sn.mp4" controls playsinline preload="metadata" width="1080" height="1920"></video>
+  <a class="jump" href="r/FitKal_AI_05_SabahKosusu_10sn.mp4" target="_blank" rel="noopener">Videoyu ayrı aç (kaydetmek için) ↗</a>
+  <details><summary>Reels açıklaması</summary><pre id="r14">Sabah koşusu tamam. Peki suyunu içtin mi? 💧
 
-Bir dakikanı alır. FİT KAL ücretsiz — link profilde 👆
+FİT KAL hatırlatsın, her yudumu kaydet.
+FİT KAL ücretsiz — link profilde 👆
 
 #fitkal #kaloritakibi #diyet #sağlıklıyaşam #reels #kilovermek #fityaşam</pre></details>
-  <button class="copy" type="button" data-target="r14">Açıklamayı kopyala</button></article></div></section><section class="day" id="g15"><h2>23 Ekim Cuma · 15. gün</h2><div class="dgrid"><article class="dcard"><div class="when">Öğlen · Post 55</div>
+  <button class="copy" type="button" data-target="r14">Açıklamayı kopyala</button></article><article class="dcard"><div class="when">Akşam 20:30 · Hikâye</div>
+  <button class="shot" type="button" data-full="s/G14_2aksam_app_oruc2.jpg" aria-label="Hikâye büyük göster"><img src="s/G14_2aksam_app_oruc2.jpg" alt="Hikâye: Uygulamada + bağlantı" loading="lazy" width="1080" height="1920"></button>
+  <div class="ser">Uygulamada + bağlantı</div><p class="how2">Çıkartmalar → <b>BAĞLANTI</b>: fitkalapp.github.io/indir · yazı "Ücretsiz indir" → buzlu yuvarlak alana koy.</p></article></div></section><section class="day" id="g15"><h2>23 Ekim Cuma · 15. gün</h2><div class="dgrid"><article class="dcard"><div class="when">Sabah 09:00 · Hikâye</div>
+  <button class="shot" type="button" data-full="s/G15_1sabah_anket_ekmek.jpg" aria-label="Hikâye büyük göster"><img src="s/G15_1sabah_anket_ekmek.jpg" alt="Hikâye: Anket" loading="lazy" width="1080" height="1920"></button>
+  <div class="ser">Anket</div><p class="how2">Çıkartmalar → <b>ANKET</b> → soru başlıktaki gibi · "Bıraktım" / "Azalttım" → buzlu alana koy.</p></article><article class="dcard"><div class="when">Öğlen 12:30 · Post 55</div>
   <button class="shot" type="button" data-full="p/55_uygulamada.jpg" aria-label="Post 55 büyük göster"><img src="p/55_uygulamada.jpg" alt="Post 55" loading="lazy" width="1080" height="1350"></button>
-  <details open><summary>Post açıklaması</summary><pre id="dc15">Türk mutfağından fit tarifler. 📱
+  <details><summary>Post açıklaması</summary><pre id="dc15">Türk mutfağından fit tarifler. 📱
 
 Her tarifte kalori ve makrolar hazır; malzemeye göre ara.
 
@@ -379,13 +390,13 @@ FİT KAL ücretsiz — link profilde 👆
 
 #fitkal #kaloritakibi #diyet #sağlıklıyaşam #türkmutfağı #kilovermek #sağlıklıbeslenme #fittarifler #kaloriuygulaması
 </pre></details>
-  <button class="copy" type="button" data-target="dc15">Post açıklamasını kopyala</button></article><article class="dcard"><div class="when">Sabah · Hikâye</div>
-  <button class="shot" type="button" data-full="s/G15_1sabah_anket_tarif.jpg" aria-label="Hikâye büyük göster"><img src="s/G15_1sabah_anket_tarif.jpg" alt="Hikâye: Anket" loading="lazy" width="1080" height="1920"></button>
-  <div class="ser">Anket</div><p class="how2">Çıkartmalar → <b>ANKET</b> → soru başlıktaki gibi · "Tarifle pişiririm" / "Hazır alırım" → buzlu alana koy.</p></article><article class="dcard"><div class="when">Akşam · Hikâye</div>
-  <button class="shot" type="button" data-full="s/G15_2aksam_app_antrenman2.jpg" aria-label="Hikâye büyük göster"><img src="s/G15_2aksam_app_antrenman2.jpg" alt="Hikâye: Uygulamada + bağlantı" loading="lazy" width="1080" height="1920"></button>
-  <div class="ser">Uygulamada + bağlantı</div><p class="how2">Çıkartmalar → <b>BAĞLANTI</b>: fitkalapp.github.io/indir · yazı "Ücretsiz indir" → buzlu yuvarlak alana koy.</p></article></div></section><section class="day" id="g16"><h2>24 Ekim Cumartesi · 16. gün</h2><div class="dgrid"><article class="dcard"><div class="when">Öğlen · Post 56</div>
+  <button class="copy" type="button" data-target="dc15">Post açıklamasını kopyala</button></article><article class="dcard"><div class="when">Akşam 20:30 · Hikâye</div>
+  <button class="shot" type="button" data-full="s/G15_2aksam_app_kahvalti.jpg" aria-label="Hikâye büyük göster"><img src="s/G15_2aksam_app_kahvalti.jpg" alt="Hikâye: Uygulamada + bağlantı" loading="lazy" width="1080" height="1920"></button>
+  <div class="ser">Uygulamada + bağlantı</div><p class="how2">Çıkartmalar → <b>BAĞLANTI</b>: fitkalapp.github.io/indir · yazı "Ücretsiz indir" → buzlu yuvarlak alana koy.</p></article></div></section><section class="day" id="g16"><h2>24 Ekim Cumartesi · 16. gün</h2><div class="dgrid"><article class="dcard"><div class="when">Sabah 09:00 · Hikâye</div>
+  <button class="shot" type="button" data-full="s/G16_1sabah_test_corba_pilav.jpg" aria-label="Hikâye büyük göster"><img src="s/G16_1sabah_test_corba_pilav.jpg" alt="Hikâye: Test çıkartması" loading="lazy" width="1080" height="1920"></button>
+  <div class="ser">Test çıkartması</div><p class="how2">Çıkartmalar → <b>TEST</b> → soru başlıktaki gibi · A: Mercimek çorbası ✅ · B: Pilav → buzlu alana koy.</p></article><article class="dcard"><div class="when">Öğlen 12:30 · Post 56</div>
   <button class="shot" type="button" data-full="p/56_mit.jpg" aria-label="Post 56 büyük göster"><img src="p/56_mit.jpg" alt="Post 56" loading="lazy" width="1080" height="1350"></button>
-  <details open><summary>Post açıklaması</summary><pre id="dc16">“Zeytinyağlı yemek kilo aldırmaz.” 🤔
+  <details><summary>Post açıklaması</summary><pre id="dc16">“Zeytinyağlı yemek kilo aldırmaz.” 🤔
 
 MİT! Zeytinyağı faydalı bir yağ ama kalorisi yüksek: 1 yemek kaşığı yaklaşık 120 kcal. Ölçerek kullan.
 
@@ -395,22 +406,22 @@ Sen de duymuş muydun? Yorumlara yaz 👇
 
 #fitkal #kaloritakibi #diyet #sağlıklıyaşam #türkmutfağı #kilovermek #sağlıklıbeslenme #mitmigerçekmi
 </pre></details>
-  <button class="copy" type="button" data-target="dc16">Post açıklamasını kopyala</button></article><article class="dcard"><div class="when">Sabah · Hikâye</div>
-  <button class="shot" type="button" data-full="s/G16_1sabah_test_zeytinyagi.jpg" aria-label="Hikâye büyük göster"><img src="s/G16_1sabah_test_zeytinyagi.jpg" alt="Hikâye: Test çıkartması" loading="lazy" width="1080" height="1920"></button>
-  <div class="ser">Test çıkartması</div><p class="how2">Çıkartmalar → <b>TEST</b> → soru başlıktaki gibi · A: ≈ 40 kcal · B: ≈ 120 kcal ✅ → buzlu alana koy.</p></article><article class="dcard"><div class="when">Akşam · Hikâye</div>
-  <button class="shot" type="button" data-full="s/G16_2aksam_app_gizli.jpg" aria-label="Hikâye büyük göster"><img src="s/G16_2aksam_app_gizli.jpg" alt="Hikâye: Uygulamada + bağlantı" loading="lazy" width="1080" height="1920"></button>
-  <div class="ser">Uygulamada + bağlantı</div><p class="how2">Çıkartmalar → <b>BAĞLANTI</b>: fitkalapp.github.io/indir · yazı "Ücretsiz indir" → buzlu yuvarlak alana koy.</p></article><article class="dcard reel"><div class="when">19:00 · Reels</div>
-  <video src="r/24_FitKal_Pazartesi_10sn.mp4" controls playsinline preload="metadata" width="1080" height="1920"></video>
-  <a class="jump" href="r/24_FitKal_Pazartesi_10sn.mp4" target="_blank" rel="noopener">Videoyu ayrı aç (kaydetmek için) ↗</a>
-  <details><summary>Reels açıklaması</summary><pre id="r16">&quot;Pazartesi başlarım&quot; dedin. Kaç pazartesi oldu? 😅
+  <button class="copy" type="button" data-target="dc16">Post açıklamasını kopyala</button></article><article class="dcard reel"><div class="when">19:00 · Reels</div>
+  <video src="r/17_FitKal_AkilliAlisveris_10sn.mp4" controls playsinline preload="metadata" width="1080" height="1920"></video>
+  <a class="jump" href="r/17_FitKal_AkilliAlisveris_10sn.mp4" target="_blank" rel="noopener">Videoyu ayrı aç (kaydetmek için) ↗</a>
+  <details><summary>Reels açıklaması</summary><pre id="r16">Markette ne alacağını düşünmekten yoruldun mu? 🛒
 
-Mükemmel gün yok, bir sonraki öğün yeter. Pazartesiyi bekleme, şimdi başla!
+Diyet planından alışveriş listen otomatik oluşur, reyonlara göre ayrılır. İşaretle, bitir.
 FİT KAL ücretsiz — link profilde 👆
 
 #fitkal #kaloritakibi #diyet #sağlıklıyaşam #reels #kilovermek #fityaşam</pre></details>
-  <button class="copy" type="button" data-target="r16">Açıklamayı kopyala</button></article></div></section><section class="day" id="g17"><h2>25 Ekim Pazar · 17. gün</h2><div class="dgrid"><article class="dcard"><div class="when">Öğlen · Post 57</div>
+  <button class="copy" type="button" data-target="r16">Açıklamayı kopyala</button></article><article class="dcard"><div class="when">Akşam 20:30 · Hikâye</div>
+  <button class="shot" type="button" data-full="s/G16_2aksam_app_haftasonu.jpg" aria-label="Hikâye büyük göster"><img src="s/G16_2aksam_app_haftasonu.jpg" alt="Hikâye: Uygulamada + bağlantı" loading="lazy" width="1080" height="1920"></button>
+  <div class="ser">Uygulamada + bağlantı</div><p class="how2">Çıkartmalar → <b>BAĞLANTI</b>: fitkalapp.github.io/indir · yazı "Ücretsiz indir" → buzlu yuvarlak alana koy.</p></article></div></section><section class="day" id="g17"><h2>25 Ekim Pazar · 17. gün</h2><div class="dgrid"><article class="dcard"><div class="when">Sabah 09:00 · Hikâye</div>
+  <button class="shot" type="button" data-full="s/G17_1sabah_kaydirici_puan.jpg" aria-label="Hikâye büyük göster"><img src="s/G17_1sabah_kaydirici_puan.jpg" alt="Hikâye: Emoji kaydırıcı" loading="lazy" width="1080" height="1920"></button>
+  <div class="ser">Emoji kaydırıcı</div><p class="how2">Çıkartmalar → <b>EMOJİ KAYDIRICI</b> → ⭐ seç, soru başlıktaki gibi → buzlu alana koy.</p></article><article class="dcard"><div class="when">Öğlen 12:30 · Post 57</div>
   <button class="shot" type="button" data-full="p/57_sec.jpg" aria-label="Post 57 büyük göster"><img src="p/57_sec.jpg" alt="Post 57" loading="lazy" width="1080" height="1350"></button>
-  <details open><summary>Post açıklaması</summary><pre id="dc17">Akşam sofrasında? 🤷
+  <details><summary>Post açıklaması</summary><pre id="dc17">Akşam sofrasında? 🤷
 
 A: Kuru fasulye  ·  B: Karnıyarık
 
@@ -418,22 +429,21 @@ Yorumlara A ya da B yaz, bakalım hangisi kazanacak 👇
 
 #fitkal #kaloritakibi #diyet #sağlıklıyaşam #türkmutfağı #kilovermek #sağlıklıbeslenme #senseç
 </pre></details>
-  <button class="copy" type="button" data-target="dc17">Post açıklamasını kopyala</button></article><article class="dcard"><div class="when">Sabah · Hikâye</div>
-  <button class="shot" type="button" data-full="s/G17_1sabah_soru_anne.jpg" aria-label="Hikâye büyük göster"><img src="s/G17_1sabah_soru_anne.jpg" alt="Hikâye: Soru kutusu" loading="lazy" width="1080" height="1920"></button>
-  <div class="ser">Soru kutusu</div><p class="how2">Çıkartmalar → <b>SORULAR</b> → soru başlıktaki gibi → buzlu alana koy. Gelen cevaplar yeni içerik fikri olur.</p></article><article class="dcard"><div class="when">Akşam · Hikâye</div>
-  <button class="shot" type="button" data-full="s/G17_2aksam_app_oruc2.jpg" aria-label="Hikâye büyük göster"><img src="s/G17_2aksam_app_oruc2.jpg" alt="Hikâye: Uygulamada + bağlantı" loading="lazy" width="1080" height="1920"></button>
-  <div class="ser">Uygulamada + bağlantı</div><p class="how2">Çıkartmalar → <b>BAĞLANTI</b>: fitkalapp.github.io/indir · yazı "Ücretsiz indir" → buzlu yuvarlak alana koy.</p></article><article class="dcard reel"><div class="when">19:00 · Reels</div>
-  <video src="r/18_FitKal_FitTarifler_10sn.mp4" controls playsinline preload="metadata" width="1080" height="1920"></video>
-  <a class="jump" href="r/18_FitKal_FitTarifler_10sn.mp4" target="_blank" rel="noopener">Videoyu ayrı aç (kaydetmek için) ↗</a>
-  <details><summary>Reels açıklaması</summary><pre id="r17">Bugün ne yesem? 🍳
+  <button class="copy" type="button" data-target="dc17">Post açıklamasını kopyala</button></article><article class="dcard reel"><div class="when">19:00 · Reels</div>
+  <video src="r/08_FitKal_POV_Gece23_10sn.mp4" controls playsinline preload="metadata" width="1080" height="1920"></video>
+  <a class="jump" href="r/08_FitKal_POV_Gece23_10sn.mp4" target="_blank" rel="noopener">Videoyu ayrı aç (kaydetmek için) ↗</a>
+  <details><summary>Reels açıklaması</summary><pre id="r17">POV: saat 23:00, gün bitmeden kaydını tamamlıyorsun 🌙
 
-70+ fit tarif, kalori ve makrolarıyla hazır. Tek dokunuşla öğününe ekle.
-FİT KAL ücretsiz — link profilde 👆
+Bir dakikanı alır. FİT KAL ücretsiz — link profilde 👆
 
 #fitkal #kaloritakibi #diyet #sağlıklıyaşam #reels #kilovermek #fityaşam</pre></details>
-  <button class="copy" type="button" data-target="r17">Açıklamayı kopyala</button></article></div></section><section class="day" id="g18"><h2>26 Ekim Pazartesi · 18. gün</h2><div class="dgrid"><article class="dcard"><div class="when">Öğlen · Post 58</div>
+  <button class="copy" type="button" data-target="r17">Açıklamayı kopyala</button></article><article class="dcard"><div class="when">Akşam 20:30 · Hikâye</div>
+  <button class="shot" type="button" data-full="s/G17_2aksam_app_denge.jpg" aria-label="Hikâye büyük göster"><img src="s/G17_2aksam_app_denge.jpg" alt="Hikâye: Uygulamada + bağlantı" loading="lazy" width="1080" height="1920"></button>
+  <div class="ser">Uygulamada + bağlantı</div><p class="how2">Çıkartmalar → <b>BAĞLANTI</b>: fitkalapp.github.io/indir · yazı "Ücretsiz indir" → buzlu yuvarlak alana koy.</p></article></div></section><section class="day" id="g18"><h2>26 Ekim Pazartesi · 18. gün</h2><div class="dgrid"><article class="dcard"><div class="when">Sabah 09:00 · Hikâye</div>
+  <button class="shot" type="button" data-full="s/G18_1sabah_kaydirici_aclik.jpg" aria-label="Hikâye büyük göster"><img src="s/G18_1sabah_kaydirici_aclik.jpg" alt="Hikâye: Emoji kaydırıcı" loading="lazy" width="1080" height="1920"></button>
+  <div class="ser">Emoji kaydırıcı</div><p class="how2">Çıkartmalar → <b>EMOJİ KAYDIRICI</b> → 😋 seç, soru başlıktaki gibi → buzlu alana koy.</p></article><article class="dcard"><div class="when">Öğlen 12:30 · Post 58</div>
   <button class="shot" type="button" data-full="p/58_tahmin.jpg" aria-label="Post 58 büyük göster"><img src="p/58_tahmin.jpg" alt="Post 58" loading="lazy" width="1080" height="1350"></button>
-  <details open><summary>Post açıklaması</summary><pre id="dc18">Hangisi daha hafif? 🤔
+  <details><summary>Post açıklaması</summary><pre id="dc18">Hangisi daha hafif? 🤔
 
 A: 1 kase mercimek çorbası (≈ 250 ml)
 B: 1 porsiyon pirinç pilavı (≈ 150 g)
@@ -451,13 +461,13 @@ Türk mutfağını tahminle değil, FİT KAL&#x27;la ölç 📱
 
 #fitkal #kaloritakibi #diyet #sağlıklıyaşam #türkmutfağı #kilovermek #sağlıklıbeslenme #hangisi #kalori
 </pre></details>
-  <button class="copy" type="button" data-target="dc18">Post açıklamasını kopyala</button></article><article class="dcard"><div class="when">Sabah · Hikâye</div>
-  <button class="shot" type="button" data-full="s/G18_1sabah_test_corba_pilav.jpg" aria-label="Hikâye büyük göster"><img src="s/G18_1sabah_test_corba_pilav.jpg" alt="Hikâye: Test çıkartması" loading="lazy" width="1080" height="1920"></button>
-  <div class="ser">Test çıkartması</div><p class="how2">Çıkartmalar → <b>TEST</b> → soru başlıktaki gibi · A: Mercimek çorbası ✅ · B: Pilav → buzlu alana koy.</p></article><article class="dcard"><div class="when">Akşam · Hikâye</div>
-  <button class="shot" type="button" data-full="s/G18_2aksam_app_hafta.jpg" aria-label="Hikâye büyük göster"><img src="s/G18_2aksam_app_hafta.jpg" alt="Hikâye: Uygulamada + bağlantı" loading="lazy" width="1080" height="1920"></button>
-  <div class="ser">Uygulamada + bağlantı</div><p class="how2">Çıkartmalar → <b>BAĞLANTI</b>: fitkalapp.github.io/indir · yazı "Ücretsiz indir" → buzlu yuvarlak alana koy.</p></article><article class="dcard boost"><div class="when">Reklam</div><p class="how2"><b>Bugün reklam başlat (26–30 Ekim, 5 gün):</b> geçen haftanın en çok izlenen / kaydedilen Reels'ini seç → Instagram'da Reels → <b>Öne çıkar</b>. Hedef: Türkiye, 18–45, ilgi: diyet, fitness, sağlıklı beslenme.</p></article></div></section><section class="day" id="g19"><h2>27 Ekim Salı · 19. gün</h2><div class="dgrid"><article class="dcard"><div class="when">Öğlen · Post 59</div>
+  <button class="copy" type="button" data-target="dc18">Post açıklamasını kopyala</button></article><article class="dcard"><div class="when">Akşam 20:30 · Hikâye</div>
+  <button class="shot" type="button" data-full="s/G18_2aksam_app_ozet2.jpg" aria-label="Hikâye büyük göster"><img src="s/G18_2aksam_app_ozet2.jpg" alt="Hikâye: Uygulamada + bağlantı" loading="lazy" width="1080" height="1920"></button>
+  <div class="ser">Uygulamada + bağlantı</div><p class="how2">Çıkartmalar → <b>BAĞLANTI</b>: fitkalapp.github.io/indir · yazı "Ücretsiz indir" → buzlu yuvarlak alana koy.</p></article><article class="dcard boost"><div class="when">Reklam</div><p class="how2"><b>Bugün reklam başlat (26–30 Ekim, 5 gün):</b> geçen haftanın en çok izlenen / kaydedilen Reels'ini seç → Instagram'da Reels → <b>Öne çıkar</b>. Hedef: Türkiye, 18–45, ilgi: diyet, fitness, sağlıklı beslenme.</p></article></div></section><section class="day" id="g19"><h2>27 Ekim Salı · 19. gün</h2><div class="dgrid"><article class="dcard"><div class="when">Sabah 09:00 · Hikâye</div>
+  <button class="shot" type="button" data-full="s/G19_1sabah_test_meyve.jpg" aria-label="Hikâye büyük göster"><img src="s/G19_1sabah_test_meyve.jpg" alt="Hikâye: Test çıkartması" loading="lazy" width="1080" height="1920"></button>
+  <div class="ser">Test çıkartması</div><p class="how2">Çıkartmalar → <b>TEST</b> → soru başlıktaki gibi · A: Evet ✅ · B: Hayır → buzlu alana koy.</p></article><article class="dcard"><div class="when">Öğlen 12:30 · Post 59</div>
   <button class="shot" type="button" data-full="p/59_mit.jpg" aria-label="Post 59 büyük göster"><img src="p/59_mit.jpg" alt="Post 59" loading="lazy" width="1080" height="1350"></button>
-  <details open><summary>Post açıklaması</summary><pre id="dc19">“Kilo vermek için ekmeği tamamen kesmek şart.” 🤔
+  <details><summary>Post açıklaması</summary><pre id="dc19">“Kilo vermek için ekmeği tamamen kesmek şart.” 🤔
 
 MİT! Sonucu günün toplam dengesi belirler. Tam buğday ekmek, doğru porsiyonla dengeli tabakta yer alabilir.
 
@@ -467,35 +477,34 @@ Sen de duymuş muydun? Yorumlara yaz 👇
 
 #fitkal #kaloritakibi #diyet #sağlıklıyaşam #türkmutfağı #kilovermek #sağlıklıbeslenme #mitmigerçekmi
 </pre></details>
-  <button class="copy" type="button" data-target="dc19">Post açıklamasını kopyala</button></article><article class="dcard"><div class="when">Sabah · Hikâye</div>
-  <button class="shot" type="button" data-full="s/G19_1sabah_anket_ekmek.jpg" aria-label="Hikâye büyük göster"><img src="s/G19_1sabah_anket_ekmek.jpg" alt="Hikâye: Anket" loading="lazy" width="1080" height="1920"></button>
-  <div class="ser">Anket</div><p class="how2">Çıkartmalar → <b>ANKET</b> → soru başlıktaki gibi · "Bıraktım" / "Azalttım" → buzlu alana koy.</p></article><article class="dcard"><div class="when">Akşam · Hikâye</div>
-  <button class="shot" type="button" data-full="s/G19_2aksam_app_denge.jpg" aria-label="Hikâye büyük göster"><img src="s/G19_2aksam_app_denge.jpg" alt="Hikâye: Uygulamada + bağlantı" loading="lazy" width="1080" height="1920"></button>
-  <div class="ser">Uygulamada + bağlantı</div><p class="how2">Çıkartmalar → <b>BAĞLANTI</b>: fitkalapp.github.io/indir · yazı "Ücretsiz indir" → buzlu yuvarlak alana koy.</p></article><article class="dcard reel"><div class="when">19:00 · Reels</div>
-  <video src="r/05_FitKal_Oruc_Quiz_10sn.mp4" controls playsinline preload="metadata" width="1080" height="1920"></video>
-  <a class="jump" href="r/05_FitKal_Oruc_Quiz_10sn.mp4" target="_blank" rel="noopener">Videoyu ayrı aç (kaydetmek için) ↗</a>
-  <details><summary>Reels açıklaması</summary><pre id="r19">Aralıklı oruç yapıyor musun? ⏳
+  <button class="copy" type="button" data-target="dc19">Post açıklamasını kopyala</button></article><article class="dcard reel"><div class="when">19:00 · Reels</div>
+  <video src="r/24_FitKal_Pazartesi_10sn.mp4" controls playsinline preload="metadata" width="1080" height="1920"></video>
+  <a class="jump" href="r/24_FitKal_Pazartesi_10sn.mp4" target="_blank" rel="noopener">Videoyu ayrı aç (kaydetmek için) ↗</a>
+  <details><summary>Reels açıklaması</summary><pre id="r19">&quot;Pazartesi başlarım&quot; dedin. Kaç pazartesi oldu? 😅
 
-Pencereni başlat, gerisini FİT KAL takip etsin. Link profilde 👆
-
-(Genel bilgilendirme amaçlıdır.)
+Mükemmel gün yok, bir sonraki öğün yeter. Pazartesiyi bekleme, şimdi başla!
+FİT KAL ücretsiz — link profilde 👆
 
 #fitkal #kaloritakibi #diyet #sağlıklıyaşam #reels #kilovermek #fityaşam</pre></details>
-  <button class="copy" type="button" data-target="r19">Açıklamayı kopyala</button></article></div></section><section class="day" id="g20"><h2>28 Ekim Çarşamba · 20. gün</h2><div class="dgrid"><article class="dcard"><div class="when">Öğlen · Post 60</div>
+  <button class="copy" type="button" data-target="r19">Açıklamayı kopyala</button></article><article class="dcard"><div class="when">Akşam 20:30 · Hikâye</div>
+  <button class="shot" type="button" data-full="s/G19_2aksam_app_antrenman2.jpg" aria-label="Hikâye büyük göster"><img src="s/G19_2aksam_app_antrenman2.jpg" alt="Hikâye: Uygulamada + bağlantı" loading="lazy" width="1080" height="1920"></button>
+  <div class="ser">Uygulamada + bağlantı</div><p class="how2">Çıkartmalar → <b>BAĞLANTI</b>: fitkalapp.github.io/indir · yazı "Ücretsiz indir" → buzlu yuvarlak alana koy.</p></article></div></section><section class="day" id="g20"><h2>28 Ekim Çarşamba · 20. gün</h2><div class="dgrid"><article class="dcard"><div class="when">Sabah 09:00 · Hikâye</div>
+  <button class="shot" type="button" data-full="s/G20_1sabah_anket_tarif.jpg" aria-label="Hikâye büyük göster"><img src="s/G20_1sabah_anket_tarif.jpg" alt="Hikâye: Anket" loading="lazy" width="1080" height="1920"></button>
+  <div class="ser">Anket</div><p class="how2">Çıkartmalar → <b>ANKET</b> → soru başlıktaki gibi · "Tarifle pişiririm" / "Hazır alırım" → buzlu alana koy.</p></article><article class="dcard"><div class="when">Öğlen 12:30 · Post 60</div>
   <button class="shot" type="button" data-full="p/60_soz.jpg" aria-label="Post 60 büyük göster"><img src="p/60_soz.jpg" alt="Post 60" loading="lazy" width="1080" height="1350"></button>
-  <details open><summary>Post açıklaması</summary><pre id="dc20">Yavaş ye, tadını çıkar. 💚
+  <details><summary>Post açıklaması</summary><pre id="dc20">Yavaş ye, tadını çıkar. 💚
 
 Sevdiğin yemeği bırakma; ölçüsünü bul. FİT KAL&#x27;da kaydet.
 
 #fitkal #kaloritakibi #diyet #sağlıklıyaşam #türkmutfağı #kilovermek #sağlıklıbeslenme #motivasyon #porsiyonkontrolü
 </pre></details>
-  <button class="copy" type="button" data-target="dc20">Post açıklamasını kopyala</button></article><article class="dcard"><div class="when">Sabah · Hikâye</div>
-  <button class="shot" type="button" data-full="s/G20_1sabah_kaydirici_uyku.jpg" aria-label="Hikâye büyük göster"><img src="s/G20_1sabah_kaydirici_uyku.jpg" alt="Hikâye: Emoji kaydırıcı" loading="lazy" width="1080" height="1920"></button>
-  <div class="ser">Emoji kaydırıcı</div><p class="how2">Çıkartmalar → <b>EMOJİ KAYDIRICI</b> → 😴 seç, soru başlıktaki gibi → buzlu alana koy.</p></article><article class="dcard"><div class="when">Akşam · Hikâye</div>
-  <button class="shot" type="button" data-full="s/G20_2aksam_app_ozet2.jpg" aria-label="Hikâye büyük göster"><img src="s/G20_2aksam_app_ozet2.jpg" alt="Hikâye: Uygulamada + bağlantı" loading="lazy" width="1080" height="1920"></button>
-  <div class="ser">Uygulamada + bağlantı</div><p class="how2">Çıkartmalar → <b>BAĞLANTI</b>: fitkalapp.github.io/indir · yazı "Ücretsiz indir" → buzlu yuvarlak alana koy.</p></article></div></section><section class="day" id="g21"><h2>29 Ekim Perşembe · 21. gün</h2><div class="dgrid"><article class="dcard"><div class="when">Öğlen · Post 61</div>
+  <button class="copy" type="button" data-target="dc20">Post açıklamasını kopyala</button></article><article class="dcard"><div class="when">Akşam 20:30 · Hikâye</div>
+  <button class="shot" type="button" data-full="s/G20_2aksam_app_porsiyon.jpg" aria-label="Hikâye büyük göster"><img src="s/G20_2aksam_app_porsiyon.jpg" alt="Hikâye: Uygulamada + bağlantı" loading="lazy" width="1080" height="1920"></button>
+  <div class="ser">Uygulamada + bağlantı</div><p class="how2">Çıkartmalar → <b>BAĞLANTI</b>: fitkalapp.github.io/indir · yazı "Ücretsiz indir" → buzlu yuvarlak alana koy.</p></article></div></section><section class="day" id="g21"><h2>29 Ekim Perşembe · 21. gün</h2><div class="dgrid"><article class="dcard"><div class="when">Sabah 09:00 · Hikâye</div>
+  <button class="shot" type="button" data-full="s/G21_1sabah_test_zeytinyagi.jpg" aria-label="Hikâye büyük göster"><img src="s/G21_1sabah_test_zeytinyagi.jpg" alt="Hikâye: Test çıkartması" loading="lazy" width="1080" height="1920"></button>
+  <div class="ser">Test çıkartması</div><p class="how2">Çıkartmalar → <b>TEST</b> → soru başlıktaki gibi · A: ≈ 40 kcal · B: ≈ 120 kcal ✅ → buzlu alana koy.</p></article><article class="dcard"><div class="when">Öğlen 12:30 · Post 61</div>
   <button class="shot" type="button" data-full="p/61_uygulamada.jpg" aria-label="Post 61 büyük göster"><img src="p/61_uygulamada.jpg" alt="Post 61" loading="lazy" width="1080" height="1350"></button>
-  <details open><summary>Post açıklaması</summary><pre id="dc21">Tabağını çek, kalorisini gör. 📱
+  <details><summary>Post açıklaması</summary><pre id="dc21">Tabağını çek, kalorisini gör. 📱
 
 Yapay zekâ tabaktakileri tanır; barkod ve elle ekleme de var.
 
@@ -503,22 +512,24 @@ FİT KAL ücretsiz — link profilde 👆
 
 #fitkal #kaloritakibi #diyet #sağlıklıyaşam #türkmutfağı #kilovermek #sağlıklıbeslenme #fittarifler #kaloriuygulaması
 </pre></details>
-  <button class="copy" type="button" data-target="dc21">Post açıklamasını kopyala</button></article><article class="dcard"><div class="when">Sabah · Hikâye</div>
-  <button class="shot" type="button" data-full="s/G21_1sabah_test_fotokalori.jpg" aria-label="Hikâye büyük göster"><img src="s/G21_1sabah_test_fotokalori.jpg" alt="Hikâye: Test çıkartması" loading="lazy" width="1080" height="1920"></button>
-  <div class="ser">Test çıkartması</div><p class="how2">Çıkartmalar → <b>TEST</b> → soru başlıktaki gibi · A: Evet ✅ · B: Hayır → buzlu alana koy.</p></article><article class="dcard"><div class="when">Akşam · Hikâye</div>
-  <button class="shot" type="button" data-full="s/G21_2aksam_app_haftasonu.jpg" aria-label="Hikâye büyük göster"><img src="s/G21_2aksam_app_haftasonu.jpg" alt="Hikâye: Uygulamada + bağlantı" loading="lazy" width="1080" height="1920"></button>
-  <div class="ser">Uygulamada + bağlantı</div><p class="how2">Çıkartmalar → <b>BAĞLANTI</b>: fitkalapp.github.io/indir · yazı "Ücretsiz indir" → buzlu yuvarlak alana koy.</p></article><article class="dcard reel"><div class="when">19:00 · Reels</div>
-  <video src="r/19_FitKal_KisiselDiyet_10sn.mp4" controls playsinline preload="metadata" width="1080" height="1920"></video>
-  <a class="jump" href="r/19_FitKal_KisiselDiyet_10sn.mp4" target="_blank" rel="noopener">Videoyu ayrı aç (kaydetmek için) ↗</a>
-  <details><summary>Reels açıklaması</summary><pre id="r21">Diyet listesi hazırlamakla uğraşma 🥗
+  <button class="copy" type="button" data-target="dc21">Post açıklamasını kopyala</button></article><article class="dcard reel"><div class="when">19:00 · Reels</div>
+  <video src="r/FitKal_AI_04_EvdeAntrenman_10sn.mp4" controls playsinline preload="metadata" width="1080" height="1920"></video>
+  <a class="jump" href="r/FitKal_AI_04_EvdeAntrenman_10sn.mp4" target="_blank" rel="noopener">Videoyu ayrı aç (kaydetmek için) ↗</a>
+  <details><summary>Reels açıklaması</summary><pre id="r21">Evde antrenman için salon şart değil 💪
 
-Hedef kalorine göre her öğün hazır. Beğenmediğini tek dokunuşla yenile.
+FİT KAL planını hazırlasın: 87+ egzersiz, seviyene göre.
 FİT KAL ücretsiz — link profilde 👆
 
+(Genel bilgilendirme amaçlıdır.)
+
 #fitkal #kaloritakibi #diyet #sağlıklıyaşam #reels #kilovermek #fityaşam</pre></details>
-  <button class="copy" type="button" data-target="r21">Açıklamayı kopyala</button></article></div></section><section class="day" id="g22"><h2>30 Ekim Cuma · 22. gün</h2><div class="dgrid"><article class="dcard"><div class="when">Öğlen · Post 62</div>
+  <button class="copy" type="button" data-target="r21">Açıklamayı kopyala</button></article><article class="dcard"><div class="when">Akşam 20:30 · Hikâye</div>
+  <button class="shot" type="button" data-full="s/G21_2aksam_app_hafta.jpg" aria-label="Hikâye büyük göster"><img src="s/G21_2aksam_app_hafta.jpg" alt="Hikâye: Uygulamada + bağlantı" loading="lazy" width="1080" height="1920"></button>
+  <div class="ser">Uygulamada + bağlantı</div><p class="how2">Çıkartmalar → <b>BAĞLANTI</b>: fitkalapp.github.io/indir · yazı "Ücretsiz indir" → buzlu yuvarlak alana koy.</p></article></div></section><section class="day" id="g22"><h2>30 Ekim Cuma · 22. gün</h2><div class="dgrid"><article class="dcard"><div class="when">Sabah 09:00 · Hikâye</div>
+  <button class="shot" type="button" data-full="s/G22_1sabah_soru_araogun.jpg" aria-label="Hikâye büyük göster"><img src="s/G22_1sabah_soru_araogun.jpg" alt="Hikâye: Soru kutusu" loading="lazy" width="1080" height="1920"></button>
+  <div class="ser">Soru kutusu</div><p class="how2">Çıkartmalar → <b>SORULAR</b> → soru başlıktaki gibi → buzlu alana koy. Gelen cevaplar yeni içerik fikri olur.</p></article><article class="dcard"><div class="when">Öğlen 12:30 · Post 62</div>
   <button class="shot" type="button" data-full="p/62_tahmin.jpg" aria-label="Post 62 büyük göster"><img src="p/62_tahmin.jpg" alt="Post 62" loading="lazy" width="1080" height="1350"></button>
-  <details open><summary>Post açıklaması</summary><pre id="dc22">Hangisi daha hafif? 🤔
+  <details><summary>Post açıklaması</summary><pre id="dc22">Hangisi daha hafif? 🤔
 
 A: 1 porsiyon menemen (2 yumurta)
 B: 1 porsiyon sucuklu yumurta (2 yumurta)
@@ -536,13 +547,13 @@ Türk mutfağını tahminle değil, FİT KAL&#x27;la ölç 📱
 
 #fitkal #kaloritakibi #diyet #sağlıklıyaşam #türkmutfağı #kilovermek #sağlıklıbeslenme #hangisi #kalori
 </pre></details>
-  <button class="copy" type="button" data-target="dc22">Post açıklamasını kopyala</button></article><article class="dcard"><div class="when">Sabah · Hikâye</div>
-  <button class="shot" type="button" data-full="s/G22_1sabah_test_menemen.jpg" aria-label="Hikâye büyük göster"><img src="s/G22_1sabah_test_menemen.jpg" alt="Hikâye: Test çıkartması" loading="lazy" width="1080" height="1920"></button>
-  <div class="ser">Test çıkartması</div><p class="how2">Çıkartmalar → <b>TEST</b> → soru başlıktaki gibi · A: Menemen ✅ · B: Sucuklu yumurta → buzlu alana koy.</p></article><article class="dcard"><div class="when">Akşam · Hikâye</div>
-  <button class="shot" type="button" data-full="s/G22_2aksam_app_kahvalti.jpg" aria-label="Hikâye büyük göster"><img src="s/G22_2aksam_app_kahvalti.jpg" alt="Hikâye: Uygulamada + bağlantı" loading="lazy" width="1080" height="1920"></button>
-  <div class="ser">Uygulamada + bağlantı</div><p class="how2">Çıkartmalar → <b>BAĞLANTI</b>: fitkalapp.github.io/indir · yazı "Ücretsiz indir" → buzlu yuvarlak alana koy.</p></article></div></section><section class="day" id="g23"><h2>31 Ekim Cumartesi · 23. gün</h2><div class="dgrid"><article class="dcard"><div class="when">Öğlen · Post 63</div>
+  <button class="copy" type="button" data-target="dc22">Post açıklamasını kopyala</button></article><article class="dcard"><div class="when">Akşam 20:30 · Hikâye</div>
+  <button class="shot" type="button" data-full="s/G22_2aksam_app_foto.jpg" aria-label="Hikâye büyük göster"><img src="s/G22_2aksam_app_foto.jpg" alt="Hikâye: Uygulamada + bağlantı" loading="lazy" width="1080" height="1920"></button>
+  <div class="ser">Uygulamada + bağlantı</div><p class="how2">Çıkartmalar → <b>BAĞLANTI</b>: fitkalapp.github.io/indir · yazı "Ücretsiz indir" → buzlu yuvarlak alana koy.</p></article></div></section><section class="day" id="g23"><h2>31 Ekim Cumartesi · 23. gün</h2><div class="dgrid"><article class="dcard"><div class="when">Sabah 09:00 · Hikâye</div>
+  <button class="shot" type="button" data-full="s/G23_1sabah_soru_basari.jpg" aria-label="Hikâye büyük göster"><img src="s/G23_1sabah_soru_basari.jpg" alt="Hikâye: Soru kutusu" loading="lazy" width="1080" height="1920"></button>
+  <div class="ser">Soru kutusu</div><p class="how2">Çıkartmalar → <b>SORULAR</b> → soru başlıktaki gibi → buzlu alana koy. Gelen cevaplar yeni içerik fikri olur.</p></article><article class="dcard"><div class="when">Öğlen 12:30 · Post 63</div>
   <button class="shot" type="button" data-full="p/63_sec.jpg" aria-label="Post 63 büyük göster"><img src="p/63_sec.jpg" alt="Post 63" loading="lazy" width="1080" height="1350"></button>
-  <details open><summary>Post açıklaması</summary><pre id="dc23">Çorbada tercihin? 🤷
+  <details><summary>Post açıklaması</summary><pre id="dc23">Çorbada tercihin? 🤷
 
 A: Mercimek  ·  B: Yayla
 
@@ -550,117 +561,161 @@ Yorumlara A ya da B yaz, bakalım hangisi kazanacak 👇
 
 #fitkal #kaloritakibi #diyet #sağlıklıyaşam #türkmutfağı #kilovermek #sağlıklıbeslenme #senseç
 </pre></details>
-  <button class="copy" type="button" data-target="dc23">Post açıklamasını kopyala</button></article><article class="dcard"><div class="when">Sabah · Hikâye</div>
-  <button class="shot" type="button" data-full="s/G23_1sabah_soru_basari.jpg" aria-label="Hikâye büyük göster"><img src="s/G23_1sabah_soru_basari.jpg" alt="Hikâye: Soru kutusu" loading="lazy" width="1080" height="1920"></button>
-  <div class="ser">Soru kutusu</div><p class="how2">Çıkartmalar → <b>SORULAR</b> → soru başlıktaki gibi → buzlu alana koy. Gelen cevaplar yeni içerik fikri olur.</p></article><article class="dcard"><div class="when">Akşam · Hikâye</div>
+  <button class="copy" type="button" data-target="dc23">Post açıklamasını kopyala</button></article><article class="dcard reel"><div class="when">19:00 · Reels</div>
+  <video src="r/18_FitKal_FitTarifler_10sn.mp4" controls playsinline preload="metadata" width="1080" height="1920"></video>
+  <a class="jump" href="r/18_FitKal_FitTarifler_10sn.mp4" target="_blank" rel="noopener">Videoyu ayrı aç (kaydetmek için) ↗</a>
+  <details><summary>Reels açıklaması</summary><pre id="r23">Bugün ne yesem? 🍳
+
+70+ fit tarif, kalori ve makrolarıyla hazır. Tek dokunuşla öğününe ekle.
+FİT KAL ücretsiz — link profilde 👆
+
+#fitkal #kaloritakibi #diyet #sağlıklıyaşam #reels #kilovermek #fityaşam</pre></details>
+  <button class="copy" type="button" data-target="r23">Açıklamayı kopyala</button></article><article class="dcard"><div class="when">Akşam 20:30 · Hikâye</div>
   <button class="shot" type="button" data-full="s/G23_2aksam_app_yeniay.jpg" aria-label="Hikâye büyük göster"><img src="s/G23_2aksam_app_yeniay.jpg" alt="Hikâye: Uygulamada + bağlantı" loading="lazy" width="1080" height="1920"></button>
-  <div class="ser">Uygulamada + bağlantı</div><p class="how2">Çıkartmalar → <b>BAĞLANTI</b>: fitkalapp.github.io/indir · yazı "Ücretsiz indir" → buzlu yuvarlak alana koy.</p></article><article class="dcard reel"><div class="when">19:00 · Reels</div>
+  <div class="ser">Uygulamada + bağlantı</div><p class="how2">Çıkartmalar → <b>BAĞLANTI</b>: fitkalapp.github.io/indir · yazı "Ücretsiz indir" → buzlu yuvarlak alana koy.</p></article></div></section><section class="day" id="g24"><h2>1 Kasım Pazar · 24. gün</h2><div class="dgrid"><article class="dcard reel"><div class="when">19:00 · Reels</div>
+  <video src="r/05_FitKal_Oruc_Quiz_10sn.mp4" controls playsinline preload="metadata" width="1080" height="1920"></video>
+  <a class="jump" href="r/05_FitKal_Oruc_Quiz_10sn.mp4" target="_blank" rel="noopener">Videoyu ayrı aç (kaydetmek için) ↗</a>
+  <details><summary>Reels açıklaması</summary><pre id="r24">Aralıklı oruç yapıyor musun? ⏳
+
+Pencereni başlat, gerisini FİT KAL takip etsin. Link profilde 👆
+
+(Genel bilgilendirme amaçlıdır.)
+
+#fitkal #kaloritakibi #diyet #sağlıklıyaşam #reels #kilovermek #fityaşam</pre></details>
+  <button class="copy" type="button" data-target="r24">Açıklamayı kopyala</button></article><article class="dcard"><div class="when">Post · Hikâye</div><p class="how2">Bu güne yeni post ve hikâye seti hazırlanınca eklenecek.</p></article></div></section><section class="day" id="g25"><h2>2 Kasım Pazartesi · 25. gün</h2><div class="dgrid"><article class="dcard boost"><div class="when">Reklam</div><p class="how2"><b>Bugün reklam başlat (2–6 Kasım, 5 gün):</b> geçen haftanın en çok izlenen / kaydedilen Reels'ini seç → Instagram'da Reels → <b>Öne çıkar</b>. Hedef: Türkiye, 18–45, ilgi: diyet, fitness, sağlıklı beslenme.</p></article><article class="dcard"><div class="when">Post · Hikâye</div><p class="how2">Bu güne yeni post ve hikâye seti hazırlanınca eklenecek.</p></article></div></section><section class="day" id="g26"><h2>3 Kasım Salı · 26. gün</h2><div class="dgrid"><article class="dcard reel"><div class="when">19:00 · Reels</div>
+  <video src="r/19_FitKal_KisiselDiyet_10sn.mp4" controls playsinline preload="metadata" width="1080" height="1920"></video>
+  <a class="jump" href="r/19_FitKal_KisiselDiyet_10sn.mp4" target="_blank" rel="noopener">Videoyu ayrı aç (kaydetmek için) ↗</a>
+  <details><summary>Reels açıklaması</summary><pre id="r26">Diyet listesi hazırlamakla uğraşma 🥗
+
+Hedef kalorine göre her öğün hazır. Beğenmediğini tek dokunuşla yenile.
+FİT KAL ücretsiz — link profilde 👆
+
+#fitkal #kaloritakibi #diyet #sağlıklıyaşam #reels #kilovermek #fityaşam</pre></details>
+  <button class="copy" type="button" data-target="r26">Açıklamayı kopyala</button></article><article class="dcard"><div class="when">Post · Hikâye</div><p class="how2">Bu güne yeni post ve hikâye seti hazırlanınca eklenecek.</p></article></div></section><section class="day" id="g27"><h2>4 Kasım Çarşamba · 27. gün</h2><div class="dgrid"><article class="dcard"><div class="when">Post · Hikâye</div><p class="how2">Bugün dinlenme günü: yeni post/hikâye seti hazırlanınca dolacak.</p></article></div></section><section class="day" id="g28"><h2>5 Kasım Perşembe · 28. gün</h2><div class="dgrid"><article class="dcard reel"><div class="when">19:00 · Reels</div>
+  <video src="r/FitKal_AI_03_Kahvalti_10sn.mp4" controls playsinline preload="metadata" width="1080" height="1920"></video>
+  <a class="jump" href="r/FitKal_AI_03_Kahvalti_10sn.mp4" target="_blank" rel="noopener">Videoyu ayrı aç (kaydetmek için) ↗</a>
+  <details><summary>Reels açıklaması</summary><pre id="r28">Güne güzel bir kahvaltıyla başla ☀️
+
+Kahvaltın da diyet planında hazır; her öğün hedefine göre.
+FİT KAL ücretsiz — link profilde 👆
+
+#fitkal #kaloritakibi #diyet #sağlıklıyaşam #reels #kilovermek #fityaşam</pre></details>
+  <button class="copy" type="button" data-target="r28">Açıklamayı kopyala</button></article><article class="dcard"><div class="when">Post · Hikâye</div><p class="how2">Bu güne yeni post ve hikâye seti hazırlanınca eklenecek.</p></article></div></section><section class="day" id="g29"><h2>6 Kasım Cuma · 29. gün</h2><div class="dgrid"><article class="dcard"><div class="when">Post · Hikâye</div><p class="how2">Bugün dinlenme günü: yeni post/hikâye seti hazırlanınca dolacak.</p></article></div></section><section class="day" id="g30"><h2>7 Kasım Cumartesi · 30. gün</h2><div class="dgrid"><article class="dcard reel"><div class="when">19:00 · Reels</div>
   <video src="r/10_FitKal_KankaChat_10sn.mp4" controls playsinline preload="metadata" width="1080" height="1920"></video>
   <a class="jump" href="r/10_FitKal_KankaChat_10sn.mp4" target="_blank" rel="noopener">Videoyu ayrı aç (kaydetmek için) ↗</a>
-  <details><summary>Reels açıklaması</summary><pre id="r23">Diyete başladığını kankana söyledin mi? 😄
+  <details><summary>Reels açıklaması</summary><pre id="r30">Diyete başladığını kankana söyledin mi? 😄
 
 Bir dahakine FİT KAL&#x27;ı da söyle — link profilde 👆
 
 #fitkal #kaloritakibi #diyet #sağlıklıyaşam #reels #kilovermek #fityaşam</pre></details>
-  <button class="copy" type="button" data-target="r23">Açıklamayı kopyala</button></article></div></section><section class="day" id="g24"><h2>1 Kasım Pazar · 24. gün</h2><div class="dgrid"><article class="dcard reel"><div class="when">19:00 · Reels</div>
+  <button class="copy" type="button" data-target="r30">Açıklamayı kopyala</button></article><article class="dcard"><div class="when">Post · Hikâye</div><p class="how2">Bu güne yeni post ve hikâye seti hazırlanınca eklenecek.</p></article></div></section><section class="day" id="g31"><h2>8 Kasım Pazar · 31. gün</h2><div class="dgrid"><article class="dcard reel"><div class="when">19:00 · Reels</div>
   <video src="r/20_FitKal_OtomatikAntrenman_10sn.mp4" controls playsinline preload="metadata" width="1080" height="1920"></video>
   <a class="jump" href="r/20_FitKal_OtomatikAntrenman_10sn.mp4" target="_blank" rel="noopener">Videoyu ayrı aç (kaydetmek için) ↗</a>
-  <details><summary>Reels açıklaması</summary><pre id="r24">Antrenman planını kim hazırlıyor? 🏋️
+  <details><summary>Reels açıklaması</summary><pre id="r31">Antrenman planını kim hazırlıyor? 🏋️
 
 87+ egzersiz, hedefine ve seviyene göre otomatik plan. FİT KAL ücretsiz — link profilde 👆
 
 (Genel bilgilendirme amaçlıdır.)
 
 #fitkal #kaloritakibi #diyet #sağlıklıyaşam #reels #kilovermek #fityaşam</pre></details>
-  <button class="copy" type="button" data-target="r24">Açıklamayı kopyala</button></article><article class="dcard"><div class="when">Post · Hikâye</div><p class="how2">Bu güne yeni post ve hikâye seti hazırlanınca eklenecek.</p></article></div></section><section class="day" id="g25"><h2>2 Kasım Pazartesi · 25. gün</h2><div class="dgrid"><article class="dcard boost"><div class="when">Reklam</div><p class="how2"><b>Bugün reklam başlat (2–6 Kasım, 5 gün):</b> geçen haftanın en çok izlenen / kaydedilen Reels'ini seç → Instagram'da Reels → <b>Öne çıkar</b>. Hedef: Türkiye, 18–45, ilgi: diyet, fitness, sağlıklı beslenme.</p></article><article class="dcard"><div class="when">Post · Hikâye</div><p class="how2">Bu güne yeni post ve hikâye seti hazırlanınca eklenecek.</p></article></div></section><section class="day" id="g26"><h2>3 Kasım Salı · 26. gün</h2><div class="dgrid"><article class="dcard reel"><div class="when">19:00 · Reels</div>
+  <button class="copy" type="button" data-target="r31">Açıklamayı kopyala</button></article><article class="dcard"><div class="when">Post · Hikâye</div><p class="how2">Bu güne yeni post ve hikâye seti hazırlanınca eklenecek.</p></article></div></section><section class="day" id="g32"><h2>9 Kasım Pazartesi · 32. gün</h2><div class="dgrid"><article class="dcard boost"><div class="when">Reklam</div><p class="how2"><b>Bugün reklam başlat (9–13 Kasım, 5 gün):</b> geçen haftanın en çok izlenen / kaydedilen Reels'ini seç → Instagram'da Reels → <b>Öne çıkar</b>. Hedef: Türkiye, 18–45, ilgi: diyet, fitness, sağlıklı beslenme.</p></article><article class="dcard"><div class="when">Post · Hikâye</div><p class="how2">Bu güne yeni post ve hikâye seti hazırlanınca eklenecek.</p></article></div></section><section class="day" id="g33"><h2>10 Kasım Salı · 33. gün</h2><div class="dgrid"><article class="dcard reel"><div class="when">19:00 · Reels</div>
   <video src="r/06_FitKal_Egzersiz_Quiz_10sn.mp4" controls playsinline preload="metadata" width="1080" height="1920"></video>
   <a class="jump" href="r/06_FitKal_Egzersiz_Quiz_10sn.mp4" target="_blank" rel="noopener">Videoyu ayrı aç (kaydetmek için) ↗</a>
-  <details><summary>Reels açıklaması</summary><pre id="r26">Bu hareket kaç kalori yaktırır? 💪
+  <details><summary>Reels açıklaması</summary><pre id="r33">Bu hareket kaç kalori yaktırır? 💪
 
 Tahminini yaz, cevap videoda. Antrenman planın FİT KAL&#x27;da hazır — link profilde 👆
 
 #fitkal #kaloritakibi #diyet #sağlıklıyaşam #reels #kilovermek #fityaşam</pre></details>
-  <button class="copy" type="button" data-target="r26">Açıklamayı kopyala</button></article><article class="dcard"><div class="when">Post · Hikâye</div><p class="how2">Bu güne yeni post ve hikâye seti hazırlanınca eklenecek.</p></article></div></section><section class="day" id="g27"><h2>4 Kasım Çarşamba · 27. gün</h2><div class="dgrid"><article class="dcard"><div class="when">Post · Hikâye</div><p class="how2">Bugün dinlenme günü: yeni post/hikâye seti hazırlanınca dolacak.</p></article></div></section><section class="day" id="g28"><h2>5 Kasım Perşembe · 28. gün</h2><div class="dgrid"><article class="dcard reel"><div class="when">19:00 · Reels</div>
+  <button class="copy" type="button" data-target="r33">Açıklamayı kopyala</button></article><article class="dcard"><div class="when">Post · Hikâye</div><p class="how2">Bu güne yeni post ve hikâye seti hazırlanınca eklenecek.</p></article></div></section><section class="day" id="g34"><h2>11 Kasım Çarşamba · 34. gün</h2><div class="dgrid"><article class="dcard"><div class="when">Post · Hikâye</div><p class="how2">Bugün dinlenme günü: yeni post/hikâye seti hazırlanınca dolacak.</p></article></div></section><section class="day" id="g35"><h2>12 Kasım Perşembe · 35. gün</h2><div class="dgrid"><article class="dcard reel"><div class="when">19:00 · Reels</div>
+  <video src="r/FitKal_AI_02_Gece23_10sn.mp4" controls playsinline preload="metadata" width="1080" height="1920"></video>
+  <a class="jump" href="r/FitKal_AI_02_Gece23_10sn.mp4" target="_blank" rel="noopener">Videoyu ayrı aç (kaydetmek için) ↗</a>
+  <details><summary>Reels açıklaması</summary><pre id="r35">Saat 23:00. Yesem mi, yemesem mi? 🌙
+
+Önce günün hesabına bak; kalan hakkın hep önünde.
+FİT KAL ücretsiz — link profilde 👆
+
+#fitkal #kaloritakibi #diyet #sağlıklıyaşam #reels #kilovermek #fityaşam</pre></details>
+  <button class="copy" type="button" data-target="r35">Açıklamayı kopyala</button></article><article class="dcard"><div class="when">Post · Hikâye</div><p class="how2">Bu güne yeni post ve hikâye seti hazırlanınca eklenecek.</p></article></div></section><section class="day" id="g36"><h2>13 Kasım Cuma · 36. gün</h2><div class="dgrid"><article class="dcard"><div class="when">Post · Hikâye</div><p class="how2">Bugün dinlenme günü: yeni post/hikâye seti hazırlanınca dolacak.</p></article></div></section><section class="day" id="g37"><h2>14 Kasım Cumartesi · 37. gün</h2><div class="dgrid"><article class="dcard reel"><div class="when">19:00 · Reels</div>
   <video src="r/14_FitKal_MakroDengesi_10sn.mp4" controls playsinline preload="metadata" width="1080" height="1920"></video>
   <a class="jump" href="r/14_FitKal_MakroDengesi_10sn.mp4" target="_blank" rel="noopener">Videoyu ayrı aç (kaydetmek için) ↗</a>
-  <details><summary>Reels açıklaması</summary><pre id="r28">Kaç kalori aldın? Peki neyden? 📊
+  <details><summary>Reels açıklaması</summary><pre id="r37">Kaç kalori aldın? Peki neyden? 📊
 
 Protein, karbonhidrat, yağ — makro dengeni tek bakışta gör. FİT KAL ücretsiz — link profilde 👆
 
 #fitkal #kaloritakibi #diyet #sağlıklıyaşam #reels #kilovermek #fityaşam</pre></details>
-  <button class="copy" type="button" data-target="r28">Açıklamayı kopyala</button></article><article class="dcard"><div class="when">Post · Hikâye</div><p class="how2">Bu güne yeni post ve hikâye seti hazırlanınca eklenecek.</p></article></div></section><section class="day" id="g29"><h2>6 Kasım Cuma · 29. gün</h2><div class="dgrid"><article class="dcard"><div class="when">Post · Hikâye</div><p class="how2">Bugün dinlenme günü: yeni post/hikâye seti hazırlanınca dolacak.</p></article></div></section><section class="day" id="g30"><h2>7 Kasım Cumartesi · 30. gün</h2><div class="dgrid"><article class="dcard reel"><div class="when">19:00 · Reels</div>
+  <button class="copy" type="button" data-target="r37">Açıklamayı kopyala</button></article><article class="dcard"><div class="when">Post · Hikâye</div><p class="how2">Bu güne yeni post ve hikâye seti hazırlanınca eklenecek.</p></article></div></section><section class="day" id="g38"><h2>15 Kasım Pazar · 38. gün</h2><div class="dgrid"><article class="dcard reel"><div class="when">19:00 · Reels</div>
   <video src="r/13_FitKal_8UygulamaYerine1_10sn.mp4" controls playsinline preload="metadata" width="1080" height="1920"></video>
   <a class="jump" href="r/13_FitKal_8UygulamaYerine1_10sn.mp4" target="_blank" rel="noopener">Videoyu ayrı aç (kaydetmek için) ↗</a>
-  <details><summary>Reels açıklaması</summary><pre id="r30">Telefonunda kaç sağlık uygulaması var? 📱
+  <details><summary>Reels açıklaması</summary><pre id="r38">Telefonunda kaç sağlık uygulaması var? 📱
 
 Diyet, kalori, egzersiz, su, oruç — hepsi tek uygulamada. FİT KAL ücretsiz — link profilde 👆
 
 #fitkal #kaloritakibi #diyet #sağlıklıyaşam #reels #kilovermek #fityaşam</pre></details>
-  <button class="copy" type="button" data-target="r30">Açıklamayı kopyala</button></article><article class="dcard"><div class="when">Post · Hikâye</div><p class="how2">Bu güne yeni post ve hikâye seti hazırlanınca eklenecek.</p></article></div></section><section class="day" id="g31"><h2>8 Kasım Pazar · 31. gün</h2><div class="dgrid"><article class="dcard reel"><div class="when">19:00 · Reels</div>
+  <button class="copy" type="button" data-target="r38">Açıklamayı kopyala</button></article><article class="dcard"><div class="when">Post · Hikâye</div><p class="how2">Bu güne yeni post ve hikâye seti hazırlanınca eklenecek.</p></article></div></section><section class="day" id="g39"><h2>16 Kasım Pazartesi · 39. gün</h2><div class="dgrid"><article class="dcard boost"><div class="when">Reklam</div><p class="how2"><b>Bugün reklam başlat (16–20 Kasım, 5 gün):</b> geçen haftanın en çok izlenen / kaydedilen Reels'ini seç → Instagram'da Reels → <b>Öne çıkar</b>. Hedef: Türkiye, 18–45, ilgi: diyet, fitness, sağlıklı beslenme.</p></article><article class="dcard"><div class="when">Post · Hikâye</div><p class="how2">Bu güne yeni post ve hikâye seti hazırlanınca eklenecek.</p></article></div></section><section class="day" id="g40"><h2>17 Kasım Salı · 40. gün</h2><div class="dgrid"><article class="dcard reel"><div class="when">19:00 · Reels</div>
   <video src="r/15_FitKal_BirGunum_10sn.mp4" controls playsinline preload="metadata" width="1080" height="1920"></video>
   <a class="jump" href="r/15_FitKal_BirGunum_10sn.mp4" target="_blank" rel="noopener">Videoyu ayrı aç (kaydetmek için) ↗</a>
-  <details><summary>Reels açıklaması</summary><pre id="r31">FİT KAL ile bir günüm ⏰
+  <details><summary>Reels açıklaması</summary><pre id="r40">FİT KAL ile bir günüm ⏰
 
 Sabah su, öğlen yemeğini çek, akşam spor, gece oruç. FİT KAL ücretsiz — link profilde 👆
 
 #fitkal #kaloritakibi #diyet #sağlıklıyaşam #reels #kilovermek #fityaşam</pre></details>
-  <button class="copy" type="button" data-target="r31">Açıklamayı kopyala</button></article><article class="dcard"><div class="when">Post · Hikâye</div><p class="how2">Bu güne yeni post ve hikâye seti hazırlanınca eklenecek.</p></article></div></section><section class="day" id="g32"><h2>9 Kasım Pazartesi · 32. gün</h2><div class="dgrid"><article class="dcard boost"><div class="when">Reklam</div><p class="how2"><b>Bugün reklam başlat (9–13 Kasım, 5 gün):</b> geçen haftanın en çok izlenen / kaydedilen Reels'ini seç → Instagram'da Reels → <b>Öne çıkar</b>. Hedef: Türkiye, 18–45, ilgi: diyet, fitness, sağlıklı beslenme.</p></article><article class="dcard"><div class="when">Post · Hikâye</div><p class="how2">Bu güne yeni post ve hikâye seti hazırlanınca eklenecek.</p></article></div></section><section class="day" id="g33"><h2>10 Kasım Salı · 33. gün</h2><div class="dgrid"><article class="dcard reel"><div class="when">19:00 · Reels</div>
+  <button class="copy" type="button" data-target="r40">Açıklamayı kopyala</button></article><article class="dcard"><div class="when">Post · Hikâye</div><p class="how2">Bu güne yeni post ve hikâye seti hazırlanınca eklenecek.</p></article></div></section><section class="day" id="g41"><h2>18 Kasım Çarşamba · 41. gün</h2><div class="dgrid"><article class="dcard"><div class="when">Post · Hikâye</div><p class="how2">Bugün dinlenme günü: yeni post/hikâye seti hazırlanınca dolacak.</p></article></div></section><section class="day" id="g42"><h2>19 Kasım Perşembe · 42. gün</h2><div class="dgrid"><article class="dcard reel"><div class="when">19:00 · Reels</div>
   <video src="r/03_FitKal_EskiYontem_vs_FitKal_10sn.mp4" controls playsinline preload="metadata" width="1080" height="1920"></video>
   <a class="jump" href="r/03_FitKal_EskiYontem_vs_FitKal_10sn.mp4" target="_blank" rel="noopener">Videoyu ayrı aç (kaydetmek için) ↗</a>
-  <details><summary>Reels açıklaması</summary><pre id="r33">Kalori hesaplamak eskiden dakikalar sürerdi ⏱️
+  <details><summary>Reels açıklaması</summary><pre id="r42">Kalori hesaplamak eskiden dakikalar sürerdi ⏱️
 
 Şimdi tek fotoğraf. FİT KAL ücretsiz — link profilde 👆
 
 #fitkal #kaloritakibi #diyet #sağlıklıyaşam #reels #kilovermek #fityaşam</pre></details>
-  <button class="copy" type="button" data-target="r33">Açıklamayı kopyala</button></article><article class="dcard"><div class="when">Post · Hikâye</div><p class="how2">Bu güne yeni post ve hikâye seti hazırlanınca eklenecek.</p></article></div></section><section class="day" id="g34"><h2>11 Kasım Çarşamba · 34. gün</h2><div class="dgrid"><article class="dcard"><div class="when">Post · Hikâye</div><p class="how2">Bugün dinlenme günü: yeni post/hikâye seti hazırlanınca dolacak.</p></article></div></section><section class="day" id="g35"><h2>12 Kasım Perşembe · 35. gün</h2><div class="dgrid"><article class="dcard reel"><div class="when">19:00 · Reels</div>
+  <button class="copy" type="button" data-target="r42">Açıklamayı kopyala</button></article><article class="dcard"><div class="when">Post · Hikâye</div><p class="how2">Bu güne yeni post ve hikâye seti hazırlanınca eklenecek.</p></article></div></section><section class="day" id="g43"><h2>20 Kasım Cuma · 43. gün</h2><div class="dgrid"><article class="dcard"><div class="when">Post · Hikâye</div><p class="how2">Bugün dinlenme günü: yeni post/hikâye seti hazırlanınca dolacak.</p></article></div></section><section class="day" id="g44"><h2>21 Kasım Cumartesi · 44. gün</h2><div class="dgrid"><article class="dcard reel"><div class="when">19:00 · Reels</div>
   <video src="r/07_FitKal_Rozet_Oyun_10sn.mp4" controls playsinline preload="metadata" width="1080" height="1920"></video>
   <a class="jump" href="r/07_FitKal_Rozet_Oyun_10sn.mp4" target="_blank" rel="noopener">Videoyu ayrı aç (kaydetmek için) ↗</a>
-  <details><summary>Reels açıklaması</summary><pre id="r35">Diyet sıkıcı mı? Oyuna çevir 🎮
+  <details><summary>Reels açıklaması</summary><pre id="r44">Diyet sıkıcı mı? Oyuna çevir 🎮
 
 Hedefini belirle, görevleri tamamla, rozetleri topla. FİT KAL ücretsiz — link profilde 👆
 
 #fitkal #kaloritakibi #diyet #sağlıklıyaşam #reels #kilovermek #fityaşam</pre></details>
-  <button class="copy" type="button" data-target="r35">Açıklamayı kopyala</button></article><article class="dcard"><div class="when">Post · Hikâye</div><p class="how2">Bu güne yeni post ve hikâye seti hazırlanınca eklenecek.</p></article></div></section><section class="day" id="g36"><h2>13 Kasım Cuma · 36. gün</h2><div class="dgrid"><article class="dcard"><div class="when">Post · Hikâye</div><p class="how2">Bugün dinlenme günü: yeni post/hikâye seti hazırlanınca dolacak.</p></article></div></section><section class="day" id="g37"><h2>14 Kasım Cumartesi · 37. gün</h2><div class="dgrid"><article class="dcard reel"><div class="when">19:00 · Reels</div>
+  <button class="copy" type="button" data-target="r44">Açıklamayı kopyala</button></article><article class="dcard"><div class="when">Post · Hikâye</div><p class="how2">Bu güne yeni post ve hikâye seti hazırlanınca eklenecek.</p></article></div></section><section class="day" id="g45"><h2>22 Kasım Pazar · 45. gün</h2><div class="dgrid"><article class="dcard reel"><div class="when">19:00 · Reels</div>
   <video src="r/11_FitKal_DiyetNotlarim_10sn.mp4" controls playsinline preload="metadata" width="1080" height="1920"></video>
   <a class="jump" href="r/11_FitKal_DiyetNotlarim_10sn.mp4" target="_blank" rel="noopener">Videoyu ayrı aç (kaydetmek için) ↗</a>
-  <details><summary>Reels açıklaması</summary><pre id="r37">Diyet planın hâlâ not defterinde mi? 📝
+  <details><summary>Reels açıklaması</summary><pre id="r45">Diyet planın hâlâ not defterinde mi? 📝
 
 Bırak notları, FİT KAL tutsun. FİT KAL ücretsiz — link profilde 👆
 
 #fitkal #kaloritakibi #diyet #sağlıklıyaşam #reels #kilovermek #fityaşam</pre></details>
-  <button class="copy" type="button" data-target="r37">Açıklamayı kopyala</button></article><article class="dcard"><div class="when">Post · Hikâye</div><p class="how2">Bu güne yeni post ve hikâye seti hazırlanınca eklenecek.</p></article></div></section><section class="day" id="g38"><h2>15 Kasım Pazar · 38. gün</h2><div class="dgrid"><article class="dcard reel"><div class="when">19:00 · Reels</div>
+  <button class="copy" type="button" data-target="r45">Açıklamayı kopyala</button></article><article class="dcard"><div class="when">Post · Hikâye</div><p class="how2">Bu güne yeni post ve hikâye seti hazırlanınca eklenecek.</p></article></div></section><section class="day" id="g46"><h2>23 Kasım Pazartesi · 46. gün</h2><div class="dgrid"><article class="dcard boost"><div class="when">Reklam</div><p class="how2"><b>Bugün reklam başlat (23–27 Kasım, 5 gün):</b> geçen haftanın en çok izlenen / kaydedilen Reels'ini seç → Instagram'da Reels → <b>Öne çıkar</b>. Hedef: Türkiye, 18–45, ilgi: diyet, fitness, sağlıklı beslenme.</p></article><article class="dcard"><div class="when">Post · Hikâye</div><p class="how2">Bu güne yeni post ve hikâye seti hazırlanınca eklenecek.</p></article></div></section><section class="day" id="g47"><h2>24 Kasım Salı · 47. gün</h2><div class="dgrid"><article class="dcard reel"><div class="when">19:00 · Reels</div>
   <video src="r/09_FitKal_Bildirimler_10sn.mp4" controls playsinline preload="metadata" width="1080" height="1920"></video>
   <a class="jump" href="r/09_FitKal_Bildirimler_10sn.mp4" target="_blank" rel="noopener">Videoyu ayrı aç (kaydetmek için) ↗</a>
-  <details><summary>Reels açıklaması</summary><pre id="r38">Telefonun seni hedefine taşırsa? 🔔
+  <details><summary>Reels açıklaması</summary><pre id="r47">Telefonun seni hedefine taşırsa? 🔔
 
 Hatırlatır, motive eder. FİT KAL ücretsiz — link profilde 👆
 
 #fitkal #kaloritakibi #diyet #sağlıklıyaşam #reels #kilovermek #fityaşam</pre></details>
-  <button class="copy" type="button" data-target="r38">Açıklamayı kopyala</button></article><article class="dcard"><div class="when">Post · Hikâye</div><p class="how2">Bu güne yeni post ve hikâye seti hazırlanınca eklenecek.</p></article></div></section><section class="day" id="g39"><h2>16 Kasım Pazartesi · 39. gün</h2><div class="dgrid"><article class="dcard boost"><div class="when">Reklam</div><p class="how2"><b>Bugün reklam başlat (16–20 Kasım, 5 gün):</b> geçen haftanın en çok izlenen / kaydedilen Reels'ini seç → Instagram'da Reels → <b>Öne çıkar</b>. Hedef: Türkiye, 18–45, ilgi: diyet, fitness, sağlıklı beslenme.</p></article><article class="dcard"><div class="when">Post · Hikâye</div><p class="how2">Bu güne yeni post ve hikâye seti hazırlanınca eklenecek.</p></article></div></section><section class="day" id="g40"><h2>17 Kasım Salı · 40. gün</h2><div class="dgrid"><article class="dcard reel"><div class="when">19:00 · Reels</div>
+  <button class="copy" type="button" data-target="r47">Açıklamayı kopyala</button></article><article class="dcard"><div class="when">Post · Hikâye</div><p class="how2">Bu güne yeni post ve hikâye seti hazırlanınca eklenecek.</p></article></div></section><section class="day" id="g48"><h2>25 Kasım Çarşamba · 48. gün</h2><div class="dgrid"><article class="dcard"><div class="when">Post · Hikâye</div><p class="how2">Bugün dinlenme günü: yeni post/hikâye seti hazırlanınca dolacak.</p></article></div></section><section class="day" id="g49"><h2>26 Kasım Perşembe · 49. gün</h2><div class="dgrid"><article class="dcard reel"><div class="when">19:00 · Reels</div>
   <video src="r/12_FitKal_30GunTakvim_10sn.mp4" controls playsinline preload="metadata" width="1080" height="1920"></video>
   <a class="jump" href="r/12_FitKal_30GunTakvim_10sn.mp4" target="_blank" rel="noopener">Videoyu ayrı aç (kaydetmek için) ↗</a>
-  <details><summary>Reels açıklaması</summary><pre id="r40">Otuz gün dayanabilir misin? 📆
+  <details><summary>Reels açıklaması</summary><pre id="r49">Otuz gün dayanabilir misin? 📆
 
 Her gün bir tik, seri hep gözünün önünde. FİT KAL ücretsiz — link profilde 👆
 
 #fitkal #kaloritakibi #diyet #sağlıklıyaşam #reels #kilovermek #fityaşam</pre></details>
-  <button class="copy" type="button" data-target="r40">Açıklamayı kopyala</button></article><article class="dcard"><div class="when">Post · Hikâye</div><p class="how2">Bu güne yeni post ve hikâye seti hazırlanınca eklenecek.</p></article></div></section><section class="day" id="g41"><h2>18 Kasım Çarşamba · 41. gün</h2><div class="dgrid"><article class="dcard"><div class="when">Post · Hikâye</div><p class="how2">Bugün dinlenme günü: yeni post/hikâye seti hazırlanınca dolacak.</p></article></div></section><section class="day" id="g42"><h2>19 Kasım Perşembe · 42. gün</h2><div class="dgrid"><article class="dcard reel"><div class="when">19:00 · Reels</div>
+  <button class="copy" type="button" data-target="r49">Açıklamayı kopyala</button></article><article class="dcard"><div class="when">Post · Hikâye</div><p class="how2">Bu güne yeni post ve hikâye seti hazırlanınca eklenecek.</p></article></div></section><section class="day" id="g50"><h2>27 Kasım Cuma · 50. gün</h2><div class="dgrid"><article class="dcard"><div class="when">Post · Hikâye</div><p class="how2">Bugün dinlenme günü: yeni post/hikâye seti hazırlanınca dolacak.</p></article></div></section><section class="day" id="g51"><h2>28 Kasım Cumartesi · 51. gün</h2><div class="dgrid"><article class="dcard reel"><div class="when">19:00 · Reels</div>
   <video src="r/16_FitKal_HedefYolculugu_10sn.mp4" controls playsinline preload="metadata" width="1080" height="1920"></video>
   <a class="jump" href="r/16_FitKal_HedefYolculugu_10sn.mp4" target="_blank" rel="noopener">Videoyu ayrı aç (kaydetmek için) ↗</a>
-  <details><summary>Reels açıklaması</summary><pre id="r42">Hedefe giden yol, gün gün 💚
+  <details><summary>Reels açıklaması</summary><pre id="r51">Hedefe giden yol, gün gün 💚
 
 Her ölçüm kayıtlı, kalan hep görünür. FİT KAL ücretsiz — link profilde 👆
 
 #fitkal #kaloritakibi #diyet #sağlıklıyaşam #reels #kilovermek #fityaşam</pre></details>
-  <button class="copy" type="button" data-target="r42">Açıklamayı kopyala</button></article><article class="dcard"><div class="when">Post · Hikâye</div><p class="how2">Bu güne yeni post ve hikâye seti hazırlanınca eklenecek.</p></article></div></section><section class="day" id="g43"><h2>20 Kasım Cuma · 43. gün</h2><div class="dgrid"><article class="dcard"><div class="when">Post · Hikâye</div><p class="how2">Bugün dinlenme günü: yeni post/hikâye seti hazırlanınca dolacak.</p></article></div></section><section class="day" id="g44"><h2>21 Kasım Cumartesi · 44. gün</h2><div class="dgrid"><article class="dcard reel"><div class="when">19:00 · Reels</div>
+  <button class="copy" type="button" data-target="r51">Açıklamayı kopyala</button></article><article class="dcard"><div class="when">Post · Hikâye</div><p class="how2">Bu güne yeni post ve hikâye seti hazırlanınca eklenecek.</p></article></div></section><section class="day" id="g52"><h2>29 Kasım Pazar · 52. gün</h2><div class="dgrid"><article class="dcard reel"><div class="when">19:00 · Reels</div>
   <video src="r/01_FitKal_HepsiBirArada_10sn.mp4" controls playsinline preload="metadata" width="1080" height="1920"></video>
   <a class="jump" href="r/01_FitKal_HepsiBirArada_10sn.mp4" target="_blank" rel="noopener">Videoyu ayrı aç (kaydetmek için) ↗</a>
-  <details><summary>Reels açıklaması</summary><pre id="r44">Kalori. Spor. Oruç. Tek uygulamada 💚
+  <details><summary>Reels açıklaması</summary><pre id="r52">Kalori. Spor. Oruç. Tek uygulamada 💚
 
 Fotoğraf çek, yapay zeka hesaplasın. FİT KAL ücretsiz — link profilde 👆
 
 #fitkal #kaloritakibi #diyet #sağlıklıyaşam #reels #kilovermek #fityaşam</pre></details>
-  <button class="copy" type="button" data-target="r44">Açıklamayı kopyala</button></article><article class="dcard"><div class="when">Post · Hikâye</div><p class="how2">Bu güne yeni post ve hikâye seti hazırlanınca eklenecek.</p></article></div></section></section>
+  <button class="copy" type="button" data-target="r52">Açıklamayı kopyala</button></article><article class="dcard"><div class="when">Post · Hikâye</div><p class="how2">Bu güne yeni post ve hikâye seti hazırlanınca eklenecek.</p></article></div></section></section>
   <h2 class="ph2">Tüm postlar</h2>
   <main class="grid"><article class="card" id="p01">
   <button class="shot" type="button" data-full="p/01_mit.jpg" aria-label="Post 01 büyük göster"><img src="p/01_mit.jpg" alt="Post 01: Mit mi, gerçek mi?" loading="lazy" width="1080" height="1350"></button>
@@ -1499,6 +1554,53 @@ Yorumlara A ya da B yaz, bakalım hangisi kazanacak 👇
 </pre></details>
   <button class="copy" type="button" data-target="c63">Açıklamayı kopyala</button>
 </article></main>
+  <section class="ads" id="ads"><h2 class="ph2">Google Ads öğeleri · Instagram için değil</h2><p class="pp">Reklam panelinde kullanılan görseller ve yatay/kare videolar. Dikey (9:16) reklam videoları zaten yukarıdaki Reels takviminde.</p><div class="agrid"><article class="acard"><button class="shot" type="button" data-full="ads/FitKal_01_fotograf_kalori_1x1.jpg"><img src="ads/FitKal_01_fotograf_kalori_1x1.jpg" alt="Reklam görseli FitKal_01_fotograf_kalori_1x1.jpg" loading="lazy"></button><div class="ser">1x1</div></article><article class="acard"><button class="shot" type="button" data-full="ads/FitKal_02_diyet_plani_1x1.jpg"><img src="ads/FitKal_02_diyet_plani_1x1.jpg" alt="Reklam görseli FitKal_02_diyet_plani_1x1.jpg" loading="lazy"></button><div class="ser">1x1</div></article><article class="acard"><button class="shot" type="button" data-full="ads/FitKal_03_antrenman_1x1.jpg"><img src="ads/FitKal_03_antrenman_1x1.jpg" alt="Reklam görseli FitKal_03_antrenman_1x1.jpg" loading="lazy"></button><div class="ser">1x1</div></article><article class="acard"><button class="shot" type="button" data-full="ads/FitKal_04_oruc_1x1.jpg"><img src="ads/FitKal_04_oruc_1x1.jpg" alt="Reklam görseli FitKal_04_oruc_1x1.jpg" loading="lazy"></button><div class="ser">1x1</div></article><article class="acard"><button class="shot" type="button" data-full="ads/FitKal_05_tarifler_1x1.jpg"><img src="ads/FitKal_05_tarifler_1x1.jpg" alt="Reklam görseli FitKal_05_tarifler_1x1.jpg" loading="lazy"></button><div class="ser">1x1</div></article><article class="acard"><button class="shot" type="button" data-full="ads/FitKal_06_alisveris_1x1.jpg"><img src="ads/FitKal_06_alisveris_1x1.jpg" alt="Reklam görseli FitKal_06_alisveris_1x1.jpg" loading="lazy"></button><div class="ser">1x1</div></article><article class="acard"><button class="shot" type="button" data-full="ads/FitKal_07_makro_1x1.jpg"><img src="ads/FitKal_07_makro_1x1.jpg" alt="Reklam görseli FitKal_07_makro_1x1.jpg" loading="lazy"></button><div class="ser">1x1</div></article><article class="acard"><button class="shot" type="button" data-full="ads/FitKal_01_fotograf_kalori_4x5.jpg"><img src="ads/FitKal_01_fotograf_kalori_4x5.jpg" alt="Reklam görseli FitKal_01_fotograf_kalori_4x5.jpg" loading="lazy"></button><div class="ser">4x5</div></article><article class="acard"><button class="shot" type="button" data-full="ads/FitKal_02_diyet_plani_4x5.jpg"><img src="ads/FitKal_02_diyet_plani_4x5.jpg" alt="Reklam görseli FitKal_02_diyet_plani_4x5.jpg" loading="lazy"></button><div class="ser">4x5</div></article><article class="acard"><button class="shot" type="button" data-full="ads/FitKal_03_antrenman_4x5.jpg"><img src="ads/FitKal_03_antrenman_4x5.jpg" alt="Reklam görseli FitKal_03_antrenman_4x5.jpg" loading="lazy"></button><div class="ser">4x5</div></article><article class="acard"><button class="shot" type="button" data-full="ads/FitKal_04_oruc_4x5.jpg"><img src="ads/FitKal_04_oruc_4x5.jpg" alt="Reklam görseli FitKal_04_oruc_4x5.jpg" loading="lazy"></button><div class="ser">4x5</div></article><article class="acard"><button class="shot" type="button" data-full="ads/FitKal_05_tarifler_4x5.jpg"><img src="ads/FitKal_05_tarifler_4x5.jpg" alt="Reklam görseli FitKal_05_tarifler_4x5.jpg" loading="lazy"></button><div class="ser">4x5</div></article><article class="acard"><button class="shot" type="button" data-full="ads/FitKal_06_alisveris_4x5.jpg"><img src="ads/FitKal_06_alisveris_4x5.jpg" alt="Reklam görseli FitKal_06_alisveris_4x5.jpg" loading="lazy"></button><div class="ser">4x5</div></article><article class="acard"><button class="shot" type="button" data-full="ads/FitKal_07_makro_4x5.jpg"><img src="ads/FitKal_07_makro_4x5.jpg" alt="Reklam görseli FitKal_07_makro_4x5.jpg" loading="lazy"></button><div class="ser">4x5</div></article><article class="acard"><button class="shot" type="button" data-full="ads/FitKal_01_fotograf_kalori_191x1.jpg"><img src="ads/FitKal_01_fotograf_kalori_191x1.jpg" alt="Reklam görseli FitKal_01_fotograf_kalori_191x1.jpg" loading="lazy"></button><div class="ser">1.91x1</div></article><article class="acard"><button class="shot" type="button" data-full="ads/FitKal_02_diyet_plani_191x1.jpg"><img src="ads/FitKal_02_diyet_plani_191x1.jpg" alt="Reklam görseli FitKal_02_diyet_plani_191x1.jpg" loading="lazy"></button><div class="ser">1.91x1</div></article><article class="acard"><button class="shot" type="button" data-full="ads/FitKal_03_antrenman_191x1.jpg"><img src="ads/FitKal_03_antrenman_191x1.jpg" alt="Reklam görseli FitKal_03_antrenman_191x1.jpg" loading="lazy"></button><div class="ser">1.91x1</div></article><article class="acard"><button class="shot" type="button" data-full="ads/FitKal_04_oruc_191x1.jpg"><img src="ads/FitKal_04_oruc_191x1.jpg" alt="Reklam görseli FitKal_04_oruc_191x1.jpg" loading="lazy"></button><div class="ser">1.91x1</div></article><article class="acard"><button class="shot" type="button" data-full="ads/FitKal_05_tarifler_191x1.jpg"><img src="ads/FitKal_05_tarifler_191x1.jpg" alt="Reklam görseli FitKal_05_tarifler_191x1.jpg" loading="lazy"></button><div class="ser">1.91x1</div></article><article class="acard"><button class="shot" type="button" data-full="ads/FitKal_06_alisveris_191x1.jpg"><img src="ads/FitKal_06_alisveris_191x1.jpg" alt="Reklam görseli FitKal_06_alisveris_191x1.jpg" loading="lazy"></button><div class="ser">1.91x1</div></article><article class="acard"><button class="shot" type="button" data-full="ads/FitKal_07_makro_191x1.jpg"><img src="ads/FitKal_07_makro_191x1.jpg" alt="Reklam görseli FitKal_07_makro_191x1.jpg" loading="lazy"></button><div class="ser">1.91x1</div></article></div><div class="agrid vids"><article class="acard"><video src="ads/G1_FitKal_AkilliAlisveris_16x9.mp4" controls playsinline preload="metadata"></video><a class="jump" href="ads/G1_FitKal_AkilliAlisveris_16x9.mp4" target="_blank" rel="noopener">16x9 · videoyu ayrı aç ↗</a></article><article class="acard"><video src="ads/G1_FitKal_FitTarifler_16x9.mp4" controls playsinline preload="metadata"></video><a class="jump" href="ads/G1_FitKal_FitTarifler_16x9.mp4" target="_blank" rel="noopener">16x9 · videoyu ayrı aç ↗</a></article><article class="acard"><video src="ads/G1_FitKal_TabaginKalorisi_16x9.mp4" controls playsinline preload="metadata"></video><a class="jump" href="ads/G1_FitKal_TabaginKalorisi_16x9.mp4" target="_blank" rel="noopener">16x9 · videoyu ayrı aç ↗</a></article><article class="acard"><video src="ads/G2_FitKal_200Kalori_16x9.mp4" controls playsinline preload="metadata"></video><a class="jump" href="ads/G2_FitKal_200Kalori_16x9.mp4" target="_blank" rel="noopener">16x9 · videoyu ayrı aç ↗</a></article><article class="acard"><video src="ads/G2_FitKal_Kebap_Quiz_16x9.mp4" controls playsinline preload="metadata"></video><a class="jump" href="ads/G2_FitKal_Kebap_Quiz_16x9.mp4" target="_blank" rel="noopener">16x9 · videoyu ayrı aç ↗</a></article><article class="acard"><video src="ads/G2_FitKal_ZeytinyagiMiMuzMu_16x9.mp4" controls playsinline preload="metadata"></video><a class="jump" href="ads/G2_FitKal_ZeytinyagiMiMuzMu_16x9.mp4" target="_blank" rel="noopener">16x9 · videoyu ayrı aç ↗</a></article><article class="acard"><video src="ads/G1_FitKal_AkilliAlisveris_1x1.mp4" controls playsinline preload="metadata"></video><a class="jump" href="ads/G1_FitKal_AkilliAlisveris_1x1.mp4" target="_blank" rel="noopener">1x1 · videoyu ayrı aç ↗</a></article><article class="acard"><video src="ads/G1_FitKal_FitTarifler_1x1.mp4" controls playsinline preload="metadata"></video><a class="jump" href="ads/G1_FitKal_FitTarifler_1x1.mp4" target="_blank" rel="noopener">1x1 · videoyu ayrı aç ↗</a></article><article class="acard"><video src="ads/G1_FitKal_TabaginKalorisi_1x1.mp4" controls playsinline preload="metadata"></video><a class="jump" href="ads/G1_FitKal_TabaginKalorisi_1x1.mp4" target="_blank" rel="noopener">1x1 · videoyu ayrı aç ↗</a></article><article class="acard"><video src="ads/G2_FitKal_200Kalori_1x1.mp4" controls playsinline preload="metadata"></video><a class="jump" href="ads/G2_FitKal_200Kalori_1x1.mp4" target="_blank" rel="noopener">1x1 · videoyu ayrı aç ↗</a></article><article class="acard"><video src="ads/G2_FitKal_Kebap_Quiz_1x1.mp4" controls playsinline preload="metadata"></video><a class="jump" href="ads/G2_FitKal_Kebap_Quiz_1x1.mp4" target="_blank" rel="noopener">1x1 · videoyu ayrı aç ↗</a></article><article class="acard"><video src="ads/G2_FitKal_ZeytinyagiMiMuzMu_1x1.mp4" controls playsinline preload="metadata"></video><a class="jump" href="ads/G2_FitKal_ZeytinyagiMiMuzMu_1x1.mp4" target="_blank" rel="noopener">1x1 · videoyu ayrı aç ↗</a></article></div><details><summary>Başlıklar, açıklamalar ve yükleme adımları</summary><pre id="adtxt">FİT KAL — Google Ads öğeleri (v3)
+============================================================
+
+Görseller: GoogleAds_Gorseller\1.91x1, 1x1, 4x5  (7 konu x 3 oran = 21; reklam grubu sınırı 20)
+Videolar : GoogleAds_Videolari\9x16, 16x9, 1x1  (G1_ = Özellikler grubu, G2_ = Quiz ve fikir grubu)
+Yazı: &quot;Ücretsiz indir · App Store &amp; Google Play&quot; — iOS ve Android kampanyasında aynı öğeler kullanılabilir.
+
+[G1 — 1_Ozellikler]
+BAŞLIKLAR (≤30)
+  Fotoğrafla kalori hesapla   (25)
+  Diyet planın hedefine göre   (26)
+  Antrenman planın otomatik   (25)
+  70+ fit tarif, makrolarıyla   (27)
+  Kalori, su, oruç tek yerde   (26)
+AÇIKLAMALAR (≤90)
+  Yemeğinin fotoğrafını çek; yapay zekâ kalorisini ve makrolarını saniyeler içinde bulsun.   (88)
+  Hedef kalorine göre kişisel diyet planı ve diyetinden hazır alışveriş listesi.   (78)
+  Seviyene ve ekipmanına göre antrenman planı; 87+ egzersiz, evde ya da salonda.   (78)
+  Türk mutfağından fit tarifler: her tarifte kalori, protein, karbonhidrat ve yağ hazır.   (86)
+  Kalori, makro, su, oruç ve kilo takibi tek uygulamada. FİT KAL ücretsiz.   (72)
+
+[G2 — 2_Quiz_Fikir]
+BAŞLIKLAR (≤30)
+  Bu tabak kaç kalori?   (20)
+  200 kalori neye benzer?   (23)
+  Tahmin etme, ölç   (16)
+  Türk mutfağını tanır   (20)
+  Ücretsiz kalori takibi   (22)
+AÇIKLAMALAR (≤90)
+  Adana mı, lahmacun mu? Tabağını çek, FİT KAL kalorisini ve makrolarını hesaplasın.   (82)
+  Bir kaşık zeytinyağı bile sayılır. Gözle değil, FİT KAL ile hesapla.   (68)
+  Aralıklı orucunun hangi evrede olduğunu canlı izle, kalan süreyi hep önünde gör.   (80)
+  Yaktığın kaloriyi gör: şınavdan koşuya, her antrenman kaydın tek yerde.   (71)
+  Görevleri tamamla, XP kazan, serini koru. Diyetini oyuna çevir. FİT KAL ücretsiz.   (81)
+
+ADIMLAR (Google Ads &gt; Kampanyalar &gt; Fit Kal iOS v2 &gt; Reklam grupları)
+  1. Ad group 1 &gt; Reklamlar &gt; reklamı düzenle.
+     - Görseller: eski 20 görseli kaldır, GoogleAds_Gorseller&#x27;deki görselleri yükle.
+     - Videolar: &quot;Bilgisayardan yükle&quot; seç -&gt; Google videoları YouTube kanalına liste dışı yükler. 9x16 + 16x9 + 1x1 hepsini ekle.
+       (Yönleri farklı videolar önerisi bununla kapanır.)
+     - Başlık/açıklama: METINLER.txt&#x27;teki 5+5.
+  2. &quot;Reklam grubu ekleyin&quot; önerisini aç (ya da + Reklam grubu): G2_ videolarıyla aynısını yap.
+  3. Kaydet. Sonra 7–10 gün DOKUNMA (öğrenme aşaması). Öğe raporunda &quot;Düşük&quot; çıkanları ikinci haftada değiştiririz.
+
+NOT: Günlük ₺100 bütçe iki gruba bölünür. 2 hafta sonra bir grup belirgin daha ucuz yükleme getiriyorsa
+      zayıf grubu duraklatıp bütçeyi kazanana bırakırız.
+</pre></details><button class="copy" type="button" data-target="adtxt">Metni kopyala</button></section>
 </div>
 <div class="lb" id="lb" hidden><img id="lbimg" alt="Büyük görsel"><p>Kaydetmek için görsele uzun bas.</p><button type="button" id="lbclose">Kapat</button></div>
 <script>
