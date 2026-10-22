@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Bu sayfa e-posta doğrulama / şifre sıfırlama dönüş adresi. Adreste tek
+       kullanımlık kod taşındığı için arama motorlarına kapalı ve hiçbir dış
+       kaynağa (font, analitik) adres sızdırmıyor. -->
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="referrer" content="no-referrer">
+  <title>FİT KAL — Uygulamaya dön</title>
+  <meta name="theme-color" content="#0B2E1E">
+  <link rel="icon" type="image/png" href="/assets/favicon.png">
+  <style>
+    :root { --green-950:#04120B; --green-900:#0B2E1E; --green-500:#22A85A; --lime:#8CCB2E; }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      min-height: 100vh;
+      background:
+        radial-gradient(600px 400px at 50% 0%, rgba(34,168,90,0.35), transparent 70%),
+        linear-gradient(180deg, var(--green-950) 0%, var(--green-900) 100%);
+      color: #fff;
+      display: flex; align-items: center; justify-content: center;
+      padding: 24px 16px;
+    }
+    .card {
+      width: 100%; max-width: 420px; text-align: center;
+      background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 24px; padding: 36px 24px 28px;
+    }
+    .logo { width: 64px; height: 68px; display: block; margin: 0 auto 12px; }
+    .brand { font-size: 22px; font-weight: 900; letter-spacing: 1.5px; }
+    .tagline { margin-top: 4px; font-size: 11px; font-weight: 700; letter-spacing: 3px; color: rgba(255,255,255,0.55); }
+    h1 { margin-top: 28px; font-size: 22px; line-height: 28px; font-weight: 800; }
+    p { margin-top: 10px; font-size: 15px; line-height: 23px; color: rgba(255,255,255,0.78); }
+    .btn {
+      display: block; margin-top: 26px; padding: 16px 20px; border-radius: 14px;
+      background: var(--green-500); color: #fff; font-size: 16px; font-weight: 800; text-decoration: none;
+    }
+    .btn:active { opacity: 0.85; }
+    .note { margin-top: 18px; font-size: 13px; line-height: 20px; color: rgba(255,255,255,0.6); }
+    .hidden { display: none; }
+    .footer { margin-top: 22px; font-size: 12px; color: rgba(255,255,255,0.5); }
+    .footer a { color: var(--lime); text-decoration: none; }
+  </style>
+</head>
+<body>
+  <main class="card">
+    <img class="logo" src="/assets/logo-mark.png" alt="FİT KAL">
+    <div class="brand">FİT KAL</div>
+    <div class="tagline">HER GÜN DAHA İYİ</div>
+
+    <!-- Kod geldi: uygulamaya aktar -->
+    <section id="ok" class="hidden">
+      <h1>Neredeyse bitti!</h1>
+      <p>İşlemi tamamlamak için FİT KAL uygulamasına dönmen gerekiyor.</p>
+      <a id="open" class="btn" href="fitkal://auth/callback">FİT KAL'da Aç</a>
+      <p class="note" id="desktop-note">Bu bağlantıyı bilgisayardan açtıysan, e-postayı <strong>uygulamanın yüklü olduğu telefondan</strong> açıp butona tekrar dokun.</p>
+    </section>
+
+    <!-- Kod yok / süresi dolmuş -->
+    <section id="err" class="hidden">
+      <h1>Bağlantının süresi dolmuş</h1>
+      <p>Bu bağlantı daha önce kullanılmış ya da geçerliliğini yitirmiş olabilir. Uygulamayı açıp yeni bir onay veya şifre sıfırlama e-postası isteyebilirsin.</p>
+      <a class="btn" href="fitkal://">Uygulamayı Aç</a>
+    </section>
+
+    <div class="footer">Sorun mu var? <a href="mailto:fitkaldestek@gmail.com">fitkaldestek@gmail.com</a></div>
+  </main>
+
+  <script>
+    (function () {
+      var q = new URLSearchParams(window.location.search);
+      var h = new URLSearchParams(window.location.hash.replace(/^#/, ""));
+      var code = q.get("code");
+      var hasError = q.get("error") || h.get("error") || q.get("error_code") || h.get("error_code");
+      var isMobile = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+
+      if (code && !hasError) {
+        // Uygulama (src/app/auth/callback.tsx) yalnızca `code` parametresini
+        // okuyor; kodu doğrulama cihazındaki gizli anahtarla (PKCE) oturuma
+        // çeviriyor. `next` varsa aynen aktarılıyor.
+        var deepLink = "fitkal://auth/callback?code=" + encodeURIComponent(code);
+        var next = q.get("next");
+        if (next) deepLink += "&next=" + encodeURIComponent(next);
+        document.getElementById("open").href = deepLink;
+        document.getElementById("ok").classList.remove("hidden");
+        if (isMobile) {
+          document.getElementById("desktop-note").textContent =
+            "Uygulama kendiliğinden açılmadıysa yukarıdaki butona dokun.";
+          // Safari ve Chrome'da uygulamayı doğrudan açar; Gmail gibi uygulama
+          // içi tarayıcılar engellerse kullanıcı butona dokunur.
+          setTimeout(function () { window.location.href = deepLink; }, 400);
+        }
+        // Kodu adres çubuğundan ve geçmişten temizle.
+        if (window.history && window.history.replaceState) {
+          window.history.replaceState(null, "", window.location.pathname);
+        }
+      } else {
+        document.getElementById("err").classList.remove("hidden");
+      }
+    })();
+  </script>
+</body>
+</html>
