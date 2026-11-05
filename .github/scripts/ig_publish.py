@@ -174,6 +174,15 @@ def main():
         except Exception as ex:  # noqa: BLE001
             print('UYARI: token yenileme hatası:', ex)
         save_state(st)
+        if HOST == 'graph.facebook.com' and due:
+            try:
+                exp = api('GET', 'debug_token', input_token=TOKEN)['data'].get('expires_at') or 0
+                left = (exp - time.time()) / 86400 if exp else 9999
+                if left < 14:
+                    print(f'UYARI: IG_TOKEN {left:.0f} gün içinde bitiyor — yeni anahtar alıp GitHub secret\'ını güncelle')
+                    failed = True
+            except Exception as ex:  # noqa: BLE001
+                print('UYARI: anahtar süresi okunamadı:', str(ex)[:200])
     if failed:
         sys.exit(1)   # Actions'ta kırmızı görünsün, e-posta bildirimi gelsin
 
