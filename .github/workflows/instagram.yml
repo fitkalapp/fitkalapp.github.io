@@ -1,0 +1,52 @@
+name: Instagram otomatik paylaşım
+
+# Türkiye saati = UTC+3. 08:00–21:59 arası her 15 dakikada bir vakti gelenleri paylaşır
+# (sabah hikâyesi 09:00, post 12:30, Reels 19:00, akşam hikâyesi 20:30 — GitHub zamanlayıcısı birkaç dakika gecikebilir).
+on:
+  schedule:
+    - cron: '*/15 5-18 * * *'
+  workflow_dispatch:
+    inputs:
+      mode:
+        description: 'publish | dry-run | check'
+        default: 'dry-run'
+
+permissions:
+  contents: write
+
+concurrency:
+  group: instagram
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: pip install requests==2.32.3 pynacl==1.5.0
+      - name: Paylaş
+        env:
+          IG_TOKEN: ${{ secrets.IG_TOKEN }}
+          IG_USER_ID: ${{ secrets.IG_USER_ID }}
+          GH_PAT: ${{ secrets.GH_PAT }}
+          IG_HOST: ${{ vars.IG_HOST }}
+          IG_PAUSED: ${{ vars.IG_PAUSED }}
+        run: |
+          MODE="${{ github.event.inputs.mode || 'publish' }}"
+          if [ "$MODE" = "check" ]; then python .github/scripts/ig_publish.py --check
+          elif [ "$MODE" = "dry-run" ]; then python .github/scripts/ig_publish.py --dry-run
+          else python .github/scripts/ig_publish.py; fi
+      - name: Durumu kaydet
+        if: always()
+        run: |
+          if ! git diff --quiet -- .github/instagram/state.json 2>/dev/null || [ -n "$(git status --porcelain .github/instagram)" ]; then
+            git config user.name "fitkal-bot"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git add .github/instagram/state.json
+            git commit -m "Instagram: paylaşım durumu güncellendi [skip ci]"
+            git pull --rebase origin main && git push origin HEAD:main
+          fi
