@@ -121,9 +121,18 @@ def main():
     if '--check' in sys.argv:
         if HOST == 'graph.instagram.com':
             print(api('GET', 'me', fields='user_id,username,account_type'))
-        else:
-            print(api('GET', UID, fields='id,username,name'))
-        print(api('GET', f'{UID}/content_publishing_limit', fields='quota_usage,config'))
+            print(api('GET', f'{UID}/content_publishing_limit', fields='quota_usage,config'))
+            return
+        for path, kw in (('me', dict(fields='id,name')),
+                         ('debug_token', dict(input_token=TOKEN)),
+                         ('me/accounts', dict(fields='id,name,instagram_business_account{id,username}')),
+                         ('me/assigned_pages', dict(fields='id,name')),
+                         (UID, dict(fields='id,username')),
+                         (f'{UID}/content_publishing_limit', dict(fields='quota_usage,config'))):
+            try:
+                print(path, '->', json.dumps(api('GET', path, **kw), ensure_ascii=False)[:900])
+            except Exception as ex:  # noqa: BLE001
+                print(path, 'HATA ->', str(ex)[:400])
         return
     if os.environ.get('IG_PAUSED') == '1':
         print('IG_PAUSED=1 → paylaşım kapalı')
