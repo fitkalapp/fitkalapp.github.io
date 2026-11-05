@@ -5,10 +5,10 @@ state.json  -> paylaşılanlar (id -> media_id), denemeler, token yenileme zaman
 
 Ortam değişkenleri (GitHub → Settings → Secrets and variables → Actions):
   IG_TOKEN    (secret)  Instagram kullanıcı erişim anahtarı (instagram_business_basic + instagram_business_content_publish)
-  IG_USER_ID  (secret)  Instagram hesap kimliği
+  IG_USER_ID  (isteğe bağlı) Instagram hesap kimliği; varsayılan @fitkal_diyetveegzersiz
   GH_PAT      (secret, isteğe bağlı) yalnızca bu depoda "Secrets: read and write" izinli anahtar; varsa IG_TOKEN haftada bir yenilenip
                         secret güncellenir (60 günlük süre hiç dolmaz)
-  IG_HOST     (variable, isteğe bağlı) graph.instagram.com (varsayılan) ya da graph.facebook.com
+  IG_HOST     (variable, isteğe bağlı) graph.facebook.com (varsayılan, işletme portföyü sistem kullanıcısı) ya da graph.instagram.com
   IG_PAUSED   (variable, isteğe bağlı) "1" ise hiçbir şey paylaşılmaz
 
 python ig_publish.py            -> vakti gelenleri paylaş
@@ -27,11 +27,11 @@ import requests
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 PLAN = os.path.join(ROOT, 'instagram', 'plan.json')
 STATE = os.path.join(ROOT, 'instagram', 'state.json')
-HOST = os.environ.get('IG_HOST') or 'graph.instagram.com'
+HOST = os.environ.get('IG_HOST') or 'graph.facebook.com'   # sistem kullanıcısı anahtarı (süresiz)
 VER = os.environ.get('IG_API_VERSION') or 'v23.0'
 API = f'https://{HOST}/{VER}'
 TOKEN = os.environ.get('IG_TOKEN', '')
-UID = os.environ.get('IG_USER_ID', '')
+UID = os.environ.get('IG_USER_ID') or '17841423519594731'   # @fitkal_diyetveegzersiz
 MAX_LATE = dt.timedelta(hours=6)   # bundan geç kalan paylaşım atlanır (eski günün içeriği yeni güne düşmesin)
 MAX_TRIES = 3
 
@@ -119,7 +119,10 @@ def refresh_token(st):
 def main():
     dry = '--dry-run' in sys.argv
     if '--check' in sys.argv:
-        print(api('GET', 'me', fields='user_id,username,account_type'))
+        if HOST == 'graph.instagram.com':
+            print(api('GET', 'me', fields='user_id,username,account_type'))
+        else:
+            print(api('GET', UID, fields='id,username,name'))
         print(api('GET', f'{UID}/content_publishing_limit', fields='quota_usage,config'))
         return
     if os.environ.get('IG_PAUSED') == '1':
