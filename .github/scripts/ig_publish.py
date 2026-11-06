@@ -85,7 +85,30 @@ def publish(it):
         raise ValueError(kind)
     cid = api('POST', f'{UID}/media', **p)['id']
     wait_ready(cid, kind)
-    return api('POST', f'{UID}/media_publish', creation_id=cid)['id']
+    time.sleep(5)   # FINISHED'tan hemen sonra yayınlamak bazen 2207006 "Medya bulunamadı" veriyor
+    for n in range(5):
+        try:
+            return api('POST', f'{UID}/media_publish', creation_id=cid)['id']
+        except RuntimeError as ex:   # aynı creation_id iki kez yayınlanamaz → tekrar denemek güvenli
+            if n == 4 or not any(c in str(ex) for c in ('2207006', '2207027', '"is_transient": true')):
+                raise
+            print(f'  media_publish yeniden deneniyor ({n + 1}): {str(ex)[:160]}')
+            time.sleep(15)
+
+
+def already_live(it):
+    """Bu planlı saatten sonra aynı türde paylaşım hesapta zaten varsa media_id döndür (çift paylaşım koruması)."""
+    since = dt.datetime.fromisoformat(it['when'])
+    if it['kind'] == 'STORY':
+        rows = api('GET', f'{UID}/stories', fields='id,timestamp').get('data', [])
+    else:
+        want = 'REELS' if it['kind'] == 'REELS' else 'FEED'
+        rows = [m for m in api('GET', f'{UID}/media', fields='id,timestamp,media_product_type,media_type', limit=10).get('data', [])
+                if m.get('media_product_type') == want and (want == 'REELS' or m.get('media_type') == 'IMAGE')]
+    for m in rows:
+        if dt.datetime.strptime(m['timestamp'], '%Y-%m-%dT%H:%M:%S%z') >= since:
+            return m['id']
+    return None
 
 
 def refresh_token(st):
@@ -156,7 +179,11 @@ def main():
             print('PAYLAŞILACAK:', it['kind'], it['id'], it['url'])
             continue
         try:
-            mid = publish(it)
+            mid = already_live(it)
+            if mid:
+                print('zaten yayında, tekrar paylaşılmadı:', it['id'], mid)
+            else:
+                mid = publish(it)
             st['posted'][it['id']] = {'media_id': mid, 'at': now().isoformat(), 'kind': it['kind']}
             st['tries'].pop(it['id'], None)
             print('paylaşıldı:', it['kind'], it['id'], mid)

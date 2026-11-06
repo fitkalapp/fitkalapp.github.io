@@ -1,10 +1,10 @@
 name: Instagram otomatik paylaşım
 
-# Türkiye saati = UTC+3. 08:00–21:59 arası her 15 dakikada bir vakti gelenleri paylaşır
+# Türkiye saati = UTC+3. 08:00–21:59 arası her 15 dakikada bir (tam çeyreklerde GitHub çok yoğun → :07/:22/:37/:52) vakti gelenleri paylaşır
 # (sabah hikâyesi 09:00, post 12:30, Reels 19:00, akşam hikâyesi 20:30 — GitHub zamanlayıcısı birkaç dakika gecikebilir).
 on:
   schedule:
-    - cron: '*/15 5-18 * * *'
+    - cron: '7,22,37,52 5-18 * * *'
   workflow_dispatch:
     inputs:
       mode:
