@@ -1,7 +1,11 @@
 {
- "posted": {},
+ "posted": {
+  "2026-11-06_sabah_G29_1sabah_anket_corba_ekmek": {
+   "at": "2026-11-06T06:51:14.489529+00:00",
+   "kind": "STORY",
+   "media_id": "17968523766198379"
+  }
+ },
  "skipped": {},
- "tries": {
-  "2026-11-06_sabah_G29_1sabah_anket_corba_ekmek": 1
- }
+ "tries": {}
 }
