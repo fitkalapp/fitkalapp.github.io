@@ -88,7 +88,8 @@
     .menu-open .menu-btn span::after { transform: translateY(-6px) rotate(-45deg); }
 
     /* ---------- Hero ---------- */
-    .hero { position: relative; padding: 36px 0 40px; overflow: hidden; }
+    .hero { --hv: clamp(430px, calc(100svh - 72px - 58px - 44px), 640px); position: relative; padding: 8px 0 0; overflow: hidden; min-height: calc(100svh - 72px); display: flex; flex-direction: column; }
+    .hero-grid { flex: 1; width: 100%; }
     .hero-grid { display: grid; grid-template-columns: 1.02fr .98fr; gap: 32px; align-items: center; }
     .pill {
       display: inline-flex; align-items: center; gap: 9px; padding: 7px 14px 7px 8px; border-radius: 99px;
@@ -97,7 +98,7 @@
     .pill i { display: grid; place-items: center; width: 24px; height: 24px; border-radius: 50%; background: var(--lime); }
     .pill i svg { width: 14px; height: 14px; }
     .hero h1 {
-      font-size: clamp(42px, 6.2vw, 78px); line-height: 1.02; font-weight: 800; letter-spacing: -.035em;
+      font-size: clamp(42px, min(6.2vw, 8.6vh), 78px); line-height: 1.02; font-weight: 800; letter-spacing: -.035em;
       margin: 22px 0 22px; color: var(--deep);
     }
     .hero h1 em.s { color: var(--green); font-size: 1.04em; }
@@ -126,12 +127,12 @@
     .checks span { display: inline-flex; align-items: center; gap: 7px; }
     .checks svg { width: 18px; height: 18px; color: var(--green); }
 
-    .hero-visual { position: relative; height: 640px; }
+    .hero-visual { position: relative; height: var(--hv); }
     .blob {
-      position: absolute; left: 50%; top: 47%; width: 600px; height: 600px; transform: translate(-50%, -50%);
+      position: absolute; left: 50%; top: 47%; width: calc(var(--hv) * .94); height: calc(var(--hv) * .94); transform: translate(-50%, -50%);
       border-radius: 50%; background: radial-gradient(circle at 40% 35%, var(--lime-2), var(--lime) 62%, #8FC43A 100%);
     }
-    .ring { position: absolute; left: 50%; top: 47%; width: 690px; height: 690px; transform: translate(-50%, -50%); border-radius: 50%; border: 1.5px dashed rgba(31,122,77,.28); }
+    .ring { position: absolute; left: 50%; top: 47%; width: calc(var(--hv) * 1.08); height: calc(var(--hv) * 1.08); transform: translate(-50%, -50%); border-radius: 50%; border: 1.5px dashed rgba(31,122,77,.28); }
     .phone {
       position: relative; aspect-ratio: 9 / 19.5; border-radius: 44px; padding: 9px;
       background: linear-gradient(150deg, #22332b, #0a110e 45%);
@@ -139,9 +140,9 @@
     }
     .phone img { width: 100%; height: 100%; object-fit: cover; object-position: top; border-radius: 36px; background: #fff; }
     .hero-visual .phone { position: absolute; top: 50%; left: 50%; }
-    .hp1 { width: 290px; z-index: 3; transform: translate(-50%, -50%); }
-    .hp2 { width: 236px; z-index: 2; transform: translate(-112%, -44%) rotate(-8deg); }
-    .hp3 { width: 236px; z-index: 1; transform: translate(12%, -44%) rotate(8deg); }
+    .hp1 { width: calc(var(--hv) * .453); z-index: 3; transform: translate(-50%, -50%); }
+    .hp2 { width: calc(var(--hv) * .369); z-index: 2; transform: translate(-112%, -44%) rotate(-8deg); }
+    .hp3 { width: calc(var(--hv) * .369); z-index: 1; transform: translate(12%, -44%) rotate(8deg); }
     .js .hero-visual .phone { opacity: 0; transition: opacity .9s var(--ease), transform 1s var(--ease); }
     .js .hero-visual .hp1 { transform: translate(-50%, -44%); }
     .js .hero-visual .hp2, .js .hero-visual .hp3 { transform: translate(-50%, -44%) rotate(0); }
@@ -164,19 +165,20 @@
     @keyframes bob { 0%, 100% { translate: 0 0; } 50% { translate: 0 -9px; } }
 
     /* ---------- Facts ---------- */
-    .facts { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-top: 8px; }
+    .facts-sec { padding-top: 40px; }
+    .facts { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
     .fact { background: var(--paper); border: 1px solid var(--line); border-radius: 22px; padding: 20px 22px; }
     .fact b { display: block; font-size: 30px; font-weight: 800; letter-spacing: -.03em; line-height: 1.1; color: var(--deep); }
     .fact b em.s { color: var(--green); }
     .fact span { font-size: 14px; color: var(--ink-2); font-weight: 600; }
 
     /* ---------- Marquee ---------- */
-    .marquee { background: var(--deep); color: var(--cream); overflow: hidden; margin-top: 72px; padding: 20px 0; transform: rotate(-1.2deg); width: 104%; margin-left: -2%; }
-    .track { display: flex; width: max-content; animation: slide 46s linear infinite; }
+    .marquee { background: var(--deep); color: var(--cream); overflow: hidden; margin-top: 24px; padding: 17px 0; -webkit-mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent); mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent); }
+    .track { display: flex; width: max-content; animation: slide 60s linear infinite; }
     .track ul { display: flex; list-style: none; flex: none; }
-    .track li { display: flex; align-items: center; gap: 22px; padding-right: 22px; font-size: 22px; font-weight: 700; white-space: nowrap; letter-spacing: -.01em; }
-    .track li:nth-child(even) { font-family: var(--serif); font-style: italic; font-weight: 600; color: var(--lime); }
-    .track li::after { content: "✦"; font-family: var(--sans); font-style: normal; font-size: 15px; color: var(--lime); }
+    .track li { display: flex; align-items: center; gap: 26px; padding-right: 26px; font-size: 16.5px; font-weight: 600; white-space: nowrap; letter-spacing: .01em; }
+    .track li:nth-child(even) { font-family: var(--serif); font-style: italic; font-weight: 600; font-size: 18.5px; color: var(--lime); letter-spacing: 0; }
+    .track li::after { content: ""; width: 6px; height: 6px; border-radius: 50%; background: var(--lime); opacity: .7; }
     @keyframes slide { to { transform: translateX(-50%); } }
 
     /* ---------- Sections ---------- */
@@ -321,9 +323,6 @@
 
     /* ---------- Responsive ---------- */
     @media (max-width: 1080px) {
-      .hero-visual { height: 580px; }
-      .hp1 { width: 260px; } .hp2, .hp3 { width: 210px; }
-      .blob { width: 520px; height: 520px; } .ring { width: 600px; height: 600px; }
       .tile.split { flex-direction: column; }
       .tile.split > div:first-child { padding-bottom: 0; }
       .tile.split .peek { width: auto; height: 250px; min-height: 0; padding-top: 24px; }
@@ -342,7 +341,7 @@
       .hero-copy { text-align: center; }
       .hero-lead { margin-left: auto; margin-right: auto; }
       .stores, .checks { justify-content: center; }
-      .hero-visual { height: 560px; }
+      .hero { --hv: 560px; min-height: 0; display: block; }
       .facts { grid-template-columns: repeat(2, 1fr); }
       section.block { padding: 84px 0; }
       .steps { grid-template-columns: 1fr; max-width: 520px; margin: 0 auto; }
@@ -376,9 +375,9 @@
       .store { flex: 1 1 150px; min-width: 0; justify-content: center; padding: 9px 12px; }
       .store b { font-size: 16.5px; }
       .checks { gap: 6px 16px; font-size: 13.5px; }
-      .hero-visual { height: 470px; margin: 0 -16px; }
+      .hero { --hv: 470px; }
+      .hero-visual { margin: 0 -16px; }
       .blob { width: 360px; height: 360px; } .ring { width: 420px; height: 420px; }
-      .hp1 { width: 210px; } .hp2, .hp3 { width: 168px; }
       .js .loaded .hero-visual .hp2 { transform: translate(-108%, -44%) rotate(-8deg); }
       .js .loaded .hero-visual .hp3 { transform: translate(8%, -44%) rotate(8deg); }
       .phone { border-radius: 34px; padding: 7px; } .phone img { border-radius: 28px; }
@@ -390,8 +389,10 @@
       .fact { padding: 16px; border-radius: 18px; }
       .fact b { font-size: 24px; }
       .fact span { font-size: 13px; display: block; line-height: 1.4; margin-top: 2px; }
-      .marquee { margin-top: 56px; padding: 15px 0; }
-      .track li { font-size: 18px; gap: 16px; padding-right: 16px; }
+      .marquee { margin-top: 32px; padding: 14px 0; }
+      .track li { font-size: 15px; gap: 18px; padding-right: 18px; }
+      .track li:nth-child(even) { font-size: 16.5px; }
+      .facts-sec { padding-top: 32px; }
       section.block { padding: 72px 0; }
       .sec-head { margin-bottom: 36px; }
       .sec-head p { font-size: 16px; }
@@ -518,6 +519,17 @@
       </div>
     </div>
 
+    <div class="marquee" aria-hidden="true">
+      <div class="track">
+        <ul><li>AI kalori analizi</li><li>kişisel diyet planı</li><li>barkod tarama</li><li>87+ egzersiz</li><li>aralıklı oruç</li><li>su &amp; makro takibi</li><li>70+ fit tarif</li><li>rozet &amp; XP</li></ul>
+        <ul aria-hidden="true"><li>AI kalori analizi</li><li>kişisel diyet planı</li><li>barkod tarama</li><li>87+ egzersiz</li><li>aralıklı oruç</li><li>su &amp; makro takibi</li><li>70+ fit tarif</li><li>rozet &amp; XP</li></ul>
+        <ul aria-hidden="true"><li>AI kalori analizi</li><li>kişisel diyet planı</li><li>barkod tarama</li><li>87+ egzersiz</li><li>aralıklı oruç</li><li>su &amp; makro takibi</li><li>70+ fit tarif</li><li>rozet &amp; XP</li></ul>
+        <ul aria-hidden="true"><li>AI kalori analizi</li><li>kişisel diyet planı</li><li>barkod tarama</li><li>87+ egzersiz</li><li>aralıklı oruç</li><li>su &amp; makro takibi</li><li>70+ fit tarif</li><li>rozet &amp; XP</li></ul>
+      </div>
+    </div>
+  </section>
+
+  <div class="facts-sec">
     <div class="wrap">
       <div class="facts">
         <div class="fact reveal"><b><em class="s">Saniyeler</em></b><span>içinde AI kalori analizi</span></div>
@@ -527,13 +539,7 @@
       </div>
     </div>
 
-    <div class="marquee" aria-hidden="true">
-      <div class="track">
-        <ul><li>AI kalori analizi</li><li>kişisel diyet planı</li><li>barkod tarama</li><li>87+ egzersiz</li><li>aralıklı oruç</li><li>su &amp; makro takibi</li><li>70+ fit tarif</li><li>rozet &amp; XP</li></ul>
-        <ul aria-hidden="true"><li>AI kalori analizi</li><li>kişisel diyet planı</li><li>barkod tarama</li><li>87+ egzersiz</li><li>aralıklı oruç</li><li>su &amp; makro takibi</li><li>70+ fit tarif</li><li>rozet &amp; XP</li></ul>
-      </div>
-    </div>
-  </section>
+  </div>
 
   <!-- HOW -->
   <section class="block" id="nasil">
