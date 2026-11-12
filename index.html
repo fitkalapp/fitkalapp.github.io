@@ -5,587 +5,532 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>FİT KAL — Diyet, Kalori ve Egzersiz Takibi | Her Gün Daha İyi</title>
   <meta name="description" content="FİT KAL ile yemeğinin fotoğrafını çek, yapay zeka kalori ve makrolarını anında hesaplasın. Kişisel diyet planı, 87+ egzersiz, aralıklı oruç, su ve kilo takibi tek uygulamada. Ücretsiz.">
-  <meta name="theme-color" content="#0B2E1E">
+  <meta name="theme-color" content="#F6F1E6">
+  <link rel="canonical" href="https://fitkalapp.com/">
   <link rel="icon" type="image/png" href="./assets/favicon.png">
   <link rel="apple-touch-icon" href="./assets/apple-touch-icon.png">
   <meta property="og:type" content="website">
+  <meta property="og:locale" content="tr_TR">
   <meta property="og:title" content="FİT KAL — Her Gün Daha İyi">
   <meta property="og:description" content="Yapay zeka destekli kalori takibi, kişisel diyet planı, egzersiz ve aralıklı oruç — tek uygulamada, ücretsiz.">
-  <meta property="og:image" content="https://fitkalapp.github.io/assets/og-image.png">
-  <meta property="og:url" content="https://fitkalapp.github.io/">
+  <meta property="og:image" content="https://fitkalapp.com/assets/og-image.png">
+  <meta property="og:url" content="https://fitkalapp.com/">
   <meta name="twitter:card" content="summary_large_image">
+  <link rel="preload" as="image" href="./assets/home.webp" type="image/webp">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@1,9..144,600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
     :root {
-      --green-950: #06190F;
-      --green-900: #0B2E1E;
-      --green-800: #0F3D27;
-      --green-700: #136B3E;
-      --green-600: #17914A;
-      --green-500: #22A85A;
-      --lime: #8CCB2E;
-      --mint: #E9F6EE;
-      --mint-2: #D5EEDF;
-      --bg: #F7FAF8;
-      --card: #FFFFFF;
-      --ink: #0E1E17;
-      --ink-2: #4B5F56;
-      --line: #E3EBE6;
-      --radius: 22px;
-      --max: 1160px;
+      --cream: #F6F1E6;
+      --cream-2: #EEE6D3;
+      --paper: #FBF8F1;
+      --deep: #123024;
+      --deep-2: #0B211A;
+      --green: #1F7A4D;
+      --green-2: #2E9A63;
+      --lime: #A9D94C;
+      --lime-2: #D4EE9C;
+      --ink: #123024;
+      --ink-2: #4D5F55;
+      --ink-3: #78877E;
+      --line: rgba(18, 48, 36, .11);
+      --radius: 28px;
+      --max: 1180px;
+      --serif: 'Fraunces', Georgia, 'Times New Roman', serif;
+      --sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      --ease: cubic-bezier(.2, .7, .2, 1);
     }
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; scroll-padding-top: 84px; -webkit-text-size-adjust: 100%; }
     body {
-      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-      background: var(--bg);
-      color: var(--ink);
-      line-height: 1.6;
-      -webkit-font-smoothing: antialiased;
-      overflow-x: hidden;
+      font-family: var(--sans); background: var(--cream); color: var(--ink);
+      line-height: 1.6; -webkit-font-smoothing: antialiased; overflow-x: hidden;
     }
+    @supports (overflow-x: clip) { body { overflow-x: clip; } }
     img { display: block; max-width: 100%; }
     a { color: inherit; }
-    .wrap { max-width: var(--max); margin: 0 auto; padding: 0 20px; }
+    button { font: inherit; color: inherit; }
+    .wrap { max-width: var(--max); margin: 0 auto; padding: 0 24px; }
+    em.s { font-family: var(--serif); font-style: italic; font-weight: 600; letter-spacing: -.01em; }
+    .sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+    :focus-visible { outline: 3px solid var(--green); outline-offset: 3px; border-radius: 8px; }
 
     /* ---------- Header ---------- */
-    header {
-      position: fixed; inset: 0 0 auto 0; z-index: 50;
-      transition: background .25s ease, box-shadow .25s ease;
-    }
+    header { position: sticky; top: 0; z-index: 50; transition: background .3s, box-shadow .3s; }
     header.scrolled {
-      background: rgba(11, 46, 30, .86);
-      backdrop-filter: saturate(160%) blur(14px);
-      -webkit-backdrop-filter: saturate(160%) blur(14px);
-      box-shadow: 0 1px 0 rgba(255,255,255,.06);
+      background: rgba(246, 241, 230, .82);
+      backdrop-filter: saturate(160%) blur(16px); -webkit-backdrop-filter: saturate(160%) blur(16px);
+      box-shadow: 0 1px 0 var(--line);
     }
-    .nav { display: flex; align-items: center; justify-content: space-between; height: 72px; }
-    .brand { display: flex; align-items: center; gap: 10px; text-decoration: none; color: #fff; }
-    .brand-mark {
-      width: 40px; height: 40px; border-radius: 12px; background: #fff;
-      display: grid; place-items: center; box-shadow: 0 4px 14px rgba(0,0,0,.18);
+    .nav { display: flex; align-items: center; justify-content: space-between; height: 72px; gap: 16px; }
+    .brand { display: flex; align-items: center; gap: 10px; text-decoration: none; color: var(--deep); }
+    .brand img { width: 40px; height: 40px; border-radius: 12px; background: #fff; padding: 5px; box-shadow: 0 2px 10px rgba(18,48,36,.1); object-fit: contain; }
+    .brand b { font-weight: 800; font-size: 19px; letter-spacing: .02em; }
+    .brand b span { color: var(--green-2); }
+    .nav-links { display: flex; align-items: center; gap: 4px; }
+    .nav-links a { text-decoration: none; font-weight: 600; font-size: 14.5px; color: var(--ink-2); padding: 10px 14px; border-radius: 99px; transition: color .2s, background .2s; }
+    .nav-links a:hover { color: var(--deep); background: rgba(18,48,36,.06); }
+    .nav-links a.btn, .nav-links a.btn:hover { color: #fff; background: var(--deep); padding: 0 22px; margin-left: 8px; }
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-height: 46px;
+      padding: 0 22px; border-radius: 99px; font-weight: 700; font-size: 15px; text-decoration: none; cursor: pointer; border: 0;
+      transition: transform .2s var(--ease), box-shadow .2s, background .2s;
     }
-    .brand-mark img { width: 30px; height: 30px; object-fit: contain; }
-    .brand-name { font-weight: 800; font-size: 20px; letter-spacing: .02em; }
-    .brand-name span { color: var(--lime); }
-    .nav-links { display: flex; align-items: center; gap: 28px; }
-    .nav-links a { text-decoration: none; font-weight: 600; font-size: 14.5px; color: rgba(255,255,255,.82); transition: color .2s; }
-    .nav-links a:hover { color: #fff; }
-    .nav-cta {
-      background: #fff; color: var(--green-800) !important; padding: 9px 18px; border-radius: 99px;
-      transition: transform .2s, box-shadow .2s;
-    }
-    .nav-cta:hover { transform: translateY(-1px); box-shadow: 0 6px 18px rgba(0,0,0,.2); }
+    .btn-dark { background: var(--deep); color: #fff; }
+    .btn-dark:hover { transform: translateY(-1px); box-shadow: 0 10px 24px rgba(18,48,36,.25); }
+    .menu-btn { display: none; width: 46px; height: 46px; border-radius: 14px; border: 1px solid var(--line); background: var(--paper); cursor: pointer; place-items: center; }
+    .menu-btn span, .menu-btn span::before, .menu-btn span::after { display: block; width: 18px; height: 2px; border-radius: 2px; background: var(--deep); position: relative; transition: transform .25s var(--ease), background .2s; }
+    .menu-btn span::before, .menu-btn span::after { content: ""; position: absolute; left: 0; }
+    .menu-btn span::before { top: -6px; } .menu-btn span::after { top: 6px; }
+    .menu-open .menu-btn span { background: transparent; }
+    .menu-open .menu-btn span::before { transform: translateY(6px) rotate(45deg); }
+    .menu-open .menu-btn span::after { transform: translateY(-6px) rotate(-45deg); }
 
     /* ---------- Hero ---------- */
-    .hero {
-      position: relative; color: #fff; overflow: hidden;
-      background:
-        radial-gradient(900px 520px at 78% 42%, rgba(34,168,90,.35), transparent 60%),
-        radial-gradient(700px 500px at 0% 100%, rgba(140,203,46,.12), transparent 60%),
-        linear-gradient(180deg, var(--green-950) 0%, var(--green-900) 100%);
-      padding: 128px 0 110px;
+    .hero { position: relative; padding: 36px 0 40px; overflow: hidden; }
+    .hero-grid { display: grid; grid-template-columns: 1.02fr .98fr; gap: 32px; align-items: center; }
+    .pill {
+      display: inline-flex; align-items: center; gap: 9px; padding: 7px 14px 7px 8px; border-radius: 99px;
+      background: var(--paper); border: 1px solid var(--line); font-size: 13.5px; font-weight: 700; color: var(--deep);
     }
-    .hero::after {
-      content: ""; position: absolute; inset: 0; pointer-events: none;
-      background-image: radial-gradient(rgba(255,255,255,.06) 1px, transparent 1px);
-      background-size: 26px 26px;
-      mask-image: linear-gradient(180deg, #000 0%, transparent 80%);
-      -webkit-mask-image: linear-gradient(180deg, #000 0%, transparent 80%);
-    }
-    .hero-grid {
-      position: relative; z-index: 1;
-      display: grid; grid-template-columns: 1.05fr .95fr; gap: 40px; align-items: center;
-    }
-    .eyebrow {
-      display: inline-flex; align-items: center; gap: 8px;
-      padding: 7px 14px; border-radius: 99px;
-      background: rgba(140,203,46,.12); border: 1px solid rgba(140,203,46,.35);
-      color: #C8EC8F; font-size: 13px; font-weight: 700; letter-spacing: .04em; text-transform: uppercase;
-    }
-    .eyebrow i { width: 7px; height: 7px; border-radius: 50%; background: var(--lime); box-shadow: 0 0 0 4px rgba(140,203,46,.25); }
+    .pill i { display: grid; place-items: center; width: 24px; height: 24px; border-radius: 50%; background: var(--lime); }
+    .pill i svg { width: 14px; height: 14px; }
     .hero h1 {
-      font-size: clamp(38px, 5.4vw, 64px); line-height: 1.06; font-weight: 800; letter-spacing: -.025em;
-      margin: 22px 0 20px;
+      font-size: clamp(42px, 6.2vw, 78px); line-height: 1.02; font-weight: 800; letter-spacing: -.035em;
+      margin: 22px 0 22px; color: var(--deep);
     }
-    .hero h1 .grad {
-      background: linear-gradient(90deg, #6FDB8F, var(--lime));
-      -webkit-background-clip: text; background-clip: text; color: transparent;
+    .hero h1 em.s { color: var(--green); font-size: 1.04em; }
+    .hl { position: relative; white-space: nowrap; }
+    .hl::after {
+      content: ""; position: absolute; left: -2%; right: -2%; bottom: .06em; height: .3em; z-index: -1;
+      background: var(--lime); border-radius: 6px; transform-origin: left; transform: scaleX(0);
+      animation: hl 0.9s .45s var(--ease) forwards;
     }
-    .hero-lead { font-size: 18.5px; color: rgba(255,255,255,.76); max-width: 540px; margin-bottom: 34px; }
-    .stores { display: flex; gap: 14px; flex-wrap: wrap; }
+    @keyframes hl { to { transform: scaleX(1); } }
+    .hero-lead { font-size: clamp(16.5px, 1.5vw, 19px); color: var(--ink-2); max-width: 520px; margin-bottom: 30px; }
+    .stores { display: flex; gap: 12px; flex-wrap: wrap; }
     .store {
-      display: inline-flex; align-items: center; gap: 12px;
-      background: #000; color: #fff; text-decoration: none;
-      border: 1px solid rgba(255,255,255,.22); border-radius: 14px;
-      padding: 10px 20px 10px 16px; min-width: 186px;
-      transition: transform .2s, box-shadow .2s, border-color .2s;
+      display: inline-flex; align-items: center; gap: 12px; min-height: 58px;
+      background: var(--deep); color: #fff; text-decoration: none; border-radius: 16px;
+      padding: 9px 22px 9px 16px; min-width: 182px;
+      transition: transform .2s var(--ease), box-shadow .2s;
     }
-    .store:hover { transform: translateY(-2px); border-color: rgba(255,255,255,.45); box-shadow: 0 12px 28px rgba(0,0,0,.35); }
+    .store:hover { transform: translateY(-2px); box-shadow: 0 14px 30px rgba(18,48,36,.28); }
     .store svg { width: 26px; height: 26px; flex: none; }
-    .store small { display: block; font-size: 11px; line-height: 1.1; opacity: .8; font-weight: 500; }
+    .store small { display: block; font-size: 11px; line-height: 1.1; opacity: .75; font-weight: 500; }
     .store b { display: block; font-size: 18px; line-height: 1.2; font-weight: 700; letter-spacing: -.01em; }
-    .store.light { background: #fff; color: var(--ink); border-color: var(--line); }
-    .store.light:hover { border-color: #c9d6ce; box-shadow: 0 12px 28px rgba(14,30,23,.12); }
-    .hero-checks { display: flex; gap: 22px; flex-wrap: wrap; margin-top: 30px; font-size: 14px; color: rgba(255,255,255,.72); font-weight: 600; }
-    .hero-checks span { display: inline-flex; align-items: center; gap: 7px; }
-    .hero-checks svg { width: 17px; height: 17px; color: var(--lime); }
+    .store.light { background: #fff; color: var(--deep); }
+    .store.light:hover { box-shadow: 0 14px 30px rgba(0,0,0,.18); }
+    .checks { display: flex; gap: 8px 20px; flex-wrap: wrap; margin-top: 26px; font-size: 14px; color: var(--ink-2); font-weight: 600; }
+    .checks span { display: inline-flex; align-items: center; gap: 7px; }
+    .checks svg { width: 18px; height: 18px; color: var(--green); }
 
     .hero-visual { position: relative; height: 640px; }
-    .glow {
-      position: absolute; width: 460px; height: 460px; left: 50%; top: 46%; transform: translate(-50%,-50%);
-      background: radial-gradient(circle, rgba(34,168,90,.55), transparent 65%); filter: blur(20px);
+    .blob {
+      position: absolute; left: 50%; top: 47%; width: 600px; height: 600px; transform: translate(-50%, -50%);
+      border-radius: 50%; background: radial-gradient(circle at 40% 35%, var(--lime-2), var(--lime) 62%, #8FC43A 100%);
     }
+    .ring { position: absolute; left: 50%; top: 47%; width: 690px; height: 690px; transform: translate(-50%, -50%); border-radius: 50%; border: 1.5px dashed rgba(31,122,77,.28); }
     .phone {
-      position: absolute; width: 280px; aspect-ratio: 540 / 1126;
-      border-radius: 46px; padding: 10px;
-      background: linear-gradient(145deg, #2a3330, #0b0f0d 40%);
-      box-shadow: 0 0 0 1.5px rgba(255,255,255,.1) inset, 0 40px 80px rgba(0,0,0,.45), 0 12px 24px rgba(0,0,0,.25);
+      position: relative; aspect-ratio: 9 / 19.5; border-radius: 44px; padding: 9px;
+      background: linear-gradient(150deg, #22332b, #0a110e 45%);
+      box-shadow: inset 0 0 0 1.5px rgba(255,255,255,.12), 0 34px 70px -18px rgba(11,33,26,.55), 0 10px 22px rgba(11,33,26,.18);
     }
-    .phone img { width: 100%; height: 100%; object-fit: cover; object-position: top; border-radius: 37px; background: #fff; }
-    .hero-visual .p1 { left: 50%; top: 18px; transform: translateX(-30%) rotate(4deg); z-index: 2; }
-    .hero-visual .p2 { left: 50%; top: 74px; transform: translateX(-100%) rotate(-6deg); width: 250px; z-index: 1; opacity: .96; }
-    .float-card {
-      position: absolute; z-index: 3; background: #fff; color: var(--ink); border-radius: 16px;
-      padding: 12px 14px; display: flex; align-items: center; gap: 11px;
-      box-shadow: 0 18px 40px rgba(0,0,0,.3); font-size: 13px; font-weight: 700; line-height: 1.25;
-      animation: bob 5s ease-in-out infinite;
+    .phone img { width: 100%; height: 100%; object-fit: cover; object-position: top; border-radius: 36px; background: #fff; }
+    .hero-visual .phone { position: absolute; top: 50%; left: 50%; }
+    .hp1 { width: 290px; z-index: 3; transform: translate(-50%, -50%); }
+    .hp2 { width: 236px; z-index: 2; transform: translate(-112%, -44%) rotate(-8deg); }
+    .hp3 { width: 236px; z-index: 1; transform: translate(12%, -44%) rotate(8deg); }
+    .js .hero-visual .phone { opacity: 0; transition: opacity .9s var(--ease), transform 1s var(--ease); }
+    .js .hero-visual .hp1 { transform: translate(-50%, -44%); }
+    .js .hero-visual .hp2, .js .hero-visual .hp3 { transform: translate(-50%, -44%) rotate(0); }
+    .js .loaded .hero-visual .phone { opacity: 1; }
+    .js .loaded .hero-visual .hp1 { transform: translate(-50%, -50%); }
+    .js .loaded .hero-visual .hp2 { transform: translate(-112%, -44%) rotate(-8deg); transition-delay: .12s; }
+    .js .loaded .hero-visual .hp3 { transform: translate(12%, -44%) rotate(8deg); transition-delay: .12s; }
+    .chip {
+      position: absolute; z-index: 4; display: flex; align-items: center; gap: 11px;
+      background: #fff; border-radius: 18px; padding: 11px 15px 11px 11px;
+      box-shadow: 0 18px 40px -10px rgba(11,33,26,.35); font-size: 13.5px; font-weight: 700; line-height: 1.25; color: var(--deep);
+      animation: bob 6s ease-in-out infinite;
     }
-    .float-card small { display: block; font-weight: 500; color: var(--ink-2); font-size: 11.5px; }
-    .float-card .ic { width: 36px; height: 36px; border-radius: 11px; display: grid; place-items: center; flex: none; }
-    .float-card .ic svg { width: 19px; height: 19px; }
-    .fc1 { right: 0; top: 150px; }
-    .fc2 { left: 2%; bottom: 120px; animation-delay: -2.5s; }
-    @keyframes bob { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+    .chip small { display: block; font-weight: 500; color: var(--ink-2); font-size: 12px; }
+    .chip .ic { width: 38px; height: 38px; border-radius: 12px; display: grid; place-items: center; flex: none; }
+    .chip .ic svg { width: 20px; height: 20px; }
+    .c1 { right: -4px; top: 92px; }
+    .c2 { left: -6px; bottom: 112px; animation-delay: -3s; }
+    .c3 { right: 18px; bottom: 34px; animation-delay: -1.5s; }
+    @keyframes bob { 0%, 100% { translate: 0 0; } 50% { translate: 0 -9px; } }
 
-    /* ---------- Stats strip ---------- */
-    .stats { position: relative; z-index: 2; margin-top: -60px; }
-    .stats-inner {
-      background: #fff; border: 1px solid var(--line); border-radius: var(--radius);
-      box-shadow: 0 24px 60px rgba(11,46,30,.10);
-      display: grid; grid-template-columns: repeat(4, 1fr);
-    }
-    .stat { padding: 26px 24px; text-align: center; }
-    .stat + .stat { border-left: 1px solid var(--line); }
-    .stat b { display: block; font-size: 30px; font-weight: 800; letter-spacing: -.02em; color: var(--green-700); line-height: 1.15; }
-    .stat span { font-size: 14px; color: var(--ink-2); font-weight: 600; }
+    /* ---------- Facts ---------- */
+    .facts { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-top: 8px; }
+    .fact { background: var(--paper); border: 1px solid var(--line); border-radius: 22px; padding: 20px 22px; }
+    .fact b { display: block; font-size: 30px; font-weight: 800; letter-spacing: -.03em; line-height: 1.1; color: var(--deep); }
+    .fact b em.s { color: var(--green); }
+    .fact span { font-size: 14px; color: var(--ink-2); font-weight: 600; }
+
+    /* ---------- Marquee ---------- */
+    .marquee { background: var(--deep); color: var(--cream); overflow: hidden; margin-top: 72px; padding: 20px 0; transform: rotate(-1.2deg); width: 104%; margin-left: -2%; }
+    .track { display: flex; width: max-content; animation: slide 46s linear infinite; }
+    .track ul { display: flex; list-style: none; flex: none; }
+    .track li { display: flex; align-items: center; gap: 22px; padding-right: 22px; font-size: 22px; font-weight: 700; white-space: nowrap; letter-spacing: -.01em; }
+    .track li:nth-child(even) { font-family: var(--serif); font-style: italic; font-weight: 600; color: var(--lime); }
+    .track li::after { content: "✦"; font-family: var(--sans); font-style: normal; font-size: 15px; color: var(--lime); }
+    @keyframes slide { to { transform: translateX(-50%); } }
 
     /* ---------- Sections ---------- */
     section.block { padding: 110px 0; }
-    .sec-head { text-align: center; max-width: 680px; margin: 0 auto 56px; }
-    .kicker { color: var(--green-600); font-weight: 800; font-size: 13px; letter-spacing: .1em; text-transform: uppercase; }
-    .sec-head h2, .row-text h2 { font-size: clamp(30px, 3.6vw, 44px); line-height: 1.12; font-weight: 800; letter-spacing: -.02em; margin: 10px 0 14px; }
+    .sec-head { max-width: 720px; margin: 0 0 52px; }
+    .sec-head.center { text-align: center; margin-left: auto; margin-right: auto; }
+    .kicker { display: inline-flex; align-items: center; gap: 8px; color: var(--green); font-weight: 800; font-size: 13px; letter-spacing: .12em; text-transform: uppercase; }
+    .kicker::before { content: ""; width: 18px; height: 2px; background: currentColor; border-radius: 2px; }
+    h2 { font-size: clamp(32px, 4.3vw, 54px); line-height: 1.06; font-weight: 800; letter-spacing: -.03em; margin: 12px 0 14px; color: var(--deep); }
+    h2 em.s { color: var(--green); }
     .sec-head p { color: var(--ink-2); font-size: 17.5px; }
 
-    .features { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; }
-    .f-card {
-      background: var(--card); border: 1px solid var(--line); border-radius: var(--radius); padding: 26px 24px;
-      transition: transform .25s, box-shadow .25s, border-color .25s, opacity .7s;
-    }
-    .f-card:hover { transform: translateY(-4px); box-shadow: 0 18px 40px rgba(11,46,30,.08); border-color: var(--mint-2); }
-    .f-icon {
-      width: 48px; height: 48px; border-radius: 14px; display: grid; place-items: center; margin-bottom: 18px;
-      background: var(--mint); color: var(--green-700);
-    }
-    .f-icon svg { width: 24px; height: 24px; }
-    .f-card h3 { font-size: 17px; font-weight: 800; margin-bottom: 7px; letter-spacing: -.01em; }
-    .f-card p { font-size: 14.5px; color: var(--ink-2); }
+    /* Steps (how it works) */
+    .steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+    .step { position: relative; background: var(--paper); border: 1px solid var(--line); border-radius: var(--radius); padding: 28px 28px 0; overflow: hidden; display: flex; flex-direction: column; }
+    .step .no { display: inline-grid; place-items: center; width: 44px; height: 44px; border-radius: 14px; background: var(--deep); color: var(--lime); font-weight: 800; font-size: 17px; margin-bottom: 18px; }
+    .step:nth-child(2) .no { background: var(--lime); color: var(--deep); }
+    .step h3 { font-size: 21px; font-weight: 800; letter-spacing: -.02em; margin-bottom: 6px; }
+    .step p { color: var(--ink-2); font-size: 15px; }
+    .peek { position: relative; height: 300px; margin-top: 26px; overflow: hidden; }
+    .peek .phone { width: 230px; margin: 0 auto; border-radius: 38px; padding: 8px; box-shadow: inset 0 0 0 1.5px rgba(255,255,255,.12), 0 20px 40px -14px rgba(11,33,26,.4); }
+    .peek .phone img { border-radius: 31px; }
+    .phone.sheet { aspect-ratio: auto; border-radius: 30px; }
+    .phone.sheet img { height: auto; border-radius: 23px; }
+    .step .peek::after { content: ""; position: absolute; inset: auto 0 0; height: 60px; background: linear-gradient(transparent, var(--paper)); pointer-events: none; }
 
-    /* Showcase (tabbed tour) */
-    .showcase { background: #fff; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
-    .tour { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: center; }
-    .tour-tabs { display: grid; gap: 10px; }
-    .tour-tab {
-      all: unset; box-sizing: border-box; cursor: pointer; display: flex; gap: 16px; align-items: flex-start;
-      padding: 18px 20px; border-radius: 18px; border: 1px solid transparent; position: relative; overflow: hidden;
-      transition: background .25s, border-color .25s, box-shadow .25s;
+    /* Bento features */
+    .bento { display: grid; grid-template-columns: repeat(6, 1fr); gap: 16px; }
+    .tile {
+      position: relative; overflow: hidden; border-radius: var(--radius); padding: 28px 28px 0;
+      background: var(--paper); border: 1px solid var(--line); display: flex; flex-direction: column;
+      transition: transform .35s var(--ease), box-shadow .35s;
     }
-    .tour-tab:hover { background: var(--bg); }
-    .tour-tab:focus-visible { outline: 2px solid var(--green-600); outline-offset: 2px; }
-    .tour-tab.active { background: #fff; border-color: var(--line); box-shadow: 0 14px 34px rgba(11,46,30,.08); }
-    .tour-tab .t-ic { flex: none; width: 44px; height: 44px; border-radius: 13px; display: grid; place-items: center; background: var(--mint); color: var(--green-700); transition: background .25s, color .25s; }
-    .tour-tab.active .t-ic { background: var(--green-700); color: #fff; }
-    .tour-tab .t-ic svg { width: 22px; height: 22px; }
-    .tour-tab b { display: block; font-size: 17px; font-weight: 800; letter-spacing: -.01em; color: var(--ink); line-height: 44px; }
-    .tour-tab.active b { line-height: 1.4; margin-top: 2px; }
-    .tour-tab small { display: block; font-size: 14.5px; color: var(--ink-2); line-height: 1.55; max-height: 0; opacity: 0; overflow: hidden; transition: max-height .35s ease, opacity .35s ease, margin .35s ease; }
-    .tour-tab.active small { max-height: 120px; opacity: 1; margin-top: 4px; }
-    .tour-tab::after { content: ""; position: absolute; left: 0; bottom: 0; height: 3px; width: 0; background: linear-gradient(90deg, var(--green-600), var(--lime)); }
-    .tour-tab.active.running::after { animation: prog 6s linear forwards; }
-    @keyframes prog { to { width: 100%; } }
-    .tour-stage { position: relative; display: grid; place-items: center; padding: 56px 0; border-radius: 32px; overflow: hidden; }
-    .tour-bg { position: absolute; inset: 0; border-radius: 32px; background: radial-gradient(circle at 50% 45%, var(--mint-2), var(--mint) 55%, #F2F9F5 100%); }
-    .tour-phone { position: relative; width: 290px; }
-    .tour-phone img { position: absolute; inset: 10px; width: calc(100% - 20px); height: calc(100% - 20px); opacity: 0; transform: scale(.985); transition: opacity .45s ease, transform .45s ease; }
-    .tour-phone img.active { opacity: 1; transform: none; }
+    .tile:hover { transform: translateY(-4px); box-shadow: 0 24px 50px -24px rgba(11,33,26,.35); }
+    .tile h3 { font-size: 23px; font-weight: 800; letter-spacing: -.02em; line-height: 1.15; margin-bottom: 8px; }
+    .tile p { color: var(--ink-2); font-size: 15px; max-width: 420px; }
+    .tile .peek { height: 250px; margin-top: auto; padding-top: 24px; }
+    .tile .peek .phone { width: 220px; transition: transform .5s var(--ease); }
+    .tile:hover .peek .phone { transform: translateY(-10px); }
+    .t-ic { width: 46px; height: 46px; border-radius: 14px; display: grid; place-items: center; margin-bottom: 18px; background: var(--cream-2); color: var(--green); }
+    .t-ic svg { width: 23px; height: 23px; }
+    .span-3 { grid-column: span 3; } .span-2 { grid-column: span 2; }
+    .tile.dark { background: var(--deep); border-color: transparent; color: var(--cream); }
+    .tile.dark p { color: rgba(246,241,230,.72); }
+    .tile.dark .t-ic { background: rgba(169,217,76,.16); color: var(--lime); }
+    .tile.lime { background: var(--lime); border-color: transparent; }
+    .tile.lime p { color: rgba(18,48,36,.75); }
+    .tile.lime .t-ic { background: rgba(18,48,36,.1); color: var(--deep); }
+    .tags { display: flex; flex-wrap: wrap; gap: 7px; margin-top: 16px; }
+    .tags span { font-size: 12.5px; font-weight: 700; padding: 6px 11px; border-radius: 99px; background: rgba(246,241,230,.1); border: 1px solid rgba(246,241,230,.16); }
+    .tile.split { flex-direction: row; gap: 20px; padding-bottom: 0; }
+    .tile.split > div:first-child { flex: 1; padding-bottom: 28px; }
+    .tile.split .peek { flex: none; width: 210px; height: auto; min-height: 250px; margin: 0; padding-top: 0; }
+    .tile.split .peek .phone { width: 200px; position: absolute; top: 24px; left: 0; }
+    .minis { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-top: 16px; }
+    .mini { background: var(--paper); border: 1px solid var(--line); border-radius: 22px; padding: 22px; }
+    .mini .t-ic { width: 42px; height: 42px; margin-bottom: 14px; }
+    .mini h3 { font-size: 17px; font-weight: 800; letter-spacing: -.01em; margin-bottom: 4px; }
+    .mini p { font-size: 14.5px; color: var(--ink-2); line-height: 1.5; }
+
+    /* Gallery */
+    .gallery-sec { background: var(--deep); color: var(--cream); border-radius: 44px 44px 0 0; overflow: hidden; }
+    .gallery-sec h2 { color: var(--cream); }
+    .gallery-sec h2 em.s, .gallery-sec .kicker { color: var(--lime); }
+    .gallery-sec .sec-head p { color: rgba(246,241,230,.7); }
+    .g-head { display: flex; align-items: flex-end; justify-content: space-between; gap: 24px; }
+    .g-nav { display: flex; gap: 10px; margin-bottom: 52px; }
+    .g-nav button { width: 52px; height: 52px; border-radius: 50%; border: 1px solid rgba(246,241,230,.25); background: transparent; color: var(--cream); cursor: pointer; display: grid; place-items: center; transition: background .2s, color .2s; }
+    .g-nav button:hover { background: var(--lime); color: var(--deep); border-color: var(--lime); }
+    .g-nav svg { width: 20px; height: 20px; }
+    .gallery {
+      display: flex; gap: 22px; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none;
+      padding: 8px max(24px, calc((100vw - var(--max)) / 2 + 24px)) 24px;
+      scroll-padding: 0 max(24px, calc((100vw - var(--max)) / 2 + 24px));
+      overscroll-behavior-x: contain;
+    }
+    .gallery::-webkit-scrollbar { display: none; }
+    .g-item { flex: none; width: 250px; scroll-snap-align: start; }
+    .g-item .phone { width: 100%; background: linear-gradient(150deg, #3a4a42, #0a110e 45%); box-shadow: inset 0 0 0 1.5px rgba(255,255,255,.14), 0 30px 60px -20px rgba(0,0,0,.6); }
+    .g-item b { display: block; margin-top: 18px; font-size: 17px; font-weight: 800; }
+    .g-item span { display: block; font-size: 14px; color: rgba(246,241,230,.65); line-height: 1.5; margin-top: 2px; }
 
     /* Trust */
-    .trust {
-      display: grid; grid-template-columns: .9fr 1.1fr; gap: 48px; align-items: center;
-      border-radius: 32px; padding: 56px; color: #fff;
-      background: radial-gradient(500px 300px at 0% 0%, rgba(140,203,46,.16), transparent 60%), linear-gradient(135deg, var(--green-900), var(--green-800));
-    }
-    .trust h2 { font-size: clamp(28px, 3.2vw, 40px); font-weight: 800; letter-spacing: -.02em; line-height: 1.12; margin: 10px 0 12px; }
-    .trust-head p { color: rgba(255,255,255,.72); font-size: 16.5px; margin-bottom: 18px; }
-    .trust-link { color: #C8EC8F; font-weight: 700; text-decoration: none; }
-    .trust-link:hover { text-decoration: underline; }
-    .trust-grid { display: grid; gap: 14px; }
-    .t-item { display: grid; grid-template-columns: 44px 1fr; column-gap: 16px; align-items: center; padding: 18px 20px; border-radius: 18px; background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.1); }
-    .t-item svg { grid-row: span 2; width: 44px; height: 44px; padding: 10px; border-radius: 13px; background: rgba(140,203,46,.16); color: #C8EC8F; }
-    .t-item b { font-size: 16px; }
-    .t-item span { color: rgba(255,255,255,.7); font-size: 14.5px; }
-
-    /* Steps */
-    .steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; counter-reset: s; }
-    .step { position: relative; background: var(--card); border: 1px solid var(--line); border-radius: var(--radius); padding: 30px 28px; }
-    .step::before {
-      counter-increment: s; content: counter(s);
-      display: grid; place-items: center; width: 42px; height: 42px; border-radius: 50%;
-      background: var(--green-700); color: #fff; font-weight: 800; margin-bottom: 18px;
-    }
-    .step h3 { font-size: 18px; font-weight: 800; margin-bottom: 6px; }
-    .step p { color: var(--ink-2); font-size: 15px; }
+    .trust-sec { background: var(--deep); color: var(--cream); padding: 30px 0 110px; }
+    .trust { display: grid; grid-template-columns: .9fr 1.1fr; gap: 56px; align-items: center; border-top: 1px solid rgba(246,241,230,.12); padding-top: 90px; }
+    .trust h2 { color: var(--cream); }
+    .trust h2 em.s, .trust .kicker { color: var(--lime); }
+    .trust-head p { color: rgba(246,241,230,.72); font-size: 17px; margin-bottom: 22px; }
+    .link-arrow { display: inline-flex; align-items: center; gap: 8px; min-height: 44px; color: var(--lime); font-weight: 700; text-decoration: none; }
+    .link-arrow:hover { text-decoration: underline; text-underline-offset: 4px; }
+    .t-list { display: grid; gap: 12px; }
+    .t-item { display: grid; grid-template-columns: 48px 1fr; column-gap: 18px; align-items: center; padding: 20px 22px; border-radius: 22px; background: rgba(246,241,230,.05); border: 1px solid rgba(246,241,230,.1); }
+    .t-item svg { grid-row: span 2; width: 48px; height: 48px; padding: 12px; border-radius: 15px; background: var(--lime); color: var(--deep); }
+    .t-item b { font-size: 16.5px; }
+    .t-item span { color: rgba(246,241,230,.7); font-size: 14.5px; }
 
     /* FAQ */
-    .faq { max-width: 820px; margin: 0 auto; display: grid; gap: 12px; }
-    .faq details { background: #fff; border: 1px solid var(--line); border-radius: 18px; padding: 0 24px; transition: border-color .2s; }
-    .faq details[open] { border-color: var(--mint-2); box-shadow: 0 10px 30px rgba(11,46,30,.05); }
-    .faq summary {
-      list-style: none; cursor: pointer; padding: 20px 0; font-weight: 700; font-size: 16.5px;
-      display: flex; justify-content: space-between; align-items: center; gap: 16px;
-    }
+    .faq-grid { display: grid; grid-template-columns: .8fr 1.2fr; gap: 56px; align-items: start; }
+    .faq-side { position: sticky; top: 100px; }
+    .help { margin-top: 26px; background: var(--paper); border: 1px solid var(--line); border-radius: 22px; padding: 22px; }
+    .help b { display: block; font-size: 16px; margin-bottom: 4px; }
+    .help p { font-size: 14.5px; color: var(--ink-2); margin-bottom: 12px; }
+    .help a { color: var(--green); font-weight: 700; word-break: break-word; }
+    .faq { display: grid; gap: 10px; }
+    .faq details { background: var(--paper); border: 1px solid var(--line); border-radius: 20px; transition: background .25s, border-color .25s; }
+    .faq details[open] { background: #fff; border-color: rgba(31,122,77,.28); }
+    .faq summary { list-style: none; cursor: pointer; padding: 20px 22px; min-height: 60px; font-weight: 700; font-size: 16.5px; display: flex; justify-content: space-between; align-items: center; gap: 16px; }
     .faq summary::-webkit-details-marker { display: none; }
-    .faq summary::after {
-      content: "+"; flex: none; width: 30px; height: 30px; border-radius: 50%; display: grid; place-items: center;
-      background: var(--mint); color: var(--green-700); font-size: 20px; font-weight: 600; transition: transform .25s;
-    }
-    .faq details[open] summary::after { transform: rotate(45deg); }
-    .faq details p { padding: 0 0 20px; color: var(--ink-2); font-size: 15.5px; }
-    .faq a { color: var(--green-700); font-weight: 600; }
+    .faq summary::after { content: ""; flex: none; width: 32px; height: 32px; border-radius: 50%; background: var(--cream-2) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23123024' stroke-width='2.4' stroke-linecap='round'%3E%3Cpath d='M12 6v12M6 12h12'/%3E%3C/svg%3E") center / 16px no-repeat; transition: transform .3s var(--ease), background-color .25s; }
+    .faq details[open] summary::after { transform: rotate(45deg); background-color: var(--lime); }
+    .faq details p { padding: 0 22px 22px; color: var(--ink-2); font-size: 15.5px; }
+    .faq a { color: var(--green); font-weight: 600; }
 
     /* CTA */
     .cta {
-      position: relative; overflow: hidden; border-radius: 32px; color: #fff; text-align: center;
-      padding: 72px 28px;
-      background:
-        radial-gradient(600px 300px at 20% 0%, rgba(140,203,46,.22), transparent 60%),
-        radial-gradient(600px 340px at 90% 100%, rgba(34,168,90,.4), transparent 60%),
-        linear-gradient(135deg, var(--green-900), var(--green-800));
+      position: relative; overflow: hidden; border-radius: 40px; background: var(--lime);
+      display: grid; grid-template-columns: 1.15fr .85fr; align-items: end; gap: 24px; padding: 64px 0 0 64px;
     }
-    .cta-logo { width: 84px; height: 84px; border-radius: 24px; background: #fff; display: grid; place-items: center; margin: 0 auto 22px; box-shadow: 0 16px 40px rgba(0,0,0,.25); }
-    .cta-logo img { width: 62px; }
-    .cta h2 { font-size: clamp(30px, 4vw, 46px); font-weight: 800; letter-spacing: -.02em; line-height: 1.1; margin-bottom: 12px; }
-    .cta p { color: rgba(255,255,255,.75); font-size: 17.5px; margin-bottom: 30px; }
-    .cta .stores { justify-content: center; }
+    .cta::before { content: ""; position: absolute; width: 560px; height: 560px; right: -120px; top: -160px; border-radius: 50%; background: radial-gradient(circle, rgba(255,255,255,.55), transparent 65%); }
+    .cta > * { position: relative; }
+    .cta-text { padding-bottom: 64px; }
+    .cta h2 { font-size: clamp(34px, 4.6vw, 58px); }
+    .cta h2 em.s { color: var(--deep); }
+    .cta p { color: rgba(18,48,36,.78); font-size: 18px; margin-bottom: 28px; max-width: 460px; }
+    .cta-qr { display: none; }
+    .cta-phone { display: flex; justify-content: center; height: 440px; overflow: hidden; }
+    .cta-phone .phone { width: 290px; height: max-content; margin-top: 10px; }
 
     /* Footer */
-    footer { padding: 64px 0 36px; border-top: 1px solid var(--line); background: #fff; margin-top: 110px; }
+    footer { padding: 72px 0 36px; }
     .foot { display: grid; grid-template-columns: 1.4fr 1fr 1fr; gap: 40px; }
-    .foot .brand { color: var(--ink); }
-    .foot .brand-mark { box-shadow: none; border: 1px solid var(--line); }
-    .foot .brand-name span { color: var(--green-600); }
-    .foot p.tag { color: var(--ink-2); font-size: 14.5px; margin-top: 14px; max-width: 320px; }
-    .foot h4 { font-size: 13px; text-transform: uppercase; letter-spacing: .08em; color: var(--ink-2); margin-bottom: 14px; }
-    .foot ul { list-style: none; display: grid; gap: 9px; }
-    .foot ul a { text-decoration: none; font-weight: 600; font-size: 14.5px; }
-    .foot ul a:hover { color: var(--green-600); }
-    .copy { margin-top: 44px; padding-top: 24px; border-top: 1px solid var(--line); display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; font-size: 13.5px; color: var(--ink-2); }
+    .foot p.tag { color: var(--ink-2); font-size: 15px; margin-top: 16px; max-width: 320px; }
+    .foot h4 { font-size: 12.5px; text-transform: uppercase; letter-spacing: .1em; color: var(--ink-3); margin-bottom: 12px; }
+    .foot ul { list-style: none; display: grid; gap: 2px; }
+    .foot ul a { display: inline-flex; align-items: center; min-height: 36px; text-decoration: none; font-weight: 600; font-size: 15px; word-break: break-word; }
+    .foot ul a:hover { color: var(--green); }
+    .copy { margin-top: 44px; padding-top: 22px; border-top: 1px solid var(--line); display: flex; justify-content: space-between; gap: 10px 16px; flex-wrap: wrap; font-size: 13.5px; color: var(--ink-3); }
 
-    /* Reveal (only when JS is running) */
-    .js .reveal { opacity: 0; transform: translateY(24px); transition: opacity .7s ease, transform .7s ease; }
+    /* Reveal */
+    .js .reveal { opacity: 0; transform: translateY(28px); transition: opacity .8s var(--ease), transform .8s var(--ease); transition-delay: var(--d, 0s); }
     .js .reveal.in { opacity: 1; transform: none; }
 
     /* ---------- Responsive ---------- */
-    @media (max-width: 1000px) {
-      .features { grid-template-columns: repeat(2, 1fr); }
-      .tour { gap: 32px; }
-      .trust { grid-template-columns: 1fr; padding: 44px 32px; }
+    @media (max-width: 1080px) {
+      .hero-visual { height: 580px; }
+      .hp1 { width: 260px; } .hp2, .hp3 { width: 210px; }
+      .blob { width: 520px; height: 520px; } .ring { width: 600px; height: 600px; }
+      .tile.split { flex-direction: column; }
+      .tile.split > div:first-child { padding-bottom: 0; }
+      .tile.split .peek { width: auto; height: 250px; min-height: 0; padding-top: 24px; }
+      .tile.split .peek .phone { position: relative; top: auto; left: auto; width: 220px; }
+      .minis { grid-template-columns: repeat(2, 1fr); }
     }
-    @media (max-width: 860px) {
-      .nav-links a:not(.nav-cta) { display: none; }
-      .hero { padding-top: 110px; padding-bottom: 100px; }
-      .hero-grid { grid-template-columns: 1fr; text-align: center; }
+    @media (max-width: 900px) {
+      .nav-links { position: absolute; left: 12px; right: 12px; top: 70px; flex-direction: column; align-items: stretch; gap: 2px; padding: 10px; border-radius: 22px; background: var(--paper); border: 1px solid var(--line); box-shadow: 0 24px 50px -20px rgba(11,33,26,.35); opacity: 0; visibility: hidden; transform: translateY(-8px); transition: opacity .25s, transform .25s var(--ease), visibility .25s; }
+      .nav-links a { padding: 14px 16px; font-size: 16px; color: var(--deep); }
+      .nav-links a.btn { margin: 6px 0 0; min-height: 50px; }
+      .menu-open .nav-links { opacity: 1; visibility: visible; transform: none; }
+      .menu-btn { display: grid; }
+      header.menu-open { background: rgba(246,241,230,.96); }
+      .hero { padding-top: 20px; }
+      .hero-grid { grid-template-columns: 1fr; gap: 8px; }
+      .hero-copy { text-align: center; }
       .hero-lead { margin-left: auto; margin-right: auto; }
-      .hero .stores, .hero-checks { justify-content: center; }
-      .hero-visual { height: 520px; }
-      .phone { width: 230px; }
-      .hero-visual .p2 { width: 205px; top: 60px; }
-      .fc1 { right: 0; top: 110px; }
-      .fc2 { left: 0; bottom: 110px; }
-      .stats-inner { grid-template-columns: repeat(2, 1fr); }
-      .stat:nth-child(3) { border-left: 0; }
-      .stat:nth-child(n+3) { border-top: 1px solid var(--line); }
-      section.block { padding: 80px 0; }
-      .tour { grid-template-columns: 1fr; }
-      .tour-stage { order: -1; padding: 40px 0; }
-      .tour-phone { width: 250px; }
-      .steps { grid-template-columns: 1fr; }
+      .stores, .checks { justify-content: center; }
+      .hero-visual { height: 560px; }
+      .facts { grid-template-columns: repeat(2, 1fr); }
+      section.block { padding: 84px 0; }
+      .steps { grid-template-columns: 1fr; max-width: 520px; margin: 0 auto; }
+      .step { flex-direction: row; gap: 18px; padding: 24px 0 0 24px; }
+      .step > div:first-child { flex: 1; padding-bottom: 24px; }
+      .step .peek { flex: none; width: 150px; height: 210px; margin: 0; }
+      .step .peek .phone { width: 150px; border-radius: 26px; padding: 6px; }
+      .step .peek .phone img { border-radius: 21px; }
+      .bento { grid-template-columns: 1fr 1fr; }
+      .span-3, .span-2 { grid-column: span 1; }
+      .bento .wide { grid-column: 1 / -1; }
+      .trust { grid-template-columns: 1fr; gap: 36px; padding-top: 70px; }
+      .faq-grid { grid-template-columns: 1fr; gap: 28px; }
+      .faq-side { position: static; }
+      .cta { grid-template-columns: 1fr; padding: 52px 28px 0; text-align: center; }
+      .cta-text { padding-bottom: 0; }
+      .cta p { margin-left: auto; margin-right: auto; }
+      .cta .stores { justify-content: center; }
+      .cta-phone { height: 300px; }
+      .cta-phone .phone { width: 240px; }
       .foot { grid-template-columns: 1fr 1fr; }
       .foot > div:first-child { grid-column: 1 / -1; }
     }
-    @media (max-width: 520px) {
+    @media (max-width: 600px) {
       .wrap { padding: 0 16px; }
-      .brand-name { font-size: 18px; }
-      .features { grid-template-columns: 1fr 1fr; gap: 12px; }
-      .f-card { padding: 18px 16px; border-radius: 18px; }
-      .f-icon { width: 40px; height: 40px; border-radius: 12px; margin-bottom: 12px; }
-      .f-icon svg { width: 20px; height: 20px; }
-      .f-card h3 { font-size: 15px; }
-      .f-card p { font-size: 13px; line-height: 1.5; }
-      .hero-visual { height: 430px; }
-      .hero { padding-bottom: 90px; }
-      .phone { width: 200px; border-radius: 34px; padding: 8px; }
-      .phone img { border-radius: 27px; }
-      .hero-visual .p2 { width: 176px; }
-      .float-card { font-size: 12px; padding: 9px 11px; }
-      .float-card .ic { width: 30px; height: 30px; }
-      .fc1 { top: 70px; }
-      .fc2 { bottom: 70px; }
-      .tour-phone { width: 220px; }
-      .tour-phone img { inset: 8px; width: calc(100% - 16px); height: calc(100% - 16px); }
-      .tour-tab { padding: 14px; gap: 12px; }
-      .trust { padding: 36px 20px; border-radius: 24px; }
-      .store { flex: 1 1 160px; min-width: 0; justify-content: center; }
-      .stat { padding: 20px 12px; }
-      .stat b { font-size: 25px; }
-      .cta { padding: 56px 20px; border-radius: 24px; }
+      .nav { height: 64px; }
+      .nav-links { top: 62px; }
+      .brand img { width: 36px; height: 36px; }
+      .hero h1 { margin: 18px 0 16px; }
+      .hero-lead { margin-bottom: 24px; }
+      .store { flex: 1 1 150px; min-width: 0; justify-content: center; padding: 9px 12px; }
+      .store b { font-size: 16.5px; }
+      .checks { gap: 6px 16px; font-size: 13.5px; }
+      .hero-visual { height: 470px; margin: 0 -16px; }
+      .blob { width: 360px; height: 360px; } .ring { width: 420px; height: 420px; }
+      .hp1 { width: 210px; } .hp2, .hp3 { width: 168px; }
+      .js .loaded .hero-visual .hp2 { transform: translate(-108%, -44%) rotate(-8deg); }
+      .js .loaded .hero-visual .hp3 { transform: translate(8%, -44%) rotate(8deg); }
+      .phone { border-radius: 34px; padding: 7px; } .phone img { border-radius: 28px; }
+      .chip { font-size: 12px; padding: 8px 11px 8px 8px; border-radius: 14px; gap: 8px; }
+      .chip small { font-size: 11px; }
+      .chip .ic { width: 30px; height: 30px; border-radius: 10px; } .chip .ic svg { width: 16px; height: 16px; }
+      .c1 { right: 10px; top: 40px; } .c2 { left: 10px; bottom: 70px; } .c3 { display: none; }
+      .facts { gap: 10px; }
+      .fact { padding: 16px; border-radius: 18px; }
+      .fact b { font-size: 24px; }
+      .fact span { font-size: 13px; display: block; line-height: 1.4; margin-top: 2px; }
+      .marquee { margin-top: 56px; padding: 15px 0; }
+      .track li { font-size: 18px; gap: 16px; padding-right: 16px; }
+      section.block { padding: 72px 0; }
+      .sec-head { margin-bottom: 36px; }
+      .sec-head p { font-size: 16px; }
+      .step { gap: 12px; padding: 20px 0 0 20px; border-radius: 24px; }
+      .step h3 { font-size: 18px; }
+      .step p { font-size: 14px; }
+      .step .peek { width: 118px; height: 180px; }
+      .step .peek .phone { width: 128px; }
+      .bento { grid-template-columns: 1fr; gap: 12px; }
+      .bento .wide { grid-column: auto; }
+      .tile { padding: 24px 22px 0; border-radius: 24px; }
+      .tile h3 { font-size: 21px; }
+      .tile .peek, .tile.split .peek { height: 220px; }
+      .tile .peek .phone, .tile.split .peek .phone { width: 200px; }
+      .minis { grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 12px; }
+      .mini { padding: 16px; border-radius: 18px; }
+      .mini h3 { font-size: 15px; }
+      .mini p { font-size: 13px; }
+      .gallery-sec { border-radius: 32px 32px 0 0; }
+      .g-nav { display: none; }
+      .gallery { gap: 14px; padding: 8px 16px 20px; scroll-padding: 0 16px; }
+      .g-item { width: 74vw; max-width: 260px; }
+      .trust-sec { padding-bottom: 80px; }
+      .t-item { grid-template-columns: 42px 1fr; column-gap: 14px; padding: 16px; border-radius: 18px; }
+      .t-item svg { width: 42px; height: 42px; padding: 10px; border-radius: 13px; }
+      .faq summary { padding: 18px; font-size: 15.5px; }
+      .faq details p { padding: 0 18px 18px; font-size: 15px; }
+      .cta { border-radius: 28px; padding: 44px 20px 0; }
+      .cta p { font-size: 16.5px; }
+      .cta-phone { height: 250px; }
+      .cta-phone .phone { width: 210px; }
+      footer { padding-top: 56px; }
+    }
+    @media (min-width: 901px) and (hover: hover) {
+      .cta-qr { display: flex; align-items: center; gap: 16px; margin-top: 26px; max-width: 440px; }
+      .cta-qr img { width: 112px; height: 112px; border-radius: 16px; background: #fff; padding: 7px; flex: none; }
+      .cta-qr span { font-size: 14.5px; line-height: 1.5; color: rgba(18,48,36,.8); }
     }
     @media (prefers-reduced-motion: reduce) {
       html { scroll-behavior: auto; }
-      .float-card { animation: none; }
-      .js .reveal { opacity: 1; transform: none; transition: none; }
-    }
-      .cta-qr { display: none; }
-    @media (min-width: 900px) and (hover: hover) {
-      .cta-qr { display: flex; align-items: center; gap: 18px; justify-content: center; margin: 26px auto 0; max-width: 520px; text-align: left; }
-      .cta-qr img { width: 132px; height: 132px; border-radius: 18px; background: #fff; padding: 8px; flex: none; }
-      .cta-qr span { font-size: 15px; line-height: 1.5; opacity: .9; }
+      .chip, .track { animation: none; }
+      .track { flex-wrap: wrap; width: auto; } .track ul[aria-hidden] { display: none; } .track ul { flex-wrap: wrap; justify-content: center; padding: 0 16px; }
+      .hl::after { animation: none; transform: none; }
+      .js .reveal, .js .hero-visual .phone { opacity: 1; transform: none; transition: none; }
+      .js .hero-visual .hp1 { transform: translate(-50%, -50%); }
+      .js .hero-visual .hp2 { transform: translate(-112%, -44%) rotate(-8deg); }
+      .js .hero-visual .hp3 { transform: translate(12%, -44%) rotate(8deg); }
+      .tile, .tile .peek .phone { transition: none; }
     }
   </style>
   <script>document.documentElement.classList.add('js');</script>
 </head>
 <body>
 
-  <!-- Reusable icons -->
   <svg width="0" height="0" style="position:absolute" aria-hidden="true">
     <symbol id="i-apple" viewBox="0 0 24 24"><path fill="currentColor" d="M16.37 12.62c-.02-2.3 1.88-3.4 1.96-3.46-1.07-1.56-2.73-1.78-3.32-1.8-1.41-.14-2.76.83-3.47.83-.72 0-1.82-.81-3-.79-1.54.02-2.96.9-3.75 2.27-1.6 2.78-.41 6.88 1.15 9.13.76 1.1 1.67 2.33 2.86 2.29 1.15-.05 1.58-.74 2.97-.74 1.38 0 1.77.74 2.98.72 1.23-.02 2.01-1.12 2.76-2.22.87-1.27 1.23-2.51 1.25-2.57-.03-.01-2.39-.92-2.41-3.66zM14.1 5.88c.63-.77 1.06-1.83.94-2.88-.91.04-2.01.61-2.67 1.37-.58.67-1.1 1.76-.96 2.79 1.01.08 2.05-.51 2.69-1.28z"/></symbol>
     <symbol id="i-play" viewBox="0 0 24 24"><path fill="#00D7FE" d="M3.6 2.3c-.25.27-.4.68-.4 1.21v16.98c0 .53.15.94.4 1.21l.06.06 9.5-9.5v-.23L3.66 2.24z"/><path fill="#FFCE00" d="m16.33 15.43-3.17-3.17v-.23l3.17-3.17.07.04 3.76 2.13c1.07.61 1.07 1.61 0 2.22l-3.76 2.14z"/><path fill="#FF3A44" d="M16.4 15.39 13.16 12.15 3.6 21.7c.35.37.94.42 1.6.04l11.2-6.35"/><path fill="#00F076" d="M16.4 8.9 5.2 2.55c-.66-.37-1.25-.33-1.6.05l9.56 9.55z"/></symbol>
     <symbol id="i-check" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="currentColor" opacity=".16"/><path d="m7.5 12.3 3 3 6-6.3" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-cam" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8h3l2-3h6l2 3h3v11H4z"/><circle cx="12" cy="13" r="3.5"/></g></symbol>
+    <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
   </svg>
 
-  <header>
+  <header id="top">
     <div class="wrap nav">
-      <a href="#" class="brand" aria-label="FİT KAL ana sayfa">
-        <span class="brand-mark"><img src="./assets/logo-mark.png" alt=""></span>
-        <span class="brand-name">FİT <span>KAL</span></span>
+      <a href="#top" class="brand" aria-label="FİT KAL ana sayfa">
+        <img src="./assets/logo-mark.png" alt="" width="40" height="40">
+        <b>FİT <span>KAL</span></b>
       </a>
-      <nav class="nav-links">
+      <nav class="nav-links" id="menu" aria-label="Ana menü">
+        <a href="#nasil">Nasıl Çalışır</a>
         <a href="#ozellikler">Özellikler</a>
         <a href="#ekranlar">Ekranlar</a>
-        <a href="#nasil">Nasıl Çalışır</a>
         <a href="#sss">SSS</a>
         <a href="./destek.html">Destek</a>
-        <a href="#indir" class="nav-cta">Ücretsiz İndir</a>
+        <a href="#indir" class="btn btn-dark">Ücretsiz İndir</a>
       </nav>
+      <button class="menu-btn" aria-label="Menüyü aç" aria-expanded="false" aria-controls="menu"><span></span></button>
     </div>
   </header>
 
+  <main>
   <!-- HERO -->
   <section class="hero">
     <div class="wrap hero-grid">
-      <div>
-        <span class="eyebrow"><i></i>Yapay zeka destekli sağlık asistanı</span>
-        <h1>Yemeğini çek,<br><span class="grad">gerisini FİT KAL</span><br>halletsin.</h1>
+      <div class="hero-copy">
+        <span class="pill"><i><svg><use href="#i-cam"/></svg></i>Yapay zeka destekli sağlık asistanı</span>
+        <h1>Yemeğini çek, <em class="s">gerisini</em> <span class="hl">FİT KAL</span> halletsin.</h1>
         <p class="hero-lead">Tabağının fotoğrafını çek; yapay zeka kalori ve makroları saniyeler içinde hesaplasın. Kişisel diyet planın, antrenmanların, oruç ve su takibin tek uygulamada.</p>
         <div class="stores">
           <a class="store" href="https://apps.apple.com/app/id6807896776" target="_blank" rel="noopener">
-            <svg><use href="#i-apple"/></svg>
+            <svg aria-hidden="true"><use href="#i-apple"/></svg>
             <span><small>Hemen indir</small><b>App Store</b></span>
           </a>
           <a class="store" href="https://play.google.com/store/apps/details?id=com.fitkal.app" target="_blank" rel="noopener">
-            <svg><use href="#i-play"/></svg>
+            <svg aria-hidden="true"><use href="#i-play"/></svg>
             <span><small>Hemen indir</small><b>Google Play</b></span>
           </a>
         </div>
-        <div class="hero-checks">
-          <span><svg><use href="#i-check"/></svg>Ücretsiz</span>
-          <span><svg><use href="#i-check"/></svg>Tamamen Türkçe</span>
-          <span><svg><use href="#i-check"/></svg>iOS &amp; Android</span>
+        <div class="checks">
+          <span><svg aria-hidden="true"><use href="#i-check"/></svg>Ücretsiz</span>
+          <span><svg aria-hidden="true"><use href="#i-check"/></svg>Tamamen Türkçe</span>
+          <span><svg aria-hidden="true"><use href="#i-check"/></svg>iOS &amp; Android</span>
         </div>
       </div>
 
       <div class="hero-visual" aria-hidden="true">
-        <div class="glow"></div>
-        <div class="phone p2"><img src="./assets/ai-analiz.webp" alt=""></div>
-        <div class="phone p1"><img src="./assets/home.webp" alt=""></div>
-        <div class="float-card fc1">
-          <span class="ic" style="background:#FFF1E2;color:#E07B12"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8h3l2-3h6l2 3h3v11H4z"/><circle cx="12" cy="13" r="3.5"/></svg></span>
+        <div class="ring"></div>
+        <div class="blob"></div>
+        <div class="phone hp2"><img src="./assets/ai-analiz.webp" alt="" width="540" height="1126"></div>
+        <div class="phone hp3"><img src="./assets/diyet.webp" alt="" width="540" height="1170"></div>
+        <div class="phone hp1"><img src="./assets/home.webp" alt="" width="540" height="1126" fetchpriority="high"></div>
+        <div class="chip c1">
+          <span class="ic" style="background:#FFF1E2;color:#E07B12"><svg><use href="#i-cam"/></svg></span>
           <span>Adana Kebap · 180 g<small>450 kcal · 32 g protein</small></span>
         </div>
-        <div class="float-card fc2">
-          <span class="ic" style="background:#E9F6EE;color:#17914A"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3c1 3 5 5.5 5 10a5 5 0 0 1-10 0c0-2.5 1.5-4 2.5-5 0 2 1 3 2 3 0-3-1-5.5.5-8z"/></svg></span>
+        <div class="chip c2">
+          <span class="ic" style="background:#EEF7DC;color:#1F7A4D"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3c1 3 5 5.5 5 10a5 5 0 0 1-10 0c0-2.5 1.5-4 2.5-5 0 2 1 3 2 3 0-3-1-5.5.5-8z"/></svg></span>
           <span>4 günlük seri!<small>Hedefine her gün daha yakın</small></span>
         </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- STATS -->
-  <div class="stats">
-    <div class="wrap">
-      <div class="stats-inner reveal">
-        <div class="stat"><b>Saniyeler</b><span>içinde AI kalori analizi</span></div>
-        <div class="stat"><b>87+</b><span>egzersiz &amp; canlı set sayacı</span></div>
-        <div class="stat"><b>70+</b><span>fit tarif</span></div>
-        <div class="stat"><b>%100</b><span>ücretsiz &amp; Türkçe</span></div>
-      </div>
-    </div>
-  </div>
-
-  <!-- FEATURES -->
-  <section class="block" id="ozellikler">
-    <div class="wrap">
-      <div class="sec-head reveal">
-        <div class="kicker">Özellikler</div>
-        <h2>Sağlıklı yaşam için ihtiyacın olan her şey</h2>
-        <p>Beş ayrı uygulama yerine tek bir uygulama: beslenme, egzersiz, oruç ve motivasyon bir arada.</p>
-      </div>
-      <div class="features">
-        <div class="f-card reveal">
-          <div class="f-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8h3l2-3h6l2 3h3v11H4z"/><circle cx="12" cy="13" r="3.5"/></svg></div>
-          <h3>AI Yemek Analizi</h3>
-          <p>Fotoğrafını çek; yemekler, porsiyon, kalori ve makrolar anında hesaplansın.</p>
-        </div>
-        <div class="f-card reveal">
-          <div class="f-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="3" width="14" height="18" rx="2"/><path d="M9 8h6M9 12h6M9 16h3"/></svg></div>
-          <h3>Kişisel Diyet Planı</h3>
-          <p>Hedefine ve beslenme tercihine göre otomatik oluşan diyet planı ve akıllı alışveriş listesi.</p>
-        </div>
-        <div class="f-card reveal">
-          <div class="f-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7V5a1 1 0 0 1 1-1h2M17 4h2a1 1 0 0 1 1 1v2M20 17v2a1 1 0 0 1-1 1h-2M7 20H5a1 1 0 0 1-1-1v-2M8 8v8M11 8v8M14 8v8M17 8v8"/></svg></div>
-          <h3>Barkod Tarama</h3>
-          <p>Paketli ürünlerin barkodunu okut, besin değerleri saniyede günlüğüne eklensin.</p>
-        </div>
-        <div class="f-card reveal">
-          <div class="f-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 8v8M18 8v8M3 10v4M21 10v4M6 12h12"/></svg></div>
-          <h3>87+ Egzersiz</h3>
-          <p>Evde veya salonda; canlı set sayacı, dinlenme zamanlayıcısı ve yakılan kalori takibi.</p>
-        </div>
-        <div class="f-card reveal">
-          <div class="f-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="13" r="8"/><path d="M12 9v4l2.5 2M9 2h6"/></svg></div>
-          <h3>Aralıklı Oruç</h3>
-          <p>Oruç saatlerini planla, ketozis ve yağ yakım evrelerini anlık izle.</p>
-        </div>
-        <div class="f-card reveal">
-          <div class="f-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3s6 6.5 6 11a6 6 0 0 1-12 0c0-4.5 6-11 6-11z"/></svg></div>
-          <h3>Su &amp; Makro Takibi</h3>
-          <p>Günlük kalori, protein, karbonhidrat, yağ ve su hedeflerin tek ekranda.</p>
-        </div>
-        <div class="f-card reveal">
-          <div class="f-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="9" r="6"/><path d="m8.5 14-1.5 7 5-3 5 3-1.5-7"/></svg></div>
-          <h3>Rozet &amp; XP</h3>
-          <p>Görevleri tamamla, XP kazan, seviye atla. Motivasyonun hiç düşmesin.</p>
-        </div>
-        <div class="f-card reveal">
-          <div class="f-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="m7 15 4-4 3 3 5-6"/></svg></div>
-          <h3>Kilo &amp; Ölçü Grafikleri</h3>
-          <p>Kilo trendini, vücut ölçülerini ve fotoğraflarla gelişimini karşılaştır.</p>
-        </div>
-        <div class="f-card reveal">
-          <div class="f-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4z"/></svg></div>
-          <h3>Yazarak Ekle</h3>
-          <p>Fotoğraf çekemediğinde ne yediğini yaz; yapay zekâ kalori ve makrolarını hesaplasın.</p>
-        </div>
-        <div class="f-card reveal">
-          <div class="f-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/><path d="M8 9h8M8 13h5"/></svg></div>
-          <h3>AI Sağlık Koçu</h3>
-          <p>Günün özeti ve sana özel öneriler tek ekranda; ilerlemeni birlikte değerlendir.</p>
-        </div>
-        <div class="f-card reveal">
-          <div class="f-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 13.9A4 4 0 0 1 7 6a5 5 0 0 1 10 0 4 4 0 0 1 1 7.9V20H6z"/><path d="M6 17h12"/></svg></div>
-          <h3>70+ Fit Tarif</h3>
-          <p>Türk mutfağından fit tarifler; her tarifte kalori, protein, karbonhidrat ve yağ hazır.</p>
-        </div>
-        <div class="f-card reveal">
-          <div class="f-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="20" r="1.5"/><circle cx="18" cy="20" r="1.5"/><path d="M2 3h3l2.7 12.4a2 2 0 0 0 2 1.6h7.7a2 2 0 0 0 2-1.6L21 7H6"/></svg></div>
-          <h3>Akıllı Alışveriş Listesi</h3>
-          <p>Diyet planındaki malzemeler reyonlara göre ayrılır; markette işaretle, bitir.</p>
+        <div class="chip c3">
+          <span class="ic" style="background:#E3F1FB;color:#2F80C0"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3s6 6.5 6 11a6 6 0 0 1-12 0c0-4.5 6-11 6-11z"/></svg></span>
+          <span>Su takibi<small>Günlük hedefin tek ekranda</small></span>
         </div>
       </div>
     </div>
-  </section>
 
-  <!-- SHOWCASE (tabbed) -->
-  <section class="block showcase" id="ekranlar">
     <div class="wrap">
-      <div class="sec-head reveal">
-        <div class="kicker">Uygulamayı keşfet</div>
-        <h2>Her ekran, hedefine bir adım daha</h2>
-        <p>Gerçek uygulama ekranları. Bir sekme seç ve FİT KAL'ın içinde neler olduğunu gör.</p>
-      </div>
-      <div class="tour reveal">
-        <div class="tour-tabs" role="tablist" aria-label="Uygulama ekranları">
-          <button class="tour-tab active" role="tab" aria-selected="true" data-i="0">
-            <span class="t-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8h3l2-3h6l2 3h3v11H4z"/><circle cx="12" cy="13" r="3.5"/></svg></span>
-            <span><b>Yapay zeka besin analizi</b><small>Tabağını çek; her yemek ayrı ayrı tanınır, porsiyon, kalori ve makrolar anında hesaplanır. Gramajı tek dokunuşla düzelt.</small></span>
-          </button>
-          <button class="tour-tab" role="tab" aria-selected="false" data-i="1">
-            <span class="t-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 8v8M18 8v8M3 10v4M21 10v4M6 12h12"/></svg></span>
-            <span><b>Antrenman asistanı</b><small>87'den fazla hareket, canlı set sayacı ve dinlenme zamanlayıcısı. Her seti kaydet, yaktığın kaloriyi gör.</small></span>
-          </button>
-          <button class="tour-tab" role="tab" aria-selected="false" data-i="2">
-            <span class="t-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="13" r="8"/><path d="M12 9v4l2.5 2M9 2h6"/></svg></span>
-            <span><b>Aralıklı oruç</b><small>Oruç saatlerini planla; ketozis ve yağ yakım evrelerini, serini ve kalori dengeni anlık izle.</small></span>
-          </button>
-          <button class="tour-tab" role="tab" aria-selected="false" data-i="3">
-            <span class="t-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="m7 15 4-4 3 3 5-6"/></svg></span>
-            <span><b>Kilo ve ölçü takibi</b><small>Kilo trendin, vücut ölçülerin ve hedefine kalan mesafe net grafiklerle karşında.</small></span>
-          </button>
-          <button class="tour-tab" role="tab" aria-selected="false" data-i="4">
-            <span class="t-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="9" r="6"/><path d="m8.5 14-1.5 7 5-3 5 3-1.5-7"/></svg></span>
-            <span><b>Rozetler ve XP</b><small>Görevleri tamamla, rozet topla, seviye atla. Başarını tek dokunuşla paylaş.</small></span>
-          </button>
-        </div>
-        <div class="tour-stage">
-          <div class="tour-bg"></div>
-          <div class="phone tour-phone">
-            <img class="active" src="./assets/ai-analiz.webp" alt="Yapay zeka yemek analizi ekranı">
-            <img src="./assets/egzersiz.webp" alt="Canlı set sayacı ekranı" loading="lazy">
-            <img src="./assets/oruc.webp" alt="Aralıklı oruç ekranı" loading="lazy">
-            <img src="./assets/ilerleme.webp" alt="Kilo trendi ekranı" loading="lazy">
-            <img src="./assets/rozet.webp" alt="Rozet kazanma ekranı" loading="lazy">
-          </div>
-        </div>
+      <div class="facts">
+        <div class="fact reveal"><b><em class="s">Saniyeler</em></b><span>içinde AI kalori analizi</span></div>
+        <div class="fact reveal" style="--d:.06s"><b>87+</b><span>egzersiz &amp; canlı set sayacı</span></div>
+        <div class="fact reveal" style="--d:.12s"><b>70+</b><span>fit tarif</span></div>
+        <div class="fact reveal" style="--d:.18s"><b>%100</b><span>ücretsiz &amp; Türkçe</span></div>
       </div>
     </div>
-  </section>
 
-  <!-- PRIVACY -->
-  <section class="block" id="guven" style="padding-bottom:0">
-    <div class="wrap">
-      <div class="trust reveal">
-        <div class="trust-head">
-          <div class="kicker" style="color:var(--lime)">Gizlilik önce gelir</div>
-          <h2>Verilerin sana ait</h2>
-          <p>Sağlık verilerin hassastır; biz de öyle davranıyoruz. KVKK'ya uygun aydınlatma metnimizi dilediğin zaman okuyabilirsin.</p>
-          <a class="trust-link" href="./gizlilik-politikasi.html">Gizlilik Politikası'nı oku →</a>
-        </div>
-        <div class="trust-grid">
-          <div class="t-item">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="10" width="16" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg>
-            <b>Şifreli bağlantı</b><span>Tüm veri iletimi HTTPS/TLS ile şifrelenir.</span>
-          </div>
-          <div class="t-item">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 4 6v6c0 5 3.5 8 8 9 4.5-1 8-4 8-9V6z"/><path d="m9 12 2 2 4-4"/></svg>
-            <b>Satılmaz, paylaşılmaz</b><span>Sağlık ve beslenme verilerin hiçbir şekilde satılmaz, reklam için kullanılmaz.</span>
-          </div>
-          <div class="t-item">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h16M10 11v6M14 11v6M6 7l1 13h10l1-13M9 7V4h6v3"/></svg>
-            <b>Kolayca silme</b><span>Hesabını ve verilerini uygulama içinden istediğin an silebilirsin.</span>
-          </div>
-        </div>
+    <div class="marquee" aria-hidden="true">
+      <div class="track">
+        <ul><li>AI kalori analizi</li><li>kişisel diyet planı</li><li>barkod tarama</li><li>87+ egzersiz</li><li>aralıklı oruç</li><li>su &amp; makro takibi</li><li>70+ fit tarif</li><li>rozet &amp; XP</li></ul>
+        <ul aria-hidden="true"><li>AI kalori analizi</li><li>kişisel diyet planı</li><li>barkod tarama</li><li>87+ egzersiz</li><li>aralıklı oruç</li><li>su &amp; makro takibi</li><li>70+ fit tarif</li><li>rozet &amp; XP</li></ul>
       </div>
     </div>
   </section>
@@ -593,30 +538,202 @@
   <!-- HOW -->
   <section class="block" id="nasil">
     <div class="wrap">
-      <div class="sec-head reveal">
+      <div class="sec-head center reveal">
         <div class="kicker">Nasıl çalışır</div>
-        <h2>Üç adımda başla</h2>
-        <p>Kurulum bir dakikadan kısa sürer.</p>
+        <h2>Bir fotoğraf, <em class="s">gerisi</em> hazır.</h2>
+        <p>Öğününü kaydetmek birkaç saniye sürer. Fotoğraf, yazı ya da barkod — hangisi kolayına gelirse.</p>
       </div>
       <div class="steps">
-        <div class="step reveal"><h3>Uygulamayı indir</h3><p>App Store veya Google Play'den FİT KAL'ı ücretsiz indir, Apple veya Google hesabınla saniyeler içinde giriş yap.</p></div>
-        <div class="step reveal"><h3>Hedefini belirle</h3><p>Boy, kilo, aktivite seviyesi ve hedefini gir; kalori ve makro hedeflerin otomatik hesaplansın.</p></div>
-        <div class="step reveal"><h3>Takip et, kazan</h3><p>Öğünlerini çek, antrenmanını kaydet, suyunu iç. Her gün biraz daha iyi.</p></div>
+        <div class="step reveal">
+          <div>
+            <span class="no">1</span>
+            <h3>Çek, yaz ya da okut</h3>
+            <p>Tabağının fotoğrafını çek, galeriden seç, paketli ürünün barkodunu okut ya da elle ekle.</p>
+          </div>
+          <div class="peek"><div class="phone sheet"><img src="./assets/ekle-sheet.webp" alt="Yemek ekleme seçenekleri: fotoğraf çek, galeriden seç, barkod tara, elle ekle" width="540" height="749" loading="lazy"></div></div>
+        </div>
+        <div class="step reveal" style="--d:.1s">
+          <div>
+            <span class="no">2</span>
+            <h3>Yapay zeka hesaplasın</h3>
+            <p>Her yemek ayrı ayrı tanınır; porsiyon, kalori ve makrolar anında çıkar. Gramajı tek dokunuşla düzelt.</p>
+          </div>
+          <div class="peek"><div class="phone"><img src="./assets/ai-analiz.webp" alt="Yapay zeka yemek analizi ekranı" width="540" height="1126" loading="lazy"></div></div>
+        </div>
+        <div class="step reveal" style="--d:.2s">
+          <div>
+            <span class="no">3</span>
+            <h3>Gününü takip et</h3>
+            <p>Kalori, protein, karbonhidrat, yağ ve su hedeflerin tek ekranda. Her gün biraz daha iyi.</p>
+          </div>
+          <div class="peek"><div class="phone"><img src="./assets/home.webp" alt="Günlük kalori ve makro özeti ekranı" width="540" height="1126" loading="lazy"></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURES -->
+  <section class="block" id="ozellikler" style="padding-top:0">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <div class="kicker">Özellikler</div>
+        <h2>Beş uygulama yerine <em class="s">tek</em> uygulama.</h2>
+        <p>Beslenme, egzersiz, oruç ve motivasyon bir arada — sağlıklı yaşam için ihtiyacın olan her şey.</p>
+      </div>
+
+      <div class="bento">
+        <article class="tile dark span-3 split wide reveal">
+          <div>
+            <div class="t-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="3" width="14" height="18" rx="2"/><path d="M9 8h6M9 12h6M9 16h3"/></svg></div>
+            <h3>Kişisel diyet planı</h3>
+            <p>Hedefine, aktivite seviyene ve beslenme tercihine göre otomatik oluşur. İstediğin öğünü tek dokunuşla değiştir.</p>
+            <div class="tags"><span>Standart</span><span>Ketojenik</span><span>Vejetaryen</span><span>Glutensiz / Laktozsuz</span><span>Aralıklı oruç</span></div>
+          </div>
+          <div class="peek"><div class="phone"><img src="./assets/diyet.webp" alt="Diyet listesi ekranı" width="540" height="1170" loading="lazy"></div></div>
+        </article>
+
+        <article class="tile lime span-3 split wide reveal" style="--d:.08s">
+          <div>
+            <div class="t-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 8v8M18 8v8M3 10v4M21 10v4M6 12h12"/></svg></div>
+            <h3>87+ egzersiz, canlı set sayacı</h3>
+            <p>Evde veya salonda. Dinlenme zamanlayıcısıyla her seti kaydet, yaktığın kaloriyi gör.</p>
+          </div>
+          <div class="peek"><div class="phone"><img src="./assets/egzersiz.webp" alt="Canlı set sayacı ekranı" width="540" height="1126" loading="lazy"></div></div>
+        </article>
+
+        <article class="tile span-2 reveal">
+          <div class="t-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="13" r="8"/><path d="M12 9v4l2.5 2M9 2h6"/></svg></div>
+          <h3>Aralıklı oruç</h3>
+          <p>Oruç saatlerini planla; ketozis ve yağ yakım evrelerini anlık izle.</p>
+          <div class="peek"><div class="phone"><img src="./assets/oruc.webp" alt="Aralıklı oruç ekranı" width="540" height="1126" loading="lazy"></div></div>
+        </article>
+
+        <article class="tile span-2 reveal" style="--d:.08s">
+          <div class="t-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 13.9A4 4 0 0 1 7 6a5 5 0 0 1 10 0 4 4 0 0 1 1 7.9V20H6z"/><path d="M6 17h12"/></svg></div>
+          <h3>70+ fit tarif</h3>
+          <p>Türk mutfağından fit tarifler; kalori, protein, karbonhidrat ve yağ hazır.</p>
+          <div class="peek"><div class="phone"><img src="./assets/tarif.webp" alt="Fit tarifler ekranı" width="540" height="1170" loading="lazy"></div></div>
+        </article>
+
+        <article class="tile span-2 wide reveal" style="--d:.16s">
+          <div class="t-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="20" r="1.5"/><circle cx="18" cy="20" r="1.5"/><path d="M2 3h3l2.7 12.4a2 2 0 0 0 2 1.6h7.7a2 2 0 0 0 2-1.6L21 7H6"/></svg></div>
+          <h3>Akıllı alışveriş listesi</h3>
+          <p>Diyet planındaki malzemeler reyonlara göre ayrılır; markette işaretle, bitir.</p>
+          <div class="peek"><div class="phone"><img src="./assets/alisveris.webp" alt="Akıllı alışveriş listesi ekranı" width="540" height="1170" loading="lazy"></div></div>
+        </article>
+
+        <article class="tile span-3 split wide reveal">
+          <div>
+            <div class="t-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/><path d="M8 9h8M8 13h5"/></svg></div>
+            <h3>AI sağlık koçu</h3>
+            <p>Günün özeti ve sana özel öneriler tek ekranda; ilerlemeni birlikte değerlendir.</p>
+          </div>
+          <div class="peek"><div class="phone"><img src="./assets/aikoc.webp" alt="AI sağlık koçu ekranı" width="540" height="1170" loading="lazy"></div></div>
+        </article>
+
+        <article class="tile span-3 split wide reveal" style="--d:.08s">
+          <div>
+            <div class="t-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="9" r="6"/><path d="m8.5 14-1.5 7 5-3 5 3-1.5-7"/></svg></div>
+            <h3>Rozet, görev &amp; XP</h3>
+            <p>Görevleri tamamla, XP kazan, seviye atla. Başarını tek dokunuşla paylaş — motivasyonun hiç düşmesin.</p>
+          </div>
+          <div class="peek"><div class="phone"><img src="./assets/gorevler.webp" alt="Aylık görevler ekranı" width="540" height="1170" loading="lazy"></div></div>
+        </article>
+      </div>
+
+      <div class="minis">
+        <div class="mini reveal">
+          <div class="t-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7V5a1 1 0 0 1 1-1h2M17 4h2a1 1 0 0 1 1 1v2M20 17v2a1 1 0 0 1-1 1h-2M7 20H5a1 1 0 0 1-1-1v-2M8 8v8M11 8v8M14 8v8M17 8v8"/></svg></div>
+          <h3>Barkod tarama</h3><p>Paketli ürünü okut, besin değerleri saniyede günlüğüne eklensin.</p>
+        </div>
+        <div class="mini reveal" style="--d:.06s">
+          <div class="t-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4z"/></svg></div>
+          <h3>Yazarak ekle</h3><p>Fotoğraf çekemediğinde ne yediğini yaz; yapay zekâ hesaplasın.</p>
+        </div>
+        <div class="mini reveal" style="--d:.12s">
+          <div class="t-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3s6 6.5 6 11a6 6 0 0 1-12 0c0-4.5 6-11 6-11z"/></svg></div>
+          <h3>Su &amp; makro</h3><p>Kalori, protein, karbonhidrat, yağ ve su hedeflerin tek ekranda.</p>
+        </div>
+        <div class="mini reveal" style="--d:.18s">
+          <div class="t-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="m7 15 4-4 3 3 5-6"/></svg></div>
+          <h3>Kilo &amp; ölçü</h3><p>Kilo trendini, ölçülerini ve fotoğraflarla gelişimini karşılaştır.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- GALLERY -->
+  <section class="block gallery-sec" id="ekranlar">
+    <div class="wrap g-head">
+      <div class="sec-head reveal">
+        <div class="kicker">Uygulamayı keşfet</div>
+        <h2>Her ekran, hedefine <em class="s">bir adım</em> daha.</h2>
+        <p>Gerçek uygulama ekranları. Kaydır ve FİT KAL'ın içinde neler olduğunu gör.</p>
+      </div>
+      <div class="g-nav">
+        <button type="button" data-dir="-1" aria-label="Önceki ekran"><svg style="transform:scaleX(-1)"><use href="#i-arrow"/></svg></button>
+        <button type="button" data-dir="1" aria-label="Sonraki ekran"><svg><use href="#i-arrow"/></svg></button>
+      </div>
+    </div>
+    <div class="gallery" tabindex="0" aria-label="Uygulama ekranları galerisi">
+      <figure class="g-item"><div class="phone"><img src="./assets/home.webp" alt="Ana sayfa: günlük kalori ve makro özeti" width="540" height="1126" loading="lazy"></div><figcaption><b>Ana sayfa</b><span>Günün kalorisi, makroların ve serin bir bakışta.</span></figcaption></figure>
+      <figure class="g-item"><div class="phone"><img src="./assets/ai-analiz.webp" alt="Yapay zeka yemek analizi" width="540" height="1126" loading="lazy"></div><figcaption><b>Yapay zeka analizi</b><span>Her yemek ayrı tanınır, gramaj düzeltilebilir.</span></figcaption></figure>
+      <figure class="g-item"><div class="phone"><img src="./assets/kutuphane.webp" alt="Egzersiz kütüphanesi" width="540" height="1170" loading="lazy"></div><figcaption><b>Egzersiz kütüphanesi</b><span>Spor salonu, ev ve kardiyo hareketleri.</span></figcaption></figure>
+      <figure class="g-item"><div class="phone"><img src="./assets/oruc.webp" alt="Aralıklı oruç sayacı" width="540" height="1126" loading="lazy"></div><figcaption><b>Aralıklı oruç</b><span>Sayaç, evreler ve oruç periyotları.</span></figcaption></figure>
+      <figure class="g-item"><div class="phone"><img src="./assets/ilerleme.webp" alt="Kilo trendi grafiği" width="540" height="1126" loading="lazy"></div><figcaption><b>İlerleme</b><span>Kilo trendi ve hedefine kalan mesafe.</span></figcaption></figure>
+      <figure class="g-item"><div class="phone"><img src="./assets/rozet.webp" alt="Rozet kazanma ekranı" width="540" height="1126" loading="lazy"></div><figcaption><b>Rozetler</b><span>Yeni başarı, XP ve paylaşım.</span></figcaption></figure>
+      <figure class="g-item"><div class="phone"><img src="./assets/tarif.webp" alt="Fit tarifler listesi" width="540" height="1170" loading="lazy"></div><figcaption><b>Fit tarifler</b><span>Makroları hazır, Türk mutfağından.</span></figcaption></figure>
+    </div>
+  </section>
+
+  <!-- TRUST -->
+  <section class="trust-sec" id="guven">
+    <div class="wrap">
+      <div class="trust">
+        <div class="trust-head reveal">
+          <div class="kicker">Gizlilik önce gelir</div>
+          <h2>Verilerin <em class="s">sana</em> ait.</h2>
+          <p>Sağlık verilerin hassastır; biz de öyle davranıyoruz. KVKK'ya uygun aydınlatma metnimizi dilediğin zaman okuyabilirsin.</p>
+          <a class="link-arrow" href="./gizlilik-politikasi.html">Gizlilik Politikası'nı oku <svg width="18" height="18" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+        </div>
+        <div class="t-list">
+          <div class="t-item reveal">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="10" width="16" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg>
+            <b>Şifreli bağlantı</b><span>Tüm veri iletimi HTTPS/TLS ile şifrelenir.</span>
+          </div>
+          <div class="t-item reveal" style="--d:.08s">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3 4 6v6c0 5 3.5 8 8 9 4.5-1 8-4 8-9V6z"/><path d="m9 12 2 2 4-4"/></svg>
+            <b>Satılmaz, paylaşılmaz</b><span>Sağlık ve beslenme verilerin hiçbir şekilde satılmaz, reklam için kullanılmaz.</span>
+          </div>
+          <div class="t-item reveal" style="--d:.16s">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 7h16M10 11v6M14 11v6M6 7l1 13h10l1-13M9 7V4h6v3"/></svg>
+            <b>Kolayca silme</b><span>Hesabını ve verilerini uygulama içinden istediğin an silebilirsin.</span>
+          </div>
+        </div>
       </div>
     </div>
   </section>
 
   <!-- FAQ -->
-  <section class="block" id="sss" style="padding-top:0">
-    <div class="wrap">
-      <div class="sec-head reveal">
+  <section class="block" id="sss">
+    <div class="wrap faq-grid">
+      <div class="faq-side reveal">
         <div class="kicker">SSS</div>
-        <h2>Sık sorulan sorular</h2>
+        <h2>Sık sorulan <em class="s">sorular</em></h2>
+        <div class="help">
+          <b>Başka bir sorun mu var?</b>
+          <p>Bize yaz; genellikle 1-2 iş günü içinde yanıt veriyoruz.</p>
+          <a href="mailto:fitkaldestek@gmail.com">fitkaldestek@gmail.com</a>
+        </div>
       </div>
-      <div class="faq reveal">
+      <div class="faq reveal" style="--d:.08s">
         <details>
           <summary>FİT KAL ücretli mi?</summary>
           <p>Hayır. FİT KAL'ı ücretsiz indirip tüm özelliklerini kullanabilirsin.</p>
+        </details>
+        <details>
+          <summary>Nasıl başlarım?</summary>
+          <p>App Store veya Google Play'den FİT KAL'ı indir, Apple veya Google hesabınla saniyeler içinde giriş yap. Boy, kilo, aktivite seviyesi ve hedefini girdiğinde kalori ve makro hedeflerin otomatik hesaplanır.</p>
         </details>
         <details>
           <summary>Diyet planım nasıl oluşturuluyor?</summary>
@@ -638,10 +755,6 @@
           <summary>Hesabımı ve verilerimi nasıl silerim?</summary>
           <p>Hesabını uygulama içinden silebilirsin. Adım adım talimatlar için <a href="./hesap-silme.html">Hesap ve Veri Silme</a> sayfasına bakabilirsin.</p>
         </details>
-        <details>
-          <summary>Başka bir sorum var, nasıl ulaşırım?</summary>
-          <p><a href="mailto:fitkaldestek@gmail.com">fitkaldestek@gmail.com</a> adresine yazabilirsin. Genellikle 1-2 iş günü içinde yanıt veriyoruz.</p>
-        </details>
       </div>
     </div>
   </section>
@@ -650,31 +763,34 @@
   <section id="indir">
     <div class="wrap">
       <div class="cta reveal">
-        <div class="cta-logo"><img src="./assets/logo-mark.png" alt="FİT KAL logosu"></div>
-        <h2>Her gün daha iyi olmaya bugün başla</h2>
-        <p>FİT KAL'ı ücretsiz indir, ilk öğününün fotoğrafını çek.</p>
-        <div class="stores">
-          <a class="store light" href="https://apps.apple.com/app/id6807896776" target="_blank" rel="noopener">
-            <svg><use href="#i-apple"/></svg>
-            <span><small>Hemen indir</small><b>App Store</b></span>
-          </a>
-          <a class="store light" href="https://play.google.com/store/apps/details?id=com.fitkal.app" target="_blank" rel="noopener">
-            <svg><use href="#i-play"/></svg>
-            <span><small>Hemen indir</small><b>Google Play</b></span>
-          </a>
+        <div class="cta-text">
+          <h2>Her gün daha iyi olmaya <em class="s">bugün</em> başla.</h2>
+          <p>FİT KAL'ı ücretsiz indir, ilk öğününün fotoğrafını çek.</p>
+          <div class="stores">
+            <a class="store" href="https://apps.apple.com/app/id6807896776" target="_blank" rel="noopener">
+              <svg aria-hidden="true"><use href="#i-apple"/></svg>
+              <span><small>Hemen indir</small><b>App Store</b></span>
+            </a>
+            <a class="store" href="https://play.google.com/store/apps/details?id=com.fitkal.app" target="_blank" rel="noopener">
+              <svg aria-hidden="true"><use href="#i-play"/></svg>
+              <span><small>Hemen indir</small><b>Google Play</b></span>
+            </a>
+          </div>
+          <div class="cta-qr"><img src="./assets/qr-indir.png" alt="FİT KAL indirme QR kodu" width="112" height="112" loading="lazy"><span>Bilgisayardasın? <b>Telefonunun kamerasıyla okut</b>, iPhone'da App Store, Android'de Google Play açılsın.</span></div>
         </div>
-        <div class="cta-qr"><img src="./assets/qr-indir.png" alt="FİT KAL indirme QR kodu" width="132" height="132"><span>Bilgisayardasın? <b>Telefonunun kamerasıyla okut</b>, iPhone'da App Store, Android'de Google Play açılsın.</span></div>
+        <div class="cta-phone" aria-hidden="true"><div class="phone"><img src="./assets/rozet.webp" alt="" width="540" height="1126" loading="lazy"></div></div>
       </div>
     </div>
   </section>
+  </main>
 
   <footer>
     <div class="wrap">
       <div class="foot">
         <div>
-          <a href="#" class="brand">
-            <span class="brand-mark"><img src="./assets/logo-mark.png" alt=""></span>
-            <span class="brand-name">FİT <span>KAL</span></span>
+          <a href="#top" class="brand">
+            <img src="./assets/logo-mark.png" alt="" width="40" height="40" loading="lazy">
+            <b>FİT <span>KAL</span></b>
           </a>
           <p class="tag">Yapay zeka destekli kişisel sağlık ve beslenme asistanın. Her gün daha iyi.</p>
         </div>
@@ -705,50 +821,44 @@
 
   <script>
     (function () {
+      var root = document.documentElement;
       var header = document.querySelector('header');
-      function onScroll() { header.classList.toggle('scrolled', window.scrollY > 10); }
+      function onScroll() { header.classList.toggle('scrolled', window.scrollY > 8); }
       onScroll();
       window.addEventListener('scroll', onScroll, { passive: true });
 
-      // Tabbed app tour: click to switch, auto-advance while visible
-      var tabs = [].slice.call(document.querySelectorAll('.tour-tab'));
-      var shots = [].slice.call(document.querySelectorAll('.tour-phone img'));
-      var cur = 0, timer = null, auto = !window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-      function show(i, keepAuto) {
-        cur = i;
-        tabs.forEach(function (t, k) {
-          t.classList.toggle('active', k === i);
-          t.classList.remove('running');
-          t.setAttribute('aria-selected', k === i ? 'true' : 'false');
-        });
-        shots.forEach(function (im, k) { im.classList.toggle('active', k === i); });
-        clearTimeout(timer);
-        if (keepAuto && auto) {
-          void tabs[i].offsetWidth;
-          tabs[i].classList.add('running');
-          timer = setTimeout(function () { show((cur + 1) % tabs.length, true); }, 6000);
-        }
-      }
-      tabs.forEach(function (t, k) {
-        t.addEventListener('click', function () { auto = false; show(k, false); });
-      });
-      var tour = document.querySelector('.tour');
-      if (tour && 'IntersectionObserver' in window) {
-        new IntersectionObserver(function (en) {
-          if (en[0].isIntersecting) { if (auto && !timer) show(cur, true); }
-          else { clearTimeout(timer); timer = null; tabs[cur].classList.remove('running'); }
-        }, { threshold: 0.35 }).observe(tour);
-      }
+      // Hero entrance once the main screenshot is ready
+      var heroImg = document.querySelector('.hp1 img');
+      function go() { document.body.classList.add('loaded'); }
+      if (heroImg.complete) requestAnimationFrame(go); else { heroImg.addEventListener('load', go); heroImg.addEventListener('error', go); setTimeout(go, 1200); }
 
-      var els = document.querySelectorAll('.reveal');
-      if (!('IntersectionObserver' in window)) {
-        els.forEach(function (el) { el.classList.add('in'); });
-        return;
+      // Mobile menu
+      var btn = document.querySelector('.menu-btn');
+      function setMenu(open) {
+        header.classList.toggle('menu-open', open);
+        btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+        btn.setAttribute('aria-label', open ? 'Menüyü kapat' : 'Menüyü aç');
       }
-      var io = new IntersectionObserver(function (entries) {
-        entries.forEach(function (e) {
-          if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+      btn.addEventListener('click', function () { setMenu(!header.classList.contains('menu-open')); });
+      document.querySelectorAll('#menu a').forEach(function (a) { a.addEventListener('click', function () { setMenu(false); }); });
+      document.addEventListener('keydown', function (e) { if (e.key === 'Escape') setMenu(false); });
+      document.addEventListener('click', function (e) { if (!header.contains(e.target)) setMenu(false); });
+
+      // Gallery arrows
+      var gal = document.querySelector('.gallery');
+      document.querySelectorAll('.g-nav button').forEach(function (b) {
+        b.addEventListener('click', function () {
+          var item = gal.querySelector('.g-item');
+          var step = item ? item.getBoundingClientRect().width + 22 : 270;
+          gal.scrollBy({ left: step * Number(b.dataset.dir), behavior: 'smooth' });
         });
+      });
+
+      // Reveal on scroll
+      var els = document.querySelectorAll('.reveal');
+      if (!('IntersectionObserver' in window)) { els.forEach(function (el) { el.classList.add('in'); }); return; }
+      var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
       }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
       els.forEach(function (el) { io.observe(el); });
     })();
