@@ -250,6 +250,11 @@
    "kind": "STORY",
    "media_id": "18110663422960368"
   },
+  "2026-11-20_aksam_G43_2aksam_app_set_sayac": {
+   "at": "2026-11-20T17:46:10.104994+00:00",
+   "kind": "STORY",
+   "media_id": "17882884473631891"
+  },
   "2026-11-20_post_79_tahmin": {
    "at": "2026-11-20T09:31:52.971651+00:00",
    "kind": "IMAGE",
@@ -262,7 +267,5 @@
   }
  },
  "skipped": {},
- "tries": {
-  "2026-11-20_aksam_G43_2aksam_app_set_sayac": 1
- }
+ "tries": {}
 }
